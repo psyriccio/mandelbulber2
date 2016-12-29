@@ -150,6 +150,9 @@ void DefineFractalList(QList<sFractalDescription> *fractalList)
 	fractalList->append(sFractalDescription("Mandelbulb", "mandelbulb", mandelbulb, analyticDEType,
 		logarithmicDEFunction, cpixelEnabledByDefault, 10));
 
+    fractalList->append(sFractalDescription("MandelbulbMod", "mandelbulbmod", mandelbulbmod, analyticDEType,
+        logarithmicDEFunction, cpixelEnabledByDefault, 10));
+
 	fractalList->append(sFractalDescription("Mandelbulb 2", "mandelbulb2", mandelbulb2,
 		analyticDEType, logarithmicDEFunction, cpixelEnabledByDefault, 10));
 

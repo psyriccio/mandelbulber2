@@ -163,7 +163,12 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 					MandelbulbIteration(z, fractal, extendedAux);
 					break;
 				}
-				case mandelbulb2:
+                case mandelbulbmod:
+                {
+                    MandelbulbModIteration(z, fractal, extendedAux);
+                    break;
+                }
+                case mandelbulb2:
 				{
 					Mandelbulb2Iteration(z, extendedAux);
 					break;
@@ -1206,7 +1211,8 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				case hypercomplex:
 				case iqBulb:
 				case mandelbulb:
-				case mandelbulb2:
+                case mandelbulbmod:
+                case mandelbulb2:
 				case mandelbulb3:
 				case mandelbulb4:
 				case mandelbulbBermarte:
@@ -1233,7 +1239,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 					break;
 				}
 			case mandelbox:
-			case mandelboxMenger:
+            case mandelboxMenger:
 			case smoothMandelbox:
 			case mandelboxVaryScale4D:
 			case generalizedFoldBox:
@@ -1339,7 +1345,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 			switch (formula)
 			{
 				case mandelbox:
-				case smoothMandelbox:
+                case smoothMandelbox:
 				case mandelboxVaryScale4D:
 				case generalizedFoldBox:
 

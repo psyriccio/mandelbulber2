@@ -72,6 +72,25 @@ void MandelbulbIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux
 }
 
 /**
+ * Classic Mandelbulb fractal. (Some mod)
+ * @reference http://www.fractalforums.com/3d-fractal-generation/true-3d-mandlebrot-type-fractal/
+ */
+void MandelbulbModIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux)
+{
+    double th0 = asin(z.z / aux.r) + fractal->bulbmod.betaAngleOffset;
+    double ph0 = atan2(z.y, z.x) + fractal->bulbmod.alphaAngleOffset;
+    double rp = pow(aux.r, fractal->bulbmod.power - 1.0);
+    double th = th0 * fractal->bulbmod.power;
+    double ph = ph0 * fractal->bulbmod.power;
+    double cth = cos(th);
+    aux.r_dz = rp * aux.r_dz * fractal->bulbmod.power + 1.0;
+    rp *= aux.r;
+    z = CVector3(cth * cos(ph), cth * sin(ph), sin(th)) * rp;
+    z = z * th0;
+    aux.r = aux.r * (ph/th);
+}
+
+/**
  * Mandelbox fractal known as AmazingBox or ABox, invented by Tom Lowe in 2010
  * @reference
  * http://www.fractalforums.com/ifs-iterated-function-systems/amazing-fractal/msg12467/#msg12467

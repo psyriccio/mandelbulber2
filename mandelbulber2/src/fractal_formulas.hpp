@@ -87,6 +87,7 @@ void Mandelbulb2Iteration(CVector3 &z, sExtendedAux &aux);
 void Mandelbulb3Iteration(CVector3 &z, sExtendedAux &aux);
 void Mandelbulb4Iteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
 void MandelbulbIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
+void MandelbulbModIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
 void MandelbulbBermarteIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
 void MandelbulbKaliIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
 void MandelbulbKaliMultiIteration(

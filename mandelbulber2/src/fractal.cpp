@@ -47,6 +47,11 @@ cFractal::cFractal(const cParameterContainer *container)
 	bulb.betaAngleOffset = container->Get<double>("beta_angle_offset");
 	bulb.gammaAngleOffset = container->Get<double>("gamma_angle_offset");
 
+    bulbmod.power = container->Get<double>("power");
+    bulbmod.alphaAngleOffset = container->Get<double>("alpha_angle_offset");
+    bulbmod.betaAngleOffset = container->Get<double>("beta_angle_offset");
+    bulbmod.gammaAngleOffset = container->Get<double>("gamma_angle_offset");
+
 	mandelbox.scale = container->Get<double>("mandelbox_scale");
 	mandelbox.foldingLimit = container->Get<double>("mandelbox_folding_limit");
 	mandelbox.foldingValue = container->Get<double>("mandelbox_folding_value");
@@ -482,7 +487,11 @@ void cFractal::RecalculateFractalParams(void)
 
 	bulb.alphaAngleOffset *= M_PI / 180.0;
 	bulb.betaAngleOffset *= M_PI / 180.0;
-	transformCommon.alphaAngleOffset *= M_PI / 180.0;
+
+    bulbmod.alphaAngleOffset *= M_PI / 180.0;
+    bulbmod.betaAngleOffset *= M_PI / 180.0;
+
+    transformCommon.alphaAngleOffset *= M_PI / 180.0;
 	transformCommon.betaAngleOffset *= M_PI / 180.0;
 
 	transformCommon.rotationMatrix44.SetRotation44a(

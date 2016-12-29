@@ -212,6 +212,14 @@ struct sFractalMandelbulb
 	double gammaAngleOffset;
 };
 
+struct sFractalMandelbulbMod
+{
+    double power;
+    double alphaAngleOffset;
+    double betaAngleOffset;
+    double gammaAngleOffset;
+};
+
 struct sFractalAexion
 {
 	double cadd;
@@ -634,7 +642,8 @@ public:
 
 	fractal::enumFractalFormula formula;
 	sFractalMandelbulb bulb;
-	sFractalIFS IFS;
+    sFractalMandelbulbMod bulbmod;
+    sFractalIFS IFS;
 	sFractalMandelbox mandelbox;
 	sFractalGeneralizedFoldBox genFoldBox;
 	sFractalBoxFoldBulbPow2 foldingIntPow;
