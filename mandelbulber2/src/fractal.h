@@ -212,8 +212,9 @@ struct sFractalMandelbulb
 	double gammaAngleOffset;
 };
 
-struct sFractalMandelbulbMod
+struct sFractalDigiseed
 {
+    double seed;
     double power;
     double alphaAngleOffset;
     double betaAngleOffset;
@@ -642,7 +643,6 @@ public:
 
 	fractal::enumFractalFormula formula;
 	sFractalMandelbulb bulb;
-    sFractalMandelbulbMod bulbmod;
     sFractalIFS IFS;
 	sFractalMandelbox mandelbox;
 	sFractalGeneralizedFoldBox genFoldBox;
@@ -662,6 +662,7 @@ public:
 	sFractalMagTransforms magTransf;
 	sFractalCpara Cpara;
 	sFractalCombo combo;
+    sFractalDigiseed dseed;
 
 #ifdef CLSUPPORT
 	double customParameters[15];

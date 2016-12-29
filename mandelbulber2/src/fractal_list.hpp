@@ -159,7 +159,9 @@ enum enumFractalFormula
 	// 152 to 172 reserved for scator
 	fastImagscaPower2 = 152,
 
-    mandelbulbmod = 800,
+
+    // John Gleezowood <psyriccio@gmail.com>   id`s 800-850 ?!
+    digiseed = 800,
 
     transfAdditionConstant = 1001,
 	transfRotation = 1002,

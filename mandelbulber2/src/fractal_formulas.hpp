@@ -137,6 +137,10 @@ void CollatzModIteration(CVector3 &z, CVector3 c, const cFractal *fractal, sExte
 void BoxFolding(CVector3 &z, const sFractalFoldings *foldings, sExtendedAux &aux);
 void SphericalFolding(CVector3 &z, const sFractalFoldings *foldings, sExtendedAux &aux);
 
+// John Gleezowood Mod -------------------------------------------------------------
+void DigiseedIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
+// ---------------------------------------------------------------------------------
+
 // transforming formulas
 void TransformAddCpixelAxisSwapIteration(
 	CVector3 &z, CVector3 c, const cFractal *fractal, sExtendedAux &aux);

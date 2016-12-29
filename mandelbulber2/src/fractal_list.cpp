@@ -150,9 +150,6 @@ void DefineFractalList(QList<sFractalDescription> *fractalList)
 	fractalList->append(sFractalDescription("Mandelbulb", "mandelbulb", mandelbulb, analyticDEType,
 		logarithmicDEFunction, cpixelEnabledByDefault, 10));
 
-    fractalList->append(sFractalDescription("MandelbulbMod", "mandelbulbmod", mandelbulbmod, analyticDEType,
-        logarithmicDEFunction, cpixelEnabledByDefault, 10));
-
 	fractalList->append(sFractalDescription("Mandelbulb 2", "mandelbulb2", mandelbulb2,
 		analyticDEType, logarithmicDEFunction, cpixelEnabledByDefault, 10));
 
@@ -307,6 +304,11 @@ void DefineFractalList(QList<sFractalDescription> *fractalList)
 
 	fractalList->append(sFractalDescription("Sierpinski 4D", "sierpinski_4D", sierpinski4D,
 		analyticDEType, linearDEFunction, cpixelDisabledByDefault, 10));
+
+    //-------------------------- John Gleezowood mod <psyriccio@gmail.com> ------------------------
+
+    fractalList->append(sFractalDescription("Digiseed", "digiseed", digiseed, analyticDEType,
+        logarithmicDEFunction, cpixelEnabledByDefault, 10));
 
 	//-------------------------- transforms -----------------------------------
 	fractalList->append(

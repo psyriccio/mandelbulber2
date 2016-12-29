@@ -234,8 +234,8 @@ void cInterface::ShowUi(void)
 	// loading default ui for all fractal components
 	mainWindow->ui->widgetDockFractal->InitializeFractalUi();
 	InitMaterialsUi();
-	scrollAreaMaterialEditor = mainWindow->ui->scrollArea_material;
-
+    scrollAreaMaterialEditor = mainWindow->ui->scrollArea_material;
+    scrollAreaMaterialEditor->hide();
 	// change sone default settings with keeping compatibility with older versions
 	StartupDefaultSettings();
 

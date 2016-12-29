@@ -72,22 +72,37 @@ void MandelbulbIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux
 }
 
 /**
- * Classic Mandelbulb fractal. (Some mod)
- * @reference http://www.fractalforums.com/3d-fractal-generation/true-3d-mandlebrot-type-fractal/
+ * Digiseed fractal formula by John Gleezowood psyriccio@gmail.com
+ *
  */
-void MandelbulbModIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux)
+void DigiseedIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux)
 {
-    double th0 = asin(z.z / aux.r) + fractal->bulbmod.betaAngleOffset;
-    double ph0 = atan2(z.y, z.x) + fractal->bulbmod.alphaAngleOffset;
-    double rp = pow(aux.r, fractal->bulbmod.power - 1.0);
-    double th = th0 * fractal->bulbmod.power;
-    double ph = ph0 * fractal->bulbmod.power;
-    double cth = cos(th);
-    aux.r_dz = rp * aux.r_dz * fractal->bulbmod.power + 1.0;
-    rp *= aux.r;
-    z = CVector3(cth * cos(ph), cth * sin(ph), sin(th)) * rp;
-    z = z * th0;
-    aux.r = aux.r * (ph/th);
+
+    double seed = fractal->dseed.seed + fractal->transformCommon.power8.Cross(z).Dot(z);
+
+    // extract polar coordinates
+    double wr = aux.r;
+    // if (wr < 1e-21)
+    //	wr = 1e-21;
+    double wo = acos(z.y / wr);
+    double wi = atan2(z.x, z.z);
+
+    wo += seed;
+    wi *= seed;
+
+    // scale and rotate the point
+    wr = pow(wr, fractal->transformCommon.pwr8 - 1.0);
+    aux.r_dz = wr * aux.r_dz * fractal->transformCommon.pwr8 + 1.0;
+    wr *= aux.r;
+    wo *= fractal->transformCommon.pwr8;
+    wi *= fractal->transformCommon.pwr8a;
+
+    // convert back to cartesian coordinates
+    z.x = sin(wo) * sin(wi);
+    z.y = cos(wo);
+    z.z = sin(wo) * cos(wi);
+
+    z *= wr; // then add Cpixel constant
 }
 
 /**
@@ -559,8 +574,7 @@ void AexionIteration(CVector3 &z, double &w, int i, const cFractal *fractal, sEx
 void HypercomplexIteration(CVector3 &z, double &w, sExtendedAux &aux)
 {
 	aux.r_dz = aux.r_dz * 2.0 * aux.r;
-	CVector3 newz(z.x * z.x - z.y * z.y - z.z * z.z - w * w, 2.0 * z.x * z.y - 2.0 * w * z.z,
-		2.0 * z.x * z.z - 2.0 * z.y * w);
+    CVector3 newz(z.x * z.x - z.y * z.y - z.z * z.z - w * w, 2.0 * z.x * z.y - 2.0 * w * z.z, 2.0 * z.x * z.z - 2.0 * z.y * w);
 	double neww = 2.0 * z.x * w - 2.0 * z.y * z.z;
 	z = newz;
 	w = neww;

@@ -163,11 +163,6 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 					MandelbulbIteration(z, fractal, extendedAux);
 					break;
 				}
-                case mandelbulbmod:
-                {
-                    MandelbulbModIteration(z, fractal, extendedAux);
-                    break;
-                }
                 case mandelbulb2:
 				{
 					Mandelbulb2Iteration(z, extendedAux);
@@ -544,14 +539,20 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				{
 					FastImagscaPower2Iteration(z);
 					break;
-				}
+                }
+                // John Gleezowood mods -------------------------------------------
+                case digiseed:
+                {
+                    DigiseedIteration(z, fractal, extendedAux);
+                    break;
+                }
 
-					// transforms  ------------------------------------------------------------------
-					//				case transfAdditionConstant:
-					{
-						TransformAdditionConstantIteration(z, fractal);
-						break;
-					}
+                // transforms  ------------------------------------------------------------------
+                //				case transfAdditionConstant:
+                {
+                    TransformAdditionConstantIteration(z, fractal);
+                    break;
+                }
 				case transfAdditionConstantVaryV1:
 				{
 					TransformAdditionConstantVaryV1Iteration(z, i, fractal);
@@ -1211,7 +1212,6 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				case hypercomplex:
 				case iqBulb:
 				case mandelbulb:
-                case mandelbulbmod:
                 case mandelbulb2:
 				case mandelbulb3:
 				case mandelbulb4:
@@ -1231,6 +1231,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				case transfQuaternionFold: // hmmm, this issue again
 				case quaternion3D:
 				case xenodreambuie:
+                case digiseed:
 				{
 					if (extendedAux.r_dz > 0)
 						out->distance = 0.5 * r * log(r) / extendedAux.r_dz;
