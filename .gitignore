@@ -111,3 +111,11 @@ $RECYCLE.BIN/
 
 # Linux KDE
 *.directory
+mandelbulber2/Release/.qmake.stash
+mandelbulber2/Release/Makefile
+mandelbulber2/Release/mandelbulber2
+mandelbulber2/Release/qrc_icons.cpp
+mandelbulber2/Debug/.qmake.stash
+mandelbulber2/Debug/Makefile
+mandelbulber2/Debug/mandelbulber2
+mandelbulber2/Debug/qrc_icons.cpp
