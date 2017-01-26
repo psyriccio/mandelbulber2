@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -44,14 +44,24 @@ class cParameterContainer;
 class cAudioTrackCollection
 {
 public:
-	cAudioTrackCollection(QObject *parent = 0);
+	cAudioTrackCollection();
 	~cAudioTrackCollection();
+
+	/* Warning! this is fake constructor to avoid copying audio data to cUndo buffers */
+	cAudioTrackCollection(const cAudioTrackCollection &collection);
+	/* Warning! this is fake operator to avoid copying audio data to cUndo buffers */
+	cAudioTrackCollection &operator=(const cAudioTrackCollection &collection);
+
+	// FIXME restoring of audiotracks after UNDO
+
 	void AddAudioTrack(const QString fullParameterName, cParameterContainer *params);
 	void DeleteAudioTrack(const QString fullParameterName, cParameterContainer *params);
+	void DeleteAllAudioTracks(cParameterContainer *params);
 	cAudioTrack *GetAudioTrackPtr(const QString fullParameterName) const;
 	void AddParameters(cParameterContainer *params, const QString parameterName);
 	void RemoveParameters(cParameterContainer *params, const QString parameterName);
 	QString FullParameterName(const QString &nameOfSoundParameter, const QString parameterName);
+	void LoadAllAudioFiles(cParameterContainer *params);
 
 private:
 	QMap<QString, cAudioTrack *> audioTracks;

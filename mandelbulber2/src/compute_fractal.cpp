@@ -1076,10 +1076,13 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 					break;
 				}
 
-				if ((z - lastZ).Length() / r < 0.1 / fractals.GetBailout(sequence))
+				if (fractals.UseAdditionalBailoutCond(sequence))
 				{
-					out->maxiter = false;
-					break;
+					if ((z - lastZ).Length() / r < 0.1 / fractals.GetBailout(sequence))
+					{
+						out->maxiter = false;
+						break;
+					}
 				}
 			}
 			else if (Mode == calcModeDeltaDE1)
@@ -1090,10 +1093,13 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 					break;
 				}
 
-				if ((z - lastZ).Length() / r < 0.1 / fractals.GetBailout(sequence))
+				if (fractals.UseAdditionalBailoutCond(sequence))
 				{
-					out->maxiter = false;
-					break;
+					if ((z - lastZ).Length() / r < 0.1 / fractals.GetBailout(sequence))
+					{
+						out->maxiter = false;
+						break;
+					}
 				}
 			}
 			else if (Mode == calcModeDeltaDE2)
@@ -1239,6 +1245,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 						out->distance = r;
 					break;
 				}
+<<<<<<< HEAD
 			case mandelbox:
             case mandelboxMenger:
 			case smoothMandelbox:
@@ -1285,6 +1292,54 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 			case mengerSmooth:
 			case mengerSmoothMod1:
 			case mengerOcto:
+=======
+				case mandelbox:
+				case mandelboxMenger:
+				case smoothMandelbox:
+				case mandelboxVaryScale4D:
+				case generalizedFoldBox:
+				case foldBoxMod1:
+				case aboxModKali:
+				case aboxModKaliEiffie:
+				case aboxMod1:
+				case aboxMod2:
+				case amazingSurf:
+				case amazingSurfMod1:
+				case amazingSurfMulti:
+				case kalisets1:
+				case aboxVSIcen1:
+				case pseudoKleinian1:
+				case mixPinski4D:
+					// case mengerSmooth:
+					// case mengerSmoothMod1:
+					{
+						if (extendedAux.DE > 0)
+							out->distance = r / fabs(extendedAux.DE);
+						else
+							out->distance = r;
+						break;
+					}
+				case kaleidoscopicIFS:
+				case menger_sponge:
+				case mengerCrossKIFS:
+				case mengerCrossMod1:
+				case mengerPrismShape:
+				case mengerPrismShape2:
+				case collatz:
+				case collatzMod:
+				case mengerMod1:
+				case mengerMiddleMod:
+				case transfMengerFold: // hmmm, this issue again
+				case mengerPwr2Poly:
+				// case mixPinski4D:
+				case sierpinski4D:
+				case sierpinski3D:
+				case menger4D:
+				case menger4Dmod1:
+				case mengerSmooth:
+				case mengerSmoothMod1:
+				case mengerOcto:
+>>>>>>> 69634c33aa924dbbe51d838639cdf06c3f838a86
 				{
 					if (extendedAux.DE > 0)
 						out->distance = (r - 2.0) / (extendedAux.DE);

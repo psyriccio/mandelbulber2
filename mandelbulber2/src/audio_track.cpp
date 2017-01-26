@@ -51,27 +51,36 @@
 
 cAudioTrack::cAudioTrack(QObject *parent) : QObject(parent)
 {
+	fftAudio = NULL;
+	decoder = NULL;
 	Clear();
 }
 
 cAudioTrack::~cAudioTrack()
 {
-	// nothing needed here
+	if (fftAudio) delete[] fftAudio;
+	if (decoder) delete decoder;
 }
 
 void cAudioTrack::Clear()
 {
+	if (decoder) delete decoder;
 	decoder = NULL;
+
 	memoryReserved = false;
 	length = 0;
 	sampleRate = 44100;
 	loaded = false;
+	loadingInProgress = false;
 	framesPerSecond = 30.0;
 	numberOfFrames = 0;
 	maxVolume = 0.0;
 	maxFft = 0.0;
 	rawAudio.clear();
-	fftAudio.clear();
+
+	if (fftAudio) delete[] fftAudio;
+	fftAudio = NULL;
+
 	animation.clear();
 	maxFftArray = cAudioFFTdata();
 }
@@ -79,6 +88,8 @@ void cAudioTrack::Clear()
 void cAudioTrack::LoadAudio(const QString &filename)
 {
 	WriteLogString("Loading audio started", filename, 2);
+
+	Clear();
 
 	QString sufix = QFileInfo(filename).suffix();
 	loaded = false;
@@ -143,6 +154,7 @@ void cAudioTrack::LoadAudio(const QString &filename)
 		desiredFormat.setSampleRate(sampleRate);
 		desiredFormat.setSampleSize(16);
 
+		if (decoder) delete decoder;
 		decoder = new QAudioDecoder(this);
 		decoder->setAudioFormat(desiredFormat);
 		decoder->setSourceFilename(filename);
@@ -152,7 +164,13 @@ void cAudioTrack::LoadAudio(const QString &filename)
 		connect(
 			decoder, SIGNAL(error(QAudioDecoder::Error)), this, SLOT(slotError(QAudioDecoder::Error)));
 
+		loadingInProgress = true;
 		decoder->start();
+
+		while (loadingInProgress)
+		{
+			QApplication::processEvents();
+		}
 	}
 }
 
@@ -192,6 +210,7 @@ void cAudioTrack::slotFinished()
 	qDebug() << "finished";
 	qDebug() << length << (double)length / sampleRate;
 	loaded = true;
+	loadingInProgress = false;
 	WriteLog("Loading mp3 file finished", 2);
 	emit loadingFinished();
 }
@@ -223,6 +242,7 @@ float cAudioTrack::getAnimation(int frame) const
 void cAudioTrack::slotError(QAudioDecoder::Error error)
 {
 	qCritical() << "cAudioTrack::error" << error;
+	loadingInProgress = false;
 }
 
 void cAudioTrack::calculateFFT()
@@ -231,11 +251,13 @@ void cAudioTrack::calculateFFT()
 	{
 		WriteLog("FFT calculation started", 2);
 
-		fftAudio.reserve(numberOfFrames);
+		if (fftAudio) delete[] fftAudio;
+		fftAudio = new cAudioFFTdata[numberOfFrames];
 
+#pragma omp parallel for
 		for (int frame = 0; frame < numberOfFrames; ++frame)
 		{
-			int sampleOffset = frame * sampleRate / framesPerSecond;
+			int sampleOffset = (qint64)frame * sampleRate / framesPerSecond;
 			// prepare complex data for fft transform
 			double fftData[cAudioFFTdata::fftSize * 2];
 			for (int i = 0; i < cAudioFFTdata::fftSize; i++)
@@ -261,7 +283,7 @@ void cAudioTrack::calculateFFT()
 				maxFft = qMax(absVal, maxFft);
 				maxFftArray.data[i] = qMax(maxFftArray.data[i], absVal);
 			}
-			fftAudio.append(fftFrame);
+			fftAudio[frame] = fftFrame;
 		}
 		WriteLog("FFT calculation finished", 2);
 	}
@@ -269,7 +291,7 @@ void cAudioTrack::calculateFFT()
 
 cAudioFFTdata cAudioTrack::getFFTSample(int frame) const
 {
-	if (isLoaded() && frame < fftAudio.size())
+	if (isLoaded() && frame < numberOfFrames)
 	{
 		return fftAudio[frame];
 	}
@@ -281,7 +303,7 @@ cAudioFFTdata cAudioTrack::getFFTSample(int frame) const
 
 float cAudioTrack::getBand(int frame, double midFreq, double bandwidth) const
 {
-	if (isLoaded() && frame < fftAudio.size())
+	if (isLoaded() && frame < numberOfFrames)
 	{
 		cAudioFFTdata fft = fftAudio[frame];
 

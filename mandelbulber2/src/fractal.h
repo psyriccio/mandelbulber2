@@ -355,7 +355,6 @@ struct sFractalMagTransforms
 	multi_orderOfTransf orderOfTransf5;
 };
 
-
 // basic combo
 struct sFractalCombo
 {
@@ -371,9 +370,8 @@ struct sFractalCombo
 		mode7,
 	};
 	combo modeA;
-//		combo modeB;
-//		combo modeC;
-
+	//		combo modeB;
+	//		combo modeC;
 };
 
 // for surfbox types
@@ -470,17 +468,21 @@ struct sFractalTransformCommon
 	double scale0;
 	double scale025;
 	double scale05;
+	double scale08;
 	double scale1;
 	double scaleA1;
 	double scaleB1;
 	double scaleC1;
 	double scaleD1;
 	double scaleE1;
+	double scaleF1;
+	double scaleG1;
 	double scaleA2;
 	double scale015;
 	double scale2;
 	double scale3;
 	double scaleA3;
+	double scaleB3;
 	double scale4;
 	double scale8;
 	double pwr05;

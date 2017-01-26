@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -115,10 +115,14 @@ public:
 	}
 	int IndexOnList(QString parameterName, QString containerName);
 
-	void AddAudioParameter(
-		const QString &parameterName, const cOneParameter &parameter, cParameterContainer *params);
+	void AddAudioParameter(const QString &parameterName, enumVarType paramType,
+		const QString originalContainerName, cParameterContainer *params = NULL);
 
-	void RemoveAudioParameter(const sParameterDescription &parameter, cParameterContainer *params = NULL);
+	void RemoveAudioParameter(
+		const sParameterDescription &parameter, cParameterContainer *params = NULL);
+
+	void RemoveAllAudioParameters(cParameterContainer *params = NULL);
+	void LoadAllAudioFiles(cParameterContainer *params = NULL);
 
 	cAudioTrack *GetAudioPtr(const QString fullParameterName);
 
@@ -128,6 +132,8 @@ public:
 	template <typename T>
 	T ApplyAudioAnimationOneComponent(int frame, T oldVal, const QString &fullParameterNameWithSufix,
 		const cParameterContainer *params) const;
+
+	void RegenerateAudioTracks(cParameterContainer *param);
 
 protected:
 	QList<sAnimationFrame> frames;

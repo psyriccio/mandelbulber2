@@ -75,12 +75,13 @@ private slots:
 private:
 	QAudioDecoder *decoder;
 	QVector<float> rawAudio;
-	QVector<cAudioFFTdata> fftAudio;
+	cAudioFFTdata *fftAudio;
 	QVector<float> animation;
 	bool memoryReserved;
 	int length;
 	int sampleRate;
 	bool loaded;
+	bool loadingInProgress;
 
 	double framesPerSecond;
 	int numberOfFrames;

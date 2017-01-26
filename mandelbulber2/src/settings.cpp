@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -58,6 +58,7 @@ cSettings::cSettings(enumFormat _format)
 	fileVersion = 0;
 	quiet = false;
 	csvNoOfColumns = 0;
+	foundAnimSoundParameters = false;
 }
 
 size_t cSettings::CreateText(const cParameterContainer *par, const cFractalContainer *fractPar,
@@ -448,11 +449,16 @@ bool cSettings::Decode(cParameterContainer *par, cFractalContainer *fractPar,
 		listOfLoadedPrimitives.clear();
 		DeleteAllMaterialParams(par);
 
-		if (frames) frames->ClearAll();
+		if (frames)
+		{
+			frames->ClearAll();
+			frames->RemoveAllAudioParameters(par);
+		}
 		if (keyframes)
 		{
 			keyframes->ClearAll();
 			keyframes->ClearMorphCache();
+			keyframes->RemoveAllAudioParameters(par);
 		}
 		// temporary containers to decode frames
 		cParameterContainer parTemp;
@@ -561,9 +567,9 @@ bool cSettings::Decode(cParameterContainer *par, cFractalContainer *fractPar,
 		{
 			if (keyframes->GetListOfUsedParameters().size() == 0)
 			{
-				keyframes->AddAnimatedParameter("camera", par->GetAsOneParameter("camera"));
-				keyframes->AddAnimatedParameter("target", par->GetAsOneParameter("target"));
-				keyframes->AddAnimatedParameter("camera_top", par->GetAsOneParameter("camera_top"));
+				keyframes->AddAnimatedParameter("camera", par->GetAsOneParameter("camera"), par);
+				keyframes->AddAnimatedParameter("target", par->GetAsOneParameter("target"), par);
+				keyframes->AddAnimatedParameter("camera_top", par->GetAsOneParameter("camera_top"), par);
 			}
 		}
 
@@ -573,7 +579,36 @@ bool cSettings::Decode(cParameterContainer *par, cFractalContainer *fractPar,
 			CheckIfMaterialsAreDefined(par);
 		}
 
+		// now when anim sound parameters are already prepeared by animation, all animsound parameters
+		// can be processed
+		if (keyframes && linesWithSoundParameters.length() > 0)
+		{
+			foundAnimSoundParameters = true;
+			for (int i = 0; i < linesWithSoundParameters.length(); i++)
+			{
+				bool result = false;
+				result = DecodeOneLine(par, linesWithSoundParameters[i]);
+
+				if (!result)
+				{
+					QString errorMessage =
+						QObject::tr("Error in settings file. Line: ") + linesWithSoundParameters[i];
+					cErrorMessage::showMessage(errorMessage, cErrorMessage::errorMessage);
+					errorCount++;
+					if (errorCount > 3)
+					{
+						cErrorMessage::showMessage(
+							QObject::tr("Too many errors in settings file"), cErrorMessage::errorMessage);
+						return false;
+					}
+				}
+			}
+		}
+
 		Compatibility2(par, fractPar);
+
+		if (frames) frames->LoadAllAudioFiles(par);
+		if (keyframes) keyframes->LoadAllAudioFiles(par);
 
 		return true;
 	}
@@ -651,6 +686,16 @@ bool cSettings::DecodeOneLine(cParameterContainer *par, QString line)
 					QObject::tr("Unknown parameter: ") + parameterName, cErrorMessage::errorMessage);
 				return false;
 			}
+		}
+	}
+
+	if (parameterName.left(9) == "animsound")
+	{
+		if (!foundAnimSoundParameters)
+		{
+			linesWithSoundParameters.append(
+				line);		 // added line for further processing (after animation is loaded)
+			return true; // parameter will be processed later
 		}
 	}
 

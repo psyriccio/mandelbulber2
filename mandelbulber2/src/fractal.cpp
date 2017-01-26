@@ -209,16 +209,11 @@ cFractal::cFractal(const cParameterContainer *container)
 	magTransf.orderOfTransf5 =
 		(sFractalMagTransforms::multi_orderOfTransf)container->Get<int>("magTransf_order_of_transf_5");
 
-
-
 	// basic combox
 	combo.modeA = (sFractalCombo::combo)container->Get<int>("combo_mode_A");
 
-
-//	combo.mode1 = (sFractalCombo::combo)container->Get<int>("combo_mode_B");
-//	combo.mode2 = (sFractalCombo::combo)container->Get<int>("combo_mode_C");
-
-
+	//	combo.mode1 = (sFractalCombo::combo)container->Get<int>("combo_mode_B");
+	//	combo.mode2 = (sFractalCombo::combo)container->Get<int>("combo_mode_C");
 
 	// for curvilinear parameter
 	Cpara.enabledLinear = container->Get<bool>("Cpara_enabledLinear");
@@ -286,17 +281,21 @@ cFractal::cFractal(const cParameterContainer *container)
 	transformCommon.scale0 = container->Get<double>("transf_scale_0");
 	transformCommon.scale025 = container->Get<double>("transf_scale_025");
 	transformCommon.scale05 = container->Get<double>("transf_scale_05");
+	transformCommon.scale08 = container->Get<double>("transf_scale_08");
 	transformCommon.scale1 = container->Get<double>("transf_scale_1");
 	transformCommon.scaleA1 = container->Get<double>("transf_scaleA_1");
 	transformCommon.scaleB1 = container->Get<double>("transf_scaleB_1");
 	transformCommon.scaleC1 = container->Get<double>("transf_scaleC_1");
 	transformCommon.scaleD1 = container->Get<double>("transf_scaleD_1");
 	transformCommon.scaleE1 = container->Get<double>("transf_scaleE_1");
+	transformCommon.scaleF1 = container->Get<double>("transf_scaleF_1");
+	transformCommon.scaleG1 = container->Get<double>("transf_scaleG_1");
 	transformCommon.scaleA2 = container->Get<double>("transf_scaleA_2");
 	transformCommon.scale015 = container->Get<double>("transf_scale_015");
 	transformCommon.scale2 = container->Get<double>("transf_scale_2");
 	transformCommon.scale3 = container->Get<double>("transf_scale_3");
 	transformCommon.scaleA3 = container->Get<double>("transf_scaleA_3");
+	transformCommon.scaleB3 = container->Get<double>("transf_scaleB_3");
 	transformCommon.scale4 = container->Get<double>("transf_scale_4");
 	transformCommon.scale8 = container->Get<double>("transf_scale_8");
 

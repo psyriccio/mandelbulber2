@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -97,7 +97,8 @@ void cAnimationFrames::AddAnimatedParameter(
 		// parameters
 		if (!params) params = gPar;
 
-		AddAudioParameter(parameterName, defaultValue, params);
+		AddAudioParameter(
+			parameterName, defaultValue.GetValueType(), defaultValue.GetOriginalContainerName(), params);
 	}
 	else
 	{
@@ -140,6 +141,17 @@ bool cAnimationFrames::AddAnimatedParameter(
 								<< containerName;
 		return false;
 	}
+}
+
+void cAnimationFrames::RegenerateAudioTracks(cParameterContainer *param)
+{
+	for (int i = 0; i < listOfParameters.length(); i++)
+	{
+		AddAudioParameter(listOfParameters[i].parameterName, listOfParameters[i].varType,
+			listOfParameters[i].containerName);
+	}
+
+	audioTracks.LoadAllAudioFiles(param);
 }
 
 int cAnimationFrames::GetUnrenderedTotal()
@@ -340,11 +352,10 @@ void cAnimationFrames::AddFrame(const sAnimationFrame &frame)
 	frames.append(frame);
 }
 
-void cAnimationFrames::AddAudioParameter(
-	const QString &parameterName, const cOneParameter &parameter, cParameterContainer *params)
+void cAnimationFrames::AddAudioParameter(const QString &parameterName, enumVarType paramType,
+	const QString originalContainerName, cParameterContainer *params)
 {
-	QString fullParameterName = parameter.GetOriginalContainerName() + "_" + parameterName;
-	enumVarType paramType = parameter.GetValueType();
+	QString fullParameterName = originalContainerName + "_" + parameterName;
 
 	switch (paramType)
 	{
@@ -368,9 +379,10 @@ void cAnimationFrames::AddAudioParameter(
 	}
 }
 
-void cAnimationFrames::RemoveAudioParameter(const sParameterDescription &parameter, cParameterContainer *params)
+void cAnimationFrames::RemoveAudioParameter(
+	const sParameterDescription &parameter, cParameterContainer *params)
 {
-	if(!params) params = gPar;
+	if (!params) params = gPar;
 	QString fullParameterName = parameter.containerName + "_" + parameter.parameterName;
 	enumVarType paramType = parameter.varType;
 
@@ -485,9 +497,9 @@ T cAnimationFrames::ApplyAudioAnimationOneComponent(int frame, T oldVal,
 	if (isEnabled)
 	{
 		double addiitionFactor =
-			params->Get<double>(QString("animsound_addition_factor_%1").arg(fullParameterNameWithSufix));
+			params->Get<double>(QString("animsound_additionfactor_%1").arg(fullParameterNameWithSufix));
 		double multFactor =
-			params->Get<double>(QString("animsound_mult_factor_%1").arg(fullParameterNameWithSufix));
+			params->Get<double>(QString("animsound_multfactor_%1").arg(fullParameterNameWithSufix));
 		float animSound = audioTracks.GetAudioTrackPtr(fullParameterNameWithSufix)->getAnimation(frame);
 		newVal = oldVal * (1.0 + animSound * multFactor) + animSound * addiitionFactor;
 	}
@@ -498,3 +510,15 @@ template int cAnimationFrames::ApplyAudioAnimationOneComponent(int frame, int ol
 	const QString &fullParameterNameWithSufix, const cParameterContainer *params) const;
 template double cAnimationFrames::ApplyAudioAnimationOneComponent(int frame, double oldVal,
 	const QString &fullParameterNameWithSufix, const cParameterContainer *params) const;
+
+void cAnimationFrames::RemoveAllAudioParameters(cParameterContainer *params)
+{
+	if (!params) params = gPar;
+	audioTracks.DeleteAllAudioTracks(params);
+}
+
+void cAnimationFrames::LoadAllAudioFiles(cParameterContainer *params)
+{
+	if (!params) params = gPar;
+	audioTracks.LoadAllAudioFiles(params);
+}

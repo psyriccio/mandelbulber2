@@ -168,7 +168,6 @@ void cQueue::Append(cParameterContainer *par, cFractalContainer *fractPar, cAnim
 	// add settings to queue
 	cSettings parSettings(cSettings::formatCondensedText);
 	parSettings.CreateText(par, fractPar, frames, keyframes);
-	QFileInfo fi();
 	QString filename = "queue_" + QFileInfo(systemData.lastSettingsFile).completeBaseName() + "_"
 										 + parSettings.GetHashCode() + ".fract";
 	QString completeFileName = queueFolder + QDir::separator() + filename;

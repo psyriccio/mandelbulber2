@@ -55,7 +55,7 @@ cAudioSelector::cAudioSelector(QWidget *parent) : QWidget(parent), ui(new Ui::cA
 
 cAudioSelector::~cAudioSelector()
 {
-	SynchronizeInterfaceWindow(this, gPar, qInterface::write);
+	SynchronizeInterfaceWindow(this, gPar, qInterface::read);
 }
 
 void cAudioSelector::slotLoadAudioFile()
@@ -79,6 +79,8 @@ void cAudioSelector::slotLoadAudioFile()
 		audio->Clear();
 		audio->setFramesPerSecond(30.0);
 
+		ui->text_animsound_soundfile->setText(filename);
+
 		connect(audio, SIGNAL(loadingFinished()), this, SLOT(slotAudioLoaded()));
 		audio->LoadAudio(filename);
 	}
@@ -90,8 +92,9 @@ void cAudioSelector::slotAudioLoaded()
 	audio->calculateFFT();					 // TODO settings for frames per second
 	ui->waveForm->AssignAudioTrack(audio);
 	ui->fft->AssignAudioTrack(audio);
-	ui->timeRuler->SetParameters(audio, 100); //TODO hardcoded frames per keyframe
+	ui->timeRuler->SetParameters(audio, 100); // TODO hardcoded frames per keyframe
 	slotFreqChanged();
+	emit audioLoaded();
 }
 
 void cAudioSelector::AssignParameter(const QString &_parameterName)
@@ -101,6 +104,7 @@ void cAudioSelector::AssignParameter(const QString &_parameterName)
 	setWindowTitle(tr("Set animation controlled by audio file for parameter %1").arg(parameterName));
 
 	RenameWidget(ui->groupCheck_animsound_enable);
+	RenameWidget(ui->text_animsound_soundfile);
 
 	QList<QWidget *> listOfWidgets = ui->groupCheck_animsound_enable->findChildren<QWidget *>();
 
@@ -118,7 +122,7 @@ void cAudioSelector::ConnectSignals()
 	connect(
 		ui->spinbox_animsound_bandwidth, SIGNAL(valueChanged(double)), this, SLOT(slotFreqChanged()));
 	connect(
-		ui->spinbox_animsound_mid_freq, SIGNAL(valueChanged(double)), this, SLOT(slotFreqChanged()));
+		ui->spinbox_animsound_midfreq, SIGNAL(valueChanged(double)), this, SLOT(slotFreqChanged()));
 	connect(
 		this, SIGNAL(freqencyChanged(double, double)), ui->fft, SLOT(slotFreqChanged(double, double)));
 };
@@ -135,7 +139,7 @@ void cAudioSelector::slotFreqChanged()
 	if (audio)
 	{
 		SynchronizeInterfaceWindow(this, gPar, qInterface::read);
-		double midFreq = gPar->Get<double>(FullParameterName("mid_freq"));
+		double midFreq = gPar->Get<double>(FullParameterName("midfreq"));
 		double bandwidth = gPar->Get<double>(FullParameterName("bandwidth"));
 		audio->calculateAnimation(midFreq, bandwidth);
 		ui->animAudioView->UpdateChart(audio);
@@ -158,7 +162,7 @@ void cAudioSelector::AssignAnimation(cAnimationFrames *_animationFrames)
 		{
 			ui->waveForm->AssignAudioTrack(audio);
 			ui->fft->AssignAudioTrack(audio);
-			ui->timeRuler->SetParameters(audio, 100); //TODO hardcoded frames per keyframe
+			ui->timeRuler->SetParameters(audio, 100); // TODO hardcoded frames per keyframe
 			slotFreqChanged();
 		}
 	}
