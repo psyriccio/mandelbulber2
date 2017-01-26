@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -42,7 +42,7 @@
 cPushButtonAnimSound::cPushButtonAnimSound(QWidget *parent) : QPushButton(parent)
 {
 	connect(this, SIGNAL(clicked()), this, SLOT(slotLoadAudio()));
-	animationFrames = NULL;
+	animationFrames = nullptr;
 	setIcon(QIcon::fromTheme("audio-x-generic", QIcon(":system/icons/audio-x-generic.svg")));
 }
 
@@ -64,13 +64,15 @@ void cPushButtonAnimSound::slotUpdateButton()
 		cAudioTrack *audio = animationFrames->GetAudioPtr(parameterName);
 		if (audio && audio->isLoaded())
 		{
-			setText("Audio loaded");
+			setText(tr("Audio loaded"));
 			f.setBold(true);
+			setFont(f);
 			return;
 		}
 	}
 	f.setBold(false);
-	setText("Anim By Sound");
+	setText(tr("Anim By Sound"));
+	setFont(f);
 }
 
 void cPushButtonAnimSound::slotLoadAudio()

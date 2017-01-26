@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -58,7 +58,7 @@ cFFTView::~cFFTView()
 void cFFTView::AssignAudioTrack(const cAudioTrack *audiotrack)
 {
 
-	if (audiotrack)
+	if (audiotrack && audiotrack->isLoaded())
 	{
 		numberOfFrames = audiotrack->getNumberOfFrames();
 		framesPerSecond = audiotrack->getFramesPerSecond();
@@ -66,7 +66,7 @@ void cFFTView::AssignAudioTrack(const cAudioTrack *audiotrack)
 
 		this->setFixedWidth(numberOfFrames);
 
-		const int height = 256;
+		const int height = cAudioFFTdata::fftSize / 2;
 
 		fftImage = QImage(QSize(numberOfFrames, height), QImage::Format_RGB32);
 
@@ -89,7 +89,7 @@ void cFFTView::AssignAudioTrack(const cAudioTrack *audiotrack)
 					pixel = qRgba((value - 0.5) * 510, 255, 0, 255);
 				}
 
-				QRgb *line = (QRgb *)fftImage.scanLine(y2);
+				QRgb *line = reinterpret_cast<QRgb *>(fftImage.scanLine(y2));
 				line[x] = pixel;
 			}
 		}
@@ -101,14 +101,16 @@ void cFFTView::AssignAudioTrack(const cAudioTrack *audiotrack)
 		update();
 		WriteLog("FFTView created", 2);
 	}
+	else
+	{
+		scaledFftImage = QImage();
+	}
 }
 
 void cFFTView::slotFreqChanged(double midFreq, double bandwidth)
 {
-	lowFreqY = height() - 1
-						 - (double)cAudioFFTdata::fftSize / (double)sampleRate * (midFreq - bandwidth * 0.5);
-	highFreqY = height() - 1
-							- (double)cAudioFFTdata::fftSize / (double)sampleRate * (midFreq + bandwidth * 0.5);
+	lowFreqY = int(double(cAudioFFTdata::fftSize) / double(sampleRate) * (midFreq - bandwidth * 0.5));
+	highFreqY = int(double(cAudioFFTdata::fftSize) / double(sampleRate) * (midFreq + bandwidth * 0.5));
 	update();
 }
 
@@ -116,20 +118,20 @@ void cFFTView::paintEvent(QPaintEvent *event)
 {
 	Q_UNUSED(event);
 	QPainter painter(this);
-	painter.drawImage(0, 0, scaledFftImage);
+	painter.drawImage(0, height() - cAudioFFTdata::fftSize / 2, scaledFftImage);
 
 	QBrush brush(QColor(255, 255, 255, 128));
 	painter.setBrush(brush);
 	painter.setPen(Qt::NoPen);
-	painter.drawRect(QRect(QPoint(0, highFreqY), QPoint(width(), lowFreqY)));
+	painter.drawRect(QRect(QPoint(0, height() - highFreqY -1), QPoint(width(), height() - lowFreqY - 1)));
 
 	painter.setPen(Qt::red);
 	QFont font = QApplication::font();
 	font.setPixelSize(10);
 	painter.setFont(font);
 	painter.drawText(
-		3, 13, QString("%1 Hz").arg((int)((double)sampleRate / cAudioFFTdata::fftSize * height())));
+		3, 13, QString("%1 Hz").arg(int(double(sampleRate) / cAudioFFTdata::fftSize * height())));
 	painter.drawText(3, height() / 2,
-		QString("%1 Hz").arg((int)((double)sampleRate / cAudioFFTdata::fftSize * height() * 0.5)));
+		QString("%1 Hz").arg(int(double(sampleRate) / cAudioFFTdata::fftSize * height() * 0.5)));
 	painter.drawText(3, height() - 3, QString("%1 Hz").arg(0));
 }

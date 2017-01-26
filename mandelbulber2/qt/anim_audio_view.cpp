@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -40,6 +40,8 @@
 
 cAnimAudioView::cAnimAudioView(QWidget *parent) : QWidget(parent)
 {
+	playbackPositionX = 0;
+	framesPerSecond = 30.0;
 }
 
 cAnimAudioView::~cAnimAudioView()
@@ -48,27 +50,36 @@ cAnimAudioView::~cAnimAudioView()
 
 void cAnimAudioView::UpdateChart(const cAudioTrack *audiotrack)
 {
-	int numberOfFrames = audiotrack->getNumberOfFrames();
-	this->setFixedWidth(numberOfFrames);
-
-	animAudioImage = QImage(QSize(numberOfFrames, height()), QImage::Format_RGB32);
-	animAudioImage.fill(Qt::black);
-
-	QPainter painter(&animAudioImage);
-
-	int maxY = height() - 1;
-	QPoint prevPoint(0, maxY);
-
-	painter.setPen(Qt::green);
-	painter.setRenderHint(QPainter::Antialiasing, true);
-
-	for (int frame = 0; frame < numberOfFrames; frame++)
+	if (audiotrack && audiotrack->isLoaded())
 	{
-		QPoint point(frame, maxY - audiotrack->getAnimation(frame) * maxY);
-		painter.drawLine(prevPoint, point);
-		prevPoint = point;
+		int numberOfFrames = audiotrack->getNumberOfFrames();
+		framesPerSecond = audiotrack->getFramesPerSecond();
+		this->setFixedWidth(numberOfFrames);
+
+		animAudioImage = QImage(QSize(numberOfFrames, height()), QImage::Format_RGB32);
+		animAudioImage.fill(Qt::black);
+
+		QPainter painter(&animAudioImage);
+
+		int maxY = height() - 1;
+		QPoint prevPoint(0, maxY);
+
+		painter.setPen(Qt::green);
+		painter.setRenderHint(QPainter::Antialiasing, true);
+
+		for (int frame = 0; frame < numberOfFrames; frame++)
+		{
+			QPoint point(frame, maxY - audiotrack->getAnimation(frame) * maxY);
+			painter.drawLine(prevPoint, point);
+			prevPoint = point;
+		}
+		update();
 	}
-	update();
+	else
+	{
+		animAudioImage = QImage();
+		update();
+	}
 }
 
 void cAnimAudioView::paintEvent(QPaintEvent *event)
@@ -76,4 +87,15 @@ void cAnimAudioView::paintEvent(QPaintEvent *event)
 	Q_UNUSED(event);
 	QPainter painter(this);
 	painter.drawImage(0, 0, animAudioImage);
+	QPen pen(QColor(255, 255, 255, 128));
+
+	painter.setPen(pen);
+	painter.drawLine(playbackPositionX, 0, playbackPositionX, height() - 1);
+}
+
+void cAnimAudioView::positionChanged(qint64 position)
+{
+	double time = position * 0.001;
+	playbackPositionX = time * framesPerSecond;
+	update();
 }

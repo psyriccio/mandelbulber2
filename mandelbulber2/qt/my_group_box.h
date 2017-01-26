@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -45,7 +45,7 @@ class MyGroupBox : public QGroupBox, public CommonMyWidgetWrapper
 	Q_OBJECT
 
 public:
-	MyGroupBox(QWidget *parent = 0);
+	MyGroupBox(QWidget *parent = nullptr);
 
 private:
 	bool GetDefault();
@@ -53,16 +53,16 @@ private:
 	QString originalText;
 	bool firstDisplay;
 
-	virtual void resetToDefault();
-	virtual QString getDefaultAsString();
-	virtual QString getFullParameterName();
+	void resetToDefault() override;
+	QString getDefaultAsString() override;
+	QString getFullParameterName() override;
 
 private slots:
-	void slotToggled(bool on);
+	void slotToggled(bool on) const;
 
 protected:
-	void contextMenuEvent(QContextMenuEvent *event);
-	void paintEvent(QPaintEvent *event);
+	void contextMenuEvent(QContextMenuEvent *event) override;
+	void paintEvent(QPaintEvent *event) override;
 };
 
 #endif /* MANDELBULBER2_QT_MY_GROUP_BOX_H_ */

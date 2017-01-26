@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -41,7 +41,7 @@
 
 cMaterialItemModel::cMaterialItemModel(QObject *parent) : QAbstractListModel(parent)
 {
-	container = NULL;
+	container = nullptr;
 }
 
 cMaterialItemModel::~cMaterialItemModel()
@@ -56,7 +56,7 @@ void cMaterialItemModel::AssignContainer(cParameterContainer *_parameterContaine
 	}
 	else
 	{
-		qCritical() << "Parameter container is NULL";
+		qCritical() << "Parameter container is nullptr";
 	}
 }
 
@@ -68,7 +68,7 @@ int cMaterialItemModel::rowCount(const QModelIndex &parent) const
 
 QVariant cMaterialItemModel::data(const QModelIndex &index, int role) const
 {
-	Qt::ItemDataRole itemRole = (Qt::ItemDataRole)role;
+	Qt::ItemDataRole itemRole = Qt::ItemDataRole(role);
 
 	if (itemRole == Qt::DisplayRole)
 	{
@@ -88,7 +88,7 @@ QVariant cMaterialItemModel::data(const QModelIndex &index, int role) const
 		}
 
 		cSettings tempSettings(cSettings::formatCondensedText);
-		tempSettings.CreateText(&params, NULL);
+		tempSettings.CreateText(&params, nullptr);
 		return tempSettings.GetSettingsText();
 	}
 
@@ -102,7 +102,7 @@ QVariant cMaterialItemModel::data(const QModelIndex &index, int role) const
 
 bool cMaterialItemModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-	Qt::ItemDataRole itemRole = (Qt::ItemDataRole)role;
+	Qt::ItemDataRole itemRole = Qt::ItemDataRole(role);
 
 	if (itemRole == Qt::EditRole)
 	{
@@ -110,12 +110,12 @@ bool cMaterialItemModel::setData(const QModelIndex &index, const QVariant &value
 		int matIndex = materialIndexes.at(index.row());
 
 		cParameterContainer params;
-		params.SetContainerName("material");
+		params.SetContainerName(container->GetContainerName());
 		InitMaterialParams(matIndex, &params);
 
 		cSettings tempSettings(cSettings::formatCondensedText);
 		tempSettings.LoadFromString(value.toString());
-		tempSettings.Decode(&params, NULL);
+		tempSettings.Decode(&params, nullptr);
 
 		// copy parameters from temporary container for material to main parameter container
 		for (int i = 0; i < cMaterial::paramsList.size(); i++)
@@ -133,7 +133,7 @@ bool cMaterialItemModel::setData(const QModelIndex &index, const QVariant &value
 
 QVariant cMaterialItemModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-	Qt::ItemDataRole itemRole = (Qt::ItemDataRole)role;
+	Qt::ItemDataRole itemRole = Qt::ItemDataRole(role);
 
 	if (itemRole == Qt::DisplayRole && orientation == Qt::Horizontal)
 	{
@@ -208,7 +208,7 @@ void cMaterialItemModel::Regenerate()
 
 int cMaterialItemModel::FindFreeIndex()
 {
-	bool occupied = false;
+	bool occupied;
 	int materialIndex = 1;
 	do
 	{
@@ -241,7 +241,7 @@ void cMaterialItemModel::slotMaterialChanged(int matIndex)
 	emit dataChanged(index(row, 0, QModelIndex()), index(row, 0, QModelIndex()));
 }
 
-int cMaterialItemModel::materialIndex(const QModelIndex &index)
+int cMaterialItemModel::materialIndex(const QModelIndex &index) const
 {
 	if (index.row() < materialIndexes.count())
 	{
@@ -255,7 +255,7 @@ int cMaterialItemModel::materialIndex(const QModelIndex &index)
 	}
 }
 
-QModelIndex cMaterialItemModel::getModelIndexByMaterialId(int materialId)
+QModelIndex cMaterialItemModel::getModelIndexByMaterialId(int materialId) const
 {
 	int row = materialIndexes.indexOf(materialId);
 	if (row >= 0)
@@ -275,10 +275,6 @@ void cMaterialItemModel::insertRowWithParameters(const cParameterContainer *para
 	insertRows(rowCount(), 1);
 	int matIndex = materialIndexes[rowCount() - 1];
 	QModelIndex newIndex = index(rowCount() - 1, 0);
-
-	cParameterContainer params;
-	params.SetContainerName("material");
-	InitMaterialParams(matIndex, &params);
 
 	// copy parameters from temporary container for material to main parameter container
 	for (int i = 0; i < cMaterial::paramsList.size(); i++)

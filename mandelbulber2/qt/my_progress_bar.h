@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * MyProgressBar class - promoted QProgressBar widget for OSX compatibility
  *
@@ -46,7 +46,8 @@ class MyProgressBar : public QProgressBar
 	Q_OBJECT
 
 public:
-	MyProgressBar(QWidget *parent = 0);
+	MyProgressBar(QWidget *parent = nullptr);
+	// TODO: Design Intent: setFormat - Class Function hides Base Function
 	void setFormat(const QString &format);
 
 private slots:

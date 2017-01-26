@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -57,10 +57,10 @@ class cRenderJob : public QObject
 	Q_OBJECT
 public:
 	cRenderJob(const cParameterContainer *_params, const cFractalContainer *_fractal, cImage *_image,
-		bool *_stopRequest, QWidget *_qwidget = NULL);
+		bool *_stopRequest, QWidget *_qwidget = nullptr);
 	~cRenderJob();
 	// QWidtet *parent is needed to connect signals for refreshing progress and status bar.
-	// If _parent is not NULL then parent has to have slot slotUpdateProgressAndStatus()
+	// If _parent is not nullptr then parent has to have slot slotUpdateProgressAndStatus()
 
 	enum enumMode
 	{
@@ -72,15 +72,15 @@ public:
 
 	bool Init(enumMode _mode, const cRenderingConfiguration &config);
 	bool Execute();
-	cImage *GetImagePtr() { return image; }
-	int GetNumberOfCPUs() { return totalNumberOfCPUs; }
+	cImage *GetImagePtr() const { return image; }
+	int GetNumberOfCPUs() const { return totalNumberOfCPUs; }
 	void UseSizeFromImage(bool mode) { useSizeFromImage = mode; }
-	void ChangeCameraTargetPosition(cCameraTarget &cameraTarget);
+	void ChangeCameraTargetPosition(cCameraTarget &cameraTarget) const;
 
 	void UpdateParameters(const cParameterContainer *_params, const cFractalContainer *_fractal);
-	void UpdateConfig(const cRenderingConfiguration &config);
+	void UpdateConfig(const cRenderingConfiguration &config) const;
 	static int GetRunningJobCount() { return runningJobs; }
-	cStatistics GetStatistics(void);
+	cStatistics GetStatistics() const;
 
 public slots:
 	void slotExecute();
@@ -88,8 +88,8 @@ public slots:
 private:
 	bool InitImage(int w, int h, const sImageOptional &optional);
 	void PrepareData(const cRenderingConfiguration &config);
-	void ReduceDetail();
-	QStringList CreateListOfUsedTextures();
+	void ReduceDetail() const;
+	QStringList CreateListOfUsedTextures() const;
 
 	bool hasQWidget;
 	bool inProgress;

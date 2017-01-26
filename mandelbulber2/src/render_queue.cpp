@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen, Krzysztof Marczak (buddhi1980@gmail.com)
+ * Authors: Sebastian Jennen (jenzebas@gmail.com), Krzysztof Marczak (buddhi1980@gmail.com)
  *
  * cRenderQueue class - processes queue render request
  */
@@ -169,9 +169,9 @@ void cRenderQueue::slotRenderQueue()
 	emit finished();
 }
 
-bool cRenderQueue::RenderFlight()
+bool cRenderQueue::RenderFlight() const
 {
-	bool result = false;
+	bool result;
 	if (systemData.noGui)
 	{
 		// gMainInterface->headless->RenderFlightAnimation();
@@ -184,9 +184,9 @@ bool cRenderQueue::RenderFlight()
 	return result;
 }
 
-bool cRenderQueue::RenderKeyframe()
+bool cRenderQueue::RenderKeyframe() const
 {
-	bool result = false;
+	bool result;
 	if (systemData.noGui)
 	{
 		// gMainInterface->headless->RenderKeyframeAnimation();
@@ -202,7 +202,7 @@ bool cRenderQueue::RenderKeyframe()
 bool cRenderQueue::RenderStill(const QString &filename)
 {
 	ImageFileSave::enumImageFileType imageFormat =
-		(ImageFileSave::enumImageFileType)gPar->Get<int>("queue_image_format");
+		ImageFileSave::enumImageFileType(gPar->Get<int>("queue_image_format"));
 	QString extension = ImageFileSave::ImageFileExtension(imageFormat);
 	QString saveFilename = QFileInfo(filename).baseName() + extension;
 

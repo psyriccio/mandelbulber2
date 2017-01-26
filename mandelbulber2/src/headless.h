@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen (jenzebas@gmail.com)
  *
  * cHeadless - class to handle CLI instructions without GUI manipulation
  */
@@ -60,10 +60,10 @@ public:
 	};
 
 	void RenderStillImage(QString filename, QString imageFileFormat);
-	void RenderQueue();
+	static void RenderQueue();
 	void RenderVoxel();
-	void RenderFlightAnimation();
-	void RenderKeyframeAnimation();
+	void RenderFlightAnimation() const;
+	void RenderKeyframeAnimation() const;
 	static void RenderingProgressOutput(
 		const QString &header, const QString &progressTxt, double percentDone);
 	static QString colorize(QString text, ansiColor foregroundcolor,
@@ -75,9 +75,9 @@ public:
 
 public slots:
 	void slotNetRender();
-	void slotUpdateProgressAndStatus(const QString &text, const QString &progressText,
+	static void slotUpdateProgressAndStatus(const QString &text, const QString &progressText,
 		double progress, cProgressText::enumProgressType progressType = cProgressText::progress_IMAGE);
-	void slotUpdateStatistics(const cStatistics &stat);
+	void slotUpdateStatistics(const cStatistics &stat) const;
 
 signals:
 	void finished();

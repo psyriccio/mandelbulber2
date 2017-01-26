@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -36,6 +36,8 @@
 #define MANDELBULBER2_QT_AUDIO_SELECTOR_H_
 
 #include <QWidget>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 // forward declarations
 class cAutomatedWidgets;
@@ -51,7 +53,7 @@ class cAudioSelector : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cAudioSelector(QWidget *parent = NULL);
+	explicit cAudioSelector(QWidget *parent = nullptr);
 	~cAudioSelector();
 	void AssignParameter(const QString &_parameterName);
 	void AssignAnimation(cAnimationFrames *_animationFrames);
@@ -60,6 +62,11 @@ private slots:
 	void slotLoadAudioFile();
 	void slotAudioLoaded();
 	void slotFreqChanged();
+	void slotDeleteAudioTrack();
+	void slotPlaybackStart();
+	void slotPlaybackStop();
+	void slotPlayPositionChanged();
+	void slotPlaybackStateChanged(QAudio::State state);
 
 private:
 	void ConnectSignals();
@@ -74,9 +81,15 @@ private:
 	QString parameterName;
 	cAnimationFrames *animationFrames;
 
+	QAudioOutput *audioOutput;
+	QByteArray playBuffer;
+	QDataStream *playStream;
+
 signals:
 	void freqencyChanged(double midfreq, double bandwidth);
 	void audioLoaded();
+	void loadingProgress(QString progressText);
+	void playPositionChanged(qint64 miliseconds);
 };
 
 #endif /* MANDELBULBER2_QT_AUDIO_SELECTOR_H_ */

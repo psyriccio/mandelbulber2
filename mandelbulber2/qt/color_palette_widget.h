@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -47,9 +47,9 @@ class ColorPaletteWidget : public QWidget, public CommonMyWidgetWrapper
 	Q_OBJECT
 
 public:
-	ColorPaletteWidget(QWidget *parent = 0);
+	ColorPaletteWidget(QWidget *parent = nullptr);
 	void SetPalette(const cColorPalette &_palette);
-	cColorPalette GetPalette(void) { return palette; }
+	cColorPalette GetPalette() const { return palette; }
 	void SetOffset(double offset);
 
 private:
@@ -57,16 +57,16 @@ private:
 	double paletteOffset;
 	cColorPalette GetDefault();
 	cColorPalette defaultValue;
-	void paintEvent(QPaintEvent *event);
+	void paintEvent(QPaintEvent *event) override;
 
 	// methods to define from CommonMyWidgetWrapper
-	virtual void resetToDefault();
-	virtual QString getDefaultAsString();
-	virtual QString getFullParameterName();
+	void resetToDefault() override;
+	QString getDefaultAsString() override;
+	QString getFullParameterName() override;
 
 protected:
-	void mousePressEvent(QMouseEvent *event);
-	void contextMenuEvent(QContextMenuEvent *event);
+	void mousePressEvent(QMouseEvent *event) override;
+	void contextMenuEvent(QContextMenuEvent *event) override;
 };
 
 #endif /* MANDELBULBER2_QT_COLOR_PALETTE_WIDGET_H_ */

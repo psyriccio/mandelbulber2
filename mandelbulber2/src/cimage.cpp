@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -48,24 +48,24 @@ cImage::cImage(int w, int h, bool _allocLater)
 void cImage::construct()
 {
 	previewAllocated = false;
-	image8 = NULL;
-	image16 = NULL;
-	imageFloat = NULL;
-	alphaBuffer8 = NULL;
-	alphaBuffer16 = NULL;
-	opacityBuffer = NULL;
-	colourBuffer = NULL;
-	zBuffer = NULL;
-	gammaTable = NULL;
+	image8 = nullptr;
+	image16 = nullptr;
+	imageFloat = nullptr;
+	alphaBuffer8 = nullptr;
+	alphaBuffer16 = nullptr;
+	opacityBuffer = nullptr;
+	colourBuffer = nullptr;
+	zBuffer = nullptr;
+	gammaTable = nullptr;
 
 	// optional image buffers
-	normalFloat = NULL;
-	normal8 = NULL;
-	normal16 = NULL;
+	normalFloat = nullptr;
+	normal8 = nullptr;
+	normal16 = nullptr;
 
 	AllocMem();
 	progressiveFactor = 1;
-	imageWidget = NULL;
+	imageWidget = nullptr;
 	isUsed = false;
 	previewScale = 1.0;
 	previewVisibleWidth = 1;
@@ -87,13 +87,13 @@ cImage::~cImage()
 	if (previewAllocated)
 	{
 		if (preview) delete[] preview;
-		preview = NULL;
+		preview = nullptr;
 		if (preview2) delete[] preview2;
-		preview2 = NULL;
+		preview2 = nullptr;
 	}
 }
 
-bool cImage::AllocMem(void)
+bool cImage::AllocMem()
 {
 	isAllocated = false;
 	// qDebug() << "bool cImage::AllocMem(void)";
@@ -103,19 +103,19 @@ bool cImage::AllocMem(void)
 		{
 			try
 			{
-				imageFloat = new sRGBfloat[width * height];
-				image16 = new sRGB16[width * height];
-				image8 = new sRGB8[width * height];
-				zBuffer = new float[width * height];
-				alphaBuffer8 = new unsigned char[width * height];
-				alphaBuffer16 = new unsigned short[width * height];
-				opacityBuffer = new unsigned short[width * height];
-				colourBuffer = new sRGB8[width * height];
+				imageFloat = new sRGBfloat[quint64(width) * quint64(height)];
+				image16 = new sRGB16[quint64(width) * quint64(height)];
+				image8 = new sRGB8[quint64(width) * quint64(height)];
+				zBuffer = new float[quint64(width) * quint64(height)];
+				alphaBuffer8 = new quint8[quint64(width) * quint64(height)];
+				alphaBuffer16 = new quint16[quint64(width) * quint64(height)];
+				opacityBuffer = new quint16[quint64(width) * quint64(height)];
+				colourBuffer = new sRGB8[quint64(width) * quint64(height)];
 				if (opt.optionalNormal)
 				{
-					normalFloat = new sRGBfloat[width * height];
-					normal16 = new sRGB16[width * height];
-					normal8 = new sRGB8[width * height];
+					normalFloat = new sRGBfloat[quint64(width) * quint64(height)];
+					normal16 = new sRGB16[quint64(width) * quint64(height)];
+					normal8 = new sRGB8[quint64(width) * quint64(height)];
 				}
 				ClearImage();
 			}
@@ -142,8 +142,8 @@ bool cImage::AllocMem(void)
 	}
 	previewAllocated = false;
 
-	preview = NULL;
-	preview2 = NULL;
+	preview = nullptr;
+	preview2 = nullptr;
 	isAllocated = true;
 	return true;
 }
@@ -165,53 +165,53 @@ bool cImage::ChangeSize(int w, int h, sImageOptional optional)
 	return true;
 }
 
-void cImage::ClearImage(void)
+void cImage::ClearImage() const
 {
-	memset(imageFloat, 0, (unsigned long int)sizeof(sRGBfloat) * width * height);
-	memset(image16, 0, (unsigned long int)sizeof(sRGB16) * width * height);
-	memset(image8, 0, (unsigned long int)sizeof(sRGB8) * width * height);
-	memset(alphaBuffer8, 0, (unsigned long int)sizeof(unsigned char) * width * height);
-	memset(alphaBuffer16, 0, (unsigned long int)sizeof(unsigned short) * width * height);
-	memset(opacityBuffer, 0, (unsigned long int)sizeof(unsigned short) * width * height);
-	memset(colourBuffer, 0, (unsigned long int)sizeof(sRGB8) * width * height);
+	memset(imageFloat, 0, sizeof(sRGBfloat) * quint64(width) * quint64(height));
+	memset(image16, 0, sizeof(sRGB16) * quint64(width) * quint64(height));
+	memset(image8, 0, sizeof(sRGB8) * quint64(width) * quint64(height));
+	memset(alphaBuffer8, 0, sizeof(quint8) * quint64(width) * quint64(height));
+	memset(alphaBuffer16, 0, sizeof(quint16) * quint64(width) * quint64(height));
+	memset(opacityBuffer, 0, sizeof(quint16) * quint64(width) * quint64(height));
+	memset(colourBuffer, 0, sizeof(sRGB8) * quint64(width) * quint64(height));
 	if (opt.optionalNormal)
 	{
-		if (normalFloat) memset(normalFloat, 0, (unsigned long int)sizeof(sRGBfloat) * width * height);
-		if (normal16) memset(normal16, 0, (unsigned long int)sizeof(sRGB16) * width * height);
-		if (normal8) memset(normal8, 0, (unsigned long int)sizeof(sRGB8) * width * height);
+		if (normalFloat) memset(normalFloat, 0, sizeof(sRGBfloat) * quint64(width) * quint64(height));
+		if (normal16) memset(normal16, 0, sizeof(sRGB16) * quint64(width) * quint64(height));
+		if (normal8) memset(normal8, 0, sizeof(sRGB8) * quint64(width) * quint64(height));
 	}
-	for (long int i = 0; i < width * height; ++i)
+	for (quint64 i = 0; i < quint64(width) * quint64(height); ++i)
 		zBuffer[i] = float(1e20);
 }
 
-void cImage::FreeImage(void)
+void cImage::FreeImage()
 {
 	isAllocated = false;
 	// qDebug() << "void cImage::FreeImage(void)";
 	if (imageFloat) delete[] imageFloat;
-	imageFloat = NULL;
+	imageFloat = nullptr;
 	if (image16) delete[] image16;
-	image16 = NULL;
+	image16 = nullptr;
 	if (image8) delete[] image8;
-	image8 = NULL;
+	image8 = nullptr;
 	if (alphaBuffer8) delete[] alphaBuffer8;
-	alphaBuffer8 = NULL;
+	alphaBuffer8 = nullptr;
 	if (alphaBuffer16) delete[] alphaBuffer16;
-	alphaBuffer16 = NULL;
+	alphaBuffer16 = nullptr;
 	if (opacityBuffer) delete[] opacityBuffer;
-	opacityBuffer = NULL;
+	opacityBuffer = nullptr;
 	if (colourBuffer) delete[] colourBuffer;
-	colourBuffer = NULL;
+	colourBuffer = nullptr;
 	if (zBuffer) delete[] zBuffer;
-	zBuffer = NULL;
+	zBuffer = nullptr;
 	if (normalFloat) delete[] normalFloat;
-	normalFloat = NULL;
+	normalFloat = nullptr;
 	if (normal16) delete[] normal16;
-	normal16 = NULL;
+	normal16 = nullptr;
 	if (normal8) delete[] normal8;
-	normal8 = NULL;
+	normal8 = nullptr;
 	if (gammaTable) delete[] gammaTable;
-	gammaTable = NULL;
+	gammaTable = nullptr;
 	gammaTablePrepared = false;
 }
 
@@ -222,41 +222,41 @@ sRGB16 cImage::CalculatePixel(sRGBfloat pixel)
 	float G = pixel.G * adj.brightness;
 	float B = pixel.B * adj.brightness;
 
-	R = (R - 0.5) * adj.contrast + 0.5;
-	G = (G - 0.5) * adj.contrast + 0.5;
-	B = (B - 0.5) * adj.contrast + 0.5;
+	R = (R - 0.5f) * adj.contrast + 0.5f;
+	G = (G - 0.5f) * adj.contrast + 0.5f;
+	B = (B - 0.5f) * adj.contrast + 0.5f;
 
-	if (R < 0.0) R = 0.0;
-	if (G < 0.0) G = 0.0;
-	if (B < 0.0) B = 0.0;
+	if (R < 0.0f) R = 0.0f;
+	if (G < 0.0f) G = 0.0f;
+	if (B < 0.0f) B = 0.0f;
 
 	// R = sqrt(tanh(R*R));
 	// G = sqrt(tanh(G*G));
 	// B = sqrt(tanh(B*B));
 	if (adj.hdrEnabled)
 	{
-		R = tanh(R);
-		G = tanh(G);
-		B = tanh(B);
+		R = tanhf(R);
+		G = tanhf(G);
+		B = tanhf(B);
 	}
 
-	if (R > 1.0) R = 1.0;
-	if (G > 1.0) G = 1.0;
-	if (B > 1.0) B = 1.0;
+	if (R > 1.0f) R = 1.0f;
+	if (G > 1.0f) G = 1.0f;
+	if (B > 1.0f) B = 1.0f;
 
 	sRGB16 newPixel16;
 
-	newPixel16.R = R * 65535.0;
-	newPixel16.G = G * 65535.0;
-	newPixel16.B = B * 65535.0;
-	newPixel16.R = gammaTable[newPixel16.R];
-	newPixel16.G = gammaTable[newPixel16.G];
-	newPixel16.B = gammaTable[newPixel16.B];
+	newPixel16.R = quint16(R * 65535.0f);
+	newPixel16.G = quint16(G * 65535.0f);
+	newPixel16.B = quint16(B * 65535.0f);
+	newPixel16.R = quint16(gammaTable[newPixel16.R]);
+	newPixel16.G = quint16(gammaTable[newPixel16.G]);
+	newPixel16.B = quint16(gammaTable[newPixel16.B]);
 
 	return newPixel16;
 }
 
-void cImage::CalculateGammaTable(void)
+void cImage::CalculateGammaTable()
 {
 	if (!gammaTablePrepared)
 	{
@@ -264,7 +264,7 @@ void cImage::CalculateGammaTable(void)
 
 		for (int i = 0; i < 65536; i++)
 		{
-			gammaTable[i] = pow(i / 65536.0, 1.0 / adj.imageGamma) * 65535;
+			gammaTable[i] = int(powf(i / 65536.0f, 1.0f / adj.imageGamma) * 65535.0f);
 		}
 		gammaTablePrepared = true;
 	}
@@ -283,7 +283,7 @@ void cImage::CompileImage(QList<int> *list)
 		}
 		for (int x = 0; x < width; x++)
 		{
-			unsigned long int address = x + y * width;
+			qint64 address = qint64(x) + qint64(y) * width;
 			sRGBfloat pixel = imageFloat[address];
 			sRGB16 newPixel16 = CalculatePixel(pixel);
 			image16[address] = newPixel16;
@@ -291,30 +291,30 @@ void cImage::CompileImage(QList<int> *list)
 	}
 }
 
-int cImage::GetUsedMB(void) const
+int cImage::GetUsedMB() const
 {
-	long int mb = 0;
+	quint64 mb;
 
-	long int zBufferSize = (long int)width * height * sizeof(float);
-	long int alphaSize16 = (long int)width * height * sizeof(unsigned short);
-	long int alphaSize8 = (long int)width * height * sizeof(unsigned char);
-	long int imageFloatSize = (long int)width * height * sizeof(sRGBfloat);
-	long int image16Size = (long int)width * height * sizeof(sRGB16);
-	long int image8Size = (long int)width * height * sizeof(sRGB8);
-	long int colorSize = (long int)width * height * sizeof(sRGB8);
-	long int opacitySize = (long int)width * height * sizeof(unsigned short);
-	long int optionalSize = 0;
+	quint64 zBufferSize = quint64(width) * quint64(height) * sizeof(float);
+	quint64 alphaSize16 = quint64(width) * quint64(height) * sizeof(quint16);
+	quint64 alphaSize8 = quint64(width) * quint64(height) * sizeof(quint8);
+	quint64 imageFloatSize = quint64(width) * quint64(height) * sizeof(sRGBfloat);
+	quint64 image16Size = quint64(width) * quint64(height) * sizeof(sRGB16);
+	quint64 image8Size = quint64(width) * quint64(height) * sizeof(sRGB8);
+	quint64 colorSize = quint64(width) * quint64(height) * sizeof(sRGB8);
+	quint64 opacitySize = quint64(width) * quint64(height) * sizeof(quint16);
+	quint64 optionalSize = 0;
 	if (opt.optionalNormal)
 	{
-		optionalSize += (long int)width * height * sizeof(sRGBfloat);
-		optionalSize += (long int)width * height * sizeof(sRGB16);
-		optionalSize += (long int)width * height * sizeof(sRGB8);
+		optionalSize += quint64(width) * quint64(height) * sizeof(sRGBfloat);
+		optionalSize += quint64(width) * quint64(height) * sizeof(sRGB16);
+		optionalSize += quint64(width) * quint64(height) * sizeof(sRGB8);
 	}
 	mb = (zBufferSize + alphaSize16 + alphaSize8 + image16Size + image8Size + imageFloatSize
 				 + colorSize + opacitySize + optionalSize)
 			 / 1024 / 1024;
 
-	return mb;
+	return int(mb);
 }
 
 void cImage::SetImageParameters(sImageAdjustments adjustments)
@@ -324,48 +324,48 @@ void cImage::SetImageParameters(sImageAdjustments adjustments)
 	CalculateGammaTable();
 }
 
-unsigned char *cImage::ConvertTo8bit(void)
+quint8 *cImage::ConvertTo8bit() const
 {
-	for (long int i = 0; i < width * height; i++)
+	for (quint64 i = 0; i < quint64(width) * quint64(height); i++)
 	{
 		image8[i].R = image16[i].R / 256;
 		image8[i].G = image16[i].G / 256;
 		image8[i].B = image16[i].B / 256;
 	}
-	return (unsigned char *)image8;
+	return reinterpret_cast<quint8 *>(image8);
 }
 
-unsigned char *cImage::ConvertAlphaTo8bit(void)
+quint8 *cImage::ConvertAlphaTo8bit() const
 {
-	for (long int i = 0; i < width * height; i++)
+	for (quint64 i = 0; i < quint64(width) * quint64(height); i++)
 	{
 		alphaBuffer8[i] = alphaBuffer16[i] / 256;
 	}
 	return alphaBuffer8;
 }
 
-unsigned char *cImage::ConvertNormalto16Bit(void)
+quint8 *cImage::ConvertNormalto16Bit() const
 {
-	if (!opt.optionalNormal) return NULL;
-	for (long int i = 0; i < width * height; i++)
+	if (!opt.optionalNormal) return nullptr;
+	for (quint64 i = 0; i < quint64(width) * quint64(height); i++)
 	{
-		normal16[i].R = normalFloat[i].R * 65535;
-		normal16[i].G = normalFloat[i].G * 65535;
-		normal16[i].B = normalFloat[i].B * 65535;
+		normal16[i].R = quint16(normalFloat[i].R * 65535.0f);
+		normal16[i].G = quint16(normalFloat[i].G * 65535.0f);
+		normal16[i].B = quint16(normalFloat[i].B * 65535.0f);
 	}
-	return (unsigned char *)normal16;
+	return reinterpret_cast<quint8 *>(normal16);
 }
 
-unsigned char *cImage::ConvertNormalto8Bit(void)
+quint8 *cImage::ConvertNormalto8Bit() const
 {
-	if (!opt.optionalNormal) return NULL;
-	for (long int i = 0; i < width * height; i++)
+	if (!opt.optionalNormal) return nullptr;
+	for (quint64 i = 0; i < quint64(width) * quint64(height); i++)
 	{
-		normal8[i].R = normalFloat[i].R * 255;
-		normal8[i].G = normalFloat[i].G * 255;
-		normal8[i].B = normalFloat[i].B * 255;
+		normal8[i].R = quint8(normalFloat[i].R * 255.0f);
+		normal8[i].G = quint8(normalFloat[i].G * 255.0f);
+		normal8[i].B = quint8(normalFloat[i].B * 255.0f);
 	}
-	return (unsigned char *)normal8;
+	return reinterpret_cast<quint8 *>(normal8);
 }
 
 sRGB8 cImage::Interpolation(float x, float y) const
@@ -373,33 +373,33 @@ sRGB8 cImage::Interpolation(float x, float y) const
 	sRGB8 colour = sRGB8(0, 0, 0);
 	if (x >= 0 && x < width - 1 && y >= 0 && y < height - 1)
 	{
-		int ix = x;
-		int iy = y;
-		int rx = (x - ix) * 256;
-		int ry = (y - iy) * 256;
+		int ix = int(x);
+		int iy = int(y);
+		int rx = int((x - ix) * 256);
+		int ry = int((y - iy) * 256);
 		sRGB8 k1 = image8[iy * width + ix];
 		sRGB8 k2 = image8[iy * width + ix + 1];
 		sRGB8 k3 = image8[(iy + 1) * width + ix];
 		sRGB8 k4 = image8[(iy + 1) * width + ix + 1];
-		colour.R = (k1.R * (255 - rx) * (255 - ry) + k2.R * (rx) * (255 - ry) + k3.R * (255 - rx) * ry
-								 + k4.R * (rx * ry))
-							 / 65536;
-		colour.G = (k1.G * (255 - rx) * (255 - ry) + k2.G * (rx) * (255 - ry) + k3.G * (255 - rx) * ry
-								 + k4.G * (rx * ry))
-							 / 65536;
-		colour.B = (k1.B * (255 - rx) * (255 - ry) + k2.B * (rx) * (255 - ry) + k3.B * (255 - rx) * ry
-								 + k4.B * (rx * ry))
-							 / 65536;
+		colour.R = quint8((k1.R * (255 - rx) * (255 - ry) + k2.R * (rx) * (255 - ry)
+												+ k3.R * (255 - rx) * ry + k4.R * (rx * ry))
+											/ 65536);
+		colour.G = quint8((k1.G * (255 - rx) * (255 - ry) + k2.G * (rx) * (255 - ry)
+												+ k3.G * (255 - rx) * ry + k4.G * (rx * ry))
+											/ 65536);
+		colour.B = quint8((k1.B * (255 - rx) * (255 - ry) + k2.B * (rx) * (255 - ry)
+												+ k3.B * (255 - rx) * ry + k4.B * (rx * ry))
+											/ 65536);
 	}
 	return colour;
 }
 
-unsigned char *cImage::CreatePreview(
-	double scale, int visibleWidth, int visibleHeight, QWidget *widget = NULL)
+quint8 *cImage::CreatePreview(
+	double scale, int visibleWidth, int visibleHeight, QWidget *widget = nullptr)
 {
 	previewMutex.lock();
-	int w = width * scale;
-	int h = height * scale;
+	int w = int(width * scale);
+	int h = int(height * scale);
 	previewVisibleWidth = visibleWidth;
 	previewVisibleHeight = visibleHeight;
 	if (previewAllocated)
@@ -410,13 +410,13 @@ unsigned char *cImage::CreatePreview(
 	preview = new sRGB8[w * h];
 	preview2 = new sRGB8[w * h];
 
-	memset(preview, 0, (unsigned long int)sizeof(sRGB8) * (w * h));
-	memset(preview2, 0, (unsigned long int)sizeof(sRGB8) * (w * h));
+	memset(preview, 0, sizeof(sRGB8) * quint64(w) * quint64(h));
+	memset(preview2, 0, sizeof(sRGB8) * quint64(w) * quint64(h));
 	previewAllocated = true;
 	previewWidth = w;
 	previewHeight = h;
 	previewScale = scale;
-	unsigned char *ptr = (unsigned char *)preview;
+	quint8 *ptr = reinterpret_cast<quint8 *>(preview);
 
 	if (widget) imageWidget = widget;
 
@@ -435,16 +435,16 @@ void cImage::UpdatePreview(QList<int> *list)
 
 		if (width == w && height == h)
 		{
-			memcpy(preview, image8, width * height * sizeof(sRGB8));
+			memcpy(preview, image8, quint64(width) * quint64(height) * sizeof(sRGB8));
 		}
 		else
 		{
-			float scaleX = (float)width / w;
-			float scaleY = (float)height / h;
+			float scaleX = float(width) / w;
+			float scaleY = float(height) / h;
 
 			// number of pixels to sum
-			int countX = (float)width / w + 1;
-			int countY = (float)height / h + 1;
+			int countX = int(float(width) / w + 1);
+			int countY = int(float(height) / h + 1);
 			int factor = countX * countY;
 
 			float deltaX = scaleX / countX;
@@ -452,16 +452,16 @@ void cImage::UpdatePreview(QList<int> *list)
 
 			int listIndex = 0;
 
-			for (int y = 0; y < h; y++)
+			for (int y = 0; y < int(h); y++)
 			{
 
 				if (list)
 				{
 					if (listIndex >= list->size()) break;
 
-					if (scaleY * y < list->at(listIndex) - (int)scaleY - 1) continue;
+					if (scaleY * y < list->at(listIndex) - int(scaleY) - 1) continue;
 
-					while (scaleY * y - (int)scaleY - 1 > list->at(listIndex))
+					while (scaleY * y - int(scaleY) - 1 > list->at(listIndex))
 					{
 						listIndex++;
 						if (listIndex >= list->size()) break;
@@ -471,7 +471,7 @@ void cImage::UpdatePreview(QList<int> *list)
 				//#ifndef WIN32
 				//#pragma omp parallel for
 				//#endif
-				for (int x = 0; x < w; x++)
+				for (int x = 0; x < int(w); x++)
 				{
 					int R = 0;
 					int G = 0;
@@ -493,14 +493,14 @@ void cImage::UpdatePreview(QList<int> *list)
 						} // next i
 					}		// next j
 					sRGB8 newpixel;
-					newpixel.R = R / factor;
-					newpixel.G = G / factor;
-					newpixel.B = B / factor;
-					preview[x + y * w] = newpixel;
+					newpixel.R = quint8(R / factor);
+					newpixel.G = quint8(G / factor);
+					newpixel.B = quint8(B / factor);
+					preview[quint64(x) + quint64(y) * quint64(w)] = newpixel;
 				} // next x
 			}		// next y
 		}
-		memcpy(preview2, preview, w * h * sizeof(sRGB8));
+		memcpy(preview2, preview, quint64(w) * quint64(h) * sizeof(sRGB8));
 		previewMutex.unlock();
 	}
 	else
@@ -509,31 +509,31 @@ void cImage::UpdatePreview(QList<int> *list)
 	}
 }
 
-unsigned char *cImage::GetPreviewPtr(void)
+quint8 *cImage::GetPreviewPtr() const
 {
-	unsigned char *ptr = 0;
+	quint8 *ptr;
 	if (previewAllocated)
 	{
-		ptr = (unsigned char *)preview2;
+		ptr = reinterpret_cast<quint8 *>(preview2);
 	}
 	else
 		abort();
 	return ptr;
 }
 
-unsigned char *cImage::GetPreviewPrimaryPtr(void)
+quint8 *cImage::GetPreviewPrimaryPtr() const
 {
-	unsigned char *ptr = 0;
+	quint8 *ptr;
 	if (previewAllocated)
 	{
-		ptr = (unsigned char *)preview;
+		ptr = reinterpret_cast<quint8 *>(preview);
 	}
 	else
 		abort();
 	return ptr;
 }
 
-bool cImage::IsPreview(void) const
+bool cImage::IsPreview() const
 {
 	if (previewAllocated)
 	{
@@ -561,11 +561,11 @@ void cImage::RedrawInWidget(QWidget *qwidget)
 		QPainter painter(widget);
 		painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
 
-		QImage qimage((const uchar *)GetPreviewPtr(), previewWidth, previewHeight,
-			previewWidth * sizeof(sRGB8), QImage::Format_RGB888);
-		painter.drawImage(
-			QRect(0, 0, previewWidth, previewHeight), qimage, QRect(0, 0, previewWidth, previewHeight));
-		memcpy(preview2, preview, previewWidth * previewHeight * sizeof(sRGB8));
+		QImage qimage(GetPreviewPtr(), int(previewWidth), int(previewHeight),
+			int(previewWidth * sizeof(sRGB8)), QImage::Format_RGB888);
+		painter.drawImage(QRect(0, 0, int(previewWidth), int(previewHeight)), qimage,
+			QRect(0, 0, int(previewWidth), int(previewHeight)));
+		memcpy(preview2, preview, quint64(previewWidth) * quint64(previewHeight) * sizeof(sRGB8));
 		previewMutex.unlock();
 	}
 }
@@ -575,33 +575,35 @@ void cImage::Squares(int y, int pFactor)
 	progressiveFactor = pFactor;
 	for (int x = 0; x <= width - pFactor; x += pFactor)
 	{
-		sRGBfloat pixelTemp = imageFloat[x + y * width];
-		float zBufferTemp = zBuffer[x + y * width];
-		sRGB8 colourTemp = colourBuffer[x + y * width];
-		unsigned short alphaTemp = alphaBuffer16[x + y * width];
-		unsigned short opacityTemp = opacityBuffer[x + y * width];
+		quint64 ptr = quint64(x) + quint64(y) * quint64(width);
+		sRGBfloat pixelTemp = imageFloat[ptr];
+		float zBufferTemp = zBuffer[ptr];
+		sRGB8 colourTemp = colourBuffer[ptr];
+		quint16 alphaTemp = alphaBuffer16[ptr];
+		quint16 opacityTemp = opacityBuffer[ptr];
 
 		for (int yy = 0; yy < pFactor; yy++)
 		{
 			for (int xx = 0; xx < pFactor; xx++)
 			{
 				if (xx == 0 && yy == 0) continue;
-				imageFloat[x + xx + (y + yy) * width] = pixelTemp;
-				zBuffer[x + xx + (y + yy) * width] = zBufferTemp;
-				colourBuffer[x + xx + (y + yy) * width] = colourTemp;
-				alphaBuffer16[x + xx + (y + yy) * width] = alphaTemp;
-				opacityBuffer[x + xx + (y + yy) * width] = opacityTemp;
+				quint64 ptr2 = quint64(x + xx) + quint64(y + yy) * quint64(width);
+				imageFloat[ptr2] = pixelTemp;
+				zBuffer[ptr2] = zBufferTemp;
+				colourBuffer[ptr2] = colourTemp;
+				alphaBuffer16[ptr2] = alphaTemp;
+				opacityBuffer[ptr2] = opacityTemp;
 			}
 		}
 	}
 }
 
-void cImage::PutPixelAlfa(int x, int y, float z, sRGB8 color, sRGBfloat opacity, int layer)
+void cImage::PutPixelAlfa(int x, int y, float z, sRGB8 color, sRGBfloat opacity, int layer) const
 {
 	if (x >= 0 && x < previewWidth && y >= 0 && y < previewHeight)
 	{
-		size_t address = x + y * previewWidth;
-		float zImage = GetPixelZBuffer(x / previewScale, y / previewScale);
+		quint64 address = quint64(x) + quint64(y) * quint64(previewWidth);
+		float zImage = GetPixelZBuffer(int(x / previewScale), int(y / previewScale));
 		if (z > zImage)
 		{
 			opacity.R *= float(0.03);
@@ -614,9 +616,9 @@ void cImage::PutPixelAlfa(int x, int y, float z, sRGB8 color, sRGBfloat opacity,
 		else if (layer == 1)
 			oldPixel = preview2[address];
 		sRGB8 newPixel;
-		newPixel.R = (oldPixel.R * (1.0 - opacity.R) + color.R * opacity.R);
-		newPixel.G = (oldPixel.G * (1.0 - opacity.G) + color.G * opacity.G);
-		newPixel.B = (oldPixel.B * (1.0 - opacity.B) + color.B * opacity.B);
+		newPixel.R = quint8((oldPixel.R * (1.0f - opacity.R) + color.R * opacity.R));
+		newPixel.G = quint8((oldPixel.G * (1.0f - opacity.G) + color.G * opacity.G));
+		newPixel.B = quint8((oldPixel.B * (1.0f - opacity.B) + color.B * opacity.B));
 		if (layer == 0)
 		{
 			preview[address] = newPixel;
@@ -628,10 +630,10 @@ void cImage::PutPixelAlfa(int x, int y, float z, sRGB8 color, sRGBfloat opacity,
 }
 
 void cImage::AntiAliasedPoint(
-	double x, double y, float z, sRGB8 color, sRGBfloat opacity, int layer)
+	double x, double y, float z, sRGB8 color, sRGBfloat opacity, int layer) const
 {
-	double deltaX = x - (int)x;
-	double deltaY = y - (int)y;
+	double deltaX = x - int(x);
+	double deltaY = y - int(y);
 
 	double intensity1 = (1.0 - deltaX) * (1.0 - deltaY);
 	double intensity2 = (deltaX) * (1.0 - deltaY);
@@ -663,7 +665,7 @@ void cImage::AntiAliasedPoint(
 }
 
 void cImage::AntiAliasedLine(double x1, double y1, double x2, double y2, float z1, float z2,
-	sRGB8 color, sRGBfloat opacity, int layer)
+	sRGB8 color, sRGBfloat opacity, int layer) const
 {
 	if ((x1 >= 0 && x1 < previewWidth && y1 >= 0 && y1 < previewHeight)
 			|| (x2 >= 0 && x2 < previewWidth && y2 >= 0 && y2 < previewHeight))
@@ -797,7 +799,7 @@ void cImage::AntiAliasedLine(double x1, double y1, double x2, double y2, float z
 }
 
 void cImage::CircleBorder(double x, double y, float z, double r, sRGB8 border, double borderWidth,
-	sRGBfloat opacity, int layer)
+	sRGBfloat opacity, int layer) const
 {
 	if (borderWidth > 0 && r > 0)
 	{

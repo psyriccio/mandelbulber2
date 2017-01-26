@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -47,8 +47,8 @@ cThumbnail::cThumbnail(const cParameterContainer *_params, const cFractalContain
 	int _width, int _height, const QString &_hash = QString())
 		: params(_params), fractal(_fractal), width(_width), height(_height), hash(_hash)
 {
-	image = NULL;
-	qwidget = NULL;
+	image = nullptr;
+	qwidget = nullptr;
 	image = new cImage(width, height);
 	// image->CreatePreview(1.0, width, height, qwidget);
 }
@@ -89,8 +89,8 @@ QPixmap cThumbnail::Render()
 
 		renderJob->Init(cRenderJob::still, config);
 		renderJob->Execute();
-		QImage qimage((const uchar *)image->ConvertTo8bit(), width, height, width * sizeof(sRGB8),
-			QImage::Format_RGB888);
+		QImage qimage(static_cast<const uchar *>(image->ConvertTo8bit()), width, height,
+			width * sizeof(sRGB8), QImage::Format_RGB888);
 		pixmap.convertFromImage(qimage);
 		delete renderJob;
 		pixmap.save(thumbnailFileName, "PNG");
@@ -98,7 +98,7 @@ QPixmap cThumbnail::Render()
 	return pixmap;
 }
 
-void cThumbnail::Save(QString filename)
+void cThumbnail::Save(QString filename) const
 {
 	ImageFileSaveJPG::SaveJPEGQt(
 		filename, image->ConvertTo8bit(), image->GetWidth(), image->GetHeight(), 85);

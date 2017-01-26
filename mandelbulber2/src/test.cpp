@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -116,8 +116,8 @@ void Test::renderExamples()
 		parSettings.BeQuiet(true);
 		parSettings.LoadFromFile(filename);
 		parSettings.Decode(testPar, testParFractal, testAnimFrames, testKeyframes);
-		testPar->Set("image_width", (IsBenchmarking() ? 10 : 5));
-		testPar->Set("image_height", (IsBenchmarking() ? 10 : 5));
+		testPar->Set("image_width", IsBenchmarking() ? 10 : 5);
+		testPar->Set("image_height", IsBenchmarking() ? 10 : 5);
 		cRenderJob *renderJob = new cRenderJob(testPar, testParFractal, image, &stopRequest);
 		renderJob->Init(cRenderJob::still, config);
 
@@ -205,14 +205,14 @@ void Test::testFlight()
 	parSettings.BeQuiet(true);
 	parSettings.LoadFromFile(exampleFlightFile);
 	parSettings.Decode(testPar, testParFractal, testAnimFrames, testKeyframes);
-	testPar->Set("image_width", (IsBenchmarking() ? 20 : 5));
-	testPar->Set("image_height", (IsBenchmarking() ? 20 : 5));
+	testPar->Set("image_width", IsBenchmarking() ? 20 : 5);
+	testPar->Set("image_height", IsBenchmarking() ? 20 : 5);
 	testPar->Set("flight_first_to_render", 50);
-	testPar->Set("flight_last_to_render", (IsBenchmarking() ? 100 : 55));
+	testPar->Set("flight_last_to_render", IsBenchmarking() ? 100 : 55);
 	testPar->Set("anim_flight_dir", testFolder() + QDir::separator());
 
 	cFlightAnimation *flightAnimation = new cFlightAnimation(
-		gMainInterface, testAnimFrames, image, NULL, testPar, testParFractal, NULL);
+		gMainInterface, testAnimFrames, image, nullptr, testPar, testParFractal, nullptr);
 	if (IsBenchmarking())
 		flightAnimation->slotRenderFlight();
 	else
@@ -224,7 +224,6 @@ void Test::testFlight()
 	delete testParFractal;
 	delete testPar;
 	delete flightAnimation;
-	flightAnimation = NULL;
 }
 
 void Test::testKeyframeWrapper()
@@ -271,14 +270,14 @@ void Test::testKeyframe()
 	parSettings.BeQuiet(true);
 	parSettings.LoadFromFile(exampleKeyframeFile);
 	parSettings.Decode(testPar, testParFractal, testAnimFrames, testKeyframes);
-	testPar->Set("image_width", (IsBenchmarking() ? 20 : 5));
-	testPar->Set("image_height", (IsBenchmarking() ? 20 : 5));
+	testPar->Set("image_width", IsBenchmarking() ? 20 : 5);
+	testPar->Set("image_height", IsBenchmarking() ? 20 : 5);
 	testPar->Set("keyframe_first_to_render", 50);
-	testPar->Set("keyframe_last_to_render", (IsBenchmarking() ? 100 : 55));
+	testPar->Set("keyframe_last_to_render", IsBenchmarking() ? 100 : 55);
 	testPar->Set("anim_keyframe_dir", testFolder() + QDir::separator());
 
 	cKeyframeAnimation *testKeyframeAnimation = new cKeyframeAnimation(
-		gMainInterface, testKeyframes, image, NULL, testPar, testParFractal, NULL);
+		gMainInterface, testKeyframes, image, nullptr, testPar, testParFractal, nullptr);
 	if (IsBenchmarking())
 		testKeyframeAnimation->slotRenderKeyframes();
 	else
@@ -290,7 +289,6 @@ void Test::testKeyframe()
 	delete testParFractal;
 	delete testPar;
 	delete testKeyframeAnimation;
-	testKeyframeAnimation = NULL;
 }
 
 void Test::renderSimpleWrapper()
@@ -340,8 +338,8 @@ void Test::renderSimple()
 	parSettings.BeQuiet(true);
 	parSettings.LoadFromFile(simpleExampleFileName);
 	parSettings.Decode(testPar, testParFractal, testAnimFrames, testKeyframes);
-	testPar->Set("image_width", (IsBenchmarking() ? 250 : 100));
-	testPar->Set("image_height", (IsBenchmarking() ? 250 : 100));
+	testPar->Set("image_width", IsBenchmarking() ? 250 : 100);
+	testPar->Set("image_height", IsBenchmarking() ? 250 : 100);
 	cRenderJob *renderJob = new cRenderJob(testPar, testParFractal, image, &stopRequest);
 	renderJob->Init(cRenderJob::still, config);
 

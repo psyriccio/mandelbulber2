@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -45,7 +45,7 @@
 
 cLights::cLights() : QObject()
 {
-	lights = NULL;
+	lights = nullptr;
 	numberOfLights = 0;
 	lightsReady = false;
 	isAnyLight = false;
@@ -53,7 +53,7 @@ cLights::cLights() : QObject()
 
 cLights::cLights(const cParameterContainer *_params, const cFractalContainer *_fractal) : QObject()
 {
-	lights = NULL;
+	lights = nullptr;
 	numberOfLights = 0;
 	lightsReady = false;
 	isAnyLight = false;
@@ -66,7 +66,7 @@ cLights::~cLights()
 	if (lights)
 	{
 		delete[] lights;
-		lights = NULL;
+		lights = nullptr;
 	}
 }
 
@@ -197,7 +197,7 @@ sLight *cLights::GetLight(const int index) const
 	{
 		qCritical() << "Lights not initialized";
 	}
-	return (sLight *)&dummyLight;
+	return const_cast<sLight *>(&dummyLight);
 }
 
 void cLights::Copy(const cLights &_lights)

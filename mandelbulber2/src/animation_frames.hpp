@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-17 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -91,15 +91,15 @@ public:
 	void Clear();
 	void ClearAll();
 	virtual void AddAnimatedParameter(const QString &parameterName, const cOneParameter &defaultValue,
-		cParameterContainer *params = NULL);
+		cParameterContainer *params = nullptr);
 	virtual bool AddAnimatedParameter(
 		const QString &fullParameterName, cParameterContainer *param, const cFractalContainer *fractal);
 	virtual void RemoveAnimatedParameter(const QString &fullParameterName);
 	QList<sParameterDescription> GetListOfUsedParameters() const { return listOfParameters; }
-	const cParameterContainer *ContainerSelector(QString containerName,
-		const cParameterContainer *params, const cFractalContainer *fractal) const;
-	cParameterContainer *ContainerSelector(
-		QString containerName, cParameterContainer *params, cFractalContainer *fractal) const;
+	static const cParameterContainer *ContainerSelector(
+		QString containerName, const cParameterContainer *params, const cFractalContainer *fractal);
+	static cParameterContainer *ContainerSelector(
+		QString containerName, cParameterContainer *params, cFractalContainer *fractal);
 	void DeleteFrames(int begin, int end);
 	void Override(QList<sAnimationFrame> _frames, QList<sParameterDescription> _listOfParameters)
 	{
@@ -108,23 +108,21 @@ public:
 	}
 	QList<sAnimationFrame> GetFrames() const { return frames; }
 	QList<sParameterDescription> GetListOfParameters() const { return listOfParameters; }
-	void SetListOfParametersAndClear(QList<sParameterDescription> _listOfParameters)
-	{
-		listOfParameters = _listOfParameters;
-		frames.clear();
-	}
+	void SetListOfParametersAndClear(
+		QList<sParameterDescription> _listOfParameters, cParameterContainer *params);
+
 	int IndexOnList(QString parameterName, QString containerName);
 
 	void AddAudioParameter(const QString &parameterName, enumVarType paramType,
-		const QString originalContainerName, cParameterContainer *params = NULL);
+		const QString originalContainerName, cParameterContainer *params = nullptr);
 
 	void RemoveAudioParameter(
-		const sParameterDescription &parameter, cParameterContainer *params = NULL);
+		const sParameterDescription &parameter, cParameterContainer *params = nullptr);
 
-	void RemoveAllAudioParameters(cParameterContainer *params = NULL);
-	void LoadAllAudioFiles(cParameterContainer *params = NULL);
+	void RemoveAllAudioParameters(cParameterContainer *params = nullptr);
+	void LoadAllAudioFiles(cParameterContainer *params = nullptr);
 
-	cAudioTrack *GetAudioPtr(const QString fullParameterName);
+	cAudioTrack *GetAudioPtr(const QString fullParameterName) const;
 
 	cOneParameter ApplyAudioAnimation(int frame, const cOneParameter &parameter,
 		const QString &parameterName, const cParameterContainer *params) const;
@@ -134,6 +132,9 @@ public:
 		const cParameterContainer *params) const;
 
 	void RegenerateAudioTracks(cParameterContainer *param);
+	void RefreshAllAudioTracks(cParameterContainer *param);
+
+	virtual void setAudioParameterPrefix();
 
 protected:
 	QList<sAnimationFrame> frames;

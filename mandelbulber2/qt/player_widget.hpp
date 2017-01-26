@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -49,19 +49,19 @@ class PlayerWidget : public QWidget
 	Q_OBJECT
 
 public:
-	PlayerWidget(QWidget *parent = 0);
+	PlayerWidget(QWidget *parent = nullptr);
 	~PlayerWidget();
 	void SetFilePath(QString filePath);
-	QSize sizeHint() const { return QSize(800, 600); }
+	QSize sizeHint() const override { return QSize(800, 600); }
 
 public slots:
-	void playPause();
+	void playPause() const;
 	void stop();
 
 private slots:
 	void setPosition(int position);
 	void nextFrame();
-	void setFPS(double fps);
+	void setFPS(double fps) const;
 	void updateFromFolder();
 
 private:
@@ -79,8 +79,8 @@ private:
 	QFileSystemWatcher imageFolderWatcher;
 
 protected:
-	void closeEvent(QCloseEvent *event);
-	void resizeEvent(QResizeEvent *event);
+	void closeEvent(QCloseEvent *event) override;
+	void resizeEvent(QResizeEvent *event) override;
 };
 
 #endif /* MANDELBULBER2_QT_PLAYER_WIDGET_HPP_ */

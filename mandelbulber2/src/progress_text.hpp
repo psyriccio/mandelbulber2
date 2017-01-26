@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-15 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -51,11 +51,11 @@ public:
 	cProgressText();
 	void ResetTimer();
 	QString getText(double progress);
-	double getTime() { return timer.elapsed() / 1000.0; }
+	double getTime() const { return timer.elapsed() / 1000.0; }
 
 private:
 	QElapsedTimer timer;
-	QString TimeString(qint64 time);
+	QString TimeString(qint64 time) const;
 	qint64 lastTimeForETA;
 	double lastProgressForETA;
 	double renderingSpeed;

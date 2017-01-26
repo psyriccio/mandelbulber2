@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -62,14 +62,14 @@ public:
 	void UseOneCPUCore(bool onlyOne) { useOneCPUCore = onlyOne; }
 	void DisableTimer() { disableTimer = true; }
 	void DisableThumbnailCache() { disableThumbnailCache = true; }
-	bool IsRendered() { return isRendered; }
-	QString GetThumbnailFileName();
+	bool IsRendered() const { return isRendered; }
+	QString GetThumbnailFileName() const;
 
 	static int instanceCount;
 	int instanceIndex;
 
 private:
-	void paintEvent(QPaintEvent *event);
+	void paintEvent(QPaintEvent *event) override;
 
 private slots:
 	void slotFullyRendered();

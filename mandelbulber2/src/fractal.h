@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -99,10 +99,10 @@ struct sExtendedAux
 	double DE;
 	double color;
 	double actualScale;
-	double newR;
-	double orbitTraps;
-	double axisBias;
-	double transformSampling;
+	// double newR;
+	// double orbitTraps;
+	// double axisBias;
+	double pseudoKleinianDE;
 	double cw;
 	double foldFactor;
 	double minRFactor;
@@ -451,6 +451,7 @@ struct sFractalTransformCommon
 	double offset0;
 	double offsetA0;
 	double offsetB0;
+	double offsetC0;
 	double offset0005;
 	double offset05;
 	double offset1;
@@ -580,6 +581,7 @@ struct sFractalTransformCommon
 	CVector3 scale3D444;
 
 	CVector4 additionConstant0000;
+	CVector4 offset0000;
 	CVector4 offset1111;
 	CVector4 offsetA1111;
 	CVector4 additionConstant111d5;
@@ -632,6 +634,7 @@ struct sFractalTransformCommon
 	bool functionEnabledPFalse;
 	bool functionEnabledRFalse;
 	bool functionEnabledSFalse;
+	bool functionEnabledSwFalse;
 	bool functionEnabledXFalse;
 	bool juliaMode;
 	bool rotationEnabled;
@@ -641,7 +644,7 @@ class cFractal
 {
 public:
 	cFractal(const cParameterContainer *par);
-	void RecalculateFractalParams(void);
+	void RecalculateFractalParams();
 
 	fractal::enumFractalFormula formula;
 	sFractalMandelbulb bulb;

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -44,26 +44,26 @@ cRandom::~cRandom()
 	gsl_rng_free(gBaseRand);
 }
 
-void cRandom::Initialize(int seed)
+void cRandom::Initialize(int seed) const
 {
 	gsl_rng_set(gBaseRand, seed);
 }
 
-int cRandom::Random(unsigned long max)
+int cRandom::Random(unsigned long max) const
 {
 	return gsl_rng_uniform_int(gBaseRand, max + 1);
 }
 
-double cRandom::Random(double min, double max, double resolution)
+double cRandom::Random(double min, double max, double resolution) const
 {
 	double range = max - min;
-	unsigned long n = (unsigned long)round(range / resolution);
+	unsigned long n = static_cast<unsigned long>(round(range / resolution));
 	return min + resolution * Random(n);
 }
 
 // generates random number with more precision
 // works with range / resolution < unsigned long long MAX
-double cRandom::DoubleRandom(double min, double max)
+double cRandom::DoubleRandom(double min, double max) const
 {
 	double range = max - min;
 	double random = gsl_rng_uniform(gBaseRand);

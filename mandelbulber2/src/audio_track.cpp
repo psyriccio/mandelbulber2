@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -51,8 +51,8 @@
 
 cAudioTrack::cAudioTrack(QObject *parent) : QObject(parent)
 {
-	fftAudio = NULL;
-	decoder = NULL;
+	fftAudio = nullptr;
+	decoder = nullptr;
 	Clear();
 }
 
@@ -65,13 +65,14 @@ cAudioTrack::~cAudioTrack()
 void cAudioTrack::Clear()
 {
 	if (decoder) delete decoder;
-	decoder = NULL;
+	decoder = nullptr;
 
 	memoryReserved = false;
 	length = 0;
 	sampleRate = 44100;
 	loaded = false;
 	loadingInProgress = false;
+	fftCalculated = false;
 	framesPerSecond = 30.0;
 	numberOfFrames = 0;
 	maxVolume = 0.0;
@@ -79,7 +80,7 @@ void cAudioTrack::Clear()
 	rawAudio.clear();
 
 	if (fftAudio) delete[] fftAudio;
-	fftAudio = NULL;
+	fftAudio = nullptr;
 
 	animation.clear();
 	maxFftArray = cAudioFFTdata();
@@ -95,22 +96,20 @@ void cAudioTrack::LoadAudio(const QString &filename)
 	loaded = false;
 
 #ifdef USE_SNDFILE
-	if (sufix.toLower() == "wav")
+
+	emit loadingProgress(tr("Loading sound file"));
+	QApplication::processEvents();
+	SNDFILE *infile = nullptr;
+	SF_INFO sfinfo;
+	memset(&sfinfo, 0, sizeof(sfinfo));
+
+	if ((infile = sf_open(filename.toLocal8Bit().constData(), SFM_READ, &sfinfo)) == nullptr)
 	{
-		SNDFILE *infile = NULL;
-		SF_INFO sfinfo;
-		memset(&sfinfo, 0, sizeof(sfinfo));
-
-		if ((infile = sf_open(filename.toLocal8Bit().constData(), SFM_READ, &sfinfo)) == NULL)
-		{
-			qCritical() << "Not able to open input file:" << filename;
-			qCritical() << sf_strerror(NULL);
-			return;
-		};
-
-		qDebug() << "channels:" << sfinfo.channels << "rate:" << sfinfo.samplerate
-						 << "samples:" << sfinfo.frames;
-
+		// qCritical() << "Not able to open input file:" << filename;
+		// qCritical() << sf_strerror(nullptr);
+	}
+	else
+	{
 		sampleRate = sfinfo.samplerate;
 
 		if (sfinfo.frames > 0)
@@ -143,10 +142,14 @@ void cAudioTrack::LoadAudio(const QString &filename)
 		WriteLog("Loading wave file finished", 2);
 		emit loadingFinished();
 	}
+
 #endif
 
 	if (!loaded)
 	{
+		emit loadingProgress(tr("Decompressing audio file"));
+		QApplication::processEvents();
+
 		QAudioFormat desiredFormat;
 		desiredFormat.setChannelCount(1);
 		desiredFormat.setCodec("audio/x-raw");
@@ -171,6 +174,12 @@ void cAudioTrack::LoadAudio(const QString &filename)
 		{
 			QApplication::processEvents();
 		}
+	}
+
+	if (!loaded)
+	{
+		emit loadingFailed();
+		return;
 	}
 }
 
@@ -201,14 +210,13 @@ void cAudioTrack::slotReadBuffer()
 		}
 	}
 	length = rawAudio.size();
-	double percent = (double)length / totalSamplesApprox * 100.0;
-	emit loadingProgress(percent);
+	double percent = double(length) / totalSamplesApprox * 100.0;
+	Q_UNUSED(percent);
+	// emit loadingProgress(percent);
 }
 
 void cAudioTrack::slotFinished()
 {
-	qDebug() << "finished";
-	qDebug() << length << (double)length / sampleRate;
 	loaded = true;
 	loadingInProgress = false;
 	WriteLog("Loading mp3 file finished", 2);
@@ -243,48 +251,61 @@ void cAudioTrack::slotError(QAudioDecoder::Error error)
 {
 	qCritical() << "cAudioTrack::error" << error;
 	loadingInProgress = false;
+	emit loadingFailed();
 }
 
 void cAudioTrack::calculateFFT()
 {
-	if (loaded && length > cAudioFFTdata::fftSize)
+	if (loaded && !fftCalculated && length > cAudioFFTdata::fftSize)
 	{
 		WriteLog("FFT calculation started", 2);
+		emit loadingProgress(tr("Calculationg FFT"));
+		QApplication::processEvents();
 
 		if (fftAudio) delete[] fftAudio;
 		fftAudio = new cAudioFFTdata[numberOfFrames];
 
+		int oversample = sampleRate / framesPerSecond / cAudioFFTdata::fftSize + 2;
+
 #pragma omp parallel for
 		for (int frame = 0; frame < numberOfFrames; ++frame)
 		{
-			int sampleOffset = (qint64)frame * sampleRate / framesPerSecond;
-			// prepare complex data for fft transform
-			double fftData[cAudioFFTdata::fftSize * 2];
-			for (int i = 0; i < cAudioFFTdata::fftSize; i++)
-			{
-				fftData[2 * i] =
-					getSample(i + sampleOffset) * 0.5
-					* (1.0 - cos((2 * M_PI * i) / (cAudioFFTdata::fftSize - 1))); // Hann window function
-				fftData[2 * i + 1] = 0.0;
-			}
-
-			// do FFT
-			gsl_complex_packed_array data = fftData;
-			gsl_fft_complex_radix2_forward(data, 1, cAudioFFTdata::fftSize);
-
-			// write ready FFT data to storage buffer
 			cAudioFFTdata fftFrame;
-			for (int i = 0; i < cAudioFFTdata::fftSize; i++)
+
+			for (int ov = 0; ov < oversample; ov++)
 			{
-				float re = fftData[2 * i];
-				float im = fftData[2 * i + 1];
-				float absVal = sqrt(re * re + im * im);
-				fftFrame.data[i] = absVal;
-				maxFft = qMax(absVal, maxFft);
-				maxFftArray.data[i] = qMax(maxFftArray.data[i], absVal);
+				int sampleOffset =
+					int(qint64(frame * oversample + ov) * sampleRate / framesPerSecond / oversample);
+
+				// prepare complex data for fft transform
+				double fftData[cAudioFFTdata::fftSize * 2];
+				for (int i = 0; i < cAudioFFTdata::fftSize; i++)
+				{
+					fftData[2 * i] =
+						getSample(i + sampleOffset) * 0.5
+						* (1.0 - cos((2 * M_PI * i) / (cAudioFFTdata::fftSize - 1))); // Hann window function
+
+					fftData[2 * i + 1] = 0.0;
+				}
+
+				// do FFT
+				gsl_complex_packed_array data = fftData;
+				gsl_fft_complex_radix2_forward(data, 1, cAudioFFTdata::fftSize);
+
+				// write ready FFT data to storage buffer
+				for (int i = 0; i < cAudioFFTdata::fftSize; i++)
+				{
+					float re = fftData[2 * i];
+					float im = fftData[2 * i + 1];
+					float absVal = sqrt(re * re + im * im);
+					fftFrame.data[i] += absVal / oversample;
+					maxFft = qMax(absVal, maxFft);
+					maxFftArray.data[i] = qMax(maxFftArray.data[i], absVal);
+				}
 			}
 			fftAudio[frame] = fftFrame;
 		}
+		fftCalculated = true;
 		WriteLog("FFT calculation finished", 2);
 	}
 }
@@ -301,7 +322,7 @@ cAudioFFTdata cAudioTrack::getFFTSample(int frame) const
 	}
 }
 
-float cAudioTrack::getBand(int frame, double midFreq, double bandwidth) const
+float cAudioTrack::getBand(int frame, double midFreq, double bandwidth, bool pitchMode) const
 {
 	if (isLoaded() && frame < numberOfFrames)
 	{
@@ -312,17 +333,35 @@ float cAudioTrack::getBand(int frame, double midFreq, double bandwidth) const
 		int last = freq2FftPos(midFreq + 0.5 * bandwidth);
 		if (last > cAudioFFTdata::fftSize / 2) last = cAudioFFTdata::fftSize / 2;
 
-		double sum = 0.0;
-		float maxVal = 0.0;
-		for (int i = first; i <= last; i++)
-		{
-			sum += fft.data[i];
-			maxVal += maxFftArray.data[i];
-		}
-		int count = last - first + 1;
+		float value;
 
-		maxVal /= count;
-		float value = sum / count / maxVal;
+		if (pitchMode)
+		{
+			double nominator = 0.0;
+			double denominator = 0.0;
+
+			for (int i = first; i <= last; i++)
+			{
+				double weight = i - first;
+				double val = pow(fft.data[i], 2.0);
+				nominator += val * weight;
+				denominator += val;
+			}
+			value = nominator / denominator / (last - first);
+		}
+		else
+		{
+			double sum = 0.0;
+			float maxVal = 0.0;
+			for (int i = first; i <= last; i++)
+			{
+				sum += fft.data[i];
+				maxVal += maxFftArray.data[i];
+			}
+			int count = last - first + 1;
+			maxVal /= count;
+			value = sum / count / maxVal;
+		}
 		return value;
 	}
 	else
@@ -333,21 +372,96 @@ float cAudioTrack::getBand(int frame, double midFreq, double bandwidth) const
 
 int cAudioTrack::freq2FftPos(double freq) const
 {
-	return (double)cAudioFFTdata::fftSize / (double)sampleRate * freq;
+	return int(double(cAudioFFTdata::fftSize) / double(sampleRate) * freq);
 }
 
 void cAudioTrack::setFramesPerSecond(double _framesPerSecond)
 {
+	if (_framesPerSecond != framesPerSecond) fftCalculated = false;
+
 	framesPerSecond = _framesPerSecond;
-	numberOfFrames = length * framesPerSecond / sampleRate;
+	numberOfFrames = int(length * framesPerSecond / sampleRate);
 }
 
-void cAudioTrack::calculateAnimation(double midFreq, double bandwidth)
+void cAudioTrack::calculateAnimation(double midFreq, double bandwidth, bool pitchMode)
 {
 	animation.clear();
 	animation.reserve(numberOfFrames);
 	for (int i = 0; i < numberOfFrames; i++)
 	{
-		animation.append(getBand(i, midFreq, bandwidth));
+		float value;
+		if (i == 0)
+			value = getBand(i, midFreq, bandwidth, pitchMode);
+		else
+			value =
+				getBand(i, midFreq, bandwidth, pitchMode) + getBand(i - 1, midFreq, bandwidth, pitchMode);
+
+		animation.append(value);
+	}
+}
+
+void cAudioTrack::decayFilter(double strength)
+{
+	float value = 0.0f;
+	for (int i = 0; i < numberOfFrames; i++)
+	{
+		if (animation[i] > value)
+		{
+			value = animation[i];
+		}
+		else
+		{
+			value = (animation[i] - value) / strength + value;
+		}
+		animation[i] = value;
+	}
+}
+
+void cAudioTrack::smoothFilter(double strength)
+{
+	float value = 0.0f;
+	for (int i = 0; i < numberOfFrames; i++)
+	{
+		value = (animation[i] - value) / strength + value;
+		animation[i] = value;
+	}
+}
+
+void cAudioTrack::binaryFilter(double thresh, int length)
+{
+	float value = 0.0f;
+	int count = 0;
+	bool counterWasReset = false;
+	for (int i = 0; i < numberOfFrames; i++)
+	{
+		count++;
+		if (animation[i] > thresh)
+		{
+			if(!counterWasReset)
+			{
+				count = 0;
+				counterWasReset = true;
+			}
+			value = 1.0f;
+		}
+		else if (count > length)
+		{
+			value = 0.0f;
+			count = 0;
+			counterWasReset = false;
+		}
+		animation[i] = value;
+	}
+}
+
+float *cAudioTrack::getRawAudio()
+{
+	if (isLoaded())
+	{
+		return rawAudio.data();
+	}
+	else
+	{
+		return nullptr;
 	}
 }

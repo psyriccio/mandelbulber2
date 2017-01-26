@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen (jenzebas@gmail.com)
  *
  * Functions for flight animation.
  *
@@ -74,18 +74,18 @@ public:
 
 	cFlightAnimation(cInterface *_interface, cAnimationFrames *_frames, cImage *_image,
 		QWidget *_imageWidget, cParameterContainer *_params, cFractalContainer *_fractal,
-		QObject *parent = 0);
+		QObject *parent = nullptr);
 	void RecordFlight(bool continueRecording);
 	bool RenderFlight(bool *stopRequest);
-	void RenderFrame(int index);
+	void RenderFrame(int index) const;
 	void RefreshTable();
 	QString GetParameterName(int rowNumber);
-	void DeleteFramesFrom(int index);
-	void DeleteFramesTo(int index);
-	void UpdateThumbnailFromImage(int index);
+	void DeleteFramesFrom(int index) const;
+	void DeleteFramesTo(int index) const;
+	void UpdateThumbnailFromImage(int index) const;
 	void InterpolateForward(int row, int column);
-	QString GetFlightFilename(int index);
-	void UpdateLimitsForFrameRange(void);
+	QString GetFlightFilename(int index) const;
+	void UpdateLimitsForFrameRange() const;
 
 public slots:
 	bool slotRenderFlight();
@@ -99,16 +99,16 @@ private slots:
 	void slotFlightYawAndPitch(CVector2<double> _yawAndPitch);
 	void slotFlightRotation(double direction);
 	void slotOrthogonalStrafe(bool _orthogonalStrafe);
-	void slotSelectAnimFlightImageDir();
+	void slotSelectAnimFlightImageDir() const;
 	void slotTableCellChanged(int row, int column);
-	void slotDeleteAllImages();
-	void slotShowAnimation();
+	void slotDeleteAllImages() const;
+	void slotShowAnimation() const;
 	void slotRecordPause();
 	void slotRefreshTable();
-	void slotExportFlightToKeyframes();
-	void slotMovedSliderFirstFrame(int value);
-	void slotMovedSliderLastFrame(int value);
-	void slotCellDoubleClicked(int row, int column);
+	void slotExportFlightToKeyframes() const;
+	void slotMovedSliderFirstFrame(int value) const;
+	void slotMovedSliderLastFrame(int value) const;
+	void slotCellDoubleClicked(int row, int column) const;
 
 private:
 	void PrepareTable();
@@ -144,7 +144,7 @@ signals:
 	void QuestionMessage(const QString &questionTitle, const QString &questionText,
 		QMessageBox::StandardButtons buttons, QMessageBox::StandardButton *reply);
 	void showErrorMessage(
-		QString text, cErrorMessage::enumMessageType messageType, QWidget *parent = NULL);
+		QString text, cErrorMessage::enumMessageType messageType, QWidget *parent = nullptr);
 	void notifyRenderFlightRenderStatus(QString text, QString progressText);
 };
 

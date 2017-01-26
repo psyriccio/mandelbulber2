@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-15 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -80,12 +80,12 @@ public:
 	enumVarType Get(sRGB &val) const;
 	enumVarType Get(bool &val) const;
 	enumVarType Get(cColorPalette &val) const;
-	enumVarType GetDefaultype(void) const { return type; }
+	enumVarType GetDefaultype() const { return type; }
 	bool operator==(const cMultiVal &m) const;
 
 private:
-	QString MakePaletteString(cColorPalette &palette);
-	cColorPalette GetPaletteFromString(const QString &paletteString) const;
+	static QString MakePaletteString(cColorPalette &palette);
+	static cColorPalette GetPaletteFromString(const QString &paletteString);
 	bool isEqual(const cMultiVal &m) const;
 
 	double dVal[4];

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -60,17 +60,17 @@ cDockQueue::~cDockQueue()
 	if (renderedImageWidget) delete renderedImageWidget;
 }
 
-MyProgressBar *cDockQueue::GetProgressBarImage()
+MyProgressBar *cDockQueue::GetProgressBarImage() const
 {
 	return ui->queueProgressBarImage;
 }
 
-MyProgressBar *cDockQueue::GetProgressBarAnimation()
+MyProgressBar *cDockQueue::GetProgressBarAnimation() const
 {
 	return ui->queueProgressBarAnimation;
 }
 
-Ui::cDockQueue *cDockQueue::GetUi()
+Ui::cDockQueue *cDockQueue::GetUi() const
 {
 	return ui;
 }

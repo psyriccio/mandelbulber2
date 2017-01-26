@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -49,13 +49,13 @@ class cDockAnimation : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cDockAnimation(QWidget *parent = NULL);
+	explicit cDockAnimation(QWidget *parent = nullptr);
 	~cDockAnimation();
 
-	void DisableEXR();
-	void DisableTIFF();
+	void DisableEXR() const;
+	void DisableTIFF() const;
 
-	Ui::cDockAnimation *GetUi();
+	Ui::cDockAnimation *GetUi() const;
 
 private:
 	Ui::cDockAnimation *ui;

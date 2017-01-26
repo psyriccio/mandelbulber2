@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -69,12 +69,12 @@ public:
 	cOneParameter CatmullRom(const int key, const double factor, bool const angular);
 	cOneParameter Akima(const int key, const double factor, bool const angular);
 
-	double LinearInterpolate(const double factor, double v1, double v2, bool const angular);
+	double LinearInterpolate(const double factor, double v1, double v2, bool const angular) const;
 	double CatmullRomInterpolate(
-		const double factor, double v1, double v2, double v3, double v4, bool const angular);
+		const double factor, double v1, double v2, double v3, double v4, bool const angular) const;
 	double AkimaInterpolate(const double factor, double v1, double v2, double v3, double v4,
-		double v5, double v6, const bool angular);
-	void NearestNeighbourAngle(QList<double *> vals);
+		double v5, double v6, const bool angular) const;
+	void NearestNeighbourAngle(QList<double *> vals) const;
 
 private:
 	int listSize;

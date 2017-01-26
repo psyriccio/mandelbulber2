@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-16 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -39,24 +39,24 @@ cHistogram::cHistogram()
 	histSize = 0;
 	count = 0;
 	sum = 0;
-	data = NULL;
+	data = nullptr;
 }
 
 cHistogram::cHistogram(int size)
 {
-	data = NULL;
+	data = nullptr;
 	Alloc(size);
 }
 
 cHistogram::~cHistogram()
 {
 	if (data) delete[] data;
-	data = NULL;
+	data = nullptr;
 }
 
 cHistogram::cHistogram(const cHistogram &source)
 {
-	data = NULL;
+	data = nullptr;
 	Copy(source);
 }
 
@@ -72,7 +72,7 @@ cHistogram &cHistogram::operator=(const cHistogram &source)
 void cHistogram::Resize(int size)
 {
 	if (data) delete[] data;
-	data = NULL;
+	data = nullptr;
 	Alloc(size);
 }
 

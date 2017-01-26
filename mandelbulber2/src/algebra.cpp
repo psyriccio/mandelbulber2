@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -39,7 +39,7 @@
 
 #include "algebra.hpp"
 
-CVector3 CVector3::RotateAroundVectorByAngle(CVector3 axis, double angle)
+CVector3 CVector3::RotateAroundVectorByAngle(CVector3 axis, double angle) const
 {
 	CVector3 vector = *this * cos(angle);
 	vector += (axis.Cross(*this)) * sin(angle);
@@ -51,10 +51,10 @@ double CVector3::itemByName(char item) const
 {
 	switch (item)
 	{
-		case 'x': return x; break;
-		case 'y': return y; break;
-		case 'z': return z; break;
-		default: return 0.0; break;
+		case 'x': return x;
+		case 'y': return y;
+		case 'z': return z;
+		default: return 0.0;
 	}
 }
 
@@ -62,11 +62,11 @@ double CVector4::itemByName(char item) const
 {
 	switch (item)
 	{
-		case 'x': return x; break;
-		case 'y': return y; break;
-		case 'z': return z; break;
-		case 'w': return w; break;
-		default: return 0.0; break;
+		case 'x': return x;
+		case 'y': return y;
+		case 'z': return z;
+		case 'w': return w;
+		default: return 0.0;
 	}
 }
 
@@ -672,6 +672,21 @@ double CRotationMatrix44::GetBeta() const
 double CRotationMatrix44::GetGamma() const
 {
 	return atan2(matrix.m31, matrix.m33);
+}
+
+double CRotationMatrix44::GetDelta() const
+{
+	return atan2(matrix.m12, matrix.m22); // fix
+}
+
+double CRotationMatrix44::GetEpsilon() const
+{
+	return asin(-matrix.m32); // fix
+}
+
+double CRotationMatrix44::GetZeta() const
+{
+	return atan2(matrix.m31, matrix.m33); // fix
 }
 
 CRotationMatrix44 CRotationMatrix44::Transpose() const

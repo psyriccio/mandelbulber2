@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>871</width>
+    <width>898</width>
     <height>2415</height>
    </rect>
   </property>
@@ -143,14 +143,14 @@
      <item row="9" column="2">
       <widget class="QLabel" name="label_114">
        <property name="text">
-        <string>z:</string>
+        <string notr="true">z</string>
        </property>
       </widget>
      </item>
      <item row="11" column="1" colspan="4">
       <widget class="MyGroupBox" name="groupCheck_transf_rotation_enabled">
        <property name="title">
-        <string>R&amp;otation; </string>
+        <string>R&amp;otation</string>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -192,7 +192,7 @@
           <item row="1" column="2">
            <widget class="QLabel" name="label_247">
             <property name="text">
-             <string>Stop  Rotation at iteration:</string>
+             <string>Stop Rotation at iteration:</string>
             </property>
            </widget>
           </item>
@@ -225,7 +225,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="label_246">
             <property name="text">
-             <string>Start Rotation at iteration :</string>
+             <string>Start Rotation at iteration:</string>
             </property>
            </widget>
           </item>
@@ -295,7 +295,7 @@
           <item row="1" column="1">
            <widget class="QLabel" name="label_34">
             <property name="text">
-             <string>beta</string>
+             <string notr="true">beta</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -359,7 +359,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="label_35">
             <property name="text">
-             <string>alpha</string>
+             <string notr="true">alpha</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -369,7 +369,7 @@
           <item row="1" column="2">
            <widget class="QLabel" name="label_36">
             <property name="text">
-             <string>gamma</string>
+             <string notr="true">gamma</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -425,7 +425,7 @@
      <item row="7" column="2">
       <widget class="QLabel" name="label_112">
        <property name="text">
-        <string>x:</string>
+        <string notr="true">x</string>
        </property>
       </widget>
      </item>
@@ -454,14 +454,14 @@
      <item row="0" column="1">
       <widget class="QLabel" name="label_64">
        <property name="text">
-        <string>Menger Scale: </string>
+        <string>Menger Scale:</string>
        </property>
       </widget>
      </item>
      <item row="8" column="1">
       <widget class="QLabel" name="label_255">
        <property name="text">
-        <string>OffsetC</string>
+        <string>OffsetC:</string>
        </property>
       </widget>
      </item>
@@ -519,7 +519,7 @@
      <item row="8" column="2">
       <widget class="QLabel" name="label_113">
        <property name="text">
-        <string>y:</string>
+        <string notr="true">y</string>
        </property>
       </widget>
      </item>
@@ -562,7 +562,7 @@
      <item row="4" column="1">
       <widget class="QLabel" name="label_259">
        <property name="text">
-        <string>OffsetS  </string>
+        <string>OffsetS:</string>
        </property>
       </widget>
      </item>
@@ -599,7 +599,7 @@
    <item>
     <widget class="MyGroupBox" name="groupCheck_transf_function_enabledz_false">
      <property name="title">
-      <string> I&amp;teration Weight.;  z  =  (  z * const.Z) + (  zA * const.A) + ( zB * const.B)</string>
+      <string>I&amp;teration Weight.; z = ( z * const.Z) + ( zA * const.A) + ( zB * const.B)</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -845,7 +845,7 @@
         <item row="3" column="0" colspan="5">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Normal use :  Constants A &amp; B are negative numbers, Constant Z remains at 1.0</string>
+           <string>Normal use : Constants A &amp; B are negative numbers, Constant Z remains at 1.0</string>
           </property>
          </widget>
         </item>
@@ -943,16 +943,8 @@
 
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;functionEnabledzFalse&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-    CVector3 zA &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    CVector3 zB &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;i &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;intA&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-      zA &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;i &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;intB&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-      zB &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
+    CVector3 zA &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;i &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;intA&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; ? z &lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;();&lt;/span&gt;
+    CVector3 zB &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;i &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;intB&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; ? z &lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;();&lt;/span&gt;
     z &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale1&lt;span style=&quot;color:#d0d0d0&quot;&gt;) + (&lt;/span&gt;zA &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;offsetA0&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
         &lt;span style=&quot;color:#d0d0d0&quot;&gt;+ (&lt;/span&gt;zB &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;offsetB0&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
     aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;DE &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale1&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
@@ -993,9 +985,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MyDoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>my_double_spin_box.h</header>
+   <class>MySpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>my_spin_box.h</header>
   </customwidget>
   <customwidget>
    <class>MyGroupBox</class>
@@ -1004,11 +996,42 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>MySpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>my_spin_box.h</header>
+   <class>MyDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>my_double_spin_box.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>slider_transf_scale_3</tabstop>
+  <tabstop>spinbox_transf_scale_3</tabstop>
+  <tabstop>slider_transf_offset_0005</tabstop>
+  <tabstop>spinbox_transf_offset_0005</tabstop>
+  <tabstop>slider3_transf_offset_1105_x</tabstop>
+  <tabstop>spinbox3_transf_offset_1105_x</tabstop>
+  <tabstop>slider3_transf_offset_1105_y</tabstop>
+  <tabstop>spinbox3_transf_offset_1105_y</tabstop>
+  <tabstop>slider3_transf_offset_1105_z</tabstop>
+  <tabstop>spinbox3_transf_offset_1105_z</tabstop>
+  <tabstop>groupCheck_transf_rotation_enabled</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_R</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_R</tabstop>
+  <tabstop>dial3_transf_rotation_x</tabstop>
+  <tabstop>dial3_transf_rotation_y</tabstop>
+  <tabstop>dial3_transf_rotation_z</tabstop>
+  <tabstop>spinboxd3_transf_rotation_x</tabstop>
+  <tabstop>spinboxd3_transf_rotation_y</tabstop>
+  <tabstop>spinboxd3_transf_rotation_z</tabstop>
+  <tabstop>groupCheck_transf_function_enabledz_false</tabstop>
+  <tabstop>spinboxInt_transf_int_A</tabstop>
+  <tabstop>slider_transf_offsetA_0</tabstop>
+  <tabstop>spinbox_transf_offsetA_0</tabstop>
+  <tabstop>spinboxInt_transf_int_B</tabstop>
+  <tabstop>slider_transf_offsetB_0</tabstop>
+  <tabstop>spinbox_transf_offsetB_0</tabstop>
+  <tabstop>slider_transf_scale_1</tabstop>
+  <tabstop>spinbox_transf_scale_1</tabstop>
+  <tabstop>groupCheck_info</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

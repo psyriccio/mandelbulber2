@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * cPreferencesDialog - dialog to configure program wide settings and program maintaining
  */
@@ -50,7 +50,7 @@ class cPreferencesDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit cPreferencesDialog(QWidget *parent = 0);
+	explicit cPreferencesDialog(QWidget *parent = nullptr);
 	~cPreferencesDialog();
 
 private slots:
@@ -58,13 +58,13 @@ private slots:
 	void on_pushButton_select_image_path_clicked();
 	void on_pushButton_select_settings_path_clicked();
 	void on_pushButton_select_textures_path_clicked();
-	void on_pushButton_clear_thumbnail_cache_clicked();
-	void on_pushButton_load_thumbnail_cache_clicked();
+	void on_pushButton_clear_thumbnail_cache_clicked() const;
+	void on_pushButton_load_thumbnail_cache_clicked() const;
 	void on_pushButton_generate_thumbnail_cache_clicked();
-	void on_comboBox_ui_style_type_currentIndexChanged(int index);
-	void on_comboBox_ui_skin_currentIndexChanged(int index);
-	void on_pushButton_retrieve_toolbar_clicked();
-	void on_pushButton_retrieve_materials_clicked();
+	void on_comboBox_ui_style_type_currentIndexChanged(int index) const;
+	void on_comboBox_ui_skin_currentIndexChanged(int index) const;
+	void on_pushButton_retrieve_toolbar_clicked() const;
+	void on_pushButton_retrieve_materials_clicked() const;
 
 private:
 	Ui::cPreferencesDialog *ui;

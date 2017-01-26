@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -99,13 +99,13 @@ QString cProgressText::getText(double progress)
 	return text;
 }
 
-QString cProgressText::TimeString(qint64 time)
+QString cProgressText::TimeString(qint64 time) const
 {
 	QString timeString;
 	double time_s = time / 1000.0;
-	int time_min = (int)time_s / 60;
-	int time_h = (int)time_s / (60 * 60);
-	int time_d = (int)time_s / (60 * 60 * 24);
+	int time_min = int(time_s) / 60;
+	int time_h = int(time_s) / (60 * 60);
+	int time_d = int(time_s) / (60 * 60 * 24);
 
 	QString time_s_str, time_min_str, time_h_str, time_d_str;
 

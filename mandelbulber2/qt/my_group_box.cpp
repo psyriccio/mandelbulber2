@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -39,7 +39,7 @@
 
 MyGroupBox::MyGroupBox(QWidget *parent) : QGroupBox(parent), CommonMyWidgetWrapper(this)
 {
-	defaultValue = 0;
+	defaultValue = false;
 	firstDisplay = true;
 	connect(this, SIGNAL(toggled(bool)), this, SLOT(slotToggled(bool)));
 }
@@ -93,7 +93,7 @@ bool MyGroupBox::GetDefault()
 	return defaultValue;
 }
 
-void MyGroupBox::slotToggled(bool on)
+void MyGroupBox::slotToggled(bool on) const
 {
 	QList<QWidget *> list = this->findChildren<QWidget *>(QString(), Qt::FindDirectChildrenOnly);
 	for (int i = 0; i < list.size(); ++i)

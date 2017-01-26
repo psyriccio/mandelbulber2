@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * MyColorButton class - promoted QPushButton widget with context menu
  */
@@ -46,7 +46,7 @@ MyColorButton::MyColorButton(QWidget *parent) : QPushButton(parent), CommonMyWid
 	SetupColor();
 }
 
-MyColorButton::~MyColorButton(void)
+MyColorButton::~MyColorButton()
 {
 	delete painter;
 	delete pix;
@@ -81,7 +81,7 @@ QString MyColorButton::getFullParameterName()
 	return parameterName;
 }
 
-sRGB MyColorButton::GetColor()
+sRGB MyColorButton::GetColor() const
 {
 	return currentValue;
 }

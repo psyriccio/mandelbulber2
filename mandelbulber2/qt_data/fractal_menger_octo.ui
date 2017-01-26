@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>871</width>
-    <height>2613</height>
+    <width>889</width>
+    <height>4861</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -90,7 +90,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_258">
        <property name="text">
-        <string>Start at iteration :</string>
+        <string>Start at iteration:</string>
        </property>
       </widget>
      </item>
@@ -221,7 +221,7 @@
      <item row="3" column="1">
       <widget class="QLabel" name="label_256">
        <property name="text">
-        <string>Offset  </string>
+        <string>Offset:</string>
        </property>
       </widget>
      </item>
@@ -250,7 +250,7 @@
      <item row="3" column="2">
       <widget class="QLabel" name="label_116">
        <property name="text">
-        <string>y:</string>
+        <string notr="true">y</string>
        </property>
       </widget>
      </item>
@@ -279,14 +279,14 @@
      <item row="2" column="2">
       <widget class="QLabel" name="label_117">
        <property name="text">
-        <string>x:</string>
+        <string notr="true">x</string>
        </property>
       </widget>
      </item>
      <item row="4" column="2">
       <widget class="QLabel" name="label_124">
        <property name="text">
-        <string>z:</string>
+        <string notr="true">z</string>
        </property>
       </widget>
      </item>
@@ -400,7 +400,7 @@
         <item row="1" column="2">
          <widget class="QLabel" name="label_248">
           <property name="text">
-           <string>Stop  Offset at iteration:</string>
+           <string>Stop Offset at iteration:</string>
           </property>
          </widget>
         </item>
@@ -433,7 +433,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_249">
           <property name="text">
-           <string>Start Offset at iteration :</string>
+           <string>Start Offset at iteration:</string>
           </property>
          </widget>
         </item>
@@ -472,14 +472,14 @@
         <item row="1" column="2">
          <widget class="QLabel" name="label_109">
           <property name="text">
-           <string>x:</string>
+           <string notr="true">x</string>
           </property>
          </widget>
         </item>
         <item row="2" column="2">
          <widget class="QLabel" name="label_110">
           <property name="text">
-           <string>y:</string>
+           <string notr="true">y</string>
           </property>
          </widget>
         </item>
@@ -592,7 +592,7 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Box Offset:  </string>
+           <string>Box Offset:</string>
           </property>
          </widget>
         </item>
@@ -627,7 +627,7 @@
         <item row="3" column="2">
          <widget class="QLabel" name="label_111">
           <property name="text">
-           <string>z:</string>
+           <string notr="true">z</string>
           </property>
          </widget>
         </item>
@@ -717,7 +717,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_253">
        <property name="text">
-        <string>Start at iteration :</string>
+        <string>Start at iteration:</string>
        </property>
       </widget>
      </item>
@@ -908,7 +908,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>z:</string>
+        <string notr="true">z</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -976,7 +976,7 @@ offset:</string>
         </sizepolicy>
        </property>
        <property name="text">
-        <string>y:</string>
+        <string notr="true">y</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -992,7 +992,7 @@ offset:</string>
         </sizepolicy>
        </property>
        <property name="text">
-        <string>x:</string>
+        <string notr="true">x</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1002,7 +1002,7 @@ offset:</string>
      <item row="6" column="0">
       <widget class="QLabel" name="label_19">
        <property name="text">
-        <string>Post_scale</string>
+        <string>Post scale:</string>
        </property>
       </widget>
      </item>
@@ -1272,7 +1272,7 @@ offset:</string>
            </font>
           </property>
           <property name="text">
-           <string>Note. Curvi Function requires the condition that  B  &gt;  2 *A</string>
+           <string>Note. Curvi Function requires the condition that B &gt; 2 * A</string>
           </property>
          </widget>
         </item>
@@ -1352,7 +1352,7 @@ offset:</string>
         <item row="2" column="1">
          <widget class="QLabel" name="label_177">
           <property name="text">
-           <string>  0</string>
+           <string notr="true">0</string>
           </property>
          </widget>
         </item>
@@ -1423,7 +1423,7 @@ offset:</string>
         <item row="1" column="3">
          <widget class="QCheckBox" name="checkBox_Cpara_enabledCurves">
           <property name="text">
-           <string>Curvi  funtion ( disable to use linear slopes only)</string>
+           <string>Curvi function (disable to use linear slopes only)</string>
           </property>
          </widget>
         </item>
@@ -1480,7 +1480,7 @@ offset:</string>
         <item row="2" column="2">
          <widget class="QLabel" name="label_107">
           <property name="text">
-           <string>Initial add: </string>
+           <string>Initial add:</string>
           </property>
          </widget>
         </item>
@@ -1661,28 +1661,28 @@ offset:</string>
         <item row="1" column="0">
          <widget class="QLabel" name="label_108">
           <property name="text">
-           <string>Initial add: </string>
+           <string>Initial add:</string>
           </property>
          </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_121">
           <property name="text">
-           <string>Parabolic scale :</string>
+           <string>Parabolic scale:</string>
           </property>
          </widget>
         </item>
         <item row="0" column="3">
          <widget class="QLabel" name="label_122">
           <property name="text">
-           <string> The Curviliner and Parabolic functions can be applied together</string>
+           <string>The Curviliner and Parabolic functions can be applied together</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_123">
           <property name="text">
-           <string>Axis Slope :</string>
+           <string>Axis Slope:</string>
           </property>
          </widget>
         </item>
@@ -1701,7 +1701,7 @@ offset:</string>
    <item>
     <widget class="MyGroupBox" name="groupCheck_transf_function_enabledR_false">
      <property name="title">
-      <string>R&amp;otation; </string>
+      <string>R&amp;otation</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -1743,7 +1743,7 @@ offset:</string>
         <item row="1" column="2">
          <widget class="QLabel" name="label_247">
           <property name="text">
-           <string>Stop  Rotation at iteration:</string>
+           <string>Stop Rotation at iteration:</string>
           </property>
          </widget>
         </item>
@@ -1776,7 +1776,7 @@ offset:</string>
         <item row="1" column="0">
          <widget class="QLabel" name="label_246">
           <property name="text">
-           <string>Start Rotation at iteration :</string>
+           <string>Start Rotation at iteration:</string>
           </property>
          </widget>
         </item>
@@ -1846,7 +1846,7 @@ offset:</string>
         <item row="1" column="1">
          <widget class="QLabel" name="label_34">
           <property name="text">
-           <string>beta</string>
+           <string notr="true">beta</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1910,7 +1910,7 @@ offset:</string>
         <item row="1" column="0">
          <widget class="QLabel" name="label_35">
           <property name="text">
-           <string>alpha</string>
+           <string notr="true">alpha</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1920,7 +1920,7 @@ offset:</string>
         <item row="1" column="2">
          <widget class="QLabel" name="label_36">
           <property name="text">
-           <string>gamma</string>
+           <string notr="true">gamma</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1980,7 +1980,7 @@ offset:</string>
      <item row="1" column="2">
       <widget class="QLabel" name="label_250">
        <property name="text">
-        <string>Stop  at iteration:</string>
+        <string>Stop at iteration:</string>
        </property>
       </widget>
      </item>
@@ -2013,7 +2013,7 @@ offset:</string>
      <item row="1" column="0">
       <widget class="QLabel" name="label_251">
        <property name="text">
-        <string>Start at iteration :</string>
+        <string>Start at iteration:</string>
        </property>
       </widget>
      </item>
@@ -2049,21 +2049,21 @@ offset:</string>
      <item row="8" column="2">
       <widget class="QLabel" name="label_112">
        <property name="text">
-        <string>x:</string>
+        <string notr="true">x</string>
        </property>
       </widget>
      </item>
      <item row="6" column="2">
       <widget class="QLabel" name="label_98">
        <property name="text">
-        <string> z.z :</string>
+        <string notr="true">z.z</string>
        </property>
       </widget>
      </item>
      <item row="9" column="2">
       <widget class="QLabel" name="label_113">
        <property name="text">
-        <string>y:</string>
+        <string notr="true">y</string>
        </property>
       </widget>
      </item>
@@ -2199,7 +2199,7 @@ offset:</string>
      <item row="1" column="1" colspan="2">
       <widget class="QLabel" name="label_64">
        <property name="text">
-        <string>Menger Scale Factor: </string>
+        <string>Menger Scale Factor:</string>
        </property>
       </widget>
      </item>
@@ -2234,7 +2234,7 @@ offset:</string>
      <item row="5" column="2">
       <widget class="QLabel" name="label_90">
        <property name="text">
-        <string> z.y :</string>
+        <string notr="true">z.y</string>
        </property>
       </widget>
      </item>
@@ -2248,7 +2248,7 @@ offset:</string>
      <item row="9" column="1">
       <widget class="QLabel" name="label_255">
        <property name="text">
-        <string>Offset  </string>
+        <string>Offset:</string>
        </property>
       </widget>
      </item>
@@ -2311,14 +2311,14 @@ offset:</string>
      <item row="5" column="1">
       <widget class="QLabel" name="label_91">
        <property name="text">
-        <string> Multiplier  </string>
+        <string>Multiplier:</string>
        </property>
       </widget>
      </item>
      <item row="10" column="2">
       <widget class="QLabel" name="label_114">
        <property name="text">
-        <string>z:</string>
+        <string notr="true">z</string>
        </property>
       </widget>
      </item>
@@ -2354,7 +2354,7 @@ offset:</string>
      <item row="4" column="2">
       <widget class="QLabel" name="label_93">
        <property name="text">
-        <string> z.x :</string>
+        <string notr="true">z.x</string>
        </property>
       </widget>
      </item>
@@ -2463,7 +2463,7 @@ offset:</string>
    <item>
     <widget class="MyGroupBox" name="groupCheck_transf_function_enabled_false">
      <property name="title">
-      <string> I&amp;teration Weight.;  z  =  (  z * const.Z) + (  zA * const.A) + ( zB * const.B)</string>
+      <string>I&amp;teration Weight.; z = ( z * const.Z) + ( zA * const.A) + ( zB * const.B)</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -2687,7 +2687,7 @@ offset:</string>
         <item row="3" column="0" colspan="5">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Normal use :  Constants A &amp; B are negative numbers, Constant Z remains at 1.0</string>
+           <string>Normal use : Constants A &amp; B are negative numbers, Constant Z remains at 1.0</string>
           </property>
          </widget>
         </item>
@@ -2905,29 +2905,22 @@ offset:</string>
       &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; i &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;stopIterationsM&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
     z &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;fabs&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;swap&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;swap&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;swap&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0.0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;swap&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0.0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;swap&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0.0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;swap&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
     z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale3&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;-=&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;2.0&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;constantMultiplier111&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;-=&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;2.0&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;constantMultiplier111&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;-=&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;2.0&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;constantMultiplier111&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1.0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;-=&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;2.0&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;constantMultiplier111&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;DE &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale3&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     z &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;additionConstant000&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0a0&quot;&gt;// iter weight&lt;/span&gt;
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;functionEnabledFalse&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-    CVector3 zA &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    CVector3 zB &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;i &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;intA&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-      zA &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;i &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;intB&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-      zB &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
+    CVector3 zA &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;i &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;intA&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; ? z &lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;();&lt;/span&gt;
+    CVector3 zB &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;i &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;intB&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; ? z &lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;();&lt;/span&gt;
+
     z &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale1&lt;span style=&quot;color:#d0d0d0&quot;&gt;) + (&lt;/span&gt;zA &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;offsetA0&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
         &lt;span style=&quot;color:#d0d0d0&quot;&gt;+ (&lt;/span&gt;zB &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;offsetB0&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
     aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;DE &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale1&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
@@ -2968,9 +2961,9 @@ offset:</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MyDoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>my_double_spin_box.h</header>
+   <class>MySpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>my_spin_box.h</header>
   </customwidget>
   <customwidget>
    <class>MyGroupBox</class>
@@ -2979,11 +2972,105 @@ offset:</string>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>MySpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>my_spin_box.h</header>
+   <class>MyDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>my_double_spin_box.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>spinboxInt_transf_start_iterations_E</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_E</tabstop>
+  <tabstop>slider_transf_scale_2</tabstop>
+  <tabstop>spinbox_transf_scale_2</tabstop>
+  <tabstop>slider3_transf_offset_100_x</tabstop>
+  <tabstop>spinbox3_transf_offset_100_x</tabstop>
+  <tabstop>slider3_transf_offset_100_y</tabstop>
+  <tabstop>spinbox3_transf_offset_100_y</tabstop>
+  <tabstop>slider3_transf_offset_100_z</tabstop>
+  <tabstop>spinbox3_transf_offset_100_z</tabstop>
+  <tabstop>groupCheck_transf_function_enabledx_false</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_A</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_A</tabstop>
+  <tabstop>slider3_transf_addition_constantA_000_x</tabstop>
+  <tabstop>spinbox3_transf_addition_constantA_000_x</tabstop>
+  <tabstop>slider3_transf_addition_constantA_000_y</tabstop>
+  <tabstop>spinbox3_transf_addition_constantA_000_y</tabstop>
+  <tabstop>slider3_transf_addition_constantA_000_z</tabstop>
+  <tabstop>spinbox3_transf_addition_constantA_000_z</tabstop>
+  <tabstop>checkBox_transf_function_enabledz_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledS_false</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_S</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_S</tabstop>
+  <tabstop>slider_transf_maxR2_1</tabstop>
+  <tabstop>spinbox_transf_maxR2_1</tabstop>
+  <tabstop>slider_transf_minR2_p25</tabstop>
+  <tabstop>spinbox_transf_minR2_p25</tabstop>
+  <tabstop>slider3_mandelbox_offset_x</tabstop>
+  <tabstop>spinbox3_mandelbox_offset_x</tabstop>
+  <tabstop>slider3_mandelbox_offset_y</tabstop>
+  <tabstop>spinbox3_mandelbox_offset_y</tabstop>
+  <tabstop>slider3_mandelbox_offset_z</tabstop>
+  <tabstop>spinbox3_mandelbox_offset_z</tabstop>
+  <tabstop>slider_transf_scale_08</tabstop>
+  <tabstop>spinbox_transf_scale_08</tabstop>
+  <tabstop>groupCheck_transf_function_enabledy_false</tabstop>
+  <tabstop>checkBox_Cpara_enabledLinear</tabstop>
+  <tabstop>checkBox_Cpara_enabledCurves</tabstop>
+  <tabstop>slider_Cpara_para00</tabstop>
+  <tabstop>spinbox_Cpara_para00</tabstop>
+  <tabstop>spinboxInt_Cpara_iterA</tabstop>
+  <tabstop>slider_Cpara_paraA</tabstop>
+  <tabstop>spinbox_Cpara_paraA</tabstop>
+  <tabstop>spinboxInt_Cpara_iterB</tabstop>
+  <tabstop>slider_Cpara_paraB</tabstop>
+  <tabstop>spinbox_Cpara_paraB</tabstop>
+  <tabstop>spinboxInt_Cpara_iterC</tabstop>
+  <tabstop>slider_Cpara_paraC</tabstop>
+  <tabstop>spinbox_Cpara_paraC</tabstop>
+  <tabstop>checkBox_Cpara_enabledParab_false</tabstop>
+  <tabstop>slider_Cpara_parab_offset0</tabstop>
+  <tabstop>spinbox_Cpara_parab_offset0</tabstop>
+  <tabstop>slider_Cpara_parab_slope</tabstop>
+  <tabstop>spinbox_Cpara_parab_slope</tabstop>
+  <tabstop>slider_Cpara_parab_scale</tabstop>
+  <tabstop>spinbox_Cpara_parab_scale</tabstop>
+  <tabstop>groupCheck_transf_function_enabledR_false</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_R</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_R</tabstop>
+  <tabstop>dial3_transf_rotation_x</tabstop>
+  <tabstop>dial3_transf_rotation_y</tabstop>
+  <tabstop>dial3_transf_rotation_z</tabstop>
+  <tabstop>spinboxd3_transf_rotation_x</tabstop>
+  <tabstop>spinboxd3_transf_rotation_y</tabstop>
+  <tabstop>spinboxd3_transf_rotation_z</tabstop>
+  <tabstop>checkBox_transf_function_enabledM</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_M</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_M</tabstop>
+  <tabstop>slider_transf_scale_3</tabstop>
+  <tabstop>spinbox_transf_scale_3</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_x</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_x</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_y</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_y</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_z</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_z</tabstop>
+  <tabstop>slider3_transf_addition_constant_x</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_x</tabstop>
+  <tabstop>slider3_transf_addition_constant_y</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_y</tabstop>
+  <tabstop>slider3_transf_addition_constant_z</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_z</tabstop>
+  <tabstop>groupCheck_transf_function_enabled_false</tabstop>
+  <tabstop>spinboxInt_transf_int_A</tabstop>
+  <tabstop>slider_transf_offsetA_0</tabstop>
+  <tabstop>spinbox_transf_offsetA_0</tabstop>
+  <tabstop>spinboxInt_transf_int_B</tabstop>
+  <tabstop>slider_transf_offsetB_0</tabstop>
+  <tabstop>spinbox_transf_offsetB_0</tabstop>
+  <tabstop>slider_transf_scale_1</tabstop>
+  <tabstop>spinbox_transf_scale_1</tabstop>
+  <tabstop>groupCheck_info</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

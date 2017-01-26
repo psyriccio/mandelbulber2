@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -44,9 +44,9 @@
 RenderWindow::RenderWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::RenderWindow)
 {
 	ui->setupUi(this);
-	preferencesDialog = NULL;
-	voxelExportDialog = NULL;
-	meshExportDialog = NULL;
+	preferencesDialog = nullptr;
+	voxelExportDialog = nullptr;
+	meshExportDialog = nullptr;
 	automatedWidgets = new cAutomatedWidgets(this);
 	automatedWidgets->ConnectSignalsForSlidersInWindow(this);
 
@@ -65,47 +65,47 @@ RenderWindow::~RenderWindow()
 	delete ui;
 }
 
-cDockAnimation *RenderWindow::GetWidgetDockAnimation()
+cDockAnimation *RenderWindow::GetWidgetDockAnimation() const
 {
 	return ui->widgetDockAnimation;
 }
 
-QWidget *RenderWindow::GetCentralWidget()
+QWidget *RenderWindow::GetCentralWidget() const
 {
 	return ui->centralwidget;
 }
 
-cDockNavigation *RenderWindow::GetWidgetDockNavigation()
+cDockNavigation *RenderWindow::GetWidgetDockNavigation() const
 {
 	return ui->widgetDockNavigation;
 }
 
-cDockStatistics *RenderWindow::GetWidgetDockStatistics()
+cDockStatistics *RenderWindow::GetWidgetDockStatistics() const
 {
 	return ui->widgetDockStatistics;
 }
 
-cDockQueue *RenderWindow::GetWidgetDockQueue()
+cDockQueue *RenderWindow::GetWidgetDockQueue() const
 {
 	return ui->widgetDockQueue;
 }
 
-cDockImageAdjustments *RenderWindow::GetWidgetDockImageAdjustments()
+cDockImageAdjustments *RenderWindow::GetWidgetDockImageAdjustments() const
 {
 	return ui->widgetImageAjustments;
 }
 
-cDockRenderingEngine *RenderWindow::GetWidgetDockRenderingEngine()
+cDockRenderingEngine *RenderWindow::GetWidgetDockRenderingEngine() const
 {
 	return ui->widgetDockRenderingEngine;
 }
 
-cDockFractal *RenderWindow::GetWidgetDockFractal()
+cDockFractal *RenderWindow::GetWidgetDockFractal() const
 {
 	return ui->widgetDockFractal;
 }
 
-QComboBox *RenderWindow::GetComboBoxMouseClickFunction()
+QComboBox *RenderWindow::GetComboBoxMouseClickFunction() const
 {
 	return ui->comboBox_mouse_click_function;
 }

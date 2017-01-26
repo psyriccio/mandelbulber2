@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -42,9 +42,9 @@
 
 MyLineEdit::MyLineEdit(QWidget *parent) : QLineEdit(parent), CommonMyWidgetWrapper(this)
 {
-	actionResetVectorToDefault = NULL;
-	actionCopyVectorToClipboard = NULL;
-	actionPasteVectorFromClipboard = NULL;
+	actionResetVectorToDefault = nullptr;
+	actionCopyVectorToClipboard = nullptr;
+	actionPasteVectorFromClipboard = nullptr;
 }
 
 void MyLineEdit::paintEvent(QPaintEvent *event)
@@ -90,7 +90,7 @@ QString MyLineEdit::GetDefault()
 	return defaultText;
 }
 
-void MyLineEdit::CopyToClipboard()
+void MyLineEdit::CopyToClipboard() const
 {
 	if (parameterContainer)
 	{
@@ -254,7 +254,7 @@ QString MyLineEdit::getFullParameterName()
 	return parName;
 }
 
-void MyLineEdit::slotCopyVector()
+void MyLineEdit::slotCopyVector() const
 {
 	CopyToClipboard();
 }

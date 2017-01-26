@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -51,13 +51,13 @@ class cDockStatistics : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cDockStatistics(QWidget *parent = NULL);
+	explicit cDockStatistics(QWidget *parent = nullptr);
 	~cDockStatistics();
 
-	void UpdateDistanceToFractal(double distance);
+	void UpdateDistanceToFractal(double distance) const;
 
 public slots:
-	void slotUpdateStatistics(cStatistics);
+	void slotUpdateStatistics(cStatistics) const;
 
 private:
 	Ui::cDockStatistics *ui;

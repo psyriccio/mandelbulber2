@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>934</width>
-    <height>764</height>
+    <height>1565</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
    <item>
     <widget class="QLabel" name="label_93">
      <property name="text">
-      <string>Scale_Vary_VCL   Vary Curvilinear</string>
+      <string>Scale_Vary_VCL Vary Curvilinear</string>
      </property>
     </widget>
    </item>
@@ -44,7 +44,7 @@
      <item row="2" column="1">
       <widget class="QLabel" name="label_174">
        <property name="text">
-        <string>  0</string>
+        <string>0</string>
        </property>
       </widget>
      </item>
@@ -73,7 +73,7 @@
      <item row="1" column="3">
       <widget class="QCheckBox" name="checkBox_Cpara_enabledCurves">
        <property name="text">
-        <string>Curvi  funtion ( disable to use linear slopes only)</string>
+        <string>Curvi funtion ( disable to use linear slopes only)</string>
        </property>
       </widget>
      </item>
@@ -247,7 +247,7 @@
      <item row="2" column="2">
       <widget class="QLabel" name="label_94">
        <property name="text">
-        <string>Intitial Value: </string>
+        <string>Intitial Value:</string>
        </property>
       </widget>
      </item>
@@ -372,7 +372,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Note. Function requires the condition that  (B - A) &gt;  (2 * A)</string>
+        <string>Note. Curvi Function requires the condition that B &gt; 2 * A</string>
        </property>
       </widget>
      </item>
@@ -553,28 +553,28 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_100">
        <property name="text">
-        <string>Initial Value :</string>
+        <string>Initial Value:</string>
        </property>
       </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_98">
        <property name="text">
-        <string>Parabolic scale :</string>
+        <string>Parabolic scale:</string>
        </property>
       </widget>
      </item>
      <item row="0" column="3">
       <widget class="QLabel" name="label_97">
        <property name="text">
-        <string> The Curviliner and Parabolic functions can be applied together</string>
+        <string>The Curvilinear and Parabolic functions can be applied together</string>
        </property>
       </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_101">
        <property name="text">
-        <string>Axis Slope :</string>
+        <string>Axis Slope:</string>
        </property>
       </widget>
      </item>

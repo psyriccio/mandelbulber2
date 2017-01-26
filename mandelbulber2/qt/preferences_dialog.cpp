@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * cPreferencesDialog - dialog to configure program wide settings and program maintaining
  */
@@ -87,6 +87,13 @@ cPreferencesDialog::cPreferencesDialog(QWidget *parent)
 		int index = ui->comboboxLanguage->findText(systemData.locale.name());
 		ui->comboboxLanguage->setCurrentIndex(index);
 	}
+
+#ifdef USE_OPENCL
+// TODO
+#else	// USE_OPENCL
+	ui->tabWidget->removeTab(2); // hide GPU tab for now
+#endif // USE_OPENCL
+
 	initFinished = true;
 }
 
@@ -146,7 +153,7 @@ void cPreferencesDialog::on_pushButton_select_textures_path_clicked()
 	}
 }
 
-void cPreferencesDialog::on_pushButton_clear_thumbnail_cache_clicked()
+void cPreferencesDialog::on_pushButton_clear_thumbnail_cache_clicked() const
 {
 	QDir thumbnailDir(systemData.GetThumbnailsFolder());
 	thumbnailDir.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
@@ -154,7 +161,7 @@ void cPreferencesDialog::on_pushButton_clear_thumbnail_cache_clicked()
 
 	// confirmation dialog before clearing
 	QMessageBox::StandardButton reply;
-	reply = QMessageBox::question(NULL, QObject::tr("Are you sure to clear the thumbnail cache?"),
+	reply = QMessageBox::question(nullptr, QObject::tr("Are you sure to clear the thumbnail cache?"),
 		QObject::tr("Are you sure to clear the thumbnail cache?\nThere are currently %1 thumbnails "
 								"cached. These will be deleted and rerendered when necessary.\n Clear now?")
 			.arg(thumbnailDirCount),
@@ -172,10 +179,10 @@ void cPreferencesDialog::on_pushButton_clear_thumbnail_cache_clicked()
 	}
 }
 
-void cPreferencesDialog::on_pushButton_load_thumbnail_cache_clicked()
+void cPreferencesDialog::on_pushButton_load_thumbnail_cache_clicked() const
 {
 	QMessageBox::StandardButton reply;
-	reply = QMessageBox::question(NULL,
+	reply = QMessageBox::question(nullptr,
 		QObject::tr("Are you sure to load the thumbnail cache from the server?"),
 		QObject::tr("This will try to load missing common thumbnails from the server.\nProceed?"),
 		QMessageBox::Yes | QMessageBox::No);
@@ -207,7 +214,7 @@ void cPreferencesDialog::on_pushButton_generate_thumbnail_cache_clicked()
 	infoGenerateCacheFiles +=
 		"This process will take a lot of time and cannot be cancelled.\nProceed?";
 
-	reply = QMessageBox::question(NULL,
+	reply = QMessageBox::question(nullptr,
 		QObject::tr("Are you sure to generate all example thumbnail cache files?"),
 		infoGenerateCacheFiles, QMessageBox::Yes | QMessageBox::No);
 
@@ -289,24 +296,24 @@ void cPreferencesDialog::on_pushButton_generate_thumbnail_cache_clicked()
 	}
 }
 
-void cPreferencesDialog::on_comboBox_ui_style_type_currentIndexChanged(int index)
+void cPreferencesDialog::on_comboBox_ui_style_type_currentIndexChanged(int index) const
 {
 	if (!initFinished) return;
 	gPar->Set<int>("ui_style_type", index);
 	UpdateUIStyle();
 }
 
-void cPreferencesDialog::on_comboBox_ui_skin_currentIndexChanged(int index)
+void cPreferencesDialog::on_comboBox_ui_skin_currentIndexChanged(int index) const
 {
 	if (!initFinished) return;
 	gPar->Set<int>("ui_skin", index);
 	UpdateUISkin();
 }
 
-void cPreferencesDialog::on_pushButton_retrieve_toolbar_clicked()
+void cPreferencesDialog::on_pushButton_retrieve_toolbar_clicked() const
 {
 	QMessageBox::StandardButton reply;
-	reply = QMessageBox::question(NULL, QObject::tr("Retrieve toolbar"),
+	reply = QMessageBox::question(nullptr, QObject::tr("Retrieve toolbar"),
 		QObject::tr("Are you sure to retrieve default presets into toolbar?\nIt could overwrite some "
 								"of existing presets.\nProceed?"),
 		QMessageBox::Yes | QMessageBox::No);
@@ -317,10 +324,10 @@ void cPreferencesDialog::on_pushButton_retrieve_toolbar_clicked()
 	}
 }
 
-void cPreferencesDialog::on_pushButton_retrieve_materials_clicked()
+void cPreferencesDialog::on_pushButton_retrieve_materials_clicked() const
 {
 	QMessageBox::StandardButton reply;
-	reply = QMessageBox::question(NULL, QObject::tr("Retrieve materials"),
+	reply = QMessageBox::question(nullptr, QObject::tr("Retrieve materials"),
 		QObject::tr("Are you sure to retrieve default materials into materials folder?\nIt could "
 								"overwrite some of existing materials.\nProceed?"),
 		QMessageBox::Yes | QMessageBox::No);

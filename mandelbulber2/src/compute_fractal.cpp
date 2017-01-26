@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -107,11 +107,11 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 	// extendedAux.newR = 1e+20;
 	// extendedAux.axisBias = 1e+20;
 	// extendedAux.orbitTraps = 1e+20;
-	// extendedAux.transformSampling = 1e+20;
+	extendedAux.pseudoKleinianDE = 1.0;
 
 	// main iteration loop
 	int i;
-	int sequence = 0;
+	int sequence;
 
 	CVector3 lastGoodZ;
 	CVector3 lastZ;
@@ -476,7 +476,6 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				}
 				case mengerPrismShape2:
 				{
-					z = CVector3{-z.z, z.x, z.y};
 					MengerPrismShape2Iteration(z, i, fractal, extendedAux);
 					break;
 				}
@@ -547,12 +546,21 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
                     break;
                 }
 
+<<<<<<< HEAD
                 // transforms  ------------------------------------------------------------------
                 //				case transfAdditionConstant:
                 {
                     TransformAdditionConstantIteration(z, fractal);
                     break;
                 }
+=======
+				// transforms  ------------------------------------------------------------------
+				case transfAdditionConstant:
+				{
+					TransformAdditionConstantIteration(z, fractal);
+					break;
+				}
+>>>>>>> 3e4dd087048f07ea644cfda86a6796ed5d6d3edc
 				case transfAdditionConstantVaryV1:
 				{
 					TransformAdditionConstantVaryV1Iteration(z, i, fractal);
@@ -666,7 +674,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				}
 				case transfFabsAddConstantV2:
 				{
-					TransformFabsAddConstantV2Iteration(z, fractal);
+					TransformFabsAddConstantV2Iteration(z, i, fractal);
 					break;
 				}
 				case transfFabsAddConditional:
@@ -851,10 +859,19 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				}
 
 				// 4D  ---------------------------------------------------------------------------
+				case abox4D:
+				{
+					CVector4 z4D(z, w);
+					Abox4DIteration(z4D, i, fractal, extendedAux);
+					z = z4D.GetXYZ();
+					w = z4D.w;
+					break;
+				}
+
 				case quaternion4D:
 				{
 					CVector4 z4D(z, w);
-					Quaternion4DIteration(z4D, fractal);
+					Quaternion4DIteration(z4D, i, fractal);
 					z = z4D.GetXYZ();
 					w = z4D.w;
 					break;
@@ -862,7 +879,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				case mandelboxVaryScale4D:
 				{
 					CVector4 z4D(z, w);
-					MandelboxVaryScale4DIteration(z4D, fractal, extendedAux);
+					MandelboxVaryScale4DIteration(z4D, i, fractal, extendedAux);
 					z = z4D.GetXYZ();
 					w = z4D.w;
 					break;
@@ -960,6 +977,14 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				{
 					CVector4 z4D(z, w);
 					TransformReciprocal4DIteration(z4D, fractal, extendedAux);
+					z = z4D.GetXYZ();
+					w = z4D.w;
+					break;
+				}
+				case transfRotation4D:
+				{
+					CVector4 z4D(z, w);
+					TransformRotation4DIteration(z4D, fractal);
 					z = z4D.GetXYZ();
 					w = z4D.w;
 					break;
@@ -1154,7 +1179,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				CVector3 delta = z - in.common.fakeLightsOrbitTrap;
 				double distance = delta.Length();
 				if (i >= in.common.fakeLightsMinIter && i <= in.common.fakeLightsMaxIter)
-					orbitTrapTotal += (1.0f / (distance * distance));
+					orbitTrapTotal += (1.0 / (distance * distance));
 				if (distance > 1000)
 				{
 					out->orbitTrapR = orbitTrapTotal;
@@ -1310,6 +1335,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				case aboxVSIcen1:
 				case pseudoKleinian1:
 				case mixPinski4D:
+				case abox4D:
 					// case mengerSmooth:
 					// case mengerSmoothMod1:
 					{
@@ -1353,7 +1379,8 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 					if (extendedAux.DE > 0)
 					{
 						double rxy = sqrt(z.x * z.x + z.y * z.y);
-						out->distance = max(rxy - 0.92784, fabs(rxy * z.z) / r) / (extendedAux.DE);
+						out->distance = max(rxy - extendedAux.pseudoKleinianDE, fabs(rxy * z.z) / r)
+														/ (extendedAux.DE); // 0.92784 extendedAux.pseudoKleinianDE
 					}
 					else
 						out->distance = r;
@@ -1367,7 +1394,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 	// color calculation
 	else if (Mode == calcModeColouring)
 	{
-		double mboxDE = 1.0;
+		double mboxDE;
 		mboxDE = extendedAux.DE;
 		double r2 = r / fabs(mboxDE);
 		if (r2 > 20) r2 = 20;
@@ -1376,7 +1403,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 		{
 			if (minimumR > 100) minimumR = 100;
 
-			double mboxColor = 0.0;
+			double mboxColor;
 
 			mboxColor = extendedAux.color;
 
@@ -1430,6 +1457,7 @@ void Compute(const cNineFractals &fractals, const sFractalIn &in, sFractalOut *o
 				case mandelboxMenger:
 				case amazingSurfMod1:
 				case aboxModKaliEiffie:
+				case abox4D:
 					out->colorIndex =
 						extendedAux.color * 100.0 * extendedAux.foldFactor	 // folds part
 						+ r * defaultFractal->mandelbox.color.factorR / 1e13 // abs z part

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -84,7 +84,7 @@ void cRenderSSAO::RenderSSAO(QList<int> *list)
 	progressText.ResetTimer();
 
 	// create list of lines to render for each CPU core
-	QList<int> *lists = NULL;
+	QList<int> *lists = nullptr;
 	if (list)
 	{
 		lists = new QList<int>[numberOfThreads];
@@ -105,7 +105,8 @@ void cRenderSSAO::RenderSSAO(QList<int> *list)
 	{
 		qualityFactor = 1.0;
 	}
-	int quality = params->ambientOcclusionQuality * params->ambientOcclusionQuality * qualityFactor;
+	int quality =
+		int(params->ambientOcclusionQuality * params->ambientOcclusionQuality * qualityFactor);
 	if (quality < 3) quality = 3;
 
 	for (int i = 0; i < numberOfThreads; i++)
@@ -121,7 +122,7 @@ void cRenderSSAO::RenderSSAO(QList<int> *list)
 		if (list)
 			threadData[i].list = &lists[i];
 		else
-			threadData[i].list = NULL;
+			threadData[i].list = nullptr;
 	}
 
 	QString statusText;
@@ -179,7 +180,7 @@ void cRenderSSAO::RenderSSAO(QList<int> *list)
 			totalDone += threadData[i].done;
 		}
 
-		double percentDone = (double)totalDone / toDo;
+		double percentDone = double(totalDone) / toDo;
 		statusText = QObject::tr("Rendering SSAO effect in progress");
 		progressTxt = progressText.getText(percentDone);
 

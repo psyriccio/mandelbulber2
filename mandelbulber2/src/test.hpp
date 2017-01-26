@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -48,9 +48,9 @@ public:
 		benchmarkTestMode
 	};
 	Test(enumTestMode testMode_) { testMode = testMode_; }
-	bool IsBenchmarking() { return testMode == enumTestMode::benchmarkTestMode; }
+	bool IsBenchmarking() const { return testMode == enumTestMode::benchmarkTestMode; }
 private:
-	QString testFolder();
+	static QString testFolder();
 	enumTestMode testMode;
 
 	void renderExamples();
@@ -59,8 +59,8 @@ private:
 	void renderSimple();
 
 private slots:
-	void init();
-	void cleanup();
+	static void init();
+	static void cleanup();
 	void renderExamplesWrapper();
 	void netrender();
 	void testFlightWrapper();

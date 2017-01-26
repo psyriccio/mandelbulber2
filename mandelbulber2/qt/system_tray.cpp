@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * cSystemTray class - class for system tray
  *
@@ -116,7 +116,7 @@ void cSystemTray::checkBusy()
 	}
 }
 
-void cSystemTray::showMessage(QString text, QString progressText)
+void cSystemTray::showMessage(QString text, QString progressText) const
 {
 	if (gPar->Get<bool>("system_tray_notify"))
 	{
@@ -124,7 +124,7 @@ void cSystemTray::showMessage(QString text, QString progressText)
 	}
 }
 
-void cSystemTray::slotStopped()
+void cSystemTray::slotStopped() const
 {
 	stActionStop->setEnabled(false);
 	stActionRender->setEnabled(true);
@@ -132,7 +132,7 @@ void cSystemTray::slotStopped()
 	stActionRenderFlight->setEnabled(true);
 }
 
-void cSystemTray::slotStarted()
+void cSystemTray::slotStarted() const
 {
 	stActionStop->setEnabled(true);
 	stActionRender->setEnabled(false);
@@ -145,12 +145,12 @@ void cSystemTray::slotToggleNotification(bool notify)
 	gPar->Set("system_tray_notify", notify);
 }
 
-void cSystemTray::slotStartRender(void)
+void cSystemTray::slotStartRender()
 {
 	gMainInterface->StartRender();
 }
 
-void cSystemTray::slotStopRender(void)
+void cSystemTray::slotStopRender()
 {
 	gMainInterface->stopRequest = true;
 }

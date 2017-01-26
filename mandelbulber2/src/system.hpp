@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -76,7 +76,7 @@ private:
 
 public:
 	bool IsUpgraded() const { return QFileInfo(dataDirectoryPublic + "settings").exists(); }
-	void Upgrade()
+	void Upgrade() const
 	{
 		QStringList moveFolders = {GetSettingsFolder(), GetImagesFolder(), GetSlicesFolder(),
 			GetMaterialsFolder(), GetAnimationFolder()};
@@ -112,6 +112,7 @@ public:
 
 	QString GetQueueFolder() const { return dataDirectoryHidden + "queue"; }
 	QString GetToolbarFolder() const { return dataDirectoryHidden + "toolbar"; }
+	QString GetCustomWindowStateFolder() const { return dataDirectoryHidden + "customWindowState"; }
 	QString GetQueueFractlistFile() const { return dataDirectoryHidden + "queue.fractlist"; }
 	QString GetThumbnailsFolder() const { return dataDirectoryHidden + "thumbnails"; }
 	QString GetAutosaveFile() const { return dataDirectoryHidden + ".autosave.fract"; }
@@ -149,13 +150,13 @@ struct sActualFileNames
 extern sSystem systemData;
 extern sActualFileNames actualFileNames;
 
-bool InitSystem(void);
+bool InitSystem();
 void WriteLog(QString text, int verbosityLevel);
 void WriteLogDouble(QString text, double value, int verbosityLevel);
 void WriteLogString(QString text, QString value, int verbosityLevel);
 void handle_winch(int sig);
 int get_cpu_count();
-bool CreateDefaultFolders(void);
+bool CreateDefaultFolders();
 bool CreateFolder(QString name);
 void DeleteAllFilesFromDirectory(QString folder, QString filterExpression);
 int fcopy(QString source, QString dest);

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen (jenzebas@gmail.com)
  *
  * cCommandLineInterface - CLI Input handler
  */
@@ -76,16 +76,16 @@ public:
 		cliErrorVoxelOutputFolderDoesNotExists = -50
 	};
 
-	void ReadCLI(void);
-	void ProcessCLI(void);
-	bool isNoGUI(void) const { return cliData.nogui; }
+	void ReadCLI();
+	void ProcessCLI() const;
+	bool isNoGUI() const { return cliData.nogui; }
 
 private:
 	// ## helper methods for ReadCLI
 	// arguments to cause print and exit
-	void printExampleHelpAndExit() const;
-	void printInputHelpAndExit() const;
-	void printParametersAndExit();
+	static void printExampleHelpAndExit();
+	static void printInputHelpAndExit();
+	static void printParametersAndExit();
 	void runTestCasesAndExit() const;
 	void runBenchmarksAndExit() const;
 
@@ -94,7 +94,7 @@ private:
 	void handleClient();
 	void handleQueue();
 	void handleArgs();
-	void handleOverrideParameters();
+	void handleOverrideParameters() const;
 	void handleResolution();
 	void handleFpk();
 	void handleImageFileFormat();

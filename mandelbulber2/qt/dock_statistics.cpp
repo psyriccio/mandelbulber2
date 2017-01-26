@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -52,12 +52,12 @@ cDockStatistics::~cDockStatistics()
 	delete ui;
 }
 
-void cDockStatistics::UpdateDistanceToFractal(double distance)
+void cDockStatistics::UpdateDistanceToFractal(double distance) const
 {
 	ui->tableWidget_statistics->item(5, 0)->setText(QString::number(distance));
 }
 
-void cDockStatistics::slotUpdateStatistics(cStatistics stat)
+void cDockStatistics::slotUpdateStatistics(cStatistics stat) const
 {
 	ui->label_histogram_de->SetBarcolor(QColor(0, 255, 0));
 	ui->label_histogram_de->UpdateHistogram(stat.histogramStepCount);

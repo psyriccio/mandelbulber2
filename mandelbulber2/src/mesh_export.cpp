@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -67,7 +67,7 @@ struct ProgressFtor
 
 	ProgressFtor(cMeshExport *meshExport) { this->meshExport = meshExport; }
 
-	void operator()(int i) { meshExport->updateProgressAndStatus(i); }
+	void operator()(int i) const { meshExport->updateProgressAndStatus(i); }
 };
 
 struct FormulaFtor
@@ -84,7 +84,7 @@ struct FormulaFtor
 		this->fractals = fractals;
 	}
 
-	double operator()(double x, double y, double z, double *colorIndex)
+	double operator()(double x, double y, double z, double *colorIndex) const
 	{
 		CVector3 point;
 		point.x = x;
@@ -121,7 +121,7 @@ void cMeshExport::updateProgressAndStatus(int i)
 	QString statusText =
 		" - " + tr("Processing layer %1 of %2").arg(QString::number(i + 1), QString::number(w));
 
-	double percentDone = (double)i / w;
+	double percentDone = double(i) / w;
 
 	emit updateProgressAndStatus(
 		tr("Mesh Export") + statusText, progressText.getText(percentDone), percentDone);

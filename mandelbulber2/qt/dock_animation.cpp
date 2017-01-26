@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -51,7 +51,7 @@ cDockAnimation::~cDockAnimation()
 	delete ui;
 }
 
-void cDockAnimation::DisableEXR()
+void cDockAnimation::DisableEXR() const
 {
 	qobject_cast<QStandardItemModel *>(ui->comboBox_keyframe_animation_image_type->model())
 		->item(ImageFileSave::IMAGE_FILE_TYPE_EXR)
@@ -61,7 +61,7 @@ void cDockAnimation::DisableEXR()
 		->setEnabled(false);
 }
 
-void cDockAnimation::DisableTIFF()
+void cDockAnimation::DisableTIFF() const
 {
 	qobject_cast<QStandardItemModel *>(ui->comboBox_keyframe_animation_image_type->model())
 		->item(ImageFileSave::IMAGE_FILE_TYPE_TIFF)
@@ -71,7 +71,7 @@ void cDockAnimation::DisableTIFF()
 		->setEnabled(false);
 }
 
-Ui::cDockAnimation *cDockAnimation::GetUi()
+Ui::cDockAnimation *cDockAnimation::GetUi() const
 {
 	return ui;
 }

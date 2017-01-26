@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -62,16 +62,12 @@ int RandomInt()
 	// No division required, since hi + lo is always < 232 - 2
 	if (lo > 2147483647) lo -= 2147483647;
 
-	return (gRandomSeed = lo);
+	return (int(gRandomSeed = lo));
 }
 
 int Random(int max)
 {
-#ifdef WIN32
-	return (RandomInt() + RandomInt() * 32768) % (max + 1);
-#else
 	return RandomInt() % (max + 1);
-#endif
 }
 
 double dMax(double a, double b, double c)

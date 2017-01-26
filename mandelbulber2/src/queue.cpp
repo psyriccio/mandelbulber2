@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen (jenzebas@gmail.com)
  *
  * cQueue - class to manage rendering queue
  */
@@ -53,7 +53,7 @@
 #include "ui_dock_queue.h"
 #include "dock_queue.h"
 
-cQueue *gQueue = NULL;
+cQueue *gQueue = nullptr;
 
 cQueue::cQueue(cInterface *_interface, const QString &_queueListFileName,
 	const QString &_queueFolder, QObject *parent)
@@ -127,7 +127,7 @@ cQueue::cQueue(cInterface *_interface, const QString &_queueListFileName,
 	}
 	else
 	{
-		renderedImageWidget = NULL;
+		renderedImageWidget = nullptr;
 	}
 
 	stopRequest = false;
@@ -406,7 +406,7 @@ void cQueue::StoreList()
 	mutex.unlock();
 }
 
-void cQueue::RemoveFromFileSystem(const QString &filename)
+void cQueue::RemoveFromFileSystem(const QString &filename) const
 {
 	// remove queue file from filesystem
 	if (filename.startsWith(queueFolder + QDir::separator()))
@@ -521,7 +521,7 @@ void cQueue::UpdateListFromFileSystem()
 	mutex.unlock();
 }
 
-void cQueue::RenderQueue()
+void cQueue::RenderQueue() const
 {
 	QThread *thread = new QThread; // deleted by deleteLater()
 	cRenderQueue *renderQueue = new cRenderQueue(image, renderedImageWidget);
@@ -556,7 +556,7 @@ void cQueue::RenderQueue()
 
 /* UI Slots */
 
-void cQueue::slotQueueRender()
+void cQueue::slotQueueRender() const
 {
 	if (!systemData.noGui)
 	{
@@ -570,7 +570,7 @@ void cQueue::slotQueueRender()
 	else
 	{
 		cErrorMessage::showMessage(
-			QObject::tr("No queue items to render"), cErrorMessage::errorMessage, NULL);
+			QObject::tr("No queue items to render"), cErrorMessage::errorMessage, nullptr);
 	}
 }
 
@@ -631,7 +631,7 @@ void cQueue::slotQueueMoveItemDown()
 void cQueue::slotQueueTypeChanged(int index)
 {
 	QString buttonName = this->sender()->objectName();
-	UpdateQueueItemType(buttonName.toInt(), (cQueue::enumRenderType)index);
+	UpdateQueueItemType(buttonName.toInt(), cQueue::enumRenderType(index));
 }
 
 void cQueue::slotQueueListUpdate()
@@ -704,7 +704,7 @@ void cQueue::slotQueueListUpdate(int i, int j)
 				if (parSettings.LoadFromFile(queueList.at(i).filename)
 						&& parSettings.Decode(&tempPar, &tempFract))
 				{
-					cThumbnailWidget *thumbWidget = (cThumbnailWidget *)table->cellWidget(i, j);
+					cThumbnailWidget *thumbWidget = static_cast<cThumbnailWidget *>(table->cellWidget(i, j));
 					if (!thumbWidget)
 					{
 						thumbWidget = new cThumbnailWidget(100, 70, 1, table);
@@ -767,6 +767,7 @@ void cQueue::slotQueueListUpdate(int i, int j)
 			table->setCellWidget(i, j, frame);
 			break;
 		}
+		default: break;
 	}
 	table->blockSignals(false);
 }

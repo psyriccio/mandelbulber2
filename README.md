@@ -2,7 +2,7 @@
 
 |Coverity Scan|Build Status|Gitter Chat|
 |:-:|:-:|:-:|
-|[![Coverity Scan](https://scan.coverity.com/projects/4723/badge.svg?flat=1)](https://scan.coverity.com/projects/mandelbulber-v2)|Linux / OSX: [![Build Status Linux / OSX](https://travis-ci.org/buddhi1980/mandelbulber2.svg)](https://travis-ci.org/buddhi1980/mandelbulber2), Windows: [![Build Status Windows](https://ci.appveyor.com/api/projects/status/ce02h8jyxc6f8vt4?svg=true)](https://ci.appveyor.com/project/zebastian/mandelbulber2-s84yl)|[![Join the chat at https://gitter.im/buddhi1980/mandelbulber2](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/buddhi1980/mandelbulber2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)|
+|[![Coverity Scan](https://scan.coverity.com/projects/4723/badge.svg?flat=1)](https://scan.coverity.com/projects/mandelbulber-v2)|Linux / OSX: [![Build Status Linux / OSX](https://travis-ci.org/buddhi1980/mandelbulber2.svg)](https://travis-ci.org/buddhi1980/mandelbulber2), Windows: [![Build Status Windows](https://ci.appveyor.com/api/projects/status/urd2h30tu7reg4mp?svg=true)](https://ci.appveyor.com/project/buddhi1980/mandelbulber2)|[![Join the chat at https://gitter.im/buddhi1980/mandelbulber2](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/buddhi1980/mandelbulber2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)|
 
 
 
@@ -49,9 +49,16 @@ In render window:
 
 ## Building and Deploying 
 
+Dowload latest stable version from [Releases] (https://github.com/buddhi1980/mandelbulber2/releases)
+
+Unpack dowloaded file and follow instructions from README file
 Please see information in [mandelbulber2/deploy](mandelbulber2/deploy) folder.
 
 ## Easy Preparation for Development
+
+Thre program is natively developed using Qt Creator under Linux (Debian or Ubuntu)
+
+The file [mandelbulber2/Release/mandelbulber.pro] (https://github.com/buddhi1980/mandelbulber2/blob/master/mandelbulber2/Release/mandelbulber.pro) provides all needed configuration for Qt Creator. But to be able to compile the program, the system has to be prepared.
 
 Use the following scripts to prepare your Linux environment for development.
 These scripts install all required packages, compile the program, and create symbolic links in /usr/share/mandelbulber to your working directory.
@@ -66,11 +73,14 @@ These scripts install all required packages, compile the program, and create sym
 [Arch Linux AUR Package (builds latest git snapshot)]
 (https://aur.archlinux.org/packages/mandelbulber2-git/)
 
+In addition there is prepared solution for VC++ 2015 located in root folder of git package. This solution includes all needed nugets to compile the program.
+
 ## Resources
 
 [Image Gallery] (http://krzysztofmarczak.deviantart.com/gallery/)
 
 [Forum] (http://www.fractalforums.com/mandelbulber/)
+[Forum Gallery] (http://www.fractalforums.com/index.php?action=gallery;cat=51)
 
 [Compiled Binaries](http://sourceforge.net/projects/mandelbulber/)
 

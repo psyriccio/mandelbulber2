@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -49,11 +49,11 @@ class cMaterialSelector : public QWidget, public CommonMyWidgetWrapper
 	Q_OBJECT
 
 public:
-	cMaterialSelector(QWidget *parent = NULL);
+	cMaterialSelector(QWidget *parent = nullptr);
 	~cMaterialSelector();
 
 	void SetMaterialIndex(int materialIndex);
-	int GetMaterialIndex() { return actualValue; }
+	int GetMaterialIndex() const { return actualValue; }
 
 private:
 	cMaterialWidget *materialWidget;
@@ -61,22 +61,22 @@ private:
 	QLabel *label;
 
 	// methods to define from CommonMyWidgetWrapper
-	virtual void resetToDefault();
-	virtual QString getDefaultAsString();
-	virtual QString getFullParameterName();
+	void resetToDefault() override;
+	QString getDefaultAsString() override;
+	QString getFullParameterName() override;
 
 	int GetDefault();
 	int defaultValue;
 	int actualValue;
 
 protected:
-	void contextMenuEvent(QContextMenuEvent *event);
-	void paintEvent(QPaintEvent *event);
+	void contextMenuEvent(QContextMenuEvent *event) override;
+	void paintEvent(QPaintEvent *event) override;
 
 private slots:
 	void slotClicked(Qt::MouseButton button);
 	void slotMaterialSelected(int matIndex);
-	void slotMaterialEdited();
+	void slotMaterialEdited() const;
 };
 
 #endif /* MANDELBULBER2_QT_MATERIAL_SELECTOR_H_ */

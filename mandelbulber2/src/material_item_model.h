@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -52,26 +52,28 @@ public:
 
 	// will be used to synchronize the data
 	void AssignContainer(cParameterContainer *_parameterContainer);
+	cParameterContainer *GetContainer() { return container; };
 
 	// regenerate model from parametr container data
 	void Regenerate();
 
 	// will return number of material items
-	int rowCount(const QModelIndex &parent = QModelIndex()) const;
+	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
 	// will return QString with settings string (from cSettings) for selected index
 	// will be also used to update material data after editing
-	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-	bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
+	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+	bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 
 	// will provide material name
-	QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
+	QVariant headerData(
+		int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
-	bool insertRows(int position, int rows, const QModelIndex &parent = QModelIndex());
-	bool removeRows(int position, int rows, const QModelIndex &parent = QModelIndex());
+	bool insertRows(int position, int rows, const QModelIndex &parent = QModelIndex()) override;
+	bool removeRows(int position, int rows, const QModelIndex &parent = QModelIndex()) override;
 
-	int materialIndex(const QModelIndex &index);
-	QModelIndex getModelIndexByMaterialId(int materialId);
+	int materialIndex(const QModelIndex &index) const;
+	QModelIndex getModelIndexByMaterialId(int materialId) const;
 
 	void insertRowWithParameters(const cParameterContainer *params1);
 

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -80,7 +80,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 
 				if (className == QString("MyLineEdit"))
 				{
-					MyLineEdit *mylineedit = (MyLineEdit *)*it;
+					MyLineEdit *mylineedit = static_cast<MyLineEdit *>(*it);
 					mylineedit->AssignParameterContainer(par);
 					mylineedit->AssignParameterName(parameterName);
 				}
@@ -88,7 +88,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 				//----- get vectors ------------
 				if (type == QString("vect3") || type == QString("logvect3"))
 				{
-					char lastChar = (parameterName.at(parameterName.length() - 1)).toLatin1();
+					char lastChar = parameterName.at(parameterName.length() - 1).toLatin1();
 					QString nameVect = parameterName.left(parameterName.length() - 2);
 
 					if (mode == read)
@@ -138,7 +138,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 				//----- get vectors 4D  ------------
 				if (type == QString("vect4"))
 				{
-					char lastChar = (parameterName.at(parameterName.length() - 1)).toLatin1();
+					char lastChar = parameterName.at(parameterName.length() - 1).toLatin1();
 					QString nameVect = parameterName.left(parameterName.length() - 2);
 
 					if (mode == read)
@@ -244,7 +244,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 
 				if (className == QString("MyDoubleSpinBox"))
 				{
-					MyDoubleSpinBox *mydoublespinbox = (MyDoubleSpinBox *)*it;
+					MyDoubleSpinBox *mydoublespinbox = static_cast<MyDoubleSpinBox *>(*it);
 					mydoublespinbox->AssignParameterContainer(par);
 					mydoublespinbox->AssignParameterName(parameterName);
 				}
@@ -264,7 +264,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 				}
 				else if (type == QString("spinbox3") || type == QString("spinboxd3"))
 				{
-					char lastChar = (parameterName.at(parameterName.length() - 1)).toLatin1();
+					char lastChar = parameterName.at(parameterName.length() - 1).toLatin1();
 					QString nameVect = parameterName.left(parameterName.length() - 2);
 					if (mode == read)
 					{
@@ -309,7 +309,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 				}
 				else if (type == QString("spinbox4") || type == QString("spinboxd4"))
 				{
-					char lastChar = (parameterName.at(parameterName.length() - 1)).toLatin1();
+					char lastChar = parameterName.at(parameterName.length() - 1).toLatin1();
 					QString nameVect = parameterName.left(parameterName.length() - 2);
 					if (mode == read)
 					{
@@ -380,7 +380,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 
 				if (className == QString("MySpinBox"))
 				{
-					MySpinBox *myspinbox = (MySpinBox *)*it;
+					MySpinBox *myspinbox = static_cast<MySpinBox *>(*it);
 					myspinbox->AssignParameterContainer(par);
 					myspinbox->AssignParameterName(parameterName);
 				}
@@ -423,7 +423,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 
 				if (className == QString("MyCheckBox"))
 				{
-					MyCheckBox *mycheckbox = (MyCheckBox *)*it;
+					MyCheckBox *mycheckbox = static_cast<MyCheckBox *>(*it);
 					mycheckbox->AssignParameterContainer(par);
 					mycheckbox->AssignParameterName(parameterName);
 				}
@@ -466,7 +466,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 
 				if (className == QString("MyGroupBox"))
 				{
-					MyGroupBox *mygroupbox = (MyGroupBox *)*it;
+					MyGroupBox *mygroupbox = static_cast<MyGroupBox *>(*it);
 					mygroupbox->AssignParameterContainer(par);
 					mygroupbox->AssignParameterName(parameterName);
 				}
@@ -680,7 +680,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 		{
 			QString name = (*it)->objectName();
 			QString className = (*it)->metaObject()->className();
-			if (name.length() > 1 && (className == QString("QPlainTextEdit")))
+			if (name.length() > 1 && className == QString("QPlainTextEdit"))
 			{
 				QPlainTextEdit *textEdit = *it;
 
@@ -711,14 +711,7 @@ void SynchronizeInterfaceWindow(QWidget *window, cParameterContainer *par, enumR
 // extract name and type string from widget name
 void GetNameAndType(QString name, QString *parameterName, QString *type)
 {
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4267) // possible loss of data
-#endif
-	size_t firstDashPosition = name.indexOf("_");
+	int firstDashPosition = name.indexOf("_");
 	*type = name.left(firstDashPosition);
 	*parameterName = name.mid(firstDashPosition + 1);
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
 }

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -61,7 +61,7 @@
 sSystem systemData;
 sActualFileNames actualFileNames;
 
-bool InitSystem(void)
+bool InitSystem()
 {
 	setlocale(LC_ALL, "");
 	systemData.locale = QLocale::system();
@@ -75,7 +75,7 @@ bool InitSystem(void)
 	systemData.homedir = QDir::toNativeSeparators(QDir::homePath() + QDir::separator());
 
 #ifdef WIN32 /* WINDOWS */
-	systemData.sharedDir = QDir::toNativeSeparators((QDir::currentPath() + QDir::separator()));
+	systemData.sharedDir = QDir::toNativeSeparators(QDir::currentPath() + QDir::separator());
 #else
 	systemData.sharedDir = QDir::toNativeSeparators(QString(SHARED_DIR) + QDir::separator());
 #endif /* WINDOWS */
@@ -195,7 +195,7 @@ void WriteLog(QString text, int verbosityLevel)
 		fclose(logfile);
 
 		// write to log in window
-		if (gMainInterface && gMainInterface->mainWindow != NULL)
+		if (gMainInterface && gMainInterface->mainWindow != nullptr)
 		{
 			gMainInterface->mainWindow->AppendToLog(logtext);
 		}
@@ -212,7 +212,7 @@ void WriteLogDouble(QString text, double value, int verbosityLevel)
 	WriteLog(text + ", value = " + QString::number(value), verbosityLevel);
 }
 
-bool CreateDefaultFolders(void)
+bool CreateDefaultFolders()
 {
 	// create data directory if not exists
 	bool result = true;
@@ -222,6 +222,7 @@ bool CreateDefaultFolders(void)
 	result &= CreateFolder(systemData.GetImagesFolder());
 	result &= CreateFolder(systemData.GetThumbnailsFolder());
 	result &= CreateFolder(systemData.GetToolbarFolder());
+	result &= CreateFolder(systemData.GetCustomWindowStateFolder());
 	result &= CreateFolder(systemData.GetSettingsFolder());
 	result &= CreateFolder(systemData.GetSlicesFolder());
 	result &= CreateFolder(systemData.GetMaterialsFolder());
@@ -332,7 +333,7 @@ int fcopy(QString source, QString dest)
 	size_t result;
 
 	pFile = fopen(source.toLocal8Bit().constData(), "rb");
-	if (pFile == NULL)
+	if (pFile == nullptr)
 	{
 		qCritical() << "Can't open source file for copying: " << source << endl;
 		WriteLogString("Can't open source file for copying", source, 1);
@@ -351,7 +352,7 @@ int fcopy(QString source, QString dest)
 
 		// copy the file into the buffer:
 		result = fread(buffer, 1, lSize, pFile);
-		if (result != (size_t)lSize)
+		if (result != size_t(lSize))
 		{
 			qCritical() << "Can't read source file for copying: " << source << endl;
 			WriteLogString("Can't read source file for copying", source, 1);
@@ -371,7 +372,7 @@ int fcopy(QString source, QString dest)
 	// ----- file writing
 
 	pFile = fopen(dest.toLocal8Bit().constData(), "wb");
-	if (pFile == NULL)
+	if (pFile == nullptr)
 	{
 		qCritical() << "Can't open destination file for copying: " << dest << endl;
 		WriteLogString("Can't open destination file for copying", dest, 1);
@@ -435,7 +436,7 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 	if (type == QtFatalMsg) abort();
 }
 
-void UpdateDefaultPaths(void)
+void UpdateDefaultPaths()
 {
 	systemData.lastSettingsFile =
 		gPar->Get<QString>("default_settings_path") + QDir::separator() + QString("settings.fract");
@@ -449,7 +450,7 @@ void UpdateDefaultPaths(void)
 		gPar->Get<QString>("default_textures_path") + QDir::separator() + "lightmap.jpg");
 }
 
-void UpdateUIStyle(void)
+void UpdateUIStyle()
 {
 	// set ui style
 	if (gPar->Get<int>("ui_style_type") >= 0
@@ -460,7 +461,7 @@ void UpdateUIStyle(void)
 	}
 }
 
-void UpdateUISkin(void)
+void UpdateUISkin()
 {
 	static QPalette defaultPalette; // cache "normal" skin on first call
 	QPalette palette;

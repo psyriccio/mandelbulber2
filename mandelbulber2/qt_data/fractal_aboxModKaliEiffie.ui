@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>988</width>
-    <height>3149</height>
+    <height>3300</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,14 +56,14 @@
      <item row="3" column="2">
       <widget class="QLabel" name="label_124">
        <property name="text">
-        <string>z:</string>
+        <string notr="true">z</string>
        </property>
       </widget>
      </item>
      <item row="1" column="2">
       <widget class="QLabel" name="label_123">
        <property name="text">
-        <string>x:</string>
+        <string notr="true">x</string>
        </property>
       </widget>
      </item>
@@ -159,7 +159,7 @@
      <item row="2" column="2">
       <widget class="QLabel" name="label_122">
        <property name="text">
-        <string>y:</string>
+        <string notr="true">y</string>
        </property>
       </widget>
      </item>
@@ -188,7 +188,7 @@
      <item row="2" column="1">
       <widget class="QLabel" name="label_257">
        <property name="text">
-        <string>Offset:   </string>
+        <string>Offset:</string>
        </property>
       </widget>
      </item>
@@ -204,7 +204,7 @@
    <item>
     <widget class="MyGroupBox" name="groupCheck_transf_function_enabledx_false">
      <property name="title">
-      <string>&amp;z.z box fold scale,  for normal use set &quot;offset z:&quot;  (above) = 0.00</string>
+      <string>&amp;z.z box fold scale, for normal use set &quot;Offset z&quot; (above) to 0.00</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -252,7 +252,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_52">
           <property name="text">
-           <string>Start at iteration :</string>
+           <string>Start at iteration:</string>
           </property>
          </widget>
         </item>
@@ -635,7 +635,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_167">
        <property name="text">
-        <string>Minimum Radius^2: </string>
+        <string>Minimum Radius^2:</string>
        </property>
       </widget>
      </item>
@@ -721,28 +721,28 @@
      <item row="1" column="1">
       <widget class="QLabel" name="label_255">
        <property name="text">
-        <string>Offset:   </string>
+        <string>Offset:</string>
        </property>
       </widget>
      </item>
      <item row="0" column="2">
       <widget class="QLabel" name="label_117">
        <property name="text">
-        <string>x:</string>
+        <string notr="true">x</string>
        </property>
       </widget>
      </item>
      <item row="2" column="2">
       <widget class="QLabel" name="label_118">
        <property name="text">
-        <string>z:</string>
+        <string notr="true">z</string>
        </property>
       </widget>
      </item>
      <item row="1" column="2">
       <widget class="QLabel" name="label_113">
        <property name="text">
-        <string>y:</string>
+        <string notr="true">y</string>
        </property>
       </widget>
      </item>
@@ -901,32 +901,32 @@
          <widget class="QComboBox" name="comboBox_mandelbulbMulti_order_of_xyz">
           <item>
            <property name="text">
-            <string>xyz</string>
+            <string notr="true">xyz</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>xzy</string>
+            <string notr="true">xzy</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>yxz</string>
+            <string notr="true">yxz</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>yzx</string>
+            <string notr="true">yzx</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>zxy</string>
+            <string notr="true">zxy</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>zyx</string>
+            <string notr="true">zyx</string>
            </property>
           </item>
          </widget>
@@ -934,7 +934,7 @@
         <item row="0" column="2">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>function order of c.x, c.y and c.z: </string>
+           <string>function order of c.x, c.y and c.z:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1025,28 +1025,28 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_116">
           <property name="text">
-           <string>c.x:</string>
+           <string notr="true">c.x</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
          <widget class="QLabel" name="label_114">
           <property name="text">
-           <string>c.y:</string>
+           <string notr="true">c.y</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
          <widget class="QLabel" name="label_115">
           <property name="text">
-           <string>c.z:</string>
+           <string notr="true">c.z</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0" rowspan="3">
          <widget class="QLabel" name="label_108">
           <property name="text">
-           <string>Cpixel Multiplier</string>
+           <string>Cpixel Multiplier:</string>
           </property>
          </widget>
         </item>
@@ -1118,7 +1118,7 @@
    <item>
     <widget class="MyGroupBox" name="groupCheck_transf_rotation_enabled">
      <property name="title">
-      <string> &amp;Rotation; </string>
+      <string>&amp;Rotation</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -1160,7 +1160,7 @@
         <item row="1" column="2">
          <widget class="QLabel" name="label_247">
           <property name="text">
-           <string>Stop  Rotation at iteration:</string>
+           <string>Stop Rotation at iteration:</string>
           </property>
          </widget>
         </item>
@@ -1193,7 +1193,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_246">
           <property name="text">
-           <string>Start Rotation at iteration :</string>
+           <string>Start Rotation at iteration:</string>
           </property>
          </widget>
         </item>
@@ -1220,7 +1220,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_35">
           <property name="text">
-           <string>alpha</string>
+           <string notr="true">alpha</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1327,7 +1327,7 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_34">
           <property name="text">
-           <string>beta</string>
+           <string notr="true">beta</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1337,7 +1337,7 @@
         <item row="1" column="2">
          <widget class="QLabel" name="label_36">
           <property name="text">
-           <string>gamma</string>
+           <string notr="true">gamma</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1474,7 +1474,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Fold function components -group weight:   </string>
+        <string>Fold function components -group weight:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1568,7 +1568,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Scale component  </string>
+        <string>Scale component:</string>
        </property>
       </widget>
      </item>
@@ -1759,7 +1759,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Orbit trap component</string>
+        <string>Orbit trap component:</string>
        </property>
       </widget>
      </item>
@@ -1803,7 +1803,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Absolute value of z  component  </string>
+        <string>Absolute value of z component:</string>
        </property>
       </widget>
      </item>
@@ -2052,6 +2052,7 @@
         &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;fabs&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;additionConstant111&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;) -&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;fabs&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;additionConstant111&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
         &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;fabs&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;additionConstant111&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;) -&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+
   aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbox&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;factor&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbox&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;factor&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbox&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;factor&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
@@ -2060,18 +2061,12 @@
       &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; i &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;gt;=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;startIterationsA
       &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; i &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;stopIterationsA&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// box fold z.z&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-
     &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; zLimit &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt;
       fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;additionConstant111&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale1&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; zValue &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbox&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;foldingValue &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale1&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;gt;&lt;/span&gt; zLimit&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color:#e47eed&quot;&gt;fabs&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;) &amp;gt;&lt;/span&gt; zLimit&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
     &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-      z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; zValue &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbox&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;factor&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt; -&lt;/span&gt;zLimit&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-    &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-      z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;= -&lt;/span&gt;zValue &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;sign&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;) *&lt;/span&gt; zValue &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
       aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbox&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;color&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;factor&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
@@ -2083,9 +2078,7 @@
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;gt;&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; z &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// conditional&lt;/span&gt;
 
   &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; rr &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color:#e47eed&quot;&gt;Dot&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
-  &lt;span style=&quot;color:#d0d0a0&quot;&gt;// if(rr &amp;lt; 1e-21) rr = 1e-21;&lt;/span&gt;
   &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; MinR &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;minR05&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-  &lt;span style=&quot;color:#d0d0a0&quot;&gt;// if (MinR &amp;lt; -1e-21 &amp;amp;&amp;amp; MinR &amp;lt; 1e-21) MinR = (MinR &amp;gt; 0) ? 1e-21 : -1e-21;&lt;/span&gt;
   &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; m &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale015&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;rr &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;lt;&lt;/span&gt; MinR&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
@@ -2185,9 +2178,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MyDoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>my_double_spin_box.h</header>
+   <class>MySpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>my_spin_box.h</header>
   </customwidget>
   <customwidget>
    <class>MyGroupBox</class>
@@ -2196,11 +2189,77 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>MySpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>my_spin_box.h</header>
+   <class>MyDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>my_double_spin_box.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>slider3_transf_addition_constant_111_x</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_111_x</tabstop>
+  <tabstop>slider3_transf_addition_constant_111_y</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_111_y</tabstop>
+  <tabstop>slider3_transf_addition_constant_111_z</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_111_z</tabstop>
+  <tabstop>groupCheck_transf_function_enabledx_false</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_A</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_A</tabstop>
+  <tabstop>slider_mandelbox_folding_limit</tabstop>
+  <tabstop>spinbox_mandelbox_folding_limit</tabstop>
+  <tabstop>slider_mandelbox_folding_value</tabstop>
+  <tabstop>spinbox_mandelbox_folding_value</tabstop>
+  <tabstop>slider_transf_scale_1</tabstop>
+  <tabstop>spinbox_transf_scale_1</tabstop>
+  <tabstop>checkBox_transf_function_enabled</tabstop>
+  <tabstop>slider_transf_minimum_radius_05</tabstop>
+  <tabstop>spinbox_transf_minimum_radius_05</tabstop>
+  <tabstop>slider_transf_scale_015</tabstop>
+  <tabstop>spinbox_transf_scale_015</tabstop>
+  <tabstop>slider3_transf_addition_constant_x</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_x</tabstop>
+  <tabstop>slider3_transf_addition_constant_y</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_y</tabstop>
+  <tabstop>slider3_transf_addition_constant_z</tabstop>
+  <tabstop>spinbox3_transf_addition_constant_z</tabstop>
+  <tabstop>groupCheck_transf_addCpixel_enabled</tabstop>
+  <tabstop>checkBox_transf_alternate_enabled_false</tabstop>
+  <tabstop>comboBox_mandelbulbMulti_order_of_xyz</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_x</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_x</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_y</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_y</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_z</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_z</tabstop>
+  <tabstop>groupCheck_transf_rotation_enabled</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations</tabstop>
+  <tabstop>dial3_transf_rotation_x</tabstop>
+  <tabstop>dial3_transf_rotation_y</tabstop>
+  <tabstop>dial3_transf_rotation_z</tabstop>
+  <tabstop>spinboxd3_transf_rotation_x</tabstop>
+  <tabstop>spinboxd3_transf_rotation_y</tabstop>
+  <tabstop>spinboxd3_transf_rotation_z</tabstop>
+  <tabstop>spinbox_fold_color_comp_fold0</tabstop>
+  <tabstop>slider3_mandelbox_color_x</tabstop>
+  <tabstop>spinbox3_mandelbox_color_x</tabstop>
+  <tabstop>slider3_mandelbox_color_y</tabstop>
+  <tabstop>spinbox3_mandelbox_color_y</tabstop>
+  <tabstop>slider3_mandelbox_color_z</tabstop>
+  <tabstop>spinbox3_mandelbox_color_z</tabstop>
+  <tabstop>slider_mandelbox_color_Sp1</tabstop>
+  <tabstop>spinbox_mandelbox_color_Sp1</tabstop>
+  <tabstop>slider_mandelbox_color_Sp2</tabstop>
+  <tabstop>spinbox_mandelbox_color_Sp2</tabstop>
+  <tabstop>slider_fold_color_comp_scale</tabstop>
+  <tabstop>spinbox_fold_color_comp_scale</tabstop>
+  <tabstop>slider_fold_color_color_min</tabstop>
+  <tabstop>spinbox_fold_color_color_min</tabstop>
+  <tabstop>slider_mandelbox_color_R</tabstop>
+  <tabstop>spinbox_mandelbox_color_R</tabstop>
+  <tabstop>slider_fold_color_comp_minR</tabstop>
+  <tabstop>spinbox_fold_color_comp_minR</tabstop>
+  <tabstop>groupCheck_info</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -58,7 +58,7 @@ cRenderer::cRenderer(const cParamRender *_params, const cNineFractals *_fractal,
 	fractal = _fractal;
 	data = _renderData;
 	image = _image;
-	scheduler = NULL;
+	scheduler = nullptr;
 	netRenderAckReceived = true;
 }
 
@@ -78,12 +78,12 @@ bool cRenderer::RenderImage()
 		int progressiveSteps;
 		if (data->configuration.UseProgressive())
 			progressiveSteps =
-				(int)(log((double)max(image->GetWidth(), image->GetHeight())) / log(2.0)) - 3;
+				int(log(double(max(image->GetWidth(), image->GetHeight()))) / log(2.0)) - 3;
 		else
 			progressiveSteps = 0;
 
 		if (progressiveSteps < 0) progressiveSteps = 0;
-		int progressive = pow(2.0, (double)progressiveSteps - 1);
+		int progressive = pow(2.0, double(progressiveSteps) - 1);
 		if (progressive == 0) progressive = 1;
 
 		// prepare multiple threads
@@ -452,7 +452,7 @@ bool cRenderer::RenderImage()
 	}
 }
 
-void cRenderer::CreateLineData(int y, QByteArray *lineData)
+void cRenderer::CreateLineData(int y, QByteArray *lineData) const
 {
 	if (y >= 0 && y < image->GetHeight())
 	{
@@ -469,15 +469,8 @@ void cRenderer::CreateLineData(int y, QByteArray *lineData)
 			if (image->GetImageOptional()->optionalNormal)
 				lineOfImage[x].normalFloat = image->GetPixelNormal(x, y);
 		}
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4267) // possible loss of data
-#endif
-		lineData->append((char *)lineOfImage, dataSize);
+		lineData->append(reinterpret_cast<char *>(lineOfImage), dataSize);
 		delete[] lineOfImage;
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
 	}
 	else
 	{
@@ -485,7 +478,7 @@ void cRenderer::CreateLineData(int y, QByteArray *lineData)
 	}
 }
 
-void cRenderer::NewLinesArrived(QList<int> lineNumbers, QList<QByteArray> lines)
+void cRenderer::NewLinesArrived(QList<int> lineNumbers, QList<QByteArray> lines) const
 {
 	for (int i = 0; i < lineNumbers.size(); i++)
 	{
@@ -517,7 +510,7 @@ void cRenderer::NewLinesArrived(QList<int> lineNumbers, QList<QByteArray> lines)
 	scheduler->MarkReceivedLines(lineNumbers);
 }
 
-void cRenderer::ToDoListArrived(QList<int> toDo)
+void cRenderer::ToDoListArrived(QList<int> toDo) const
 {
 	scheduler->UpdateDoneLines(toDo);
 }

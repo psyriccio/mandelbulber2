@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -51,9 +51,11 @@
 #include "keyframes.hpp"
 #include "settings.hpp"
 #include "system.hpp"
+#include "animation_flight.hpp"
+#include "animation_keyframes.hpp"
 #include "ui_render_window.h"
 
-void RenderWindow::slotResizedScrolledAreaImage(int width, int height)
+void RenderWindow::slotResizedScrolledAreaImage(int width, int height) const
 {
 	if (gMainInterface->mainImage)
 	{
@@ -70,7 +72,7 @@ void RenderWindow::slotResizedScrolledAreaImage(int width, int height)
 	}
 }
 
-void RenderWindow::slotChangedComboImageScale(int index)
+void RenderWindow::slotChangedComboImageScale(int index) const
 {
 	if (gMainInterface->mainImage)
 	{
@@ -97,11 +99,11 @@ void RenderWindow::slotMouseMovedOnImage(int x, int y)
 	// CVector2<int> point(x, y);
 }
 
-void RenderWindow::slotMouseClickOnImage(int x, int y, Qt::MouseButton button)
+void RenderWindow::slotMouseClickOnImage(int x, int y, Qt::MouseButton button) const
 {
 	int index = ui->comboBox_mouse_click_function->currentIndex();
 	QList<QVariant> mode = ui->comboBox_mouse_click_function->itemData(index).toList();
-	RenderedImage::enumClickMode clickMode = (RenderedImage::enumClickMode)mode.at(0).toInt();
+	RenderedImage::enumClickMode clickMode = RenderedImage::enumClickMode(mode.at(0).toInt());
 
 	switch (clickMode)
 	{
@@ -124,7 +126,7 @@ void RenderWindow::slotMouseClickOnImage(int x, int y, Qt::MouseButton button)
 	}
 }
 
-void RenderWindow::slotChangedComboMouseClickFunction(int index)
+void RenderWindow::slotChangedComboMouseClickFunction(int index) const
 {
 	if (index >= 0) // if list is empty, then index = -1
 	{
@@ -184,11 +186,11 @@ void RenderWindow::slotKeyReleaseOnImage(QKeyEvent *event)
 	(void)event;
 }
 
-void RenderWindow::slotMouseWheelRotatedOnImage(int delta)
+void RenderWindow::slotMouseWheelRotatedOnImage(int delta) const
 {
 	int index = ui->comboBox_mouse_click_function->currentIndex();
 	QList<QVariant> mode = ui->comboBox_mouse_click_function->itemData(index).toList();
-	RenderedImage::enumClickMode clickMode = (RenderedImage::enumClickMode)mode.at(0).toInt();
+	RenderedImage::enumClickMode clickMode = RenderedImage::enumClickMode(mode.at(0).toInt());
 	switch (clickMode)
 	{
 		case RenderedImage::clickPlaceLight:
@@ -245,7 +247,7 @@ void RenderWindow::slotPopulateToolbar(bool completeRefresh)
 			continue;
 		}
 		QString filename = systemData.GetToolbarFolder() + QDir::separator() + toolbarFiles.at(i);
-		cThumbnailWidget *thumbWidget = NULL;
+		cThumbnailWidget *thumbWidget = nullptr;
 
 		if (QFileInfo(filename).suffix() == QString("fract"))
 		{
@@ -258,8 +260,8 @@ void RenderWindow::slotPopulateToolbar(bool completeRefresh)
 				cParameterContainer *par = new cParameterContainer;
 				cFractalContainer *parFractal = new cFractalContainer;
 				InitParams(par);
-				for (int i = 0; i < NUMBER_OF_FRACTALS; i++)
-					InitFractalParams(&parFractal->at(i));
+				for (int j = 0; j < NUMBER_OF_FRACTALS; j++)
+					InitFractalParams(&parFractal->at(j));
 
 				/****************** TEMPORARY CODE FOR MATERIALS *******************/
 
@@ -331,13 +333,17 @@ void RenderWindow::slotMenuLoadPreset(QString filename)
 {
 	cSettings parSettings(cSettings::formatFullText);
 	parSettings.LoadFromFile(filename);
-	parSettings.Decode(gPar, gParFractal);
+	parSettings.Decode(gPar, gParFractal, gAnimFrames, gKeyframes);
 	gMainInterface->RebuildPrimitives(gPar);
 	gMainInterface->materialListModel->Regenerate();
 	gMainInterface->SynchronizeInterface(gPar, gParFractal, qInterface::write);
 	gMainInterface->ComboMouseClickUpdate();
 	systemData.lastSettingsFile = gPar->Get<QString>("default_settings_path") + QDir::separator()
 																+ QFileInfo(filename).fileName();
+
+	gFlightAnimation->RefreshTable();
+	gKeyframeAnimation->RefreshTable();
+	showDescriptionPopup();
 	this->setWindowTitle(QString("Mandelbulber (") + systemData.lastSettingsFile + ")");
 }
 
@@ -345,6 +351,132 @@ void RenderWindow::slotMenuRemovePreset(QString filename)
 {
 	QFile::remove(filename);
 	slotPopulateToolbar();
+}
+
+// adds dynamic actions to the view > window states
+void RenderWindow::slotPopulateCustomWindowStates(bool completeRefresh)
+{
+	WriteLog("cInterface::slotPopulateCustomWindowStates() started", 2);
+	QDir customWindowStateDir = QDir(systemData.GetCustomWindowStateFolder());
+	customWindowStateDir.setSorting(QDir::Time);
+	QStringList geometryFileExtension({"*.geometry"});
+	customWindowStateDir.setNameFilters(geometryFileExtension);
+	QStringList customWindowStateFiles =
+		customWindowStateDir.entryList(QDir::NoDotAndDotDot | QDir::Files);
+	QSignalMapper *mapCustomWindowLoad = new QSignalMapper(this);
+	QSignalMapper *mapCustomWindowRemove = new QSignalMapper(this);
+
+	QList<QAction *> actions = ui->menuView->actions();
+	QStringList customWindowActions;
+	for (int i = 0; i < actions.size(); i++)
+	{
+		QAction *action = actions.at(i);
+		if (!action->objectName().startsWith("window_")) continue;
+		if (!customWindowStateFiles.contains(action->objectName()) || completeRefresh)
+		{
+			// preset has been removed
+			ui->menuView->removeAction(action);
+		}
+		else
+		{
+			customWindowActions << action->objectName();
+		}
+	}
+
+	for (int i = 0; i < customWindowStateFiles.size(); i++)
+	{
+		QString customWindowStateGeometryFile = customWindowStateFiles.at(i);
+		QString customWindowStateFile = customWindowStateGeometryFile.replace(".geometry", "");
+		if (customWindowActions.contains("window_" + customWindowStateFile))
+		{
+			// already present
+			continue;
+		}
+		QString filename =
+			systemData.GetCustomWindowStateFolder() + QDir::separator() + customWindowStateFile;
+
+		QWidgetAction *action = new QWidgetAction(this);
+		QPushButton *buttonLoad = new QPushButton;
+		QHBoxLayout *tooltipLayout = new QHBoxLayout;
+		QToolButton *buttonRemove = new QToolButton;
+		QLabel *label = new QLabel;
+
+		buttonLoad->setStyleSheet("QPushButton{ border: none; margin: 2px; padding: 1px; }");
+		label->setText(QByteArray().fromBase64(QByteArray().append(customWindowStateFile)));
+		tooltipLayout->setContentsMargins(5, 0, 0, 0);
+		QIcon iconDelete = QIcon::fromTheme("list-remove", QIcon(":system/icons/list-remove.svg"));
+		buttonRemove->setIcon(iconDelete);
+		buttonRemove->setMaximumSize(QSize(15, 15));
+		tooltipLayout->addWidget(buttonRemove);
+		tooltipLayout->addWidget(label);
+		buttonLoad->setLayout(tooltipLayout);
+		action->setDefaultWidget(buttonLoad);
+		action->setObjectName("window_" + customWindowStateFile);
+		ui->menuView->addAction(action);
+
+		mapCustomWindowLoad->setMapping(buttonLoad, filename);
+		mapCustomWindowRemove->setMapping(buttonRemove, filename);
+		QApplication::connect(buttonLoad, SIGNAL(clicked()), mapCustomWindowLoad, SLOT(map()));
+		QApplication::connect(buttonRemove, SIGNAL(clicked()), mapCustomWindowRemove, SLOT(map()));
+		QApplication::processEvents();
+	}
+	QApplication::connect(mapCustomWindowLoad, SIGNAL(mapped(QString)), this,
+		SLOT(slotMenuLoadCustomWindowState(QString)));
+
+	QApplication::connect(mapCustomWindowRemove, SIGNAL(mapped(QString)), this,
+		SLOT(slotMenuRemoveCustomWindowState(QString)));
+
+	WriteLog("cInterface::slotPopulateCustomWindowStates() finished", 2);
+}
+
+void RenderWindow::slotCustomWindowStateAddToMenu()
+{
+	bool ok;
+	QString text = QInputDialog::getText(this, tr("Add window settings"),
+		tr("Enter a name for the new window settings"), QLineEdit::Normal, "", &ok);
+	if (!ok || text.isEmpty())
+	{
+		qDebug() << "Cancelled window saving";
+		return;
+	}
+	QString textEncoded = QByteArray().append(text).toBase64();
+	QString basePath = systemData.GetCustomWindowStateFolder() + QDir::separator();
+	QString filename = basePath + textEncoded;
+	QString filenamGeometry = filename + ".geometry";
+	QString filenameState = filename + ".state";
+	QFile fileGeometry(filenamGeometry);
+	QFile fileState(filenameState);
+	if (!fileGeometry.open(QIODevice::WriteOnly) || !fileState.open(QIODevice::WriteOnly))
+	{
+		qWarning() << "Could not open output files: " << filename << ".[geometry,state]";
+		return;
+	}
+	fileGeometry.write(saveGeometry());
+	fileState.write(saveState());
+	fileGeometry.close();
+	fileState.close();
+
+	slotPopulateCustomWindowStates();
+}
+
+void RenderWindow::slotMenuLoadCustomWindowState(QString filename)
+{
+	QFile fileGeometry(filename + ".geometry");
+	QFile fileState(filename + ".state");
+	if (!fileGeometry.open(QIODevice::ReadOnly) || !fileState.open(QIODevice::ReadOnly))
+	{
+		qWarning() << "Could not open input files: " << filename << ".[geometry,state]";
+		return;
+	}
+	// this->restoreGeometry(fileGeometry.readAll());
+	this->restoreState(fileState.readAll());
+}
+
+void RenderWindow::slotMenuRemoveCustomWindowState(QString filename)
+{
+	QFile::remove(filename + ".geometry");
+	QFile::remove(filename + ".state");
+	slotPopulateCustomWindowStates();
 }
 
 void RenderWindow::slotQuit()
@@ -377,10 +509,10 @@ void RenderWindow::changeEvent(QEvent *event)
 }
 
 void RenderWindow::slotUpdateProgressAndStatus(const QString &text, const QString &progressText,
-	double progress, cProgressText::enumProgressType progressType)
+	double progress, cProgressText::enumProgressType progressType) const
 {
 	ui->statusbar->showMessage(text, 0);
-	MyProgressBar *progressBar = NULL;
+	MyProgressBar *progressBar = nullptr;
 	bool isQueue = this->sender() && this->sender()->objectName() == "Queue";
 	switch (progressType)
 	{
@@ -415,7 +547,7 @@ void RenderWindow::slotUpdateProgressAndStatus(const QString &text, const QStrin
 
 void RenderWindow::slotUpdateProgressHide(cProgressText::enumProgressType progressType)
 {
-	MyProgressBar *progressBar = NULL;
+	MyProgressBar *progressBar = nullptr;
 	switch (progressType)
 	{
 		case cProgressText::progress_IMAGE: progressBar = gMainInterface->progressBar; break;
@@ -470,17 +602,17 @@ void RenderWindow::slotExportMesh()
 }
 
 void RenderWindow::slotQuestionMessage(const QString &questionTitle, const QString &questionText,
-	QMessageBox::StandardButtons buttons, QMessageBox::StandardButton *reply)
+	QMessageBox::StandardButtons buttons, QMessageBox::StandardButton *reply) const
 {
 	*reply = QMessageBox::question(ui->centralwidget, questionTitle, questionText, buttons);
 }
 
-void RenderWindow::slotAutoRefresh(void)
+void RenderWindow::slotAutoRefresh()
 {
 	gMainInterface->PeriodicRefresh();
 }
 
-void RenderWindow::slotMaterialSelected(int matIndex)
+void RenderWindow::slotMaterialSelected(int matIndex) const
 {
 	gMainInterface->MaterialSelected(matIndex);
 	ui->dockWidget_materialEditor->raise();

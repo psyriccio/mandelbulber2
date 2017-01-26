@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -84,7 +84,7 @@ void RenderWindow::slotMenuAboutMandelbulber()
 	text += "version: <b>" + QString(MANDELBULBER_VERSION_STRING) + "</b>" + "<br>";
 	text += "<br>";
 	text += "Licence: GNU GPL version 3.0<br>";
-	text += "Copyright Ⓒ 2015<br>";
+	text += "Copyright Ⓒ 2017<br>";
 	text += "project leader: Krzysztof Marczak<br>";
 	text += "programmers:<br>";
 	text += "Krzysztof Marczak<br>";
@@ -244,15 +244,19 @@ void RenderWindow::slotMenuRedo()
 	gMainInterface->Redo();
 }
 
-void RenderWindow::slotMenuResetDocksPositions()
+void RenderWindow::ResetDocksPositions()
 {
-	restoreGeometry(defaultGeometry);
+	// restoreGeometry(defaultGeometry);
 	restoreState(defaultState);
 	setCorner(Qt::TopLeftCorner, Qt::LeftDockWidgetArea);
 	setCorner(Qt::TopRightCorner, Qt::RightDockWidgetArea);
 	setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
 	setCorner(Qt::BottomRightCorner, Qt::RightDockWidgetArea);
+}
 
+void RenderWindow::slotMenuResetDocksPositions()
+{
+	ResetDocksPositions();
 	ui->dockWidget_histogram->hide();
 	ui->dockWidget_info->hide();
 	ui->dockWidget_animation->hide();
@@ -260,6 +264,27 @@ void RenderWindow::slotMenuResetDocksPositions()
 	ui->dockWidget_gamepad_dock->hide();
 #endif
 	ui->dockWidget_queue_dock->hide();
+}
+
+void RenderWindow::slotMenuAnimationtDocksPositions()
+{
+	ResetDocksPositions();
+	ui->dockWidget_histogram->hide();
+	ui->dockWidget_info->hide();
+	ui->dockWidget_animation->show();
+	ui->toolBar->hide();
+#ifdef USE_GAMEPAD
+	ui->dockWidget_gamepad_dock->hide();
+#endif
+	ui->dockWidget_queue_dock->hide();
+
+	tabifyDockWidget(ui->dockWidget_materialEditor, ui->dockWidget_effects);
+	tabifyDockWidget(ui->dockWidget_effects, ui->dockWidget_image_adjustments);
+	tabifyDockWidget(ui->dockWidget_image_adjustments, ui->dockWidget_rendering_engine);
+	tabifyDockWidget(ui->dockWidget_rendering_engine, ui->dockWidget_fractal);
+	tabifyDockWidget(ui->dockWidget_fractal, ui->dockWidget_histogram);
+
+	addDockWidget(Qt::LeftDockWidgetArea, ui->dockWidget_Materials);
 }
 
 void RenderWindow::slotMenuSaveDocksPositions()
@@ -575,7 +600,7 @@ void RenderWindow::slotUpdateDocksandToolbarbyAction()
 	}
 }
 
-void RenderWindow::slotUpdateDocksandToolbarbyView()
+void RenderWindow::slotUpdateDocksandToolbarbyView() const
 {
 	// Animation dock
 	if (ui->actionShow_animation_dock->isChecked() != ui->dockWidget_animation->isVisible())

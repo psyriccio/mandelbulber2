@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -61,13 +61,14 @@ public:
 	int GetFramesPerKeyframe() const { return framesPerKeyframe; }
 	void ChangeMorphType(int parameterIndex, parameterContainer::enumMorphType morphType);
 	void ClearMorphCache() { morph.clear(); }
-	int GetUnrenderedTotal();
-	int GetUnrenderedTillIndex(int frameIndex);
+	int GetUnrenderedTotal() override;
+	int GetUnrenderedTillIndex(int frameIndex) override;
 	void AddAnimatedParameter(const QString &parameterName, const cOneParameter &defaultValue,
-		cParameterContainer *params = NULL);
-	bool AddAnimatedParameter(
-		const QString &fullParameterName, cParameterContainer *param, const cFractalContainer *fractal);
-	void RemoveAnimatedParameter(const QString &fullParameterName);
+		cParameterContainer *params = nullptr) override;
+	bool AddAnimatedParameter(const QString &fullParameterName, cParameterContainer *param,
+		const cFractalContainer *fractal) override;
+	void RemoveAnimatedParameter(const QString &fullParameterName) override;
+	void setAudioParameterPrefix() override;
 
 private:
 	int framesPerKeyframe;

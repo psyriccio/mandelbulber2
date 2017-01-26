@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -51,34 +51,34 @@ class cDockEffects : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cDockEffects(QWidget *parent = NULL);
+	explicit cDockEffects(QWidget *parent = nullptr);
 	~cDockEffects();
 
-	void SynchronizeInterfaceBasicFogEnabled(cParameterContainer *par);
-	void SynchronizeInterfaceDOFEnabled(cParameterContainer *par);
-	void SynchronizeInterfaceLights(cParameterContainer *par);
-	void SynchronizeInterfacerandomLights(cParameterContainer *par);
+	void SynchronizeInterfaceBasicFogEnabled(cParameterContainer *par) const;
+	void SynchronizeInterfaceDOFEnabled(cParameterContainer *par) const;
+	void SynchronizeInterfaceLights(cParameterContainer *par) const;
+	void SynchronizeInterfacerandomLights(cParameterContainer *par) const;
 
-	double GetAuxLightManualPlacementDistance();
-	void SetAuxLightManualPlacementDistance(double dist);
+	double GetAuxLightManualPlacementDistance() const;
+	void SetAuxLightManualPlacementDistance(double dist) const;
 
 private slots:
-	void slotPressedButtonAutoFog();
-	void slotChangedCheckBoxDOFHDR(int state);
-	void slotChangedComboAmbientOcclusionMode(int index);
-	void slotEditedLineEditManualLightPlacementDistance(const QString &text);
-	void slotSliderMovedEditManualLightPlacementDistance(int value);
-	void slotPressedButtonSetDOFByMouse();
-	void slotPressedButtonSetFogByMouse();
-	void slotPressedButtonSetLight1ByMouse();
-	void slotPressedButtonSetLight2ByMouse();
-	void slotPressedButtonSetLight3ByMouse();
-	void slotPressedButtonSetLight4ByMouse();
-	void slotPressedButtonDOFUpdate();
-	void slotPressedButtonPlaceRandomLightsByMouse();
+	static void slotPressedButtonAutoFog();
+	void slotChangedCheckBoxDOFHDR(int state) const;
+	void slotChangedComboAmbientOcclusionMode(int index) const;
+	static void slotEditedLineEditManualLightPlacementDistance(const QString &text);
+	void slotSliderMovedEditManualLightPlacementDistance(int value) const;
+	static void slotPressedButtonSetDOFByMouse();
+	static void slotPressedButtonSetFogByMouse();
+	void slotPressedButtonSetLight1ByMouse() const;
+	static void slotPressedButtonSetLight2ByMouse();
+	static void slotPressedButtonSetLight3ByMouse();
+	static void slotPressedButtonSetLight4ByMouse();
+	static void slotPressedButtonDOFUpdate();
+	static void slotPressedButtonPlaceRandomLightsByMouse();
 
 private:
-	void ConnectSignals();
+	void ConnectSignals() const;
 
 	Ui::cDockEffects *ui;
 

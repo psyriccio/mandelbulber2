@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -39,9 +39,9 @@ struct sImageAdjustments
 {
 	sImageAdjustments() : brightness(1.0), contrast(1.0), imageGamma(1.0), hdrEnabled(false) {}
 
-	double brightness;
-	double contrast;
-	double imageGamma;
+	float brightness;
+	float contrast;
+	float imageGamma;
 	bool hdrEnabled;
 };
 

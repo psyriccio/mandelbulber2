@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -49,30 +49,30 @@ class cDockNavigation : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cDockNavigation(QWidget *parent = NULL);
+	explicit cDockNavigation(QWidget *parent = nullptr);
 	~cDockNavigation();
 
-	void RenderButtonSetEnabled(bool enabled);
-	void AutoRefreshSetChecked(bool state);
-	bool AutoRefreshIsChecked();
+	void RenderButtonSetEnabled(bool enabled) const;
+	void AutoRefreshSetChecked(bool state) const;
+	bool AutoRefreshIsChecked() const;
 
 private slots:
-	void slotStartRender();
-	void slotStopRender();
+	static void slotStartRender();
+	static void slotStopRender();
 
-	void slotCameraMove();
-	void slotCameraRotation();
-	void slotCameraOrTargetEdited();
-	void slotRotationEdited();
-	void slotCameraDistanceEdited();
-	void slotCameraDistanceSlider(int value);
-	void slotMovementStepModeChanged(int index);
-	void slotUndo();
-	void slotRedo();
-	void slotPressedButtonResetView();
+	void slotCameraMove() const;
+	void slotCameraRotation() const;
+	static void slotCameraOrTargetEdited();
+	static void slotRotationEdited();
+	static void slotCameraDistanceEdited();
+	static void slotCameraDistanceSlider(int value);
+	static void slotMovementStepModeChanged(int index);
+	static void slotUndo();
+	static void slotRedo();
+	static void slotPressedButtonResetView();
 
 private:
-	void ConnectSignals();
+	void ConnectSignals() const;
 
 	Ui::cDockNavigation *ui;
 

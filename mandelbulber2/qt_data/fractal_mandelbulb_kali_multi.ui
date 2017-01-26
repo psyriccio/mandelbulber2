@@ -61,7 +61,7 @@
         <item row="0" column="2">
          <widget class="QCheckBox" name="checkBox_transf_function_enabledAz_false">
           <property name="text">
-           <string>fabs(z.z)</string>
+           <string notr="true">fabs(z.z)</string>
           </property>
          </widget>
         </item>
@@ -81,14 +81,14 @@
         <item row="0" column="1">
          <widget class="QCheckBox" name="checkBox_transf_function_enabledAy_false">
           <property name="text">
-           <string>fabs(z.y)</string>
+           <string notr="true">fabs(z.y)</string>
           </property>
          </widget>
         </item>
         <item row="0" column="0">
          <widget class="QCheckBox" name="checkBox_transf_function_enabledAx_false">
           <property name="text">
-           <string>fabs(z.x)</string>
+           <string notr="true">fabs(z.x)</string>
           </property>
          </widget>
         </item>
@@ -124,7 +124,7 @@
        <item row="1" column="0">
         <widget class="QLabel" name="label_122">
          <property name="text">
-          <string>Polar to Cartesian -  Cosine Mode z.z = cos(th);</string>
+          <string>Polar to Cartesian - Cosine Mode z.z = cos(th);</string>
          </property>
         </widget>
        </item>
@@ -133,7 +133,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_292">
        <property name="text">
-        <string>Rotate about z axis:  </string>
+        <string>Rotate about z axis:</string>
        </property>
       </widget>
      </item>
@@ -168,7 +168,7 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cpixel is CVector3 c = ( c.x, c.y, c.z). It is each original point (pixel) in 3D space where the iteration starts from, ( c = original z for each point .) It is commonly found in formula structures z = f(z) + c.&lt;/p&gt;&lt;p&gt;The Cpixel multiplier effectively scales this point &amp;quot;c&amp;quot;.&lt;/p&gt;&lt;p&gt;This transform allows the swapping of the order of the &amp;quot;CVector3 c&amp;quot; components before being multiplied by &amp;quot;CVector3 z&amp;quot; components.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="title">
-        <string>Enable seperate &amp;trig control of second  function</string>
+        <string>Enable seperate &amp;trig control of second function</string>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -197,7 +197,7 @@
           <item row="1" column="0" colspan="3">
            <widget class="QLabel" name="label_multi1_order_of_xyz_3">
             <property name="text">
-             <string>function order of x, y and z: </string>
+             <string>function order of x, y and z:</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -208,12 +208,12 @@
            <widget class="QComboBox" name="comboBox_mandelbulbMulti_acos_or_asin_A">
             <item>
              <property name="text">
-              <string>acos</string>
+              <string notr="true">acos</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>asin</string>
+              <string notr="true">asin</string>
              </property>
             </item>
            </widget>
@@ -222,32 +222,32 @@
            <widget class="QComboBox" name="comboBox_mandelbulbMulti_order_of_xyz_2">
             <item>
              <property name="text">
-              <string>xyz</string>
+              <string notr="true">xyz</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>xzy</string>
+              <string notr="true">xzy</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>yxz</string>
+              <string notr="true">yxz</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>yzx</string>
+              <string notr="true">yzx</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>zxy</string>
+              <string notr="true">zxy</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>zyx</string>
+              <string notr="true">zyx</string>
              </property>
             </item>
            </widget>
@@ -256,12 +256,12 @@
            <widget class="QComboBox" name="comboBox_mandelbulbMulti_atan_or_atan2_A">
             <item>
              <property name="text">
-              <string>atan</string>
+              <string notr="true">atan</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>atan2</string>
+              <string notr="true">atan2</string>
              </property>
             </item>
            </widget>
@@ -269,7 +269,7 @@
           <item row="0" column="3" colspan="2">
            <widget class="QLabel" name="label_multi1_ph0_function_3">
             <property name="text">
-             <string>ph0 function2: </string>
+             <string>ph0 function2:</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -279,7 +279,7 @@
           <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label_multi1_th0_function_3">
             <property name="text">
-             <string>th0 function2: </string>
+             <string>th0 function2:</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -369,7 +369,7 @@
        <item row="1" column="0">
         <widget class="QLabel" name="label_123">
          <property name="text">
-          <string>Polar to Cartesian -  Cosine Mode z.z = cos(th);</string>
+          <string>Polar to Cartesian - Cosine Mode z.z = cos(th);</string>
          </property>
         </widget>
        </item>
@@ -554,7 +554,7 @@
      <item row="8" column="0">
       <widget class="QLabel" name="label_297">
        <property name="text">
-        <string>Phi  Scale:</string>
+        <string>Phi Scale:</string>
        </property>
       </widget>
      </item>
@@ -587,7 +587,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_293">
        <property name="text">
-        <string>Beta angle offset1:  </string>
+        <string>Beta angle offset1:</string>
        </property>
       </widget>
      </item>
@@ -660,32 +660,32 @@
       <widget class="QComboBox" name="comboBox_mandelbulbMulti_order_of_xyz">
        <item>
         <property name="text">
-         <string>xyz</string>
+         <string notr="true">xyz</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>xzy</string>
+         <string notr="true">xzy</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>yxz</string>
+         <string notr="true">yxz</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>yzx</string>
+         <string notr="true">yzx</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>zxy</string>
+         <string notr="true">zxy</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>zyx</string>
+         <string notr="true">zyx</string>
         </property>
        </item>
       </widget>
@@ -694,12 +694,12 @@
       <widget class="QComboBox" name="comboBox_mandelbulbMulti_acos_or_asin">
        <item>
         <property name="text">
-         <string>acos</string>
+         <string notr="true">acos</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>asin</string>
+         <string notr="true">asin</string>
         </property>
        </item>
       </widget>
@@ -707,7 +707,7 @@
      <item row="2" column="0" colspan="3">
       <widget class="QLabel" name="label_multi1_order_of_xyz_2">
        <property name="text">
-        <string>function order of x, y and z: </string>
+        <string>function order of x, y and z:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -718,12 +718,12 @@
       <widget class="QComboBox" name="comboBox_mandelbulbMulti_atan_or_atan2">
        <item>
         <property name="text">
-         <string>atan</string>
+         <string notr="true">atan</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>atan2</string>
+         <string notr="true">atan2</string>
         </property>
        </item>
       </widget>
@@ -731,7 +731,7 @@
      <item row="1" column="0" colspan="2">
       <widget class="QLabel" name="label_multi1_th0_function_2">
        <property name="text">
-        <string>th0 function: </string>
+        <string>th0 function:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -741,7 +741,7 @@
      <item row="1" column="3" colspan="2">
       <widget class="QLabel" name="label_multi1_ph0_function_2">
        <property name="text">
-        <string>ph0 function: </string>
+        <string>ph0 function:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -756,7 +756,7 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cpixel is CVector3 c = ( c.x, c.y, c.z). It is each original point (pixel) in 3D space where the iteration starts from, ( c = original z for each point .) It is commonly found in formula structures z = f(z) + c.&lt;/p&gt;&lt;p&gt;The Cpixel multiplier effectively scales this point &amp;quot;c&amp;quot;.&lt;/p&gt;&lt;p&gt;This transform allows the swapping of the order of the &amp;quot;CVector3 c&amp;quot; components before being multiplied by &amp;quot;CVector3 z&amp;quot; components.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="title">
-      <string>addCpi&amp;xel Axis Swap ConstantMultiplier </string>
+      <string>addCpi&amp;xel Axis Swap ConstantMultiplier</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -888,7 +888,7 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_109">
           <property name="text">
-           <string>c.x:</string>
+           <string notr="true">c.x</string>
           </property>
          </widget>
         </item>
@@ -951,14 +951,14 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_110">
           <property name="text">
-           <string>c.y:</string>
+           <string notr="true">c.y</string>
           </property>
          </widget>
         </item>
         <item row="0" column="2">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>function order of c.x, c.y and c.z: </string>
+           <string>function order of c.x, c.y and c.z:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -969,32 +969,32 @@
          <widget class="QComboBox" name="comboBox_mandelbulbMulti_order_of_xyz_C">
           <item>
            <property name="text">
-            <string>xyz</string>
+            <string notr="true">xyz</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>xzy</string>
+            <string notr="true">xzy</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>yxz</string>
+            <string notr="true">yxz</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>yzx</string>
+            <string notr="true">yzx</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>zxy</string>
+            <string notr="true">zxy</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>zyx</string>
+            <string notr="true">zyx</string>
            </property>
           </item>
          </widget>
@@ -1002,14 +1002,14 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_108">
           <property name="text">
-           <string>Cpixel Multiplier</string>
+           <string>Cpixel Multiplier:</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
          <widget class="QLabel" name="label_111">
           <property name="text">
-           <string>c.z:</string>
+           <string notr="true">c.z</string>
           </property>
          </widget>
         </item>
@@ -1031,7 +1031,7 @@
       <string/>
      </property>
      <property name="title">
-      <string>Analytic &amp;Logrithmic DE adjustment </string>
+      <string>Analytic &amp;Logrithmic DE adjustment</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -1060,14 +1060,14 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_177">
           <property name="text">
-           <string>Analytic Logrithmic DE offset1: </string>
+           <string>Analytic Logrithmic DE offset1:</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLabel" name="label_176">
           <property name="text">
-           <string>Analytic Logrithmic DE multiplier: </string>
+           <string>Analytic Logrithmic DE multiplier:</string>
           </property>
          </widget>
         </item>
@@ -1171,7 +1171,7 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_178">
           <property name="text">
-           <string>Analytic Logrithmic DE offset2: </string>
+           <string>Analytic Logrithmic DE offset2:</string>
           </property>
          </widget>
         </item>
@@ -1229,51 +1229,26 @@
   &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; sinth&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;bulb&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1e-061&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// MUST keep exception catch&lt;/span&gt;
   &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;bulb&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;alphaAngleOffset&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-  &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; v1&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; v2&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; v3&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+  CVector3 v&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;switch&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;orderOfxyz&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xyz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;default&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-      v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xzy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-      v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yxz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-      v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yzx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-      v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zxy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-      v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zyx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-      v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;default&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xzy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yxz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yzx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zxy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zyx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
 
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;acosOrasin &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;acos&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-    th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;acos&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+    th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;acos&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
-    th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;asin&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+    th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;asin&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;atanOratan2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;atan&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-    ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; v3&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+    ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
-    ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan2&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v2&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; v3&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+    ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan2&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
 
   th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;pwr8 &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scaleA1&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
 
@@ -1292,100 +1267,50 @@
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;switch&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;orderOfxyz2&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
     &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-
       &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xyz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;default&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xzy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yxz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yzx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zxy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zyx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;default&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xzy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yxz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yzx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zxy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zyx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;acosOrasinA &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;acos&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-      th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;acos&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset
+      th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;acos&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset
             &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1e-061&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// MUST keep exception catch&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
-      th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;asin&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset
+      th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;asin&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset
              &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1e-061&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// MUST keep exception catch;&lt;/span&gt;
 
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;atanOratan2A &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;atan&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-      ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; v3&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+      ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
-      ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan2&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v2&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; v3&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+      ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan2&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;switch&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;orderOfxyz&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
     &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-
       &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xyz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;default&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xzy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yxz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yzx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zxy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zyx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt;
-        v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        v3 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;default&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;xzy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yxz&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;yzx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zxy&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;case&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;zyx&lt;span style=&quot;color:#d0d0d0&quot;&gt;:&lt;/span&gt; v &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt; &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;break&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
 
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;acosOrasin &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;acos&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-      th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;acos&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset
+      th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;acos&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset
             &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1e-061&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// MUST keep exception catch ??;&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
-      th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;asin&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset
+      th0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;asin&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;betaAngleOffset
              &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1e-061&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// MUST keep exception catch ??;&lt;/span&gt;
 
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;mandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;atanOratan2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;==&lt;/span&gt; sFractalMandelbulbMulti&lt;span style=&quot;color:#d0d0d0&quot;&gt;::&lt;/span&gt;atan&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
-      ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v2 &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; v3&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+      ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
-      ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan2&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v2&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; v3&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+      ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;+=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;atan2&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; v&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
 
   ph0 &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;pwr8 &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scaleB1 &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0.5&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// 0.5 retain&lt;/span&gt;
@@ -1482,17 +1407,58 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MyDoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>my_double_spin_box.h</header>
-  </customwidget>
-  <customwidget>
    <class>MyGroupBox</class>
    <extends>QGroupBox</extends>
    <header>my_group_box.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>MyDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>my_double_spin_box.h</header>
+  </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>groupCheck_transf_function_enabled_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledAx_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledAy_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledAz_false</tabstop>
+  <tabstop>slider_alpha_angle_offset</tabstop>
+  <tabstop>spinbox_alpha_angle_offset</tabstop>
+  <tabstop>slider_beta_angle_offset</tabstop>
+  <tabstop>spinbox_beta_angle_offset</tabstop>
+  <tabstop>slider_transf_scaleA_1</tabstop>
+  <tabstop>spinbox_transf_scaleA_1</tabstop>
+  <tabstop>checkBox_transf_function_enabledBx_false</tabstop>
+  <tabstop>groupCheck_transf_function_enabledx_false</tabstop>
+  <tabstop>comboBox_mandelbulbMulti_acos_or_asin_A</tabstop>
+  <tabstop>comboBox_mandelbulbMulti_atan_or_atan2_A</tabstop>
+  <tabstop>comboBox_mandelbulbMulti_order_of_xyz_2</tabstop>
+  <tabstop>slider_transf_beta_angle_offset</tabstop>
+  <tabstop>spinbox_transf_beta_angle_offset</tabstop>
+  <tabstop>slider_transf_scaleB_1</tabstop>
+  <tabstop>spinbox_transf_scaleB_1</tabstop>
+  <tabstop>slider_transf_pwr_8</tabstop>
+  <tabstop>spinbox_transf_pwr_8</tabstop>
+  <tabstop>checkBox_transf_function_enabledz_false</tabstop>
+  <tabstop>comboBox_mandelbulbMulti_acos_or_asin</tabstop>
+  <tabstop>comboBox_mandelbulbMulti_atan_or_atan2</tabstop>
+  <tabstop>comboBox_mandelbulbMulti_order_of_xyz</tabstop>
+  <tabstop>groupCheck_transf_addCpixel_enabled_false</tabstop>
+  <tabstop>checkBox_transf_alternate_enabled_false</tabstop>
+  <tabstop>comboBox_mandelbulbMulti_order_of_xyz_C</tabstop>
+  <tabstop>slider3_transf_constant_multiplierC_111_x</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplierC_111_x</tabstop>
+  <tabstop>slider3_transf_constant_multiplierC_111_y</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplierC_111_y</tabstop>
+  <tabstop>slider3_transf_constant_multiplierC_111_z</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplierC_111_z</tabstop>
+  <tabstop>groupCheck_analyticDE_enabled_false</tabstop>
+  <tabstop>spinbox_analyticDE_scale_1</tabstop>
+  <tabstop>spinbox_analyticDE_offset_1</tabstop>
+  <tabstop>spinbox_analyticDE_offset_2</tabstop>
+  <tabstop>groupCheck_info</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

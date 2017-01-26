@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * CommonMyWidgetWrapper - contains context menu and common widget functionality
  *
@@ -150,13 +150,6 @@ void CommonMyWidgetWrapper::setToolTipText()
 
 QString CommonMyWidgetWrapper::GetType(const QString &name)
 {
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4267) // possible loss of data
-#endif
-	size_t firstDashPosition = name.indexOf("_");
+	int firstDashPosition = name.indexOf("_");
 	return name.left(firstDashPosition);
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
 }

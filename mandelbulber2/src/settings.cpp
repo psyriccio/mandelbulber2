@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-17 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -120,11 +120,11 @@ size_t cSettings::CreateText(const cParameterContainer *par, const cFractalConta
 
 	WriteLogString("Settings text prepared", settingsText, 3);
 
-	return (size_t)settingsText.size();
+	return size_t(settingsText.size());
 }
 
 void cSettings::CreateAnimationString(
-	QString &text, const QString &headerText, const cAnimationFrames *frames)
+	QString &text, const QString &headerText, const cAnimationFrames *frames) const
 {
 	if (frames)
 	{
@@ -236,7 +236,7 @@ void cSettings::CreateAnimationString(
 	}
 }
 
-QString cSettings::CreateHeader()
+QString cSettings::CreateHeader() const
 {
 	QString header("# Mandelbulber settings file\n");
 	header += "# version " + QString::number(appVersion, 'f', 2) + "\n";
@@ -251,7 +251,7 @@ QString cSettings::CreateHeader()
 	return header;
 }
 
-QString cSettings::CreateOneLine(const cParameterContainer *par, QString name)
+QString cSettings::CreateOneLine(const cParameterContainer *par, QString name) const
 {
 	QString text;
 	enumParameterType parType = par->GetParameterType(name);
@@ -299,7 +299,7 @@ bool cSettings::SaveToFile(QString filename) const
 	}
 }
 
-void cSettings::SaveToClipboard()
+void cSettings::SaveToClipboard() const
 {
 	WriteLog("Save settings to clipboard", 2);
 	QClipboard *clipboard = QApplication::clipboard();
@@ -429,7 +429,8 @@ bool cSettings::Decode(cParameterContainer *par, cFractalContainer *fractPar,
 		2);
 
 	QString settingsTextTrimmed = settingsText.trimmed();
-	QStringList separatedText = settingsTextTrimmed.split(QRegExp("[\r\n]"), QString::KeepEmptyParts);
+	QStringList separatedText =
+		settingsTextTrimmed.split(QRegExp("\n|\r\n|\r"), QString::KeepEmptyParts);
 	DecodeHeader(separatedText);
 
 	int errorCount = 0;
@@ -586,7 +587,7 @@ bool cSettings::Decode(cParameterContainer *par, cFractalContainer *fractPar,
 			foundAnimSoundParameters = true;
 			for (int i = 0; i < linesWithSoundParameters.length(); i++)
 			{
-				bool result = false;
+				bool result;
 				result = DecodeOneLine(par, linesWithSoundParameters[i]);
 
 				if (!result)
@@ -720,7 +721,7 @@ bool cSettings::DecodeOneLine(cParameterContainer *par, QString line)
 		}
 		if (varType == typeBool)
 		{
-			value = (value == QString("true")) ? "1" : "0";
+			value = value == QString("true") ? "1" : "0";
 		}
 		else if (varType == typeDouble || varType == typeVector3 || varType == typeVector4)
 		{
@@ -855,9 +856,9 @@ void cSettings::Compatibility2(cParameterContainer *par, cFractalContainer *frac
 {
 	if (fileVersion <= 2.06)
 	{
-		if ((fractal::enumDEFunctionType)par->Get<int>("delta_DE_function")
+		if (fractal::enumDEFunctionType(par->Get<int>("delta_DE_function"))
 				!= fractal::linearDEFunction)
-			par->Set("delta_DE_function", (int)fractal::logarithmicDEFunction);
+			par->Set("delta_DE_function", int(fractal::logarithmicDEFunction));
 
 		if (fract)
 		{

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -51,17 +51,17 @@ cDockNavigation::~cDockNavigation()
 	delete ui;
 }
 
-void cDockNavigation::RenderButtonSetEnabled(bool enabled)
+void cDockNavigation::RenderButtonSetEnabled(bool enabled) const
 {
 	ui->pushButton_render->setEnabled(enabled);
 }
 
-void cDockNavigation::AutoRefreshSetChecked(bool state)
+void cDockNavigation::AutoRefreshSetChecked(bool state) const
 {
 	ui->checkBox_auto_refresh->setChecked(state);
 }
 
-bool cDockNavigation::AutoRefreshIsChecked()
+bool cDockNavigation::AutoRefreshIsChecked() const
 {
 	return ui->checkBox_auto_refresh->isChecked();
 }
@@ -76,7 +76,7 @@ void cDockNavigation::slotRedo()
 	gMainInterface->Redo();
 }
 
-void cDockNavigation::ConnectSignals()
+void cDockNavigation::ConnectSignals() const
 {
 	// ------------ camera manipulation -----------
 	connect(ui->bu_move_up, SIGNAL(clicked()), this, SLOT(slotCameraMove()));
@@ -116,13 +116,13 @@ void cDockNavigation::ConnectSignals()
 	connect(ui->pushButton_reset_view, SIGNAL(clicked()), this, SLOT(slotPressedButtonResetView()));
 }
 
-void cDockNavigation::slotCameraMove()
+void cDockNavigation::slotCameraMove() const
 {
 	QString buttonName = this->sender()->objectName();
 	gMainInterface->MoveCamera(buttonName);
 }
 
-void cDockNavigation::slotCameraRotation()
+void cDockNavigation::slotCameraRotation() const
 {
 	QString buttonName = this->sender()->objectName();
 	gMainInterface->RotateCamera(buttonName);
@@ -159,12 +159,12 @@ void cDockNavigation::slotPressedButtonResetView()
 	gMainInterface->ResetView();
 }
 
-void cDockNavigation::slotStartRender(void)
+void cDockNavigation::slotStartRender()
 {
 	gMainInterface->StartRender();
 }
 
-void cDockNavigation::slotStopRender(void)
+void cDockNavigation::slotStopRender()
 {
 	gMainInterface->stopRequest = true;
 }

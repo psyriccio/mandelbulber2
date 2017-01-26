@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * CommonMyWidgetWrapper - contains context menu and common widget functionality
  *
@@ -55,12 +55,12 @@ class CommonMyWidgetWrapper
 public:
 	CommonMyWidgetWrapper(QWidget *referenceWidget)
 	{
-		actionResetToDefault = NULL;
-		actionAddToFlightAnimation = NULL;
-		actionRemoveFromFlightAnimation = NULL;
-		actionAddToKeyframeAnimation = NULL;
-		actionRemoveFromKeyframeAnimation = NULL;
-		parameterContainer = NULL;
+		actionResetToDefault = nullptr;
+		actionAddToFlightAnimation = nullptr;
+		actionRemoveFromFlightAnimation = nullptr;
+		actionAddToKeyframeAnimation = nullptr;
+		actionRemoveFromKeyframeAnimation = nullptr;
+		parameterContainer = nullptr;
 		gotDefault = false;
 		widget = referenceWidget;
 	};
@@ -76,16 +76,17 @@ private:
 	QAction *actionRemoveFromKeyframeAnimation;
 
 protected:
+	~CommonMyWidgetWrapper() = default;
 	cParameterContainer *parameterContainer;
 	QString parameterName;
 	bool gotDefault;
 	QWidget *widget;
 
 	void setToolTipText();
-	QString GetType(const QString &name);
+	static QString GetType(const QString &name);
 
 	// contextMenuEvent doesn't overwrite method from child class, but this function cal be called
-	void contextMenuEvent(QContextMenuEvent *event, QMenu *existingMenu = NULL);
+	void contextMenuEvent(QContextMenuEvent *event, QMenu *existingMenu = nullptr);
 
 	// these methods have to be implemented by widgets inheriting this class
 	virtual void resetToDefault() = 0;

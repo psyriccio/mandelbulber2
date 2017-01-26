@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * cSystemTray class - class for system tray
  *
@@ -47,7 +47,7 @@ class cSystemTray : public QObject
 {
 	Q_OBJECT
 public:
-	cSystemTray(cImage *image, QObject *parent = 0);
+	cSystemTray(cImage *image, QObject *parent = nullptr);
 	~cSystemTray();
 
 private:
@@ -63,16 +63,16 @@ private:
 	QTimer *checkBusyTimer;
 
 public slots:
-	void showMessage(QString text, QString progressText);
+	void showMessage(QString text, QString progressText) const;
 
 private slots:
-	void slotStopped();
-	void slotStarted();
-	void slotToggleNotification(bool notify);
+	void slotStopped() const;
+	void slotStarted() const;
+	static void slotToggleNotification(bool notify);
 	void checkBusy();
-	void slotStartRender();
-	void slotStopRender();
-	void slotQuit();
+	static void slotStartRender();
+	static void slotStopRender();
+	static void slotQuit();
 
 signals:
 	void notifyRenderFlight();

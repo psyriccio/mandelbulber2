@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -41,7 +41,7 @@ class cErrorMessage : public QObject
 {
 	Q_OBJECT
 public:
-	cErrorMessage(QObject *parent = NULL) : QObject(parent) {}
+	cErrorMessage(QObject *parent = nullptr) : QObject(parent) {}
 
 	enum enumMessageType
 	{
@@ -50,11 +50,11 @@ public:
 		infoMessage
 	};
 
-	static void showMessage(QString text, enumMessageType messageType, QWidget *parent = NULL);
+	static void showMessage(QString text, enumMessageType messageType, QWidget *parent = nullptr);
 
 public slots:
-	void slotShowMessage(
-		QString text, cErrorMessage::enumMessageType messageType, QWidget *parent = NULL);
+	static void slotShowMessage(
+		QString text, cErrorMessage::enumMessageType messageType, QWidget *parent = nullptr);
 };
 
 extern cErrorMessage *gErrorMessage;

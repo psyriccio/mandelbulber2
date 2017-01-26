@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -59,37 +59,37 @@ public:
 
 	cSettings(enumFormat _format);
 	size_t CreateText(const cParameterContainer *par, const cFractalContainer *fractPar,
-		cAnimationFrames *frames = NULL, cKeyframes *keyframes = NULL);
+		cAnimationFrames *frames = nullptr, cKeyframes *keyframes = nullptr);
 	bool SaveToFile(QString filename) const;
-	void SaveToClipboard();
+	void SaveToClipboard() const;
 	bool LoadFromFile(QString filename);
 	bool LoadFromString(const QString &_settingsText);
 	bool LoadFromClipboard();
 	bool Decode(cParameterContainer *par, cFractalContainer *fractPar,
-		cAnimationFrames *frames = NULL, cKeyframes *keyframes = NULL);
-	QString GetHashCode() { return hash.toHex(); }
+		cAnimationFrames *frames = nullptr, cKeyframes *keyframes = nullptr);
+	QString GetHashCode() const { return hash.toHex(); }
 	void BeQuiet(bool _quiet) { quiet = _quiet; }
 	QString GetSettingsText() const;
 
 private:
-	QString CreateHeader(void);
+	QString CreateHeader() const;
 	void DecodeHeader(QStringList &separatedText);
-	QString CreateOneLine(const cParameterContainer *par, QString name);
+	QString CreateOneLine(const cParameterContainer *par, QString name) const;
 	bool DecodeOneLine(cParameterContainer *par, QString line);
-	bool CheckSection(QString text, QString &section);
+	static bool CheckSection(QString text, QString &section);
 	void Compatibility(QString &name, QString &value) const;
 	void Compatibility2(cParameterContainer *par, cFractalContainer *fract);
 	void CreateAnimationString(
-		QString &text, const QString &headerText, const cAnimationFrames *frames);
+		QString &text, const QString &headerText, const cAnimationFrames *frames) const;
 
 	bool DecodeFramesHeader(
 		QString line, cParameterContainer *par, cFractalContainer *fractPar, cAnimationFrames *frames);
 	bool DecodeFramesLine(
 		QString line, cParameterContainer *par, cFractalContainer *fractPar, cAnimationFrames *frames);
 
-	QString everyLocaleDouble(QString txt);
+	static QString everyLocaleDouble(QString txt);
 
-	bool CheckIfMaterialsAreDefined(cParameterContainer *par);
+	static bool CheckIfMaterialsAreDefined(cParameterContainer *par);
 
 	enumFormat format;
 	QString settingsText;

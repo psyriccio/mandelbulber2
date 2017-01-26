@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -40,7 +40,7 @@ cStereo::cStereo()
 {
 	swapped = false;
 	stereoMode = stereoDisabled;
-	imageBuffer = NULL;
+	imageBuffer = nullptr;
 	imageBufferWidth = 0;
 	imageBufferHeight = 0;
 	forceEye = eyeNone;
@@ -51,7 +51,7 @@ cStereo::~cStereo()
 	if (imageBuffer)
 	{
 		delete[] imageBuffer;
-		imageBuffer = NULL;
+		imageBuffer = nullptr;
 	}
 }
 
@@ -130,12 +130,12 @@ CVector2<double> cStereo::ModifyImagePoint(CVector2<double> imagePoint) const
 
 cStereo::enumEye cStereo::WhichEye(CVector2<double> imagePoint) const
 {
-	enumEye eye;
+	enumEye eye = eyeLeft;
 	switch (stereoMode)
 	{
 		case stereoDisabled: eye = eyeLeft; break;
-		case stereoLeftRight: eye = (imagePoint.x >= 0.0) ? eyeLeft : eyeRight; break;
-		case stereoTopBottom: eye = (imagePoint.y >= 0.0) ? eyeRight : eyeLeft; break;
+		case stereoLeftRight: eye = imagePoint.x >= 0.0 ? eyeLeft : eyeRight; break;
+		case stereoTopBottom: eye = imagePoint.y >= 0.0 ? eyeRight : eyeLeft; break;
 		case stereoRedCyan: eye = eyeLeft; break;
 	}
 	return eye;
@@ -176,7 +176,7 @@ void cStereo::WhichEyeForAnaglyph(enumEye *eye, int repeat) const
 		else if (forceEye == eyeRight)
 			*eye = eyeRight;
 		else
-			*eye = (enumEye)(repeat % 2);
+			*eye = enumEye(repeat % 2);
 	}
 	// else do not modify eye selection
 }
@@ -271,7 +271,7 @@ void cStereo::StoreImageInBuffer(cImage *image)
 	imageBufferHeight = height;
 }
 
-void cStereo::MixImages(cImage *image)
+void cStereo::MixImages(cImage *image) const
 {
 	int width = image->GetWidth();
 	int height = image->GetHeight();

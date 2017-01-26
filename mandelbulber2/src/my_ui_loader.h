@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-15 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -41,11 +41,11 @@ class MyUiLoader : public QUiLoader
 {
 	Q_OBJECT
 public:
-	MyUiLoader(QObject *parent = 0) : QUiLoader(parent) {}
+	MyUiLoader(QObject *parent = nullptr) : QUiLoader(parent) {}
 	~MyUiLoader();
 
-	virtual QWidget *createWidget(
-		const QString &className, QWidget *parent = 0, const QString &name = QString());
+	QWidget *createWidget(
+		const QString &className, QWidget *parent = nullptr, const QString &name = QString()) override;
 };
 
 #endif /* MANDELBULBER2_SRC_MY_UI_LOADER_H_ */

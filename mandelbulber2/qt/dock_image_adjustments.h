@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2017 Mandelbulber Team        §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -32,8 +32,8 @@
  * Widget which contains UI for image adjustments
  */
 
-#ifndef MANDELBULBER2_QT_DOCK_IMAGE_ADJUSTMNETS_H_
-#define MANDELBULBER2_QT_DOCK_IMAGE_ADJUSTMNETS_H_
+#ifndef MANDELBULBER2_QT_DOCK_IMAGE_ADJUSTMENTS_H_
+#define MANDELBULBER2_QT_DOCK_IMAGE_ADJUSTMENTS_H_
 
 #include <QWidget>
 
@@ -49,7 +49,7 @@ class cDockImageAdjustments : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cDockImageAdjustments(QWidget *parent = NULL);
+	explicit cDockImageAdjustments(QWidget *parent = nullptr);
 	~cDockImageAdjustments();
 
 	enum enumImageProportion
@@ -64,35 +64,35 @@ public:
 	};
 
 public:
-	void ApplyImageChangesSetEnabled(bool enable);
-	bool IsConnectDetailLevelEnabled();
+	void ApplyImageChangesSetEnabled(bool enable) const;
+	bool IsConnectDetailLevelEnabled() const;
 
 public slots:
-	void slotCheckedDetailLevelLock(int state);
+	void slotCheckedDetailLevelLock(int state) const;
 
 private slots:
-	void slotChangedComboPerspectiveType(int index);
-	void slotPressedButtonImageApply();
+	void slotChangedComboPerspectiveType(int index) const;
+	static void slotPressedButtonImageApply();
 	// resolution
-	void slotChangedComboImageProportion(int index);
-	void slotPressedResolutionPreset();
-	void slotPressedImagesizeIncrease();
-	void slotPressedImagesizeDecrease();
-	void slotImageHeightChanged(int value);
+	void slotChangedComboImageProportion(int index) const;
+	void slotPressedResolutionPreset() const;
+	void slotPressedImagesizeIncrease() const;
+	void slotPressedImagesizeDecrease() const;
+	void slotImageHeightChanged(int value) const;
 
 	// Quality presets
-	void slotQualityPresetVeryLow();
-	void slotQualityPresetLow();
-	void slotQualityPresetNormal();
-	void slotQualityPresetHigh();
-	void slotDisableAutoRefresh();
+	static void slotQualityPresetVeryLow();
+	static void slotQualityPresetLow();
+	static void slotQualityPresetNormal();
+	static void slotQualityPresetHigh();
+	static void slotDisableAutoRefresh();
 
 private:
-	void ConnectSignals();
+	void ConnectSignals() const;
 
 	Ui::cDockImageAdjustments *ui;
 
 	cAutomatedWidgets *automatedWidgets;
 };
 
-#endif /* MANDELBULBER2_QT_DOCK_IMAGE_ADJUSTMNETS_H_ */
+#endif /* MANDELBULBER2_QT_DOCK_IMAGE_ADJUSTMENTS_H_ */

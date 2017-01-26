@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -104,7 +104,7 @@ CVector2<double> TextureMapping(CVector3 inPoint, CVector3 normalVector,
 			double alphaTexture = fmod(point.GetAlpha() + 2.0 * M_PI, 2.0 * M_PI);
 			double betaTexture = -point.GetBeta();
 			textureCoordinates.x = alphaTexture / (2.0 * M_PI);
-			textureCoordinates.y = (betaTexture / M_PI);
+			textureCoordinates.y = betaTexture / M_PI;
 			textureCoordinates.x /= material->textureScale.x;
 			textureCoordinates.y /= material->textureScale.y;
 			textureCoordinates.x -= material->textureCenter.x;

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -48,7 +48,7 @@ PreviewFileDialog::PreviewFileDialog(QWidget *parent) : QFileDialog(parent)
 {
 	setOption(QFileDialog::DontUseNativeDialog);
 
-	preview = NULL;
+	preview = nullptr;
 	vboxlayout = new QVBoxLayout();
 
 	checkbox = new QCheckBox(tr("Preview"));
@@ -89,7 +89,7 @@ PreviewFileDialog::PreviewFileDialog(QWidget *parent) : QFileDialog(parent)
 	vboxlayout->addStretch();
 
 	// add to existing layout
-	QGridLayout *gridLayout = (QGridLayout *)this->layout();
+	QGridLayout *gridLayout = static_cast<QGridLayout *>(this->layout());
 	gridLayout->addLayout(vboxlayout, 1, 3, 3, 1);
 
 	connect(
@@ -111,14 +111,14 @@ PreviewFileDialog::~PreviewFileDialog()
 	delete queueAddButton;
 }
 
-void PreviewFileDialog::OnPresetAdd()
+void PreviewFileDialog::OnPresetAdd() const
 {
 	fcopy(
 		filename, systemData.GetToolbarFolder() + QDir::separator() + QFileInfo(filename).fileName());
 	gMainInterface->mainWindow->slotPopulateToolbar();
 }
 
-void PreviewFileDialog::OnQueueAdd()
+void PreviewFileDialog::OnQueueAdd() const
 {
 	gQueue->Append(filename, cQueue::queue_STILL);
 }
@@ -187,7 +187,7 @@ void PreviewFileDialog::OnCurrentChanged(const QString &_filename)
 }
 
 void PreviewFileDialog::slotUpdateProgressAndStatus(
-	const QString &text, const QString &progressText, double progress)
+	const QString &text, const QString &progressText, double progress) const
 {
 	info->setText(text);
 	if (!progressBar->isVisible()) progressBar->setVisible(true);
@@ -196,7 +196,7 @@ void PreviewFileDialog::slotUpdateProgressAndStatus(
 	progressBar->setFormat(progressText);
 }
 
-void PreviewFileDialog::slotHideProgressBar()
+void PreviewFileDialog::slotHideProgressBar() const
 {
 	progressBar->hide();
 }

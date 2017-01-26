@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -143,7 +143,7 @@ void cMaterialItemView::dataChanged(
 	Q_UNUSED(bottomRight);
 	Q_UNUSED(roles);
 	QString settings = model()->data(topLeft).toString();
-	cMaterialWidget *widget = (cMaterialWidget *)indexWidget(topLeft);
+	cMaterialWidget *widget = static_cast<cMaterialWidget *>(indexWidget(topLeft));
 	if (widget)
 	{
 		int materialId = model()->data(topLeft, Qt::UserRole).toInt();
@@ -226,7 +226,7 @@ void cMaterialItemView::paintEvent(QPaintEvent *event)
 	}
 }
 
-void cMaterialItemView::updateScrollBar()
+void cMaterialItemView::updateScrollBar() const
 {
 	horizontalScrollBar()->setRange(
 		0, model()->rowCount() * (cMaterialWidget::previewWidth + iconMargin) - width());
@@ -251,5 +251,5 @@ void cMaterialItemView::setModel(QAbstractItemModel *model)
 void cMaterialItemView::updateNameHeight()
 {
 	QFont f = font();
-	maxNameHeight = max(f.pixelSize(), (int)f.pointSizeF()) * 3;
+	maxNameHeight = max(f.pixelSize(), int(f.pointSizeF())) * 3;
 }

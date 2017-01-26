@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016 Mandelbulber Team        §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -47,7 +47,7 @@ cFileDownloader::cFileDownloader(QString sourceBaseURL, QString targetDir) : QOb
 	cntFilesAlreadyExists = 0;
 	cntFilesToDownload = 0;
 	cntFilesDownloaded = 0;
-	tempFile = NULL;
+	tempFile = nullptr;
 }
 
 cFileDownloader::~cFileDownloader()
@@ -55,7 +55,7 @@ cFileDownloader::~cFileDownloader()
 	if (tempFile)
 	{
 		delete tempFile;
-		tempFile = NULL;
+		tempFile = nullptr;
 	}
 }
 
@@ -106,7 +106,7 @@ void cFileDownloader::filelistDownloaded()
 		if (tempFile)
 		{
 			delete tempFile;
-			tempFile = NULL;
+			tempFile = nullptr;
 		}
 		tempFile = new QFile(this->targetDir + QDir::separator() + file);
 		if (!tempFile->open(QIODevice::WriteOnly))

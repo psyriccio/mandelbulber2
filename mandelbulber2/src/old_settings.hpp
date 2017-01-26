@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -499,12 +499,12 @@ public:
 	cOldSettings();
 	~cOldSettings();
 	bool LoadSettings(const QString &filename);
-	void ConvertToNewContainer(cParameterContainer *params, cFractalContainer *fractal);
+	void ConvertToNewContainer(cParameterContainer *params, cFractalContainer *fractal) const;
 
 private:
 	bool LoadSettings2(const QString &filename);
 	bool LoadOneSetting(const char *str1, const char *str2, sParamRender *params);
-	double atof2(const char *str);
+	static double atof2(const char *str);
 	void GetPaletteFromString(sRGB *palette, const char *paletteString);
 	sParamRender *oldData;
 	bool paletteLoadedFromSettingsFile;

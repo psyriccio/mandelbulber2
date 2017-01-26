@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -62,13 +62,13 @@ public:
 	cTexture(const cTexture &tex);
 	cTexture &operator=(const cTexture &tex);
 
-	~cTexture(void);
-	int Height(void) const { return height; }
-	int Width(void) const { return width; }
+	~cTexture();
+	int Height() const { return height; }
+	int Width() const { return width; }
 	sRGBfloat Pixel(double x, double y, double pixelSize = 0.0) const;
 	sRGBfloat Pixel(CVector2<double> point, double pixelSize = 0.0) const;
 	sRGBA16 FastPixel(int x, int y) const;
-	bool IsLoaded(void) const { return loaded; }
+	bool IsLoaded() const { return loaded; }
 	QString GetFileName() const { return originalFileName; }
 	void FromQByteArray(QByteArray *buffer, enumUseMipmaps mode);
 	CVector3 NormalMapFromBumpMap(CVector2<double> point, double bump, double pixelSize = 0.0) const;
@@ -77,10 +77,10 @@ public:
 
 private:
 	sRGBA16 LinearInterpolation(double x, double y) const;
-	sRGBfloat BicubicInterpolation(double x, double y, const sRGBA16 *bitmap, int w, int h) const;
+	static sRGBfloat BicubicInterpolation(double x, double y, const sRGBA16 *bitmap, int w, int h);
 	sRGBfloat MipMap(double x, double y, double pixelSize) const;
 	void CreateMipMaps();
-	inline int WrapInt(int a, int size) { return (a + size) % size; }
+	static int WrapInt(int a, int size) { return (a + size) % size; }
 	sRGBA16 *bitmap;
 	int width;
 	int height;

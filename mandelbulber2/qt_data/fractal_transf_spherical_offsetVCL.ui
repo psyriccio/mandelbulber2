@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>871</width>
-    <height>746</height>
+    <width>880</width>
+    <height>2164</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
    <item>
     <widget class="QLabel" name="label_97">
      <property name="text">
-      <string> The Curvilinear, Parabolic  &amp; Dot modes  can be applied consecutively</string>
+      <string>The Curvilinear, Parabolic &amp; Dot modes can be applied consecutively</string>
      </property>
     </widget>
    </item>
@@ -48,7 +48,7 @@
      <item row="1" column="2">
       <widget class="QCheckBox" name="checkBox_Cpara_enabledCurves">
        <property name="text">
-        <string>Curvi  function </string>
+        <string>Curvi function</string>
        </property>
       </widget>
      </item>
@@ -81,7 +81,7 @@
         </font>
        </property>
        <property name="text">
-        <string>  Note. Curvi Function requires the condition that  (B - A) /2  &gt;  A</string>
+        <string>Note. Curvi Function requires the condition that B &gt; 2 *A</string>
        </property>
       </widget>
      </item>
@@ -103,7 +103,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Parameters for tweaking value of radial offset  in respect to iteration count</string>
+      <string>Parameters for tweaking value of radial offset in respect to iteration count</string>
      </property>
     </widget>
    </item>
@@ -245,7 +245,7 @@
      <item row="6" column="1">
       <widget class="QLabel" name="label_174">
        <property name="text">
-        <string>  0</string>
+        <string>0</string>
        </property>
       </widget>
      </item>
@@ -472,7 +472,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_101">
        <property name="text">
-        <string>Axis Slope :</string>
+        <string>Axis Slope:</string>
        </property>
       </widget>
      </item>
@@ -507,7 +507,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_98">
        <property name="text">
-        <string>Parabolic scale :</string>
+        <string>Parabolic scale:</string>
        </property>
       </widget>
      </item>
@@ -643,7 +643,7 @@
      <item row="0" column="1">
       <widget class="QLabel" name="label_144">
        <property name="text">
-        <string>z  *= 1.0 + offset/ -z.Dot(z);</string>
+        <string>z *= 1.0 + offset/ -z.Dot(z);</string>
        </property>
       </widget>
      </item>
@@ -1048,7 +1048,7 @@
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
 
   &lt;span style=&quot;color:#d0d0a0&quot;&gt;// using the parameter&lt;/span&gt;
-  &lt;span style=&quot;color:#d0d0a0&quot;&gt;// z *= 1 + para / -z.Dot(z);&lt;/span&gt;
+  &lt;span style=&quot;color:#d0d0a0&quot;&gt;// z *= 1.0 + para / -z.Dot(z);&lt;/span&gt;
 
   &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;functionEnabledFalse&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
@@ -1110,14 +1110,14 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>MyCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header>my_check_box.h</header>
-  </customwidget>
-  <customwidget>
    <class>MySpinBox</class>
    <extends>QSpinBox</extends>
    <header>my_spin_box.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MyCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>my_check_box.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

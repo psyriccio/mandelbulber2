@@ -131,7 +131,7 @@ function checkFileHeader($filePath, &$fileContent, &$status){
        		        }
 		}
 		else{
-			$regexParseHeader = '/^[\s\S]+#{50}?[\S\s]+Authors:\s(.*)([\s\S]*?)\*\/([\s\S]*)$/';
+			$regexParseHeader = '/^[\s\S]+#{50}?[\S\s]+Authors:\s([\s\S]*?)\*\n([\s\S]*?)\*\/([\s\S]*)$/';
 			if(preg_match($regexParseHeader, $fileContent, $matchHeaderNew)){
 				$newFileContent = getFileHeader($matchHeaderNew[1], $matchHeaderNew[2], $modificationString) . $matchHeaderNew[3];
 				if($newFileContent != $fileContent){
@@ -171,7 +171,7 @@ function checkDefines(&$fileContent, $headerFilePath, $headerFileName, $folderNa
 }
 
 function checkClang($filepath, &$fileContent, &$status){
-	$contentsBefore = $fileContent;
+  $contentsBefore = $fileContent;
 	// method 1
 	// $cmd = 'cat <<EOF |' . PHP_EOL . escapeshellarg($fileContent) . PHP_EOL . 'EOF' . PHP_EOL;
         // $cmd = 'echo ' . escapeshellarg($fileContent) . ' | ';
@@ -201,11 +201,11 @@ function checkClang($filepath, &$fileContent, &$status){
 function getModificationInterval($filePath){
 	// these commits contain only auto formatting code changes
 	// and should not be counted for the modification invertal
-	$ignoreString = 'source code';
+	$ignoreString = 'source\scode|nullptr';
 
-	$cmd = "git log --format=%ad%s " . $filePath . " | grep -v '" . $ignoreString . "' | tail -1 | egrep -o '\s([0-9]{4})\s'";
+	$cmd = "git log --format=%ad%s " . $filePath . " | grep -vE '" . $ignoreString . "' | tail -1 | egrep -o '\s([0-9]{4})\s'";
 	$yearStart = trim(shell_exec($cmd));
-	$cmd = "git log --format=%ad%s " . $filePath . " | grep -m 1 -v '" . $ignoreString . "' | head -1 | egrep -o '\s([0-9]{4})\s'";
+	$cmd = "git log --format=%ad%s " . $filePath . " | grep -m 1 -vE '" . $ignoreString . "' | head -1 | egrep -o '\s([0-9]{4})\s'";
 	$yearEnd =  trim(shell_exec($cmd));
 	if(empty($yearStart)) return date('Y');	
 	if($yearStart == $yearEnd){
@@ -242,13 +242,12 @@ function isVerbose(){
 	return false;
 }
 
-
 function getFileHeader($author, $description, $modificationString){
 	$out = <<<EOT
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) __date__ Krzysztof Marczak __spacing__ §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) __date__ Mandelbulber Team __spacing__ §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -299,7 +298,36 @@ EOT;
 	$description = implode(PHP_EOL, $nonEmptyLines);
 	$spacing = str_repeat(' ', 10 - strlen($modificationString));
 	return str_replace(array('__author__', '__description__', '__date__', '__spacing__'),
-		array($author, $description, $modificationString, $spacing), $out);
+		array(formatAuthorLine($author), $description, $modificationString, $spacing), $out);
+}
+
+function formatAuthorLine($authorLine){
+	$oldAuthors = explode(',', $authorLine);
+	$authors = array();
+	$out = '';
+	foreach($oldAuthors as $oldAuthor){
+		$name = trim($oldAuthor);
+		if($name == '') continue;
+		$author = lookUpAuthor($name);
+		if(strlen($out) > 0) $out .= ', ';
+		if(strlen($out) - strrpos($out, PHP_EOL) + strlen($author) > 90) $out .= PHP_EOL . ' *  ';
+		$out .=	$author; 
+	}
+	return $out;
+}
+
+function lookUpAuthor($authorName){
+	// use consistent author name
+	if(strpos($authorName, 'Krzysztof Marczak') !== false) return 'Krzysztof Marczak (buddhi1980@gmail.com)';
+	if(strpos($authorName, 'Graeme McLaren') !== false) return 'Graeme McLaren';
+	if(strpos($authorName, 'pmneila') !== false) return 'pmneila';
+	if(strpos($authorName, 'Stanislaw Adaszewski') !== false) return 'Stanislaw Adaszewski (http://algoholic.eu)';
+	if(strpos($authorName, 'Rayan Hitchman') !== false) return 'Rayan Hitchman';
+	if(strpos($authorName, 'Robert Pancoast') !== false) return 'Robert Pancoast (RobertPancoast77@gmail.com)';
+	if(strpos($authorName, 'Sebastian Jennen') !== false) return 'Sebastian Jennen (jenzebas@gmail.com)';
+
+	errorString('unknown author: ' . $authorName);
+	return $authorName;
 }
 
 ?>

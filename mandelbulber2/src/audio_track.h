@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -45,7 +45,7 @@ class cAudioTrack : public QObject
 	Q_OBJECT
 
 public:
-	cAudioTrack(QObject *parent = NULL);
+	cAudioTrack(QObject *parent = nullptr);
 	~cAudioTrack();
 	void Clear();
 
@@ -57,15 +57,19 @@ public:
 	float getSample(int sampleIndex) const;
 	void calculateFFT();
 	cAudioFFTdata getFFTSample(int frame) const;
-	float getBand(int frame, double midFreq, double bandwidth) const;
+	float getBand(int frame, double midFreq, double bandwidth, bool pitchMode) const;
 	int getNumberOfFrames() const { return numberOfFrames; };
 	void setFramesPerSecond(double _framesPerSecond);
 	double getFramesPerSecond() const { return framesPerSecond; }
 	float getMaxFft() const { return maxFft; }
 	float getMaxVolume() const { return maxVolume; }
 	int freq2FftPos(double freq) const;
-	void calculateAnimation(double midFreq, double bandwidth);
+	void calculateAnimation(double midFreq, double bandwidth, bool pitchMode);
 	float getAnimation(int frame) const;
+	void decayFilter(double strength);
+	void smoothFilter(double strength);
+	void binaryFilter(double thresh, int length);
+	float *getRawAudio();
 
 private slots:
 	void slotReadBuffer();
@@ -82,6 +86,7 @@ private:
 	int sampleRate;
 	bool loaded;
 	bool loadingInProgress;
+	bool fftCalculated;
 
 	double framesPerSecond;
 	int numberOfFrames;
@@ -92,7 +97,8 @@ private:
 
 signals:
 	void loadingFinished();
-	void loadingProgress(double percentage);
+	void loadingFailed();
+	void loadingProgress(QString progressText);
 };
 
 #endif /* MANDELBULBER2_SRC_AUDIO_TRACK_H_ */

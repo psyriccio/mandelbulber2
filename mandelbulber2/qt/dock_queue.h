@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -52,13 +52,13 @@ class cDockQueue : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cDockQueue(QWidget *parent = NULL);
+	explicit cDockQueue(QWidget *parent = nullptr);
 	~cDockQueue();
-	MyProgressBar *GetProgressBarImage();
-	MyProgressBar *GetProgressBarAnimation();
-	Ui::cDockQueue *GetUi();
+	MyProgressBar *GetProgressBarImage() const;
+	MyProgressBar *GetProgressBarAnimation() const;
+	Ui::cDockQueue *GetUi() const;
 
-	RenderedImage *GetRenderedImageWidget() { return renderedImageWidget; }
+	RenderedImage *GetRenderedImageWidget() const { return renderedImageWidget; }
 
 private:
 	Ui::cDockQueue *ui;

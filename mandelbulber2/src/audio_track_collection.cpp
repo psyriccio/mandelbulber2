@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016-17 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -73,7 +73,7 @@ void cAudioTrackCollection::AddAudioTrack(
 	else
 	{
 		audioTracks.insert(fullParameterName, new cAudioTrack());
-		if (params) // params is NULL when audio tracks are regenerated
+		if (params) // params is nullptr when audio tracks are regenerated
 		{
 			AddParameters(params, fullParameterName);
 		}
@@ -116,8 +116,7 @@ cAudioTrack *cAudioTrackCollection::GetAudioTrackPtr(const QString fullParameter
 	{
 		qCritical() << "cAudioTrackCollection::GetAudioTrackPtr(): element '" << fullParameterName
 								<< "' doesn't exist";
-		abort();
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -134,6 +133,25 @@ void cAudioTrackCollection::AddParameters(cParameterContainer *params, const QSt
 			morphNone, paramStandard);
 		params->addParam(
 			FullParameterName("multfactor", parameterName), 1.0, 0.0, 20000.0, morphNone, paramStandard);
+
+		params->addParam(FullParameterName("negative", parameterName), false, morphNone, paramStandard);
+		params->addParam(
+			FullParameterName("pitchmode", parameterName), false, morphNone, paramStandard);
+		params->addParam(
+			FullParameterName("decayfilter", parameterName), false, morphNone, paramStandard);
+		params->addParam(
+			FullParameterName("smoothfilter", parameterName), false, morphNone, paramStandard);
+		params->addParam(
+			FullParameterName("binaryfilter", parameterName), false, morphNone, paramStandard);
+		params->addParam(FullParameterName("decaystrength", parameterName), 5.0, 0.01, 1000.0,
+			morphNone, paramStandard);
+		params->addParam(FullParameterName("smoothstrength", parameterName), 5.0, 0.01, 1000.0,
+			morphNone, paramStandard);
+		params->addParam(
+			FullParameterName("binarythresh", parameterName), 0.5, 0.0, 1.0, morphNone, paramStandard);
+		params->addParam(
+			FullParameterName("binarylength", parameterName), 1, 1, 1000, morphNone, paramStandard);
+
 		params->addParam(FullParameterName("enable", parameterName), false, morphNone, paramStandard);
 		params->addParam(
 			FullParameterName("soundfile", parameterName), QString(""), morphNone, paramStandard);
@@ -151,13 +169,22 @@ void cAudioTrackCollection::RemoveParameters(
 		params->DeleteParameter(FullParameterName("multfactor", parameterName));
 		params->DeleteParameter(FullParameterName("enable", parameterName));
 		params->DeleteParameter(FullParameterName("soundfile", parameterName));
+		params->DeleteParameter(FullParameterName("negative", parameterName));
+		params->DeleteParameter(FullParameterName("pitchmode", parameterName));
+		params->DeleteParameter(FullParameterName("decayfilter", parameterName));
+		params->DeleteParameter(FullParameterName("smoothfilter", parameterName));
+		params->DeleteParameter(FullParameterName("decaystrength", parameterName));
+		params->DeleteParameter(FullParameterName("smoothstrength", parameterName));
+		params->DeleteParameter(FullParameterName("binaryfilter", parameterName));
+		params->DeleteParameter(FullParameterName("binarythresh", parameterName));
+		params->DeleteParameter(FullParameterName("binarylength", parameterName));
 	}
 }
 
 QString cAudioTrackCollection::FullParameterName(
 	const QString &nameOfSoundParameter, const QString parameterName)
 {
-	return QString("animsound_") + nameOfSoundParameter + "_" + parameterName;
+	return prefix + QString("_") + nameOfSoundParameter + "_" + parameterName;
 }
 
 void cAudioTrackCollection::LoadAllAudioFiles(cParameterContainer *params)
@@ -173,8 +200,46 @@ void cAudioTrackCollection::LoadAllAudioFiles(cParameterContainer *params)
 			audioTracks[listOfAllParameters[i]]->Clear();
 			audioTracks[listOfAllParameters[i]]->LoadAudio(filename);
 			audioTracks[listOfAllParameters[i]]->setFramesPerSecond(
-				30.0); // TODO settings for frames per second
+				params->Get<double>("keyframe_frames_per_second"));
 			audioTracks[listOfAllParameters[i]]->calculateFFT();
+		}
+	}
+}
+
+void cAudioTrackCollection::RefreshAllAudioTracks(cParameterContainer *params)
+{
+	QStringList listOfAllParameters = audioTracks.keys();
+
+	for (int i = 0; i < listOfAllParameters.length(); i++)
+	{
+		QString parameterName = listOfAllParameters[i];
+		if (audioTracks[parameterName]->isLoaded())
+		{
+			audioTracks[parameterName]->setFramesPerSecond(
+				params->Get<double>("keyframe_frames_per_second"));
+			audioTracks[parameterName]->calculateFFT();
+
+			double midFreq = params->Get<double>(FullParameterName("midfreq", parameterName));
+			double bandwidth = params->Get<double>(FullParameterName("bandwidth", parameterName));
+			bool pitchmode = params->Get<bool>(FullParameterName("pitchmode", parameterName));
+			audioTracks[parameterName]->calculateAnimation(midFreq, bandwidth, pitchmode);
+
+			if (params->Get<bool>(FullParameterName("binaryfilter", parameterName)))
+			{
+				audioTracks[parameterName]->binaryFilter(
+					params->Get<double>(FullParameterName("binarythresh", parameterName)),
+					params->Get<int>(FullParameterName("binarylength", parameterName)));
+			}
+			if (params->Get<bool>(FullParameterName("decayfilter", parameterName)))
+			{
+				audioTracks[parameterName]->decayFilter(
+					params->Get<double>(FullParameterName("decaystrength", parameterName)));
+			}
+			if (params->Get<bool>(FullParameterName("smoothfilter", parameterName)))
+			{
+				audioTracks[parameterName]->smoothFilter(
+					params->Get<double>(FullParameterName("smoothstrength", parameterName)));
+			}
 		}
 	}
 }

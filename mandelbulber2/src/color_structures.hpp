@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-15 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,13 +27,15 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen (jenzebas@gmail.com)
  *
  * data structures for color representation
  */
 
 #ifndef MANDELBULBER2_SRC_COLOR_STRUCTURES_HPP_
 #define MANDELBULBER2_SRC_COLOR_STRUCTURES_HPP_
+
+#include <QtCore>
 
 template <typename T>
 struct tsRGB
@@ -68,20 +70,20 @@ struct tsRGBA
 
 // explicitly define constructor for rgba with regards to max value of Opacity
 template <>
-inline tsRGBA<unsigned char>::tsRGBA()
+inline tsRGBA<quint8>::tsRGBA()
 {
 	R = 0;
 	G = 0;
 	B = 0;
-	A = (unsigned char)255;
+	A = static_cast<quint8>(255);
 }
 template <>
-inline tsRGBA<unsigned short>::tsRGBA()
+inline tsRGBA<quint16>::tsRGBA()
 {
 	R = 0;
 	G = 0;
 	B = 0;
-	A = (unsigned short)65535;
+	A = static_cast<quint16>(65535);
 }
 template <>
 inline tsRGBA<float>::tsRGBA()
@@ -92,13 +94,13 @@ inline tsRGBA<float>::tsRGBA()
 	A = 1.0;
 }
 
-typedef tsRGB<unsigned char> sRGB8;
-typedef tsRGB<unsigned short> sRGB16;
+typedef tsRGB<quint8> sRGB8;
+typedef tsRGB<quint16> sRGB16;
 typedef tsRGB<float> sRGBfloat;
-typedef tsRGB<int> sRGB;
+typedef tsRGB<qint32> sRGB;
 
-typedef tsRGBA<unsigned char> sRGBA8;
-typedef tsRGBA<unsigned short> sRGBA16;
+typedef tsRGBA<quint8> sRGBA8;
+typedef tsRGBA<quint16> sRGBA16;
 typedef tsRGBA<float> sRGBAfloat;
 
 #endif /* MANDELBULBER2_SRC_COLOR_STRUCTURES_HPP_ */

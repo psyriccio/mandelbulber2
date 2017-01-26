@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -413,7 +413,7 @@ void cParameterContainer::Copy(QString name, const cParameterContainer *sourceCo
 	}
 }
 
-QList<QString> cParameterContainer::GetListOfParameters(void) const
+QList<QString> cParameterContainer::GetListOfParameters() const
 {
 	QList<QString> list = myMap.keys();
 	std::sort(list.begin(), list.end(), compareStrings);
@@ -472,7 +472,7 @@ bool cParameterContainer::isDefaultValue(QString name) const
 	return isDefault;
 }
 
-void cParameterContainer::ResetAllToDefault(void)
+void cParameterContainer::ResetAllToDefault()
 {
 	QMap<QString, cOneParameter>::iterator it = myMap.begin();
 	while (it != myMap.end())

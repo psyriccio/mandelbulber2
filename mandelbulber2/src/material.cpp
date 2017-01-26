@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -121,7 +121,7 @@ void cMaterial::setParameters(int _id, const cParameterContainer *materialParam,
 	if (textureScale.z < 1e-20) textureScale.z = 1e-20;
 
 	textureMappingType =
-		(texture::enumTextureMapping)materialParam->Get<int>(Name("texture_mapping_type", id));
+		texture::enumTextureMapping(materialParam->Get<int>(Name("texture_mapping_type", id)));
 
 	fresnelReflectance = materialParam->Get<bool>(Name("fresnel_reflectance", id));
 	useColorsFromPalette = materialParam->Get<bool>(Name("use_colors_from_palette", id));
@@ -140,9 +140,8 @@ void cMaterial::setParameters(int _id, const cParameterContainer *materialParam,
 	displacementTextureHeight = materialParam->Get<double>(Name("displacement_texture_height", id));
 	normalMapTextureHeight = materialParam->Get<double>(Name("normal_map_texture_height", id));
 
-	fractalColoring.coloringAlgorithm =
-		(sFractalColoring::enumFractalColoringAlgorithm)materialParam->Get<int>(
-			Name("fractal_coloring_algorithm", id));
+	fractalColoring.coloringAlgorithm = sFractalColoring::enumFractalColoringAlgorithm(
+		materialParam->Get<int>(Name("fractal_coloring_algorithm", id)));
 	fractalColoring.sphereRadius =
 		materialParam->Get<double>(Name("fractal_coloring_sphere_radius", id));
 	fractalColoring.lineDirection =

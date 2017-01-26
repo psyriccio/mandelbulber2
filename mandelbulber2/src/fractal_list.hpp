@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -60,7 +60,7 @@ enum enumFractalFormula
 	mandelbulb4 = 15,
 	boxFoldBulbPow2 = 16,
 	smoothMandelbox = 17,
-	mandelboxVaryScale4D = 18,
+	mandelboxVaryScale4D = 18, // updated V2.10
 	aexion = 19,
 	benesi = 20,
 	bristorbrot = 21,
@@ -115,7 +115,7 @@ enum enumFractalFormula
 	aboxVSIcen1 = 76,
 	amazingSurfMod1 = 77, // updated V2.08
 	mandelbulbVaryPowerV1 = 78,
-	quaternion4D = 79,
+	quaternion4D = 79, // updated V2.10
 	msltoesym3Mod2 = 80,
 	msltoesym3Mod3 = 81,
 	msltoeDonut = 82,
@@ -141,8 +141,8 @@ enum enumFractalFormula
 	benesiMagTransforms = 100,
 	pseudoKleinian1 = 101, // fix T1 T1M V2.10
 	bristorbrot4D = 102,
-	pseudoKleinian2 = 103,
-	pseudoKleinian3 = 104, // fix T1 T1M V2.10
+	pseudoKleinian2 = 103, // fix DE V2.10
+	pseudoKleinian3 = 104, // fix T1 T1M V2.10 & DE
 	benesiPwr2s = 105,
 	mengerCrossMod1 = 106,
 	// V2.10
@@ -155,6 +155,7 @@ enum enumFractalFormula
 	mengerSmooth = 113,
 	mengerSmoothMod1 = 114,
 	mengerOcto = 115,
+	abox4D = 116,
 
 	// 152 to 172 reserved for scator
 	fastImagscaPower2 = 152,
@@ -234,6 +235,7 @@ enum enumFractalFormula
 	transfReciprocal4D = 1066,
 	transfFabsAddConditional4D = 1067,
 	transfSphericalOffsetVCL = 1068,
+	transfRotation4D = 1069,
 };
 }
 

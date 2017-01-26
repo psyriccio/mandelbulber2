@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen (sebastian.jennen@gmx.de)
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * cVoxelExportDialog class - class for handling the voxelexport dialog
  */
@@ -53,7 +53,7 @@ cVoxelExportDialog::cVoxelExportDialog(QWidget *parent)
 	automatedWidgets->ConnectSignalsForSlidersInWindow(this);
 	initFinished = true;
 	ui->progressBar->hide();
-	voxelExport = NULL;
+	voxelExport = nullptr;
 }
 
 cVoxelExportDialog::~cVoxelExportDialog()
@@ -124,7 +124,7 @@ void cVoxelExportDialog::on_pushButton_start_render_layers_clicked()
 	}
 }
 
-void cVoxelExportDialog::on_pushButton_stop_render_layers_clicked()
+void cVoxelExportDialog::on_pushButton_stop_render_layers_clicked() const
 {
 	if (slicerBusy)
 	{
@@ -167,11 +167,11 @@ void cVoxelExportDialog::slotSlicerFinished()
 }
 
 void cVoxelExportDialog::slotUpdateProgressAndStatus(
-	const QString &text, const QString &progressText, double progress)
+	const QString &text, const QString &progressText, double progress) const
 {
 	ui->label_info->setText(text);
 	if (!ui->progressBar->isVisible()) ui->progressBar->setVisible(true);
-	ui->progressBar->setValue((int)(progress * 1000.0));
+	ui->progressBar->setValue(int(progress * 1000.0));
 	ui->progressBar->setTextVisible(true);
 	ui->progressBar->setFormat(progressText);
 }

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -48,7 +48,7 @@ MyHistogramLabel::MyHistogramLabel(QWidget *parent) : QLabel(parent)
 	legendHeight = 15;
 }
 
-MyHistogramLabel::~MyHistogramLabel(void)
+MyHistogramLabel::~MyHistogramLabel()
 {
 	// delete pix;
 }
@@ -59,7 +59,7 @@ void MyHistogramLabel::UpdateHistogram(const cHistogram &_histData)
 	update();
 }
 
-void MyHistogramLabel::RedrawHistogram(QPainter &painter)
+void MyHistogramLabel::RedrawHistogram(QPainter &painter) const
 {
 	// get max Element
 	long maxH = 1; // 1 to prevent division by zero
@@ -79,11 +79,11 @@ void MyHistogramLabel::RedrawHistogram(QPainter &painter)
 			extrIndex = i;
 		}
 		sum += histData.GetHist(i);
-		double prob = (double)sum / histData.GetCount();
+		double prob = double(sum) / histData.GetCount();
 		if (prob < 0.0062) minIndex = i + 1;
 		if (prob < 0.9938) maxIndex = i + 1;
 	}
-	double average = (double)histData.GetSum() / histData.GetCount();
+	double average = double(histData.GetSum()) / histData.GetCount();
 
 	if (histData.GetCount() > 0)
 	{
@@ -104,7 +104,7 @@ void MyHistogramLabel::RedrawHistogram(QPainter &painter)
 		// draw each column bar
 		for (int i = 0; i < size; i++)
 		{
-			int height = (double)drawHeight * max(0L, histData.GetHist(i)) / maxH;
+			int height = double(drawHeight) * max(0L, histData.GetHist(i)) / maxH;
 
 			painter.drawRect(QRect(legendWidthP1 + i * drawWidth / size, drawHeight - height,
 				floor(1.0 * drawWidth / size), height));
@@ -121,7 +121,7 @@ void MyHistogramLabel::RedrawHistogram(QPainter &painter)
 	}
 }
 
-QString MyHistogramLabel::GetShortNumberDisplay(int val)
+QString MyHistogramLabel::GetShortNumberDisplay(int val) const
 {
 	if (val < 10000)
 	{

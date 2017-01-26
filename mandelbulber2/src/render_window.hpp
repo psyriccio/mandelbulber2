@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -67,53 +67,56 @@ class RenderWindow : public QMainWindow
 	Q_OBJECT
 
 public:
-	explicit RenderWindow(QWidget *parent = 0);
+	explicit RenderWindow(QWidget *parent = nullptr);
 	~RenderWindow();
 
 	// Getters for UI elements
-	cDockAnimation *GetWidgetDockAnimation();
-	cDockNavigation *GetWidgetDockNavigation();
-	cDockStatistics *GetWidgetDockStatistics();
-	cDockQueue *GetWidgetDockQueue();
-	cDockImageAdjustments *GetWidgetDockImageAdjustments();
-	cDockRenderingEngine *GetWidgetDockRenderingEngine();
-	cDockFractal *GetWidgetDockFractal();
+	cDockAnimation *GetWidgetDockAnimation() const;
+	cDockNavigation *GetWidgetDockNavigation() const;
+	cDockStatistics *GetWidgetDockStatistics() const;
+	cDockQueue *GetWidgetDockQueue() const;
+	cDockImageAdjustments *GetWidgetDockImageAdjustments() const;
+	cDockRenderingEngine *GetWidgetDockRenderingEngine() const;
+	cDockFractal *GetWidgetDockFractal() const;
 
-	QWidget *GetCentralWidget();
-	QComboBox *GetComboBoxMouseClickFunction();
+	QWidget *GetCentralWidget() const;
+	QComboBox *GetComboBoxMouseClickFunction() const;
 
 private:
-	void closeEvent(QCloseEvent *event);
-	void changeEvent(QEvent *event);
+	void closeEvent(QCloseEvent *event) override;
+	void changeEvent(QEvent *event) override;
 
 public slots:
 	void slotUpdateProgressAndStatus(const QString &text, const QString &progressText,
-		double progress, cProgressText::enumProgressType progressType = cProgressText::progress_IMAGE);
+		double progress,
+		cProgressText::enumProgressType progressType = cProgressText::progress_IMAGE) const;
 	void slotPopulateToolbar(bool completeRefresh = false);
-
+	void slotPopulateCustomWindowStates(bool completeRefresh = false);
 private slots:
-	void slotQuit();
+	static void slotQuit();
 
 	// other
-	void slotChangedCheckBoxCursorVisibility(int state);
-	void slotChangedComboImageScale(int index);
-	void slotChangedComboMouseClickFunction(int index);
-	void slotPressedButtonDeletePrimitive();
+	static void slotChangedCheckBoxCursorVisibility(int state);
+	void slotChangedComboImageScale(int index) const;
+	void slotChangedComboMouseClickFunction(int index) const;
+	void slotPressedButtonDeletePrimitive() const;
 
-	void slotPressedButtonSetPositionPrimitive();
-	void slotResizedScrolledAreaImage(int width, int height);
+	void slotPressedButtonSetPositionPrimitive() const;
+	void slotResizedScrolledAreaImage(int width, int height) const;
 	void slotMenuLoadPreset(QString filename);
 	void slotMenuRemovePreset(QString filename);
-
-	void slotUpdateProgressHide(cProgressText::enumProgressType progressType);
+	void slotMenuLoadCustomWindowState(QString filename);
+	void slotMenuRemoveCustomWindowState(QString filename);
+	static void slotUpdateProgressHide(cProgressText::enumProgressType progressType);
 	void slotMenuProgramSettings();
 	void slotExportVoxelLayers();
 	void slotExportMesh();
 	void slotQuestionMessage(const QString &questionTitle, const QString &questionText,
-		QMessageBox::StandardButtons buttons, QMessageBox::StandardButton *reply);
-	void slotAutoRefresh();
-	void slotMaterialSelected(int matIndex);
-	void slotMaterialEdited();
+		QMessageBox::StandardButtons buttons, QMessageBox::StandardButton *reply) const;
+	static void slotAutoRefresh();
+	void slotMaterialSelected(int matIndex) const;
+	static void slotMaterialEdited();
+	void ResetDocksPositions();
 
 	// pull down menu
 	void slotImportOldSettings();
@@ -124,8 +127,9 @@ private slots:
 	void slotMenuLoadExample();
 	void slotMenuLoadSettings();
 	void slotMenuLoadSettingsFromClipboard();
-	void slotMenuRedo();
+	static void slotMenuRedo();
 	void slotMenuResetDocksPositions();
+	void slotMenuAnimationtDocksPositions();
 	void slotMenuSaveDocksPositions();
 	void slotMenuSaveImageJPEG();
 	void slotMenuSaveImagePNG();
@@ -139,21 +143,22 @@ private slots:
 	void slotMenuSaveImagePNG16Alpha();
 
 	void slotMenuSaveSettings();
-	void slotMenuSaveSettingsToClipboard();
-	void slotMenuUndo();
+	static void slotMenuSaveSettingsToClipboard();
+	static void slotMenuUndo();
 	void slotUpdateDocksandToolbarbyAction();
-	void slotUpdateDocksandToolbarbyView();
+	void slotUpdateDocksandToolbarbyView() const;
 	void slotStackAllDocks();
 
 	// toolbar
 	void slotPresetAddToToolbar();
+	void slotCustomWindowStateAddToMenu();
 
 	// rendered image widget
-	void slotMouseMovedOnImage(int x, int y);
-	void slotMouseClickOnImage(int x, int y, Qt::MouseButton button);
-	void slotKeyPressOnImage(QKeyEvent *event);
-	void slotKeyReleaseOnImage(QKeyEvent *event);
-	void slotMouseWheelRotatedOnImage(int delta);
+	static void slotMouseMovedOnImage(int x, int y);
+	void slotMouseClickOnImage(int x, int y, Qt::MouseButton button) const;
+	static void slotKeyPressOnImage(QKeyEvent *event);
+	static void slotKeyReleaseOnImage(QKeyEvent *event);
+	void slotMouseWheelRotatedOnImage(int delta) const;
 
 private:
 	Ui::RenderWindow *ui;

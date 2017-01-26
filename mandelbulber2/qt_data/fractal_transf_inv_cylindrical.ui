@@ -90,7 +90,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_113">
        <property name="text">
-        <string>z.y Multiplier::</string>
+        <string>z.y Multiplier:</string>
        </property>
       </widget>
      </item>
@@ -255,7 +255,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Analytic DE Muliplier: </string>
+        <string>Analytic DE Muliplier:</string>
        </property>
       </widget>
      </item>
@@ -386,7 +386,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Analytic DE Offset: </string>
+        <string>Analytic DE Offset:</string>
        </property>
       </widget>
      </item>

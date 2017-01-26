@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -55,33 +55,33 @@ class cTabFractal : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cTabFractal(QWidget *parent = NULL);
+	explicit cTabFractal(QWidget *parent = nullptr);
 	~cTabFractal();
 
-	void InitWidgetNames();
+	void InitWidgetNames() const;
 	void Init(bool firstTab, int _tabIndex);
-	void FormulaTransformSetVisible(bool visible);
-	void CConstantAdditionSetVisible(bool visible);
-	void MaterialSetVisible(bool visible);
-	void FrameIterationFormulaSetEnabled(bool enabled);
-	void FrameIterationFormulaSetWidgetsVisibility(bool visible);
-	int GetCurrentFractalIndexOnList();
-	void SynchronizeInterface(cParameterContainer *par, qInterface::enumReadWrite mode);
-	void SynchronizeFractal(cParameterContainer *fractal, qInterface::enumReadWrite mode);
+	void FormulaTransformSetVisible(bool visible) const;
+	void CConstantAdditionSetVisible(bool visible) const;
+	void MaterialSetVisible(bool visible) const;
+	void FrameIterationFormulaSetEnabled(bool enabled) const;
+	void FrameIterationFormulaSetWidgetsVisibility(bool visible) const;
+	int GetCurrentFractalIndexOnList() const;
+	void SynchronizeInterface(cParameterContainer *par, qInterface::enumReadWrite mode) const;
+	void SynchronizeFractal(cParameterContainer *fractal, qInterface::enumReadWrite mode) const;
 
 private slots:
 	void slotChangedComboFractal(int indexInComboBox);
-	void slotPressedButtonResetFormula();
+	void slotPressedButtonResetFormula() const;
 
 	// IFS
-	void slotPressedButtonIFSDefaultsDodecahedron();
-	void slotPressedButtonIFSDefaultsIcosahedron();
-	void slotPressedButtonIFSDefaultsOctahedron();
-	void slotPressedButtonIFSDefaultsMengerSponge();
-	void slotPressedButtonIFSDefaultsReset();
+	void slotPressedButtonIFSDefaultsDodecahedron() const;
+	void slotPressedButtonIFSDefaultsIcosahedron() const;
+	void slotPressedButtonIFSDefaultsOctahedron() const;
+	void slotPressedButtonIFSDefaultsMengerSponge() const;
+	void slotPressedButtonIFSDefaultsReset() const;
 
 private:
-	void ConnectSignals();
+	static void ConnectSignals();
 
 	Ui::cTabFractal *ui;
 

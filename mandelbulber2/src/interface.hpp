@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -74,30 +74,30 @@ public:
 
 	cInterface();
 	~cInterface();
-	void ShowUi(void);
-	void ConnectSignals(void);
-	void ConnectProgressAndStatisticsSignals();
+	void ShowUi();
+	void ConnectSignals() const;
+	void ConnectProgressAndStatisticsSignals() const;
 	void SynchronizeInterface(
-		cParameterContainer *par, cFractalContainer *parFractal, qInterface::enumReadWrite mode);
+		cParameterContainer *par, cFractalContainer *parFractal, qInterface::enumReadWrite mode) const;
 	void StartRender(bool noUndo = false);
 	void MoveCamera(QString buttonName);
 	void RotateCamera(QString buttonName);
-	void CameraOrTargetEdited();
-	void RotationEdited();
-	void CameraDistanceEdited();
-	void IFSDefaultsDodecahedron(cParameterContainer *parFractal);
-	void IFSDefaultsIcosahedron(cParameterContainer *parFractal);
-	void IFSDefaultsOctahedron(cParameterContainer *parFractal);
-	void IFSDefaultsMengerSponge(cParameterContainer *parFractal);
-	void IFSDefaultsReset(cParameterContainer *parFractal);
+	void CameraOrTargetEdited() const;
+	void RotationEdited() const;
+	void CameraDistanceEdited() const;
+	void IFSDefaultsDodecahedron(cParameterContainer *parFractal) const;
+	void IFSDefaultsIcosahedron(cParameterContainer *parFractal) const;
+	static void IFSDefaultsOctahedron(cParameterContainer *parFractal);
+	static void IFSDefaultsMengerSponge(cParameterContainer *parFractal);
+	static void IFSDefaultsReset(cParameterContainer *parFractal);
 	void RefreshMainImage();
-	void AutoFog();
-	double GetDistanceForPoint(CVector3 point);
-	double GetDistanceForPoint(
+	void AutoFog() const;
+	double GetDistanceForPoint(CVector3 point) const;
+	static double GetDistanceForPoint(
 		CVector3 point, cParameterContainer *par, cFractalContainer *parFractal);
 	void SetByMouse(
 		CVector2<double> screenPoint, Qt::MouseButton button, const QList<QVariant> &mode);
-	void MovementStepModeChanged(int mode);
+	void MovementStepModeChanged(int mode) const;
 	void Undo();
 	void Redo();
 	void ResetView();
@@ -105,19 +105,19 @@ public:
 	void NewPrimitive(const QString &primitiveType, int index = 0);
 	void DeletePrimitive(const QString &primitiveName);
 	void RebuildPrimitives(cParameterContainer *par);
-	void ComboMouseClickUpdate();
-	void AutoRecovery();
-	bool DataFolderUpgrade();
+	void ComboMouseClickUpdate() const;
+	void AutoRecovery() const;
+	bool DataFolderUpgrade() const;
 	void OptimizeStepFactor(double qualityTarget);
-	void ResetFormula(int fractalNumber);
+	void ResetFormula(int fractalNumber) const;
 	void PeriodicRefresh();
 	void DisablePeriodicRefresh();
 	void ReEnablePeriodicRefresh();
 	void InitPeriodicRefresh();
 	void InitMaterialsUi();
 	void MaterialSelected(int matIndex);
-	void StartupDefaultSettings(void);
-	void DisableJuliaPointMode();
+	static void StartupDefaultSettings();
+	void DisableJuliaPointMode() const;
 
 	bool QuitApplicationDialog();
 

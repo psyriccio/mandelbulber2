@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -42,14 +42,14 @@ class MyTableWidgetAnim : public QTableWidget
 	Q_OBJECT
 
 public:
-	MyTableWidgetAnim(QWidget *parent = 0);
+	MyTableWidgetAnim(QWidget *parent = nullptr);
 	~MyTableWidgetAnim();
 
 private:
 public slots:
-	void tableContextMenuRequest(QPoint point);
-	void columnContextMenuRequest(QPoint point);
-	void rowContextMenuRequest(QPoint point);
+	void tableContextMenuRequest(QPoint point) const;
+	void columnContextMenuRequest(QPoint point) const;
+	void rowContextMenuRequest(QPoint point) const;
 };
 
 #endif /* MANDELBULBER2_QT_MY_TABLE_WIDGET_ANIM_HPP_ */

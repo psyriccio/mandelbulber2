@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen (sebastian.jennen@gmx.de)
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * cVoxelExportDialog class - class for handling the voxelexport dialog
  */
@@ -51,21 +51,21 @@ class cVoxelExportDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit cVoxelExportDialog(QWidget *parent = 0);
+	explicit cVoxelExportDialog(QWidget *parent = nullptr);
 	~cVoxelExportDialog();
 
 public slots:
 	void on_pushButton_start_render_layers_clicked();
-	void on_pushButton_stop_render_layers_clicked();
+	void on_pushButton_stop_render_layers_clicked() const;
 	void on_pushButton_select_image_path_clicked();
 	void on_pushButton_show_layers_clicked();
 	void slotUpdateProgressAndStatus(
-		const QString &text, const QString &progressText, double progress);
+		const QString &text, const QString &progressText, double progress) const;
 	void slotSlicerFinished();
 
 protected:
-	void closeEvent(QCloseEvent *event);
-	void showEvent(QShowEvent *event);
+	void closeEvent(QCloseEvent *event) override;
+	void showEvent(QShowEvent *event) override;
 
 private:
 	Ui::cVoxelExportDialog *ui;

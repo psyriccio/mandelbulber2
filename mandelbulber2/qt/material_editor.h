@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -53,21 +53,21 @@ class cMaterialEditor : public QWidget
 	Q_OBJECT
 
 public:
-	explicit cMaterialEditor(QWidget *parent = NULL);
+	explicit cMaterialEditor(QWidget *parent = nullptr);
 	~cMaterialEditor();
 	void AssignMaterial(cParameterContainer *params, int index);
 
 private slots:
-	void slotPressedButtonNewRandomPalette();
+	void slotPressedButtonNewRandomPalette() const;
 	void slotPressedButtonGetPaletteFromImage();
-	void slotPressedButtonRandomize();
-	void slotChangedSpinBoxPaletteOffset(double value);
-	void slotChangedSpinBoxPaletteSize(int value);
-	void slotChangedComboFractalColoringAlgorithm(int index);
+	void slotPressedButtonRandomize() const;
+	void slotChangedSpinBoxPaletteOffset(double value) const;
+	void slotChangedSpinBoxPaletteSize(int value) const;
+	void slotChangedComboFractalColoringAlgorithm(int index) const;
 
 private:
-	void ConnectSignals(void);
-	cColorPalette GetPaletteFromImage(const QString &filename);
+	void ConnectSignals();
+	cColorPalette GetPaletteFromImage(const QString &filename) const;
 
 	Ui::cMaterialEditor *ui;
 	int materialIndex;

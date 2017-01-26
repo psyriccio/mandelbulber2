@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -51,40 +51,40 @@ class cDockRenderingEngine : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit cDockRenderingEngine(QWidget *parent = NULL);
+	explicit cDockRenderingEngine(QWidget *parent = nullptr);
 	~cDockRenderingEngine();
 
-	void SynchronizeInterfaceDistanceEstimation(cParameterContainer *par);
-	void ComboDeltaDEFunctionSetEnabled(bool enabled);
-	int ComboDeltaDEMethodCurrentIndex(void);
-	void CheckboxConnectDetailLevelSetCheckState(Qt::CheckState state);
-	void UpdateLabelWrongDEPercentage(const QString &text);
-	void UpdateLabelUsedDistanceEstimation(const QString &text);
+	void SynchronizeInterfaceDistanceEstimation(cParameterContainer *par) const;
+	void ComboDeltaDEFunctionSetEnabled(bool enabled) const;
+	int ComboDeltaDEMethodCurrentIndex() const;
+	void CheckboxConnectDetailLevelSetCheckState(Qt::CheckState state) const;
+	void UpdateLabelWrongDEPercentage(const QString &text) const;
+	void UpdateLabelUsedDistanceEstimation(const QString &text) const;
 
 private slots:
-	void slotChangedCheckBoxUseDefaultBailout(int state);
-	void slotPressedButtonOptimizeForLQ();
-	void slotPressedButtonOptimizeForMQ();
-	void slotPressedButtonOptimizeForHQ();
-	void slotDetailLevelChanged();
-	void slotChangedComboDistanceEstimationMethod(int index);
-	void slotPressedButtonSetBoundingBoxAsLimits();
+	void slotChangedCheckBoxUseDefaultBailout(int state) const;
+	static void slotPressedButtonOptimizeForLQ();
+	static void slotPressedButtonOptimizeForMQ();
+	static void slotPressedButtonOptimizeForHQ();
+	static void slotDetailLevelChanged();
+	void slotChangedComboDistanceEstimationMethod(int index) const;
+	static void slotPressedButtonSetBoundingBoxAsLimits();
 
 	// NetRender
-	void slotNetRenderClientConnect();
-	void slotNetRenderClientDisconnect();
-	void slotNetRenderServerStart();
-	void slotNetRenderServerStop();
-	void slotNetRenderClientServerChange(int index);
-	void slotCheckBoxDisableNetRender(bool on);
-	void slotNetRenderClientListUpdate();
-	void slotNetRenderClientListUpdate(int i);
-	void slotNetRenderClientListUpdate(int i, int j);
-	void slotNetRenderStatusServerUpdate();
-	void slotNetRenderStatusClientUpdate();
+	void slotNetRenderClientConnect() const;
+	static void slotNetRenderClientDisconnect();
+	void slotNetRenderServerStart() const;
+	static void slotNetRenderServerStop();
+	void slotNetRenderClientServerChange(int index) const;
+	static void slotCheckBoxDisableNetRender(bool on);
+	void slotNetRenderClientListUpdate() const;
+	void slotNetRenderClientListUpdate(int i) const;
+	void slotNetRenderClientListUpdate(int i, int j) const;
+	void slotNetRenderStatusServerUpdate() const;
+	void slotNetRenderStatusClientUpdate() const;
 
 private:
-	void ConnectSignals();
+	void ConnectSignals() const;
 
 	Ui::cDockRenderingEngine *ui;
 

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen (jenzebas@gmail.com)
  *
  * Functions for flight animation.
  *
@@ -59,8 +59,9 @@
 #include "rendering_configuration.hpp"
 #include "ui_dock_animation.h"
 #include "undo.h"
+#include "common_math.h"
 
-cKeyframeAnimation *gKeyframeAnimation = NULL;
+cKeyframeAnimation *gKeyframeAnimation = nullptr;
 
 cKeyframeAnimation::cKeyframeAnimation(cInterface *_interface, cKeyframes *_frames, cImage *_image,
 	QWidget *_imageWidget, cParameterContainer *_params, cFractalContainer *_fractal, QObject *parent)
@@ -136,8 +137,8 @@ cKeyframeAnimation::cKeyframeAnimation(cInterface *_interface, cKeyframes *_fram
 	}
 	else
 	{
-		ui = NULL;
-		table = NULL;
+		ui = nullptr;
+		table = nullptr;
 	}
 
 	QApplication::connect(this,
@@ -148,7 +149,7 @@ cKeyframeAnimation::cKeyframeAnimation(cInterface *_interface, cKeyframes *_fram
 void cKeyframeAnimation::slotAddKeyframe()
 {
 	mainInterface->SynchronizeInterface(params, fractalParams, qInterface::read);
-	gUndo.Store(params, fractalParams, NULL, keyframes);
+	gUndo.Store(params, fractalParams, nullptr, keyframes);
 
 	NewKeyframe(keyframes->GetNumberOfFrames());
 }
@@ -159,7 +160,7 @@ void cKeyframeAnimation::slotInsertKeyframe()
 	if (index < 0) index = 0;
 
 	mainInterface->SynchronizeInterface(params, fractalParams, qInterface::read);
-	gUndo.Store(params, fractalParams, NULL, keyframes);
+	gUndo.Store(params, fractalParams, nullptr, keyframes);
 
 	NewKeyframe(index);
 }
@@ -194,7 +195,7 @@ void cKeyframeAnimation::NewKeyframe(int index)
 	}
 }
 
-void cKeyframeAnimation::DeleteKeyframe(int index)
+void cKeyframeAnimation::DeleteKeyframe(int index) const
 {
 	if (index < 0)
 	{
@@ -203,7 +204,7 @@ void cKeyframeAnimation::DeleteKeyframe(int index)
 	}
 	else
 	{
-		gUndo.Store(params, fractalParams, NULL, keyframes);
+		gUndo.Store(params, fractalParams, nullptr, keyframes);
 		keyframes->DeleteFrames(index, index);
 		table->removeColumn(index + reservedColums);
 		UpdateLimitsForFrameRange();
@@ -224,7 +225,7 @@ void cKeyframeAnimation::slotModifyKeyframe()
 		{
 			// get latest values of all parameters
 			mainInterface->SynchronizeInterface(params, fractalParams, qInterface::read);
-			gUndo.Store(params, fractalParams, NULL, keyframes);
+			gUndo.Store(params, fractalParams, nullptr, keyframes);
 
 			// add new frame to container
 			keyframes->DeleteFrames(index, index);
@@ -250,7 +251,7 @@ void cKeyframeAnimation::slotModifyKeyframe()
 	}
 }
 
-void cKeyframeAnimation::slotDeleteKeyframe()
+void cKeyframeAnimation::slotDeleteKeyframe() const
 {
 	int index = table->currentColumn() - reservedColums;
 	DeleteKeyframe(index);
@@ -393,8 +394,16 @@ int cKeyframeAnimation::AddColumn(const cAnimationFrames::sAnimationFrame &frame
 	int newColumn = index + reservedColums;
 	if (index == -1) newColumn = table->columnCount();
 	table->insertColumn(newColumn);
-	table->setHorizontalHeaderItem(
-		newColumn, new QTableWidgetItem(QString::number(newColumn - reservedColums)));
+
+	double time = params->Get<double>("frames_per_keyframe")
+								/ params->Get<double>("keyframe_frames_per_second") * (newColumn - reservedColums);
+	int minutes = int(time / 60);
+	int seconds = int(time) % 60;
+	QString columnHeader = QString("%1 (%2:%3)")
+													 .arg(newColumn - reservedColums)
+													 .arg(minutes)
+													 .arg(seconds, 2, 10, QChar('0'));
+	table->setHorizontalHeaderItem(newColumn, new QTableWidgetItem(columnHeader));
 
 	QList<cAnimationFrames::sParameterDescription> parList = keyframes->GetListOfUsedParameters();
 
@@ -544,10 +553,12 @@ bool cKeyframeAnimation::RenderKeyframes(bool *stopRequest)
 		if (!systemData.noGui && image->IsMainImage())
 		{
 			mainInterface->SynchronizeInterface(params, fractalParams, qInterface::read);
-			gUndo.Store(params, fractalParams, NULL, keyframes);
+			gUndo.Store(params, fractalParams, nullptr, keyframes);
 		}
 
 		keyframes->SetFramesPerKeyframe(frames_per_keyframe);
+
+		keyframes->RefreshAllAudioTracks(params);
 
 		// checking for collisions
 		if (!systemData.noGui && image->IsMainImage())
@@ -699,34 +710,28 @@ bool cKeyframeAnimation::RenderKeyframes(bool *stopRequest)
 				if (!result) throw false;
 				QString filename = GetKeyframeFilename(index, subindex);
 				ImageFileSave::enumImageFileType fileType =
-					(ImageFileSave::enumImageFileType)params->Get<int>("keyframe_animation_image_type");
+					ImageFileSave::enumImageFileType(params->Get<int>("keyframe_animation_image_type"));
 				SaveImage(filename, fileType, image, gMainInterface->mainWindow);
 			}
 			//--------------------------------------------------------------------
 		}
 
 		emit updateProgressAndStatus(QObject::tr("Animation finished"), progressText.getText(1.0), 1.0,
-			cProgressText::progress_ANIMATION);
+			cProgressText::progress_IMAGE);
 		emit updateProgressHide();
 		emit notifyRenderKeyframeRenderStatus(
 			QObject::tr("Animation finished"), progressText.getText(1.0));
 	}
-// TODO: Fix unreferenced local variable: 'ex'
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4101) // unreferenced local variable
-#endif
 	catch (bool ex)
 	{
-		emit updateProgressAndStatus(QObject::tr("Rendering terminated"), progressText.getText(1.0),
-			cProgressText::progress_ANIMATION);
+		QString resultStatus = QObject::tr("Rendering terminated");
+		if (ex) resultStatus += " - " + QObject::tr("Error occured, see log output");
+		emit updateProgressAndStatus(
+			resultStatus, progressText.getText(1.0), cProgressText::progress_ANIMATION);
 		emit updateProgressHide();
 		delete renderJob;
 		return false;
 	}
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
 
 	delete renderJob;
 	return true;
@@ -763,7 +768,7 @@ void cKeyframeAnimation::RefreshTable()
 		if (i % 100 == 0)
 		{
 			emit updateProgressAndStatus(QObject::tr("Refreshing animation"),
-				tr("Refreshing animation frames"), (double)i / noOfFrames,
+				tr("Refreshing animation frames"), double(i) / noOfFrames,
 				cProgressText::progress_ANIMATION);
 			gApplication->processEvents();
 		}
@@ -792,7 +797,7 @@ QString cKeyframeAnimation::GetParameterName(int rowNumber)
 	return fullParameterName;
 }
 
-void cKeyframeAnimation::RenderFrame(int index)
+void cKeyframeAnimation::RenderFrame(int index) const
 {
 	mainInterface->SynchronizeInterface(params, fractalParams, qInterface::read);
 	keyframes->GetFrameAndConsolidate(index, params, fractalParams);
@@ -812,25 +817,25 @@ void cKeyframeAnimation::RenderFrame(int index)
 	mainInterface->StartRender();
 }
 
-void cKeyframeAnimation::DeleteFramesFrom(int index)
+void cKeyframeAnimation::DeleteFramesFrom(int index) const
 {
-	gUndo.Store(params, fractalParams, NULL, keyframes);
+	gUndo.Store(params, fractalParams, nullptr, keyframes);
 	for (int i = keyframes->GetNumberOfFrames() - 1; i >= index; i--)
 		table->removeColumn(index + reservedColums);
 	keyframes->DeleteFrames(index, keyframes->GetNumberOfFrames() - 1);
 	UpdateLimitsForFrameRange();
 }
 
-void cKeyframeAnimation::DeleteFramesTo(int index)
+void cKeyframeAnimation::DeleteFramesTo(int index) const
 {
-	gUndo.Store(params, fractalParams, NULL, keyframes);
+	gUndo.Store(params, fractalParams, nullptr, keyframes);
 	for (int i = 0; i <= index; i++)
 		table->removeColumn(reservedColums);
 	keyframes->DeleteFrames(0, index);
 	UpdateLimitsForFrameRange();
 }
 
-void cKeyframeAnimation::slotSelectKeyframeAnimImageDir()
+void cKeyframeAnimation::slotSelectKeyframeAnimImageDir() const
 {
 	QFileDialog *dialog = new QFileDialog();
 	dialog->setFileMode(QFileDialog::DirectoryOnly);
@@ -906,7 +911,7 @@ void cKeyframeAnimation::slotTableCellChanged(int row, int column)
 			cParameterContainer tempPar = *params;
 			cFractalContainer tempFract = *fractalParams;
 			keyframes->GetFrameAndConsolidate(index, &tempPar, &tempFract);
-			cThumbnailWidget *thumbWidget = (cThumbnailWidget *)table->cellWidget(0, column);
+			cThumbnailWidget *thumbWidget = static_cast<cThumbnailWidget *>(table->cellWidget(0, column));
 
 			if (!thumbWidget)
 			{
@@ -925,7 +930,7 @@ void cKeyframeAnimation::slotTableCellChanged(int row, int column)
 	}
 }
 
-void cKeyframeAnimation::slotDeleteAllImages()
+void cKeyframeAnimation::slotDeleteAllImages() const
 {
 	SynchronizeInterfaceWindow(
 		ui->scrollAreaWidgetContents_keyframeAnimationParameters, params, qInterface::read);
@@ -942,7 +947,7 @@ void cKeyframeAnimation::slotDeleteAllImages()
 	}
 }
 
-void cKeyframeAnimation::slotShowAnimation()
+void cKeyframeAnimation::slotShowAnimation() const
 {
 	WriteLog("Prepare PlayerWidget class", 2);
 
@@ -962,7 +967,7 @@ void cKeyframeAnimation::slotShowAnimation()
 
 void cKeyframeAnimation::InterpolateForward(int row, int column)
 {
-	gUndo.Store(params, fractalParams, NULL, keyframes);
+	gUndo.Store(params, fractalParams, nullptr, keyframes);
 
 	QTableWidgetItem *cell = table->item(row, column);
 	QString cellText = cell->text();
@@ -1018,7 +1023,7 @@ void cKeyframeAnimation::InterpolateForward(int row, int column)
 	}
 
 	double finalDouble;
-	int finalInteger = 0;
+	int finalInteger;
 	double integerStep = 0.0;
 	double doubleStep = 0.0;
 
@@ -1026,7 +1031,7 @@ void cKeyframeAnimation::InterpolateForward(int row, int column)
 	{
 		finalInteger = QInputDialog::getInt(mainInterface->mainWindow, "Parameter interpolation",
 			"Enter value for last keyframe", valueInteger, 0, 2147483647, 1, &ok);
-		integerStep = (double)(finalInteger - valueInteger) / numberOfFrames;
+		integerStep = double(finalInteger - valueInteger) / numberOfFrames;
 	}
 	else if (valueIsDouble)
 	{
@@ -1043,7 +1048,7 @@ void cKeyframeAnimation::InterpolateForward(int row, int column)
 		QString newCellText;
 		if (valueIsInteger)
 		{
-			int newValue = (int)(integerStep * (i - index) + valueInteger);
+			int newValue = int(integerStep * (i - index) + valueInteger);
 			newCellText = QString::number(newValue);
 		}
 		else if (valueIsDouble)
@@ -1066,18 +1071,17 @@ void cKeyframeAnimation::slotRefreshTable()
 	RefreshTable();
 }
 
-QString cKeyframeAnimation::GetKeyframeFilename(int index, int subIndex)
+QString cKeyframeAnimation::GetKeyframeFilename(int index, int subIndex) const
 {
 	int frameIndex = index * keyframes->GetFramesPerKeyframe() + subIndex;
 	QString filename = params->Get<QString>("anim_keyframe_dir") + "frame_"
 										 + QString("%1").arg(frameIndex, 5, 10, QChar('0'));
-	filename +=
-		"." + ImageFileSave::ImageFileExtension(
-						(ImageFileSave::enumImageFileType)params->Get<int>("keyframe_animation_image_type"));
+	filename += "." + ImageFileSave::ImageFileExtension(ImageFileSave::enumImageFileType(
+											params->Get<int>("keyframe_animation_image_type")));
 	return filename;
 }
 
-parameterContainer::enumMorphType cKeyframeAnimation::GetMorphType(int row)
+parameterContainer::enumMorphType cKeyframeAnimation::GetMorphType(int row) const
 {
 	parameterContainer::enumMorphType morphType;
 	int parameterIndex = rowParameter.at(row);
@@ -1087,7 +1091,7 @@ parameterContainer::enumMorphType cKeyframeAnimation::GetMorphType(int row)
 
 void cKeyframeAnimation::ChangeMorphType(int row, parameterContainer::enumMorphType morphType)
 {
-	gUndo.Store(params, fractalParams, NULL, keyframes);
+	gUndo.Store(params, fractalParams, nullptr, keyframes);
 	int parameterIndex = rowParameter.at(row);
 	keyframes->ChangeMorphType(parameterIndex, morphType);
 	RefreshTable();
@@ -1112,7 +1116,7 @@ void cKeyframeAnimation::slotExportKeyframesToFlight()
 	}
 
 	gAnimFrames->ClearAll();
-	gAnimFrames->SetListOfParametersAndClear(gKeyframes->GetListOfParameters());
+	gAnimFrames->SetListOfParametersAndClear(gKeyframes->GetListOfParameters(), params);
 
 	for (int index = 0; index < keyframes->GetNumberOfFrames() - 1; ++index)
 	{
@@ -1124,7 +1128,7 @@ void cKeyframeAnimation::slotExportKeyframesToFlight()
 		if (index % 10 == 0)
 		{
 			updateProgressAndStatus(QObject::tr("Exporting"), tr("Exporting keyframes to flight"),
-				(double)index / keyframes->GetNumberOfFrames(), cProgressText::progress_ANIMATION);
+				double(index) / keyframes->GetNumberOfFrames(), cProgressText::progress_ANIMATION);
 			gApplication->processEvents();
 		}
 	}
@@ -1133,7 +1137,7 @@ void cKeyframeAnimation::slotExportKeyframesToFlight()
 	ui->pushButton_flight_refresh_table->animateClick();
 }
 
-void cKeyframeAnimation::UpdateLimitsForFrameRange(void)
+void cKeyframeAnimation::UpdateLimitsForFrameRange() const
 {
 	int framesPerKey = ui->spinboxInt_frames_per_keyframe->value();
 
@@ -1150,12 +1154,12 @@ void cKeyframeAnimation::UpdateLimitsForFrameRange(void)
 	ui->spinboxInt_keyframe_last_to_render->setValue(params->Get<int>("keyframe_last_to_render"));
 }
 
-void cKeyframeAnimation::slotMovedSliderFirstFrame(int value)
+void cKeyframeAnimation::slotMovedSliderFirstFrame(int value) const
 {
 	if (value > ui->spinboxInt_keyframe_last_to_render->value())
 		ui->spinboxInt_keyframe_last_to_render->setValue(value);
 }
-void cKeyframeAnimation::slotMovedSliderLastFrame(int value)
+void cKeyframeAnimation::slotMovedSliderLastFrame(int value) const
 {
 	if (value < ui->spinboxInt_keyframe_first_to_render->value())
 		ui->spinboxInt_keyframe_first_to_render->setValue(value);
@@ -1173,7 +1177,7 @@ QList<int> cKeyframeAnimation::CheckForCollisions(double minDist, bool *stopRequ
 	{
 		updateProgressAndStatus(QObject::tr("Checking for collissions"),
 			QObject::tr("Checking for collissions on keyframe # %1").arg(key),
-			(double)key / (keyframes->GetNumberOfFrames() - 1.0), cProgressText::progress_ANIMATION);
+			double(key) / (keyframes->GetNumberOfFrames() - 1.0), cProgressText::progress_ANIMATION);
 
 		for (int subindex = 0; subindex < keyframes->GetFramesPerKeyframe(); subindex++)
 		{
@@ -1201,7 +1205,7 @@ void cKeyframeAnimation::slotValidate()
 {
 	// updating parameters
 	mainInterface->SynchronizeInterface(params, fractalParams, qInterface::read);
-	gUndo.Store(params, fractalParams, NULL, keyframes);
+	gUndo.Store(params, fractalParams, nullptr, keyframes);
 
 	keyframes->SetFramesPerKeyframe(params->Get<int>("frames_per_keyframe"));
 
@@ -1226,7 +1230,7 @@ void cKeyframeAnimation::slotValidate()
 	}
 }
 
-void cKeyframeAnimation::slotCellDoubleClicked(int row, int column)
+void cKeyframeAnimation::slotCellDoubleClicked(int row, int column) const
 {
 	if (row == 0)
 	{
@@ -1238,7 +1242,7 @@ void cKeyframeAnimation::slotSetConstantTargetDistance()
 {
 	// updating parameters
 	mainInterface->SynchronizeInterface(params, fractalParams, qInterface::read);
-	gUndo.Store(params, fractalParams, NULL, keyframes);
+	gUndo.Store(params, fractalParams, nullptr, keyframes);
 
 	double constDist = params->Get<double>("keyframe_constant_target_distance");
 
@@ -1277,7 +1281,7 @@ void cKeyframeAnimation::slotSetConstantTargetDistance()
 	RefreshTable();
 }
 
-void cKeyframeAnimation::AddAnimSoundColumn()
+void cKeyframeAnimation::AddAnimSoundColumn() const
 {
 	int newColumn = table->columnCount();
 	table->insertColumn(newColumn);

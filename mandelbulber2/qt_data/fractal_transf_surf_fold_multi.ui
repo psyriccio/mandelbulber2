@@ -32,7 +32,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox_3">
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Based on amazing_surf_mod1  from Mandelbulb3D&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Based on amazing_surf_mod1 from Mandelbulb3D&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="title">
       <string>FoldBox</string>
@@ -100,7 +100,7 @@
         <item row="5" column="1">
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>if ( z &gt; Fold) z =  Value -z,   else if( z &lt;Fold) z = - Value - z, </string>
+           <string>if ( z &gt; Fold) z = Value -z, else if( z &lt;Fold) z = - Value - z,</string>
           </property>
          </widget>
         </item>
@@ -114,7 +114,7 @@
         <item row="6" column="0">
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>Type 4 Fold Value</string>
+           <string>Type 4 Fold value:</string>
           </property>
          </widget>
         </item>
@@ -147,14 +147,14 @@
         <item row="4" column="0">
          <widget class="QCheckBox" name="checkBox_transf_function_enabledAz_false">
           <property name="text">
-           <string>Type 3 </string>
+           <string>Type 3</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
          <widget class="QCheckBox" name="checkBox_transf_function_enabledAx">
           <property name="text">
-           <string>Type 1 </string>
+           <string>Type 1</string>
           </property>
          </widget>
         </item>
@@ -242,7 +242,7 @@
         <item row="4" column="1">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>z = fabs(z + fold) </string>
+           <string>z = fabs(z + fold)</string>
           </property>
          </widget>
         </item>
@@ -271,7 +271,7 @@
         <item row="8" column="0">
          <widget class="QLabel" name="label_11">
           <property name="text">
-           <string>Type 5 Fold2 Value</string>
+           <string>Type 5 Fold2 value:</string>
           </property>
          </widget>
         </item>

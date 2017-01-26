@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Sebastian Jennen (sebastian.jennen@gmx.de)
+ * Authors: Sebastian Jennen (jenzebas@gmail.com)
  *
  * file image class to store different image file formats
  *
@@ -95,8 +95,8 @@ public:
 	struct structSaveImageChannel
 	{
 		structSaveImageChannel()
-				: contentType((enumImageContentType)0),
-					channelQuality((enumImageChannelQualityType)0),
+				: contentType(enumImageContentType(0)),
+					channelQuality(enumImageChannelQualityType(0)),
 					postfix("")
 		{
 		}
@@ -142,8 +142,8 @@ public:
 			: ImageFileSave(filename, image, imageConfig)
 	{
 	}
-	void SaveImage();
-	QString getJobName() { return tr("Saving %1").arg("PNG"); }
+	void SaveImage() override;
+	QString getJobName() override { return tr("Saving %1").arg("PNG"); }
 	static void SavePNG(
 		QString filename, cImage *image, structSaveImageChannel imageChannel, bool appendAlpha = false);
 	static void SavePNG16(QString filename, int width, int height, sRGB16 *image16);
@@ -159,8 +159,8 @@ public:
 			: ImageFileSave(filename, image, imageConfig)
 	{
 	}
-	void SaveImage();
-	QString getJobName() { return tr("Saving %1").arg("JPG"); }
+	void SaveImage() override;
+	QString getJobName() override { return tr("Saving %1").arg("JPG"); }
 	static bool SaveJPEGQt(
 		QString filename, unsigned char *image, int width, int height, int quality);
 	static bool SaveJPEGQtGreyscale(
@@ -176,8 +176,8 @@ public:
 			: ImageFileSave(filename, image, imageConfig)
 	{
 	}
-	void SaveImage();
-	QString getJobName() { return tr("Saving %1").arg("TIFF"); }
+	void SaveImage() override;
+	QString getJobName() override { return tr("Saving %1").arg("TIFF"); }
 	static bool SaveTIFF(
 		QString filename, cImage *image, structSaveImageChannel imageChannel, bool appendAlpha = false);
 };
@@ -192,8 +192,8 @@ public:
 			: ImageFileSave(filename, image, imageConfig)
 	{
 	}
-	void SaveImage();
-	QString getJobName() { return tr("Saving %1").arg("EXR"); }
+	void SaveImage() override;
+	QString getJobName() override { return tr("Saving %1").arg("EXR"); }
 	static void SaveEXR(QString filename, cImage *image,
 		QMap<enumImageContentType, structSaveImageChannel> imageConfig);
 };

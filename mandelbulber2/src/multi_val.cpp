@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-15 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -111,7 +111,7 @@ enumVarType cMultiVal::Store(QString val)
 			if (size >= 4) size = 4;
 			for (int i = 0; i < size; i++)
 			{
-				dVal[i] = iVal[i] = split[i].toInt(NULL, 16);
+				dVal[i] = iVal[i] = split[i].toInt(nullptr, 16);
 			}
 			break;
 		}
@@ -256,7 +256,7 @@ QString cMultiVal::MakePaletteString(cColorPalette &palette)
 	return paletteString;
 }
 
-cColorPalette cMultiVal::GetPaletteFromString(const QString &paletteString) const
+cColorPalette cMultiVal::GetPaletteFromString(const QString &paletteString)
 {
 	cColorPalette colorPalette;
 	QStringList split = paletteString.split(" ");
@@ -265,7 +265,7 @@ cColorPalette cMultiVal::GetPaletteFromString(const QString &paletteString) cons
 	{
 		if (split[i].size() > 0)
 		{
-			unsigned int colour = split[i].toInt(NULL, 16);
+			unsigned int colour = split[i].toInt(nullptr, 16);
 			sRGB rgbColour;
 			rgbColour.R = colour / 65536;
 			rgbColour.G = (colour / 256) % 256;

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -57,7 +57,7 @@ MyTableWidgetKeyframes::~MyTableWidgetKeyframes()
 {
 }
 
-void MyTableWidgetKeyframes::tableContextMenuRequest(QPoint point)
+void MyTableWidgetKeyframes::tableContextMenuRequest(QPoint point) const
 {
 	QModelIndex index = indexAt(point);
 	int row = index.row();
@@ -65,8 +65,8 @@ void MyTableWidgetKeyframes::tableContextMenuRequest(QPoint point)
 
 	QMenu *menu = new QMenu;
 
-	QAction *actionRender = NULL;
-	QAction *interpolateForward = NULL;
+	QAction *actionRender = nullptr;
+	QAction *interpolateForward = nullptr;
 
 	if (row == 0 && column >= cKeyframeAnimation::reservedColums)
 	{
@@ -97,7 +97,7 @@ void MyTableWidgetKeyframes::tableContextMenuRequest(QPoint point)
 	delete menu;
 }
 
-void MyTableWidgetKeyframes::columnContextMenuRequest(QPoint point)
+void MyTableWidgetKeyframes::columnContextMenuRequest(QPoint point) const
 {
 	int column = horizontalHeader()->logicalIndexAt(point);
 
@@ -141,7 +141,7 @@ void MyTableWidgetKeyframes::columnContextMenuRequest(QPoint point)
 	}
 }
 
-void MyTableWidgetKeyframes::rowContextMenuRequest(QPoint point)
+void MyTableWidgetKeyframes::rowContextMenuRequest(QPoint point) const
 {
 	int row = verticalHeader()->logicalIndexAt(point);
 

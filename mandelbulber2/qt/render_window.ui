@@ -287,10 +287,11 @@
     <property name="title">
      <string>&amp;View</string>
     </property>
+    <addaction name="actionAdd_CustomWindowStateToMenu"/>
     <addaction name="actionSave_docks_positions"/>
     <addaction name="actionDefault_docks_positions"/>
+    <addaction name="actionAnimation_docks_positions"/>
     <addaction name="actionStack_all_docks"/>
-    <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="actionShow_animation_dock"/>
     <addaction name="actionShow_info_dock"/>
@@ -299,6 +300,7 @@
     <addaction name="actionShow_gamepad_dock"/>
     <addaction name="actionShow_queue_dock"/>
     <addaction name="actionShow_measurement_dock"/>
+    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -1104,13 +1106,30 @@
    </property>
   </action>
   <action name="actionSave_docks_positions">
+   <property name="icon">
+    <iconset theme="document-save" resource="icons.qrc">
+     <normaloff>:/system/icons/document-save.svg</normaloff>:/system/icons/document-save.svg</iconset>
+   </property>
    <property name="text">
     <string>&amp;Save window state</string>
    </property>
   </action>
   <action name="actionDefault_docks_positions">
+   <property name="icon">
+    <iconset theme="edit-undo" resource="icons.qrc">
+     <normaloff>:/system/icons/edit-undo.svg</normaloff>:/system/icons/edit-undo.svg</iconset>
+   </property>
    <property name="text">
     <string>&amp;Default docks positions</string>
+   </property>
+  </action>
+  <action name="actionAnimation_docks_positions">
+   <property name="icon">
+    <iconset theme="video-x-generic" resource="icons.qrc">
+     <normaloff>:/system/icons/video-x-generic.svg</normaloff>:/system/icons/video-x-generic.svg</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Animation docks positions</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
@@ -1239,6 +1258,10 @@
    </property>
   </action>
   <action name="actionStack_all_docks">
+   <property name="icon">
+    <iconset theme="list-remove" resource="icons.qrc">
+     <normaloff>:/system/icons/list-remove.svg</normaloff>:/system/icons/list-remove.svg</iconset>
+   </property>
    <property name="text">
     <string>Sta&amp;ck all docks</string>
    </property>
@@ -1276,6 +1299,15 @@
    </property>
    <property name="text">
     <string>Add current settings to toolbar</string>
+   </property>
+  </action>
+  <action name="actionAdd_CustomWindowStateToMenu">
+   <property name="icon">
+    <iconset theme="list-add" resource="icons.qrc">
+     <normaloff>:/system/icons/list-add.svg</normaloff>:/system/icons/list-add.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add current window settings</string>
    </property>
   </action>
   <action name="actionShow_measurement_dock">
@@ -1323,7 +1355,7 @@
   <customwidget>
    <class>cDockImageAdjustments</class>
    <extends>QWidget</extends>
-   <header>dock_image_adjustmnets.h</header>
+   <header>dock_image_adjustments.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

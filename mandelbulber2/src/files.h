@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-16 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -52,7 +52,7 @@ std::string removeFileExtension(const std::string &filename);
 void BufferNormalize16(sRGB16 *buffer, unsigned int size);
 // void SaveAllImageLayers(const char *filename, cImage *image);
 void SaveImage(QString filename, ImageFileSave::enumImageFileType filetype, cImage *image,
-	QObject *updateReceiver = 0);
+	QObject *updateReceiver = nullptr);
 sRGBA16 *LoadPNG(QString filename, int &outWidth, int &outHeight);
 
 #endif /* MANDELBULBER2_SRC_FILES_H_ */

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen (jenzebas@gmail.com)
  *
  * cCommandLineInterface - CLI Input handler
  */
@@ -49,6 +49,7 @@
 #include "test.hpp"
 
 cCommandLineInterface::cCommandLineInterface(QCoreApplication *qapplication)
+		: settingsSpecified(false)
 {
 	// text from http://sourceforge.net/projects/mandelbulber/
 	parser.setApplicationDescription(QCoreApplication::translate("main",
@@ -247,7 +248,7 @@ cCommandLineInterface::~cCommandLineInterface()
 {
 }
 
-void cCommandLineInterface::ReadCLI(void)
+void cCommandLineInterface::ReadCLI()
 {
 	settingsSpecified = false;
 
@@ -342,7 +343,7 @@ void cCommandLineInterface::ReadCLI(void)
 	}
 }
 
-void cCommandLineInterface::ProcessCLI(void)
+void cCommandLineInterface::ProcessCLI() const
 {
 	switch (cliTODO)
 	{
@@ -391,7 +392,7 @@ void cCommandLineInterface::ProcessCLI(void)
 	}
 }
 
-void cCommandLineInterface::printExampleHelpAndExit() const
+void cCommandLineInterface::printExampleHelpAndExit()
 {
 	QTextStream out(stdout);
 	out << cHeadless::colorize(QObject::tr("Some useful example commands:"), cHeadless::ansiRed)
@@ -454,7 +455,7 @@ void cCommandLineInterface::printExampleHelpAndExit() const
 	exit(0);
 }
 
-void cCommandLineInterface::printInputHelpAndExit() const
+void cCommandLineInterface::printInputHelpAndExit()
 {
 	QTextStream out(stdout);
 	out << QObject::tr(
@@ -529,10 +530,9 @@ void cCommandLineInterface::handleServer()
 {
 	QTextStream out(stdout);
 	bool checkParse = true;
-	int port = gPar->Get<int>("netrender_server_local_port");
 	if (cliData.portText != "")
 	{
-		port = cliData.portText.toInt(&checkParse);
+		int port = cliData.portText.toInt(&checkParse);
 		if (!checkParse || port <= 0)
 		{
 			cErrorMessage::showMessage(
@@ -588,7 +588,7 @@ void cCommandLineInterface::handleQueue()
 	try
 	{
 		gQueue = new cQueue(
-			gMainInterface, systemData.GetQueueFractlistFile(), systemData.GetQueueFolder(), NULL);
+			gMainInterface, systemData.GetQueueFractlistFile(), systemData.GetQueueFolder(), nullptr);
 	}
 	catch (QString &ex)
 	{
@@ -652,7 +652,7 @@ void cCommandLineInterface::handleArgs()
 			try
 			{
 				gQueue = new cQueue(
-					gMainInterface, systemData.GetQueueFractlistFile(), systemData.GetQueueFolder(), NULL);
+					gMainInterface, systemData.GetQueueFractlistFile(), systemData.GetQueueFolder(), nullptr);
 			}
 			catch (QString &ex)
 			{
@@ -686,7 +686,7 @@ void cCommandLineInterface::handleArgs()
 	}
 }
 
-void cCommandLineInterface::handleOverrideParameters()
+void cCommandLineInterface::handleOverrideParameters() const
 {
 	QStringList overrideParameters =
 		cliData.overrideParametersText.split("#", QString::SkipEmptyParts);

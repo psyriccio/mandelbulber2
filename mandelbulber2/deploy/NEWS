@@ -1,5 +1,80 @@
 Version history
 
+v2.10
+- AnimBySound: Added option to animate any parameter using sound wave (added "Anim By Sound" buttons in animation table)
+- AnimBySound: Added dialog window to load and setup AnimBySound feature
+- AnimBySound: Added views for waveform, fft and animation generated from sound
+- AnimBySound: It is possible to load wav, ogg, flac (all operating systems) and mp3 (Linux only)
+- AnimBySound: Added binary, decay and smooth filters for animation generated from sound
+- Settings: added description field for fractal settings
+- Added new fractal formulas:
+  * Menger - Prism Shape2
+	* MixPinski 4D
+  * Sierpinski 3D
+  * Sierpinski 4D
+  * Menger 4D
+  * Menger 4D Mod1
+  * Menger - Smooth
+  * Menger - Smooth Mod1
+  * Menger - Octo
+  * Abox 4D
+	* Transform - SurfBoxFold
+	* Transform - Octo Fold
+	* Transform - ScaleVaryVCL
+	* Transform - Spherical_Fold_VaryVCL
+	* Transform - Add exp2(z)
+	* Transform - Reciprocal3
+	* Transform - Rotated Folding
+	* Transform - FabsAddConditional
+	* Transform - Reciprocal 4D
+	* Transform - FabsAddConditional 4D
+	* Transform - Spherical_OffsetVCL
+	* Transform - Rotation 4D
+- Various updates, fixes and enhancements to existing formulas and transforms
+- Shaders: in some cases there was wrong calculation of object colors in boolean mode
+- Shaders: fixed bug in DOF algorithm which could cause crashes
+- Animation: Improved gamepad integration for flight animations
+- Animation: Added image with gamepad keymap (tooltip)
+- Animation: there is displayed correct message when first frame was equal to last frame
+- Materials/Animation: fixed bug: program crashed with animation, when there was an added parameter from material which was previously loaded using "Load material" button
+- Materials/Animation: fixed bug: program crashed with animation, when there was an added parameter from material which was previously edited using dialog called by Edit Material button
+- UI: Image quality settings added to file selector for images
+- UI: Corrected resolution lock function
+- UI: auto-refresh is now disabled when brightness, gamma, contrast or HDR is changed
+- UI: added information in fractal formula information box about examples which use the formula
+- UI: changed and added more keyboard shortcuts for camera navigation
+- UI: fixed bug: When the group box of primitives was saved and then loaded the group was always enabled
+- UI: when dark theme is used then text color in animation table is always black
+- UI: added Dutch language
+- UI: added options to store/restore different layouts (states) of docks
+- Voxel export: added automatic calculation of bounding box
+- Voxel export: Added ability to export 3D meshes in *.ply format
+- General: changed data folder from .mandelbulber (hidden) to mandelbulber (not hidden)
+- General: changed default folder for animation frames to ~/mandelbulber/animation
+- CLI: added stdin input for CLI arguments
+- CLI: added --benchmark option which calculates total time needed to render all examples in low resolution
+- Performance: fixed several memory leaks
+- Compilation: main window UI file divided onto several smaller UIs, this has improved compilation performance
+- Compilation: used a lot of forward declarations to reduce compilation time
+- Compilation: code is now fully compatible with msvc
+- Compilation: created solution file for msvc14 with all needed NuGet packages
+- Compilation: configured Appveyor to test msvc++ builds
+- Compilation: a lot of cleaning up of the code
+- Compilation: much improved populateUiInformation.php script
+
+v2.09-3
+- Settings: Fixed bug in function which adds missing material no. 1 during loading settings. When material no. 1 was default, this material was not created on parameter list.
+- Image: fixed bug: when output image was bigger than 2GB, then saving of PNG and TIFF images was corrupted
+
+v2.09-2
+- Corrected calculation of stereoscopic effect for equirectangular projection. There was wrong perception of depth for farthest objects located on the rear of the camera.
+
+v2.09-1
+- Image: fixed bug: in stereoscopic top-bottom mode there were swapped left and right eye
+- Image: fixed bug: in stereoscopic top-bottom mode first line of image was incorrect
+- Shaders: fixed bug: corrected calculation of flat background. There was possibility of division by zero.
+- UI: fixed bug: when stereoscopic mode was enabled, then thumbnails size was incorrect. 
+
 v2.09
 - Image: Added stereoscopic rendering for all perspective types including equirectangular and fulldome
 - Image: Added support for red/cyan glasses (anaglyphs), so now it's possible to explore fractals with 3D glasses.

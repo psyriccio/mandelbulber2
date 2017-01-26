@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -65,7 +65,7 @@ cMaterialWidget::cMaterialWidget(int _width, int _height, int _oversample, QWidg
 
 void cMaterialWidget::Init()
 {
-	paramsHandle = NULL;
+	paramsHandle = nullptr;
 	// DisableThumbnailCache();
 	DisableTimer();
 
@@ -162,7 +162,7 @@ void cMaterialWidget::InitializeData()
 	}
 }
 
-void cMaterialWidget::slotPeriodicRender(void)
+void cMaterialWidget::slotPeriodicRender()
 {
 	if (!visibleRegion().isEmpty())
 	{
@@ -185,7 +185,7 @@ void cMaterialWidget::slotPeriodicRender(void)
 	}
 }
 
-void cMaterialWidget::slotPeriodicUpdateData(void)
+void cMaterialWidget::slotPeriodicUpdateData()
 {
 	if (!visibleRegion().isEmpty())
 	{
@@ -205,7 +205,7 @@ void cMaterialWidget::AssignMaterial(const QString &text, int materialIndex)
 	settings.LoadFromString(text);
 	cParameterContainer params;
 	InitMaterialParams(materialIndex, &params);
-	settings.Decode(&params, NULL);
+	settings.Decode(&params, nullptr);
 	AssignMaterial(&params, materialIndex);
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>864</width>
-    <height>1120</height>
+    <height>1325</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -76,7 +76,7 @@
      <item row="6" column="2">
       <widget class="QLabel" name="label_124">
        <property name="text">
-        <string>z.y:</string>
+        <string notr="true">z.y</string>
        </property>
       </widget>
      </item>
@@ -136,7 +136,7 @@
      <item row="20" column="3">
       <widget class="QLabel" name="label_115">
        <property name="text">
-        <string>Sine Function  Scale</string>
+        <string>Sine Function Scale:</string>
        </property>
       </widget>
      </item>
@@ -178,7 +178,7 @@
      <item row="12" column="2">
       <widget class="QLabel" name="label_111">
        <property name="text">
-        <string>z.z:</string>
+        <string notr="true">z.z</string>
        </property>
       </widget>
      </item>
@@ -241,7 +241,7 @@
      <item row="7" column="2">
       <widget class="QLabel" name="label_125">
        <property name="text">
-        <string>z.z:</string>
+        <string notr="true">z.z</string>
        </property>
       </widget>
      </item>
@@ -325,14 +325,14 @@
      <item row="16" column="2">
       <widget class="QLabel" name="label_114">
        <property name="text">
-        <string>y:</string>
+        <string notr="true">y</string>
        </property>
       </widget>
      </item>
      <item row="6" column="1">
       <widget class="QLabel" name="label_126">
        <property name="text">
-        <string> Scale (not smooth inside)</string>
+        <string>Scale (not smooth inside):</string>
        </property>
       </widget>
      </item>
@@ -402,7 +402,7 @@
      <item row="16" column="1">
       <widget class="QLabel" name="label_257">
        <property name="text">
-        <string>Second Offset</string>
+        <string>Second Offset:</string>
        </property>
       </widget>
      </item>
@@ -481,7 +481,7 @@
      <item row="11" column="2">
       <widget class="QLabel" name="label_110">
        <property name="text">
-        <string>z.y:</string>
+        <string notr="true">z.y</string>
        </property>
       </widget>
      </item>
@@ -510,7 +510,7 @@
      <item row="5" column="2">
       <widget class="QLabel" name="label_112">
        <property name="text">
-        <string>z.x:</string>
+        <string notr="true">z.x</string>
        </property>
       </widget>
      </item>
@@ -524,7 +524,7 @@
      <item row="15" column="1">
       <widget class="QLabel" name="label_256">
        <property name="text">
-        <string>Second Scale</string>
+        <string>Second Scale:</string>
        </property>
       </widget>
      </item>
@@ -559,7 +559,7 @@
      <item row="10" column="2">
       <widget class="QLabel" name="label_109">
        <property name="text">
-        <string>z.x:</string>
+        <string notr="true">z.x</string>
        </property>
       </widget>
      </item>
@@ -573,7 +573,7 @@
      <item row="13" column="2">
       <widget class="QLabel" name="label_113">
        <property name="text">
-        <string>y:</string>
+        <string notr="true">y</string>
        </property>
       </widget>
      </item>
@@ -608,7 +608,7 @@
      <item row="3" column="3">
       <widget class="QLabel" name="label_123">
        <property name="text">
-        <string>Fudge Factor</string>
+        <string>Fudge Factor:</string>
        </property>
       </widget>
      </item>
@@ -643,7 +643,7 @@
      <item row="13" column="1">
       <widget class="QLabel" name="label_259">
        <property name="text">
-        <string>First Offset</string>
+        <string>First Offset:</string>
        </property>
       </widget>
      </item>
@@ -672,7 +672,7 @@
      <item row="11" column="1">
       <widget class="QLabel" name="label_108">
        <property name="text">
-        <string>First Scale</string>
+        <string>First Scale:</string>
        </property>
       </widget>
      </item>
@@ -929,6 +929,34 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>slider_transf_minimum_radius_05</tabstop>
+  <tabstop>spinbox_transf_minimum_radius_05</tabstop>
+  <tabstop>checkBox_transf_function_enabled</tabstop>
+  <tabstop>spinbox_transf_scaleA_1</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_x</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_x</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_y</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_y</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_111_z</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_111_z</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_222_x</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_222_x</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_222_y</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_222_y</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_222_z</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_222_z</tabstop>
+  <tabstop>slider_transf_offset_1</tabstop>
+  <tabstop>spinbox_transf_offset_1</tabstop>
+  <tabstop>slider_transf_scale_3</tabstop>
+  <tabstop>spinbox_transf_scale_3</tabstop>
+  <tabstop>slider_transf_offset_105</tabstop>
+  <tabstop>spinbox_transf_offset_105</tabstop>
+  <tabstop>checkBox_transf_function_enabledx</tabstop>
+  <tabstop>checkBox_transf_function_enabledx_false</tabstop>
+  <tabstop>spinbox_transf_scale_1</tabstop>
+  <tabstop>groupCheck_info</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

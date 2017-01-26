@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>916</width>
-    <height>4788</height>
+    <width>1085</width>
+    <height>5074</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,7 +117,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_246">
           <property name="text">
-           <string>Start T1 at iteration :</string>
+           <string>Start T1 at iteration:</string>
           </property>
          </widget>
         </item>
@@ -331,7 +331,7 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_259">
           <property name="text">
-           <string>Offset  </string>
+           <string>Offset:</string>
           </property>
          </widget>
         </item>
@@ -344,7 +344,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>x:</string>
+           <string notr="true">x</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -360,7 +360,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>y:</string>
+           <string notr="true">y</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -376,7 +376,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>z:</string>
+           <string notr="true">z</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -386,7 +386,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_258">
           <property name="text">
-           <string>Scale </string>
+           <string>Scale:</string>
           </property>
          </widget>
         </item>
@@ -399,7 +399,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>x:</string>
+           <string notr="true">x</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -415,7 +415,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>y:</string>
+           <string notr="true">y</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -431,7 +431,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>z:</string>
+           <string notr="true">z</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -563,7 +563,7 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cpixel is CVector3 c = ( c.x, c.y, c.z). It is each original point (pixel) in 3D space where the iteration starts from, ( c = original z for each point .) It is commonly found in formula structures z = f(z) + c.&lt;/p&gt;&lt;p&gt;The Cpixel multiplier effectively scales this point &amp;quot;c&amp;quot;.&lt;/p&gt;&lt;p&gt;In this formula the c.y and c.z components of &amp;quot;CVector3 c&amp;quot; are swapped before being multiplied by &amp;quot;CVector3 z&amp;quot; components.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="title">
-      <string>Pine T&amp;ree  addCpixel ConstantMultiplier  ( c.y c.z Swap)</string>
+      <string>Pine T&amp;ree addCpixel ConstantMultiplier ( c.y c.z Swap)</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -605,7 +605,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_249">
           <property name="text">
-           <string>Start PT at iteration :</string>
+           <string>Start PT at iteration:</string>
           </property>
          </widget>
         </item>
@@ -681,14 +681,14 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_122">
           <property name="text">
-           <string>c.y:</string>
+           <string notr="true">c.y</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLabel" name="label_123">
           <property name="text">
-           <string>cx:</string>
+           <string notr="true">c.x</string>
           </property>
          </widget>
         </item>
@@ -714,7 +714,7 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_124">
           <property name="text">
-           <string>c.z:</string>
+           <string notr="true">c.z</string>
           </property>
          </widget>
         </item>
@@ -803,7 +803,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_125">
           <property name="text">
-           <string>Cpixel Multiplier  </string>
+           <string>Cpixel Multiplier:</string>
           </property>
          </widget>
         </item>
@@ -815,7 +815,7 @@
    <item>
     <widget class="MyGroupBox" name="groupCheck_transf_rotation_enabled">
      <property name="title">
-      <string>Mag Transform &amp;T1   Rotation</string>
+      <string>Mag Transform &amp;T1 Rotation</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -844,7 +844,7 @@
         <item row="1" column="2">
          <widget class="QLabel" name="label_36">
           <property name="text">
-           <string>gamma</string>
+           <string notr="true">gamma</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -854,7 +854,7 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_34">
           <property name="text">
-           <string>beta</string>
+           <string notr="true">beta</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -864,7 +864,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_35">
           <property name="text">
-           <string>alpha</string>
+           <string notr="true">alpha</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1020,6 +1020,9 @@
      </property>
      <item row="5" column="2">
       <widget class="MySpinBox" name="spinboxInt_transf_stop_iterations_B">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1033,136 +1036,148 @@
      </item>
      <item row="2" column="3">
       <widget class="QComboBox" name="comboBox_magTransf_order_of_transf_3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <item>
         <property name="text">
-         <string>T1</string>
+         <string notr="true">T1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T1mod</string>
+         <string notr="true">T1mod</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T2</string>
+         <string notr="true">T2</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T3</string>
+         <string notr="true">T3</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T4</string>
+         <string notr="true">T4</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T5b</string>
+         <string notr="true">T5b</string>
         </property>
        </item>
       </widget>
      </item>
      <item row="2" column="5">
       <widget class="QComboBox" name="comboBox_magTransf_order_of_transf_5">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <item>
         <property name="text">
-         <string>T1</string>
+         <string notr="true">T1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T1mod</string>
+         <string notr="true">T1mod</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T2</string>
+         <string notr="true">T2</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T3</string>
+         <string notr="true">T3</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T4</string>
+         <string notr="true">T4</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T5b</string>
+         <string notr="true">T5b</string>
         </property>
        </item>
       </widget>
      </item>
      <item row="2" column="4">
       <widget class="QComboBox" name="comboBox_magTransf_order_of_transf_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <item>
         <property name="text">
-         <string>T1</string>
+         <string notr="true">T1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T1mod</string>
+         <string notr="true">T1mod</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T2</string>
+         <string notr="true">T2</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T3</string>
+         <string notr="true">T3</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T4</string>
+         <string notr="true">T4</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T5b</string>
+         <string notr="true">T5b</string>
         </property>
        </item>
       </widget>
      </item>
      <item row="2" column="2">
       <widget class="QComboBox" name="comboBox_magTransf_order_of_transf_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <item>
         <property name="text">
-         <string>T1</string>
+         <string notr="true">T1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T1mod</string>
+         <string notr="true">T1mod</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T2</string>
+         <string notr="true">T2</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T3</string>
+         <string notr="true">T3</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T4</string>
+         <string notr="true">T4</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T5b</string>
+         <string notr="true">T5b</string>
         </property>
        </item>
       </widget>
@@ -1176,34 +1191,37 @@
      </item>
      <item row="2" column="1">
       <widget class="QComboBox" name="comboBox_magTransf_order_of_transf_1">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <item>
         <property name="text">
-         <string>T1</string>
+         <string notr="true">T1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T1mod</string>
+         <string notr="true">T1mod</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T2</string>
+         <string notr="true">T2</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T3</string>
+         <string notr="true">T3</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T4</string>
+         <string notr="true">T4</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>T5b</string>
+         <string notr="true">T5b</string>
         </property>
        </item>
       </widget>
@@ -1211,7 +1229,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>Transform: </string>
+        <string>Transform:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1228,7 +1246,7 @@
      <item row="1" column="3">
       <widget class="QCheckBox" name="checkBox_transf_function_enabledAz_false">
        <property name="text">
-        <string>Slot 3 </string>
+        <string>Slot 3</string>
        </property>
       </widget>
      </item>
@@ -1248,6 +1266,9 @@
      </item>
      <item row="3" column="1">
       <widget class="MySpinBox" name="spinboxInt_transf_start_iterations_A">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1268,6 +1289,9 @@
      </item>
      <item row="3" column="2">
       <widget class="MySpinBox" name="spinboxInt_transf_start_iterations_B">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1281,6 +1305,9 @@
      </item>
      <item row="3" column="3">
       <widget class="MySpinBox" name="spinboxInt_transf_start_iterations_C">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1294,6 +1321,9 @@
      </item>
      <item row="5" column="1">
       <widget class="MySpinBox" name="spinboxInt_transf_stop_iterations_A">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1307,6 +1337,9 @@
      </item>
      <item row="3" column="4">
       <widget class="MySpinBox" name="spinboxInt_transf_start_iterations_D">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1320,6 +1353,9 @@
      </item>
      <item row="3" column="5">
       <widget class="MySpinBox" name="spinboxInt_transf_start_iterations_E">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1333,6 +1369,9 @@
      </item>
      <item row="5" column="3">
       <widget class="MySpinBox" name="spinboxInt_transf_stop_iterations_C">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1346,6 +1385,9 @@
      </item>
      <item row="5" column="4">
       <widget class="MySpinBox" name="spinboxInt_transf_stop_iterations_D">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1359,6 +1401,9 @@
      </item>
      <item row="5" column="5">
       <widget class="MySpinBox" name="spinboxInt_transf_stop_iterations_E">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -1380,7 +1425,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>Enable slot sequence:  </string>
+        <string>Enable slot sequence:</string>
        </property>
       </widget>
      </item>
@@ -1400,7 +1445,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Slot , Mag Transform Type and  Iteration controls for additional transforms</string>
+        <string>Slot, Mag Transform Type and Iteration controls for additional transforms</string>
        </property>
       </widget>
      </item>
@@ -1415,8 +1460,14 @@
    </item>
    <item>
     <widget class="QLabel" name="label_6">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>Mag Transform Parameters.  </string>
+      <string>Mag Transform Parameters</string>
      </property>
     </widget>
    </item>
@@ -1456,7 +1507,7 @@
      <item row="0" column="6">
       <widget class="QLabel" name="label_273">
        <property name="text">
-        <string>Offset  z.z</string>
+        <string>Offset z.z</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1494,14 +1545,14 @@
      <item row="8" column="0">
       <widget class="QLabel" name="label_279">
        <property name="text">
-        <string>T5b </string>
+        <string notr="true">T5b</string>
        </property>
       </widget>
      </item>
      <item row="7" column="6">
       <widget class="QLabel" name="label_288">
        <property name="text">
-        <string>power B.z  </string>
+        <string>power B.z</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1511,7 +1562,7 @@
      <item row="7" column="4">
       <widget class="QLabel" name="label_286">
        <property name="text">
-        <string>power B.x  </string>
+        <string>power B.x</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1521,7 +1572,7 @@
      <item row="7" column="5">
       <widget class="QLabel" name="label_287">
        <property name="text">
-        <string>power B.y </string>
+        <string>power B.y</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1531,7 +1582,7 @@
      <item row="7" column="3">
       <widget class="QLabel" name="label_285">
        <property name="text">
-        <string>power A.z  </string>
+        <string>power A.z</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1737,7 +1788,7 @@
      <item row="5" column="0">
       <widget class="QLabel" name="label_277">
        <property name="text">
-        <string>T4</string>
+        <string notr="true">T4</string>
        </property>
       </widget>
      </item>
@@ -1772,14 +1823,14 @@
      <item row="6" column="0">
       <widget class="QLabel" name="label_278">
        <property name="text">
-        <string>T5b</string>
+        <string notr="true">T5b</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_267">
        <property name="text">
-        <string>T1</string>
+        <string notr="true">T1</string>
        </property>
       </widget>
      </item>
@@ -1842,7 +1893,7 @@
      <item row="0" column="2">
       <widget class="QLabel" name="label_269">
        <property name="text">
-        <string>Scale  z.y</string>
+        <string>Scale z.y</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1936,7 +1987,7 @@
      <item row="7" column="1">
       <widget class="QLabel" name="label_283">
        <property name="text">
-        <string>power A.x  </string>
+        <string>power A.x</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -2030,7 +2081,7 @@
      <item row="0" column="4">
       <widget class="QLabel" name="label_271">
        <property name="text">
-        <string>Offset  z.x</string>
+        <string>Offset z.x</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -2068,7 +2119,7 @@
      <item row="7" column="2">
       <widget class="QLabel" name="label_284">
        <property name="text">
-        <string>power A.y  </string>
+        <string>power A.y</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -2078,7 +2129,7 @@
      <item row="0" column="3">
       <widget class="QLabel" name="label_270">
        <property name="text">
-        <string>Scale  z.z</string>
+        <string>Scale z.z</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -2144,7 +2195,7 @@
      <item row="0" column="1">
       <widget class="QLabel" name="label_268">
        <property name="text">
-        <string>Scale  z.x</string>
+        <string>Scale z.x</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -2154,7 +2205,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_275">
        <property name="text">
-        <string>T2</string>
+        <string notr="true">T2</string>
        </property>
       </widget>
      </item>
@@ -2217,7 +2268,7 @@
      <item row="0" column="5">
       <widget class="QLabel" name="label_272">
        <property name="text">
-        <string>Offset  z.y</string>
+        <string>Offset z.y</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -2647,7 +2698,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_274">
        <property name="text">
-        <string>T1Mod</string>
+        <string notr="true">T1mod</string>
        </property>
       </widget>
      </item>
@@ -2682,7 +2733,7 @@
      <item row="4" column="0">
       <widget class="QLabel" name="label_276">
        <property name="text">
-        <string>T3</string>
+        <string notr="true">T3</string>
        </property>
       </widget>
      </item>
@@ -2776,7 +2827,7 @@
     CVector3 temp &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color:#e47eed&quot;&gt;Length&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;();&lt;/span&gt;
     z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-    &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; t &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; temp&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; t &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;2.0&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; temp&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;0.0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt;
       t &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; t &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;sqrt&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
     &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
@@ -2786,8 +2837,7 @@
       CVector3 tempC &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; c&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
       &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;alternateEnabledFalse&lt;span style=&quot;color:#d0d0d0&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color:#d0d0a0&quot;&gt;// alternate&lt;/span&gt;
       &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
-        tempC &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;c&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-        tempC &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;tempC&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; tempC&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; tempC&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
+        tempC &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;CVector3&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;c&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;c&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;,&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;c&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
         aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;c &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; tempC&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
       &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
       &lt;span style=&quot;color:#7ec0ee; font-weight:bold&quot;&gt;else&lt;/span&gt;
@@ -2796,7 +2846,8 @@
       &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
       z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; tempC&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;constantMultiplier100&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;x&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
       z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;t &lt;span style=&quot;color:#d0d0d0&quot;&gt;* (&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;-&lt;/span&gt; z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;)) +&lt;/span&gt; tempC&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;constantMultiplier100&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
-      z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;= (&lt;/span&gt;&lt;span style=&quot;color:#87df71&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; t &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; temp&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; temp&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; tempC&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;constantMultiplier100&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+      z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt;
+        &lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color:#87df71&quot;&gt;2.0&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; t &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; temp&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; temp&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; tempC&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;y &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;constantMultiplier100&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
     aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r_dz &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r_dz &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;2.0&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1.0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;}&lt;/span&gt;
@@ -3005,6 +3056,344 @@
    <header>my_spin_box.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>groupCheck_transf_benesi_T1_enabled</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations</tabstop>
+  <tabstop>slider3_transf_scale3D_222_x</tabstop>
+  <tabstop>spinbox3_transf_scale3D_222_x</tabstop>
+  <tabstop>slider3_transf_scale3D_222_y</tabstop>
+  <tabstop>spinbox3_transf_scale3D_222_y</tabstop>
+  <tabstop>slider3_transf_scale3D_222_z</tabstop>
+  <tabstop>spinbox3_transf_scale3D_222_z</tabstop>
+  <tabstop>slider3_transf_offset_200_x</tabstop>
+  <tabstop>spinbox3_transf_offset_200_x</tabstop>
+  <tabstop>slider3_transf_offset_200_y</tabstop>
+  <tabstop>spinbox3_transf_offset_200_y</tabstop>
+  <tabstop>slider3_transf_offset_200_z</tabstop>
+  <tabstop>spinbox3_transf_offset_200_z</tabstop>
+  <tabstop>groupCheck_transf_addCpixel_enabled</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_T</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_T</tabstop>
+  <tabstop>checkBox_transf_alternate_enabled_false</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_100_x</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_100_x</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_100_y</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_100_y</tabstop>
+  <tabstop>slider3_transf_constant_multiplier_100_z</tabstop>
+  <tabstop>spinbox3_transf_constant_multiplier_100_z</tabstop>
+  <tabstop>groupCheck_transf_rotation_enabled</tabstop>
+  <tabstop>dial3_transf_rotation_x</tabstop>
+  <tabstop>dial3_transf_rotation_y</tabstop>
+  <tabstop>dial3_transf_rotation_z</tabstop>
+  <tabstop>spinboxd3_transf_rotation_x</tabstop>
+  <tabstop>spinboxd3_transf_rotation_y</tabstop>
+  <tabstop>spinboxd3_transf_rotation_z</tabstop>
+  <tabstop>checkBox_transf_function_enabledAx_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledAy_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledAz_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledBx_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledBy_false</tabstop>
+  <tabstop>comboBox_magTransf_order_of_transf_1</tabstop>
+  <tabstop>comboBox_magTransf_order_of_transf_2</tabstop>
+  <tabstop>comboBox_magTransf_order_of_transf_3</tabstop>
+  <tabstop>comboBox_magTransf_order_of_transf_4</tabstop>
+  <tabstop>comboBox_magTransf_order_of_transf_5</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_A</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_B</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_C</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_D</tabstop>
+  <tabstop>spinboxInt_transf_start_iterations_E</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_A</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_B</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_C</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_D</tabstop>
+  <tabstop>spinboxInt_transf_stop_iterations_E</tabstop>
+  <tabstop>spinbox3_transf_scale3Da_222_x</tabstop>
+  <tabstop>spinbox3_transf_scale3Da_222_y</tabstop>
+  <tabstop>spinbox3_transf_scale3Da_222_z</tabstop>
+  <tabstop>spinbox3_transf_offsetA_200_x</tabstop>
+  <tabstop>spinbox3_transf_offsetA_200_y</tabstop>
+  <tabstop>spinbox3_transf_offsetA_200_z</tabstop>
+  <tabstop>spinbox3_transf_scale3D_333_x</tabstop>
+  <tabstop>spinbox3_transf_scale3D_333_y</tabstop>
+  <tabstop>spinbox3_transf_scale3D_333_z</tabstop>
+  <tabstop>spinbox3_transf_offset_111_x</tabstop>
+  <tabstop>spinbox3_transf_offset_111_y</tabstop>
+  <tabstop>spinbox3_transf_offset_111_z</tabstop>
+  <tabstop>spinbox3_transf_scale3D_444_x</tabstop>
+  <tabstop>spinbox3_transf_scale3D_444_y</tabstop>
+  <tabstop>spinbox3_transf_scale3D_444_z</tabstop>
+  <tabstop>spinbox3_transf_offsetA_111_x</tabstop>
+  <tabstop>spinbox3_transf_offsetA_111_y</tabstop>
+  <tabstop>spinbox3_transf_offsetA_111_z</tabstop>
+  <tabstop>spinbox3_transf_scale3Db_222_x</tabstop>
+  <tabstop>spinbox3_transf_scale3Db_222_y</tabstop>
+  <tabstop>spinbox3_transf_scale3Db_222_z</tabstop>
+  <tabstop>spinbox3_transf_offset_222_x</tabstop>
+  <tabstop>spinbox3_transf_offset_222_y</tabstop>
+  <tabstop>spinbox3_transf_offset_222_z</tabstop>
+  <tabstop>spinbox3_transf_scale3Dc_222_x</tabstop>
+  <tabstop>spinbox3_transf_scale3Dc_222_y</tabstop>
+  <tabstop>spinbox3_transf_scale3Dc_222_z</tabstop>
+  <tabstop>spinbox3_transf_offsetB_111_x</tabstop>
+  <tabstop>spinbox3_transf_offsetB_111_y</tabstop>
+  <tabstop>spinbox3_transf_offsetB_111_z</tabstop>
+  <tabstop>spinbox3_transf_scale3Dd_222_x</tabstop>
+  <tabstop>spinbox3_transf_scale3Dd_222_y</tabstop>
+  <tabstop>spinbox3_transf_scale3Dd_222_z</tabstop>
+  <tabstop>spinbox3_transf_offsetC_111_x</tabstop>
+  <tabstop>spinbox3_transf_offsetC_111_y</tabstop>
+  <tabstop>spinbox3_transf_offsetC_111_z</tabstop>
+  <tabstop>spinboxInt_transf_int8_X</tabstop>
+  <tabstop>spinboxInt_transf_int8_Y</tabstop>
+  <tabstop>spinboxInt_transf_int8_Z</tabstop>
+  <tabstop>spinbox3_transf_power_025_x</tabstop>
+  <tabstop>spinbox3_transf_power_025_y</tabstop>
+  <tabstop>spinbox3_transf_power_025_z</tabstop>
+  <tabstop>groupCheck_info</tabstop>
+ </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>checkBox_transf_function_enabledAx_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_magTransf_order_of_transf_1</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>768</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>802</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledAx_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_start_iterations_A</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>328</x>
+     <y>769</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>316</x>
+     <y>852</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledAx_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_stop_iterations_A</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>280</x>
+     <y>765</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>886</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledAy_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_magTransf_order_of_transf_2</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>770</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>453</x>
+     <y>793</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledAy_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_start_iterations_B</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>484</x>
+     <y>770</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>476</x>
+     <y>840</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledAy_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_stop_iterations_B</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>529</x>
+     <y>759</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>889</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledAz_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_magTransf_order_of_transf_3</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>763</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>616</x>
+     <y>802</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledAz_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_start_iterations_C</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>685</x>
+     <y>765</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>665</x>
+     <y>842</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledAz_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_stop_iterations_C</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>690</x>
+     <y>764</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>691</x>
+     <y>893</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledBx_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_magTransf_order_of_transf_4</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>794</x>
+     <y>757</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>794</x>
+     <y>796</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledBx_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_start_iterations_D</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>826</x>
+     <y>764</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>826</x>
+     <y>842</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledBx_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_stop_iterations_D</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>861</x>
+     <y>770</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>866</x>
+     <y>873</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledBy_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_magTransf_order_of_transf_5</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>981</x>
+     <y>769</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>970</x>
+     <y>808</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledBy_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_start_iterations_E</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1022</x>
+     <y>772</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1003</x>
+     <y>842</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_transf_function_enabledBy_false</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinboxInt_transf_stop_iterations_E</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1039</x>
+     <y>775</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1026</x>
+     <y>884</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

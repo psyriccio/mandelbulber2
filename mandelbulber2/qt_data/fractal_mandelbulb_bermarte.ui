@@ -47,21 +47,21 @@
      <item row="0" column="0">
       <widget class="QCheckBox" name="checkBox_transf_function_enabledAx_false">
        <property name="text">
-        <string>fabs(z.x)</string>
+        <string notr="true">fabs(z.x)</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QCheckBox" name="checkBox_transf_function_enabledAy_false">
        <property name="text">
-        <string>fabs(z.y)</string>
+        <string notr="true">fabs(z.y)</string>
        </property>
       </widget>
      </item>
      <item row="0" column="2">
       <widget class="QCheckBox" name="checkBox_transf_function_enabledAz_false">
        <property name="text">
-        <string>fabs(z.z)</string>
+        <string notr="true">fabs(z.z)</string>
        </property>
       </widget>
      </item>
@@ -100,14 +100,14 @@
      <item row="13" column="0">
       <widget class="QCheckBox" name="checkBox_transf_function_enabledBx_false">
        <property name="text">
-        <string>fabs(z.x)</string>
+        <string notr="true">fabs(z.x)</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_298">
        <property name="text">
-        <string>Rotate about z axis :  </string>
+        <string>Rotate about z axis:</string>
        </property>
       </widget>
      </item>
@@ -142,7 +142,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_293">
        <property name="text">
-        <string>Beta angle offset1:  </string>
+        <string>Beta angle offset1:</string>
        </property>
       </widget>
      </item>
@@ -318,7 +318,7 @@
      <item row="13" column="1">
       <widget class="QCheckBox" name="checkBox_transf_function_enabledBy_false">
        <property name="text">
-        <string>fabs(z.y)</string>
+        <string notr="true">fabs(z.y)</string>
        </property>
       </widget>
      </item>
@@ -480,14 +480,14 @@
        <item row="0" column="2">
         <widget class="QCheckBox" name="checkBox_transf_function_enabledAx">
          <property name="text">
-          <string>fabs(z.x)</string>
+          <string notr="true">fabs(z.x)</string>
          </property>
         </widget>
        </item>
        <item row="0" column="4">
         <widget class="QCheckBox" name="checkBox_transf_function_enabledAz">
          <property name="text">
-          <string>fabs(z.z)</string>
+          <string notr="true">fabs(z.z)</string>
          </property>
         </widget>
        </item>
@@ -507,7 +507,7 @@
        <item row="0" column="3">
         <widget class="QCheckBox" name="checkBox_transf_function_enabledAy">
          <property name="text">
-          <string>fabs(z.y)</string>
+          <string notr="true">fabs(z.y)</string>
          </property>
         </widget>
        </item>
@@ -521,7 +521,7 @@
       <string/>
      </property>
      <property name="title">
-      <string>Analytic &amp;Logrithmic DE adjustment </string>
+      <string>Analytic &amp;Logrithmic DE adjustment</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -550,14 +550,14 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_177">
           <property name="text">
-           <string>Analytic Logrithmic DE offset1: </string>
+           <string>Analytic Logrithmic DE offset1:</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLabel" name="label_176">
           <property name="text">
-           <string>Analytic Logrithmic DE multiplier: </string>
+           <string>Analytic Logrithmic DE multiplier:</string>
           </property>
          </widget>
         </item>
@@ -661,7 +661,7 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_178">
           <property name="text">
-           <string>Analytic Logrithmic DE offset2: </string>
+           <string>Analytic Logrithmic DE offset2:</string>
           </property>
          </widget>
         </item>
@@ -809,17 +809,46 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MyDoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>my_double_spin_box.h</header>
-  </customwidget>
-  <customwidget>
    <class>MyGroupBox</class>
    <extends>QGroupBox</extends>
    <header>my_group_box.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>MyDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>my_double_spin_box.h</header>
+  </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>checkBox_transf_function_enabledAx_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledAy_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledAz_false</tabstop>
+  <tabstop>slider_alpha_angle_offset</tabstop>
+  <tabstop>spinbox_alpha_angle_offset</tabstop>
+  <tabstop>slider_beta_angle_offset</tabstop>
+  <tabstop>spinbox_beta_angle_offset</tabstop>
+  <tabstop>slider_transf_scaleA_1</tabstop>
+  <tabstop>spinbox_transf_scaleA_1</tabstop>
+  <tabstop>checkBox_transf_function_enabled_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledAx</tabstop>
+  <tabstop>checkBox_transf_function_enabledAy</tabstop>
+  <tabstop>checkBox_transf_function_enabledAz</tabstop>
+  <tabstop>slider_transf_beta_angle_offset</tabstop>
+  <tabstop>spinbox_transf_beta_angle_offset</tabstop>
+  <tabstop>slider_transf_scaleB_1</tabstop>
+  <tabstop>spinbox_transf_scaleB_1</tabstop>
+  <tabstop>slider_transf_pwr_8</tabstop>
+  <tabstop>spinbox_transf_pwr_8</tabstop>
+  <tabstop>checkBox_transf_function_enabledx_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledBx_false</tabstop>
+  <tabstop>checkBox_transf_function_enabledBy_false</tabstop>
+  <tabstop>groupCheck_analyticDE_enabled_false</tabstop>
+  <tabstop>spinbox_analyticDE_scale_1</tabstop>
+  <tabstop>spinbox_analyticDE_offset_1</tabstop>
+  <tabstop>spinbox_analyticDE_offset_2</tabstop>
+  <tabstop>groupCheck_info</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

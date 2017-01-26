@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -42,7 +42,7 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 	ambientOcclusion = container->Get<double>("ambient_occlusion");
 	ambientOcclusionEnabled = container->Get<bool>("ambient_occlusion_enabled");
 	ambientOcclusionFastTune = container->Get<double>("ambient_occlusion_fast_tune");
-	ambientOcclusionMode = (params::enumAOMode)container->Get<int>("ambient_occlusion_mode");
+	ambientOcclusionMode = params::enumAOMode(container->Get<int>("ambient_occlusion_mode"));
 	ambientOcclusionQuality = container->Get<int>("ambient_occlusion_quality");
 	auxLightNumber = 4;
 	auxLightRandomNumber = container->Get<int>("random_lights_number");
@@ -65,8 +65,8 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 	constantDEThreshold = container->Get<bool>("constant_DE_threshold");
 	constantFactor = container->Get<double>("fractal_constant_factor");
 	DEFactor = container->Get<double>("DE_factor");
-	delta_DE_function = (fractal::enumDEFunctionType)container->Get<int>("delta_DE_function");
-	delta_DE_method = (fractal::enumDEMethod)container->Get<int>("delta_DE_method");
+	delta_DE_function = fractal::enumDEFunctionType(container->Get<int>("delta_DE_function"));
+	delta_DE_method = fractal::enumDEMethod(container->Get<int>("delta_DE_method"));
 	detailLevel = container->Get<double>("detail_level");
 	DEThresh = container->Get<double>("DE_thresh");
 	DOFEnabled = container->Get<bool>("DOF_enabled");
@@ -78,7 +78,7 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 	DOFSamples = container->Get<int>("DOF_samples");
 	DOFBlurOpacity = container->Get<double>("DOF_blur_opacity");
 	envMappingEnable = container->Get<bool>("env_mapping_enable");
-	fakeLightsEnabled = container->Get<double>("fake_lights_enabled");
+	fakeLightsEnabled = container->Get<bool>("fake_lights_enabled");
 	fakeLightsIntensity = container->Get<double>("fake_lights_intensity");
 	fakeLightsVisibility = container->Get<double>("fake_lights_visibility");
 	fakeLightsVisibilitySize = container->Get<double>("fake_lights_visibility_size");
@@ -122,7 +122,7 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 	minN = container->Get<int>("minN");
 	N = container->Get<int>("N");
 	penetratingLights = container->Get<bool>("penetrating_lights");
-	perspectiveType = (params::enumPerspectiveType)container->Get<int>("perspective_type");
+	perspectiveType = params::enumPerspectiveType(container->Get<int>("perspective_type"));
 	raytracedReflections = container->Get<bool>("raytraced_reflections");
 	reflectionsMax = container->Get<int>("reflections_max");
 	repeatFrom = container->Get<int>("repeat_from");
@@ -140,7 +140,7 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 	target = container->Get<CVector3>("target");
 	texturedBackground = container->Get<bool>("textured_background");
 	texturedBackgroundMapType =
-		(params::enumTextureMapType)container->Get<int>("textured_background_map_type");
+		params::enumTextureMapType(container->Get<int>("textured_background_map_type"));
 	topVector = container->Get<CVector3>("camera_top");
 	useDefaultBailout = container->Get<bool>("use_default_bailout");
 	viewAngle = container->Get<CVector3>("camera_rotation");
@@ -154,7 +154,7 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 	volFogDensity = container->Get<double>("volumetric_fog_density");
 	volFogDistanceFactor = container->Get<double>("volumetric_fog_distance_factor");
 	volFogEnabled = container->Get<bool>("volumetric_fog_enabled");
-	volumetricLightEnabled[0] = container->Get<double>("main_light_volumetric_enabled");
+	volumetricLightEnabled[0] = container->Get<bool>("main_light_volumetric_enabled");
 	volumetricLightIntensity[0] = container->Get<double>("main_light_volumetric_intensity");
 
 	for (int i = 0; i < 4; ++i)
@@ -168,7 +168,7 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 	for (int i = 1; i <= 4; i++)
 	{
 		volumetricLightIntensity[i] = container->Get<double>("aux_light_volumetric_intensity", i);
-		volumetricLightEnabled[i] = container->Get<double>("aux_light_volumetric_enabled", i);
+		volumetricLightEnabled[i] = container->Get<bool>("aux_light_volumetric_enabled", i);
 	}
 
 	volumetricLightAnyEnabled = false;
@@ -180,7 +180,7 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 	for (int i = 0; i < NUMBER_OF_FRACTALS - 1; i++)
 	{
 		booleanOperator[i] =
-			(params::enumBooleanOperator)container->Get<int>("boolean_operator", i + 1);
+			params::enumBooleanOperator(container->Get<int>("boolean_operator", i + 1));
 	}
 
 	for (int i = 0; i < NUMBER_OF_FRACTALS; i++)
@@ -210,8 +210,8 @@ cParamRender::cParamRender(const cParameterContainer *container, QVector<cObject
 		(*objectData)[0].materialId = formulaMaterialId[0];
 	}
 
-	common.fakeLightsMaxIter = container->Get<double>("fake_lights_max_iter");
-	common.fakeLightsMinIter = container->Get<double>("fake_lights_min_iter");
+	common.fakeLightsMaxIter = container->Get<int>("fake_lights_max_iter");
+	common.fakeLightsMinIter = container->Get<int>("fake_lights_min_iter");
 	common.fakeLightsOrbitTrap = container->Get<CVector3>("fake_lights_orbit_trap");
 	common.foldings.boxEnable = container->Get<bool>("box_folding");
 	common.foldings.boxLimit = container->Get<double>("box_folding_limit");

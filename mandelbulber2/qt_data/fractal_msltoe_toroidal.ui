@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>898</width>
-    <height>1197</height>
+    <height>1418</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -149,14 +149,14 @@
         <item row="0" column="1">
          <widget class="QLabel" name="label_120">
           <property name="text">
-           <string>x:</string>
+           <string notr="true">x</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_124">
           <property name="text">
-           <string>Pre-Scale</string>
+           <string>Pre-Scale:</string>
           </property>
          </widget>
         </item>
@@ -182,14 +182,14 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_123">
           <property name="text">
-           <string>z:</string>
+           <string notr="true">z</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
          <widget class="QLabel" name="label_121">
           <property name="text">
-           <string>y:</string>
+           <string notr="true">y</string>
           </property>
          </widget>
         </item>
@@ -232,14 +232,14 @@
      <item row="3" column="1">
       <widget class="QLabel" name="label_130">
        <property name="text">
-        <string>Theta power</string>
+        <string>Theta power:</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLabel" name="label_127">
        <property name="text">
-        <string>Radius power</string>
+        <string>Radius power:</string>
        </property>
       </widget>
      </item>
@@ -381,7 +381,7 @@
      <item row="2" column="1">
       <widget class="QLabel" name="label_129">
        <property name="text">
-        <string>Phi power</string>
+        <string>Phi power:</string>
        </property>
       </widget>
      </item>
@@ -501,14 +501,14 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_177">
           <property name="text">
-           <string>Analytic Logrithmic DE offset1: </string>
+           <string>Analytic Logrithmic DE offset1:</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLabel" name="label_176">
           <property name="text">
-           <string>Analytic Logrithmic DE multiplier: </string>
+           <string>Analytic Logrithmic DE multiplier:</string>
           </property>
          </widget>
         </item>
@@ -612,7 +612,7 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_178">
           <property name="text">
-           <string>Analytic Logrithmic DE offset2: </string>
+           <string>Analytic Logrithmic DE offset2:</string>
           </property>
          </widget>
         </item>
@@ -692,7 +692,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_132">
           <property name="text">
-           <string>Offset Radius:   </string>
+           <string>Offset Radius:</string>
           </property>
          </widget>
         </item>
@@ -846,7 +846,7 @@
   &lt;span style=&quot;color:#d0d0d0&quot;&gt;{&lt;/span&gt;
     &lt;span style=&quot;color:#f09479; font-weight:bold&quot;&gt;double&lt;/span&gt; lengthTempZ &lt;span style=&quot;color:#d0d0d0&quot;&gt;= -&lt;/span&gt;z&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color:#e47eed&quot;&gt;Length&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;();&lt;/span&gt;
     &lt;span style=&quot;color:#d0d0a0&quot;&gt;// if (lengthTempZ &amp;gt; -1e-21) lengthTempZ = -1e-21;   //  z is neg.)&lt;/span&gt;
-    z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;offset &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; lengthTempZ&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
+    z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1.0&lt;/span&gt; &lt;span style=&quot;color:#d0d0d0&quot;&gt;+&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;offset &lt;span style=&quot;color:#d0d0d0&quot;&gt;/&lt;/span&gt; lengthTempZ&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     z &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;DE &lt;span style=&quot;color:#d0d0d0&quot;&gt;=&lt;/span&gt; aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;DE &lt;span style=&quot;color:#d0d0d0&quot;&gt;*&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;fabs&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale&lt;span style=&quot;color:#d0d0d0&quot;&gt;) +&lt;/span&gt; &lt;span style=&quot;color:#87df71&quot;&gt;1.0&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;;&lt;/span&gt;
     aux&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;r_dz &lt;span style=&quot;color:#d0d0d0&quot;&gt;*=&lt;/span&gt; &lt;span style=&quot;color:#e47eed&quot;&gt;fabs&lt;/span&gt;&lt;span style=&quot;color:#d0d0d0&quot;&gt;(&lt;/span&gt;fractal&lt;span style=&quot;color:#d0d0d0&quot;&gt;-&amp;gt;&lt;/span&gt;transformCommon&lt;span style=&quot;color:#d0d0d0&quot;&gt;.&lt;/span&gt;scale&lt;span style=&quot;color:#d0d0d0&quot;&gt;);&lt;/span&gt;
@@ -887,17 +887,45 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MyDoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>my_double_spin_box.h</header>
-  </customwidget>
-  <customwidget>
    <class>MyGroupBox</class>
    <extends>QGroupBox</extends>
    <header>my_group_box.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>MyDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>my_double_spin_box.h</header>
+  </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>groupCheck_transf_function_enabled_false</tabstop>
+  <tabstop>slider3_transf_scale3D_111_x</tabstop>
+  <tabstop>spinbox3_transf_scale3D_111_x</tabstop>
+  <tabstop>slider3_transf_scale3D_111_y</tabstop>
+  <tabstop>spinbox3_transf_scale3D_111_y</tabstop>
+  <tabstop>slider3_transf_scale3D_111_z</tabstop>
+  <tabstop>spinbox3_transf_scale3D_111_z</tabstop>
+  <tabstop>slider_transf_minimum_radius_05</tabstop>
+  <tabstop>spinbox_transf_minimum_radius_05</tabstop>
+  <tabstop>slider_transf_pwr_4</tabstop>
+  <tabstop>spinbox_transf_pwr_4</tabstop>
+  <tabstop>slider_transf_pwr_8</tabstop>
+  <tabstop>spinbox_transf_pwr_8</tabstop>
+  <tabstop>slider_power</tabstop>
+  <tabstop>spinbox_power</tabstop>
+  <tabstop>groupCheck_analyticDE_enabled_false</tabstop>
+  <tabstop>spinbox_analyticDE_scale_1</tabstop>
+  <tabstop>spinbox_analyticDE_offset_1</tabstop>
+  <tabstop>spinbox_analyticDE_offset_2</tabstop>
+  <tabstop>checkBox_analyticDE_enabled_auxR2_false</tabstop>
+  <tabstop>groupCheck_transf_function_enabledAx_false</tabstop>
+  <tabstop>slider_transf_offset</tabstop>
+  <tabstop>spinbox_transf_offset</tabstop>
+  <tabstop>slider_transf_scale</tabstop>
+  <tabstop>spinbox_transf_scale</tabstop>
+  <tabstop>groupCheck_info</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

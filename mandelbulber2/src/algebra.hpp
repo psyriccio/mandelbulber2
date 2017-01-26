@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -52,6 +52,8 @@
 #pragma warning(disable : 4005) // macro redefinition
 #endif
 
+// MSVC defines math constants elsewhere, do not warn about the
+// redefinition in math.h
 #include <math.h>
 
 #if defined(_MSC_VER)
@@ -188,7 +190,7 @@ public:
 		c.z = x * v.y - y * v.x;
 		return c;
 	}
-	inline CVector3 Abs()
+	inline CVector3 Abs() const
 	{
 		CVector3 c;
 		c.x = fabs(x);
@@ -206,7 +208,7 @@ public:
 	}
 	inline double GetAlpha() const { return atan2(y, x); }
 	inline double GetBeta() const { return atan2(z, sqrt(x * x + y * y)); }
-	bool IsNotANumber()
+	bool IsNotANumber() const
 	{
 		// Check x for NaN
 		if (!gsl_finite(x)) return true;
@@ -220,7 +222,7 @@ public:
 		// Defined or representable value identified
 		return false;
 	}
-	CVector3 RotateAroundVectorByAngle(CVector3 axis, double angle);
+	CVector3 RotateAroundVectorByAngle(CVector3 axis, double angle) const;
 	QString Debug() const
 	{
 		return QString("[%1, %2, %3]").arg(QString::number(x), QString::number(y), QString::number(z));
@@ -386,7 +388,7 @@ public:
 	}
 	inline double Length() const { return sqrt(x * x + y * y + z * z + w * w); }
 	inline double Dot(const CVector4 &v) const { return x * v.x + y * v.y + z * v.z + w * v.w; }
-	inline CVector4 Abs()
+	inline CVector4 Abs() const
 	{
 		CVector4 c;
 		c.x = fabs(x);
@@ -395,7 +397,7 @@ public:
 		c.w = fabs(w);
 		return c;
 	}
-	inline CVector3 GetXYZ() { return CVector3(x, y, z); }
+	inline CVector3 GetXYZ() const { return CVector3(x, y, z); }
 
 	inline double Normalize()
 	{
@@ -599,7 +601,7 @@ public:
 	void SetRotation(CVector3 rotation);
 	void SetRotation2(CVector3 rotation);
 	void SetRotation3(CVector3 rotation);
-	CRotationMatrix Transpose(void) const;
+	CRotationMatrix Transpose() const;
 	CMatrix33 GetMatrix() const { return matrix; }
 
 private:
@@ -663,7 +665,7 @@ public:
 	void SetRotation44a(CVector3 rotation);
 	void SetRotation44b(CVector3 rotation);
 
-	CRotationMatrix44 Transpose(void) const;
+	CRotationMatrix44 Transpose() const;
 	CMatrix44 GetMatrix() const { return matrix; }
 
 private:

@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2015-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2015-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,7 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Sebastian Jennen (jenzebas@gmail.com)
  *
  * cHeadless - class to handle CLI instructions without GUI manipulation
  */
@@ -157,11 +157,11 @@ void cHeadless::RenderVoxel()
 	emit finished();
 }
 
-void cHeadless::RenderFlightAnimation()
+void cHeadless::RenderFlightAnimation() const
 {
 	cImage *image = new cImage(gPar->Get<int>("image_width"), gPar->Get<int>("image_height"));
 	gFlightAnimation =
-		new cFlightAnimation(gMainInterface, gAnimFrames, image, NULL, gPar, gParFractal, NULL);
+		new cFlightAnimation(gMainInterface, gAnimFrames, image, nullptr, gPar, gParFractal, nullptr);
 	QObject::connect(gFlightAnimation, SIGNAL(updateProgressAndStatus(const QString &,
 																			 const QString &, double, cProgressText::enumProgressType)),
 		this, SLOT(slotUpdateProgressAndStatus(
@@ -174,15 +174,15 @@ void cHeadless::RenderFlightAnimation()
 	gFlightAnimation->slotRenderFlight();
 	delete image;
 	delete gFlightAnimation;
-	gFlightAnimation = NULL;
+	gFlightAnimation = nullptr;
 	return;
 }
 
-void cHeadless::RenderKeyframeAnimation()
+void cHeadless::RenderKeyframeAnimation() const
 {
 	cImage *image = new cImage(gPar->Get<int>("image_width"), gPar->Get<int>("image_height"));
 	gKeyframeAnimation =
-		new cKeyframeAnimation(gMainInterface, gKeyframes, image, NULL, gPar, gParFractal, NULL);
+		new cKeyframeAnimation(gMainInterface, gKeyframes, image, nullptr, gPar, gParFractal, nullptr);
 	QObject::connect(gKeyframeAnimation, SIGNAL(updateProgressAndStatus(const QString &,
 																				 const QString &, double, cProgressText::enumProgressType)),
 		this, SLOT(slotUpdateProgressAndStatus(
@@ -195,7 +195,7 @@ void cHeadless::RenderKeyframeAnimation()
 	gKeyframeAnimation->slotRenderKeyframes();
 	delete image;
 	delete gKeyframeAnimation;
-	gKeyframeAnimation = NULL;
+	gKeyframeAnimation = nullptr;
 	return;
 }
 
@@ -260,7 +260,7 @@ void cHeadless::slotUpdateProgressAndStatus(const QString &text, const QString &
 	}
 }
 
-void cHeadless::slotUpdateStatistics(const cStatistics &stat)
+void cHeadless::slotUpdateStatistics(const cStatistics &stat) const
 {
 	if (!systemData.statsOnCLI) return;
 	/*ui->label_histogram_de->SetBarcolor(QColor(0, 255, 0));

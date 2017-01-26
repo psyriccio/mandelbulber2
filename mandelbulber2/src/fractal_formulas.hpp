@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2014-16 Krzysztof Marczak     §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2014-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -27,7 +27,8 @@
  *
  * ###########################################################################
  *
- * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Graeme McLaren
+ * Authors: Krzysztof Marczak (buddhi1980@gmail.com), Graeme McLaren,
+ *  Sebastian Jennen (jenzebas@gmail.com)
  *
  * functions for calculation single fractal iterations
  */
@@ -168,7 +169,7 @@ void TransformBoxFoldVaryV1Iteration(
 void TransformBoxFoldXYZIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
 void TransformBoxOffsetIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
 void TransformFabsAddConstantIteration(CVector3 &z, const cFractal *fractal);
-void TransformFabsAddConstantV2Iteration(CVector3 &z, const cFractal *fractal);
+void TransformFabsAddConstantV2Iteration(CVector3 &z, int i, const cFractal *fractal);
 void TransformFabsAddConditionalIteration(CVector3 &z, const cFractal *fractal, sExtendedAux &aux);
 void TransformNegFabsAddConstantIteration(CVector3 &z, const cFractal *fractal);
 void TransformFabsAddMultiIteration(CVector3 &z, const cFractal *fractal);
@@ -213,13 +214,15 @@ void TransformSurfFoldMultiIteration(CVector3 &z, const cFractal *fractal, sExte
 void TransformZvectorAxisSwapIteration(CVector3 &z, int i, const cFractal *fractal);
 
 // 4D
+void Abox4DIteration(CVector4 &z4D, int i, const cFractal *fractal, sExtendedAux &aux);
 void Bristorbrot4DIteration(CVector4 &z4D, const cFractal *fractal, sExtendedAux &aux);
-void MandelboxVaryScale4DIteration(CVector4 &z4D, const cFractal *fractal, sExtendedAux &aux);
+void MandelboxVaryScale4DIteration(
+	CVector4 &z4D, int i, const cFractal *fractal, sExtendedAux &aux);
 void MixPinski4DIteration(CVector4 &z4D, int i, const cFractal *fractal, sExtendedAux &aux);
 void Menger4DIteration(CVector4 &z4D, int i, const cFractal *fractal, sExtendedAux &aux);
 void Menger4Dmod1Iteration(CVector4 &z4D, int i, const cFractal *fractal, sExtendedAux &aux);
 void Sierpinski4DIteration(CVector4 &z4D, int i, const cFractal *fractal, sExtendedAux &aux);
-void Quaternion4DIteration(CVector4 &z4D, const cFractal *fractal);
+void Quaternion4DIteration(CVector4 &z4D, int i, const cFractal *fractal);
 
 void TransformAdditionConstant4DIteration(CVector4 &z4D, const cFractal *fractal);
 void TransformBoxFold4DIteration(CVector4 &z4D, const cFractal *fractal, sExtendedAux &aux);
@@ -230,6 +233,7 @@ void TransformFabsAddConditional4DIteration(
 void TransformIterationWeight4DIteration(
 	CVector4 &z4D, int i, const cFractal *fractal, sExtendedAux &aux);
 void TransformReciprocal4DIteration(CVector4 &z4D, const cFractal *fractal, sExtendedAux &aux);
+void TransformRotation4DIteration(CVector4 &z4D, const cFractal *fractal);
 void TransformScale4DIteration(CVector4 &z4D, const cFractal *fractal, sExtendedAux &aux);
 void TransformSphericalFold4DIteration(CVector4 &z4D, const cFractal *fractal, sExtendedAux &aux);
 

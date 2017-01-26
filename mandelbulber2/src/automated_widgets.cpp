@@ -1,7 +1,7 @@
 /**
  * Mandelbulber v2, a 3D fractal generator       ,=#MKNmMMKmmßMNWy,
  *                                             ,B" ]L,,p%%%,,,§;, "K
- * Copyright (C) 2016 Krzysztof Marczak        §R-==%w["'~5]m%=L.=~5N
+ * Copyright (C) 2016-17 Mandelbulber Team     §R-==%w["'~5]m%=L.=~5N
  *                                        ,=mm=§M ]=4 yJKA"/-Nsaj  "Bw,==,,
  * This file is part of Mandelbulber.    §R.r= jw",M  Km .mM  FW ",§=ß., ,TN
  *                                     ,4R =%["w[N=7]J '"5=],""]]M,w,-; T=]M
@@ -47,7 +47,7 @@ cAutomatedWidgets::cAutomatedWidgets(QObject *parent) : QObject(parent)
 {
 }
 
-void cAutomatedWidgets::slotSliderMoved(int value)
+void cAutomatedWidgets::slotSliderMoved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -68,7 +68,7 @@ void cAutomatedWidgets::slotSliderMoved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotDoubleSpinBoxChanged(double value)
+void cAutomatedWidgets::slotDoubleSpinBoxChanged(double value) const
 {
 	using namespace std;
 	QString spinBoxName = this->sender()->objectName();
@@ -81,7 +81,7 @@ void cAutomatedWidgets::slotDoubleSpinBoxChanged(double value)
 		QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox *>(this->sender());
 		double decimals = spinBox->decimals();
 		double multiplier = pow(10.0, decimals);
-		slider->setValue(value * multiplier);
+		slider->setValue(int(value * multiplier));
 	}
 	else
 	{
@@ -90,7 +90,7 @@ void cAutomatedWidgets::slotDoubleSpinBoxChanged(double value)
 	}
 }
 
-void cAutomatedWidgets::slotIntSliderMoved(int value)
+void cAutomatedWidgets::slotIntSliderMoved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -110,7 +110,7 @@ void cAutomatedWidgets::slotIntSliderMoved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotIntSpinBoxChanged(int value)
+void cAutomatedWidgets::slotIntSpinBoxChanged(int value) const
 {
 	using namespace std;
 	QString spinBoxName = this->sender()->objectName();
@@ -130,7 +130,7 @@ void cAutomatedWidgets::slotIntSpinBoxChanged(int value)
 	}
 }
 
-void cAutomatedWidgets::slotSlider3Moved(int value)
+void cAutomatedWidgets::slotSlider3Moved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -152,7 +152,7 @@ void cAutomatedWidgets::slotSlider3Moved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotSlider4Moved(int value)
+void cAutomatedWidgets::slotSlider4Moved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -174,7 +174,7 @@ void cAutomatedWidgets::slotSlider4Moved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotSpinBox3Changed(double value)
+void cAutomatedWidgets::slotSpinBox3Changed(double value) const
 {
 	using namespace std;
 	QString spinBoxName = this->sender()->objectName();
@@ -189,7 +189,7 @@ void cAutomatedWidgets::slotSpinBox3Changed(double value)
 		QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox *>(this->sender());
 		double decimals = spinBox->decimals();
 		double multiplier = pow(10.0, decimals);
-		slider->setValue(value * multiplier);
+		slider->setValue(int(value * multiplier));
 	}
 	else
 	{
@@ -197,7 +197,7 @@ void cAutomatedWidgets::slotSpinBox3Changed(double value)
 	}
 }
 
-void cAutomatedWidgets::slotSpinBox4Changed(double value)
+void cAutomatedWidgets::slotSpinBox4Changed(double value) const
 {
 	using namespace std;
 	QString spinBoxName = this->sender()->objectName();
@@ -212,7 +212,7 @@ void cAutomatedWidgets::slotSpinBox4Changed(double value)
 		QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox *>(this->sender());
 		double decimals = spinBox->decimals();
 		double multiplier = pow(10.0, decimals);
-		slider->setValue(value * multiplier);
+		slider->setValue(int(value * multiplier));
 	}
 	else
 	{
@@ -220,7 +220,7 @@ void cAutomatedWidgets::slotSpinBox4Changed(double value)
 	}
 }
 
-void cAutomatedWidgets::slotDial3Moved(int value)
+void cAutomatedWidgets::slotDial3Moved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -239,7 +239,7 @@ void cAutomatedWidgets::slotDial3Moved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotDial4Moved(int value)
+void cAutomatedWidgets::slotDial4Moved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -258,7 +258,7 @@ void cAutomatedWidgets::slotDial4Moved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotSpinBoxD3Changed(double value)
+void cAutomatedWidgets::slotSpinBoxD3Changed(double value) const
 {
 	using namespace std;
 	QString spinBoxName = this->sender()->objectName();
@@ -269,7 +269,7 @@ void cAutomatedWidgets::slotSpinBoxD3Changed(double value)
 	QDial *dial = this->sender()->parent()->findChild<QDial *>(dialName);
 	if (dial)
 	{
-		dial->setValue(value * 100.0);
+		dial->setValue(int(value * 100.0));
 	}
 	else
 	{
@@ -277,7 +277,7 @@ void cAutomatedWidgets::slotSpinBoxD3Changed(double value)
 	}
 }
 
-void cAutomatedWidgets::slotSpinBoxD4Changed(double value)
+void cAutomatedWidgets::slotSpinBoxD4Changed(double value) const
 {
 	using namespace std;
 	QString spinBoxName = this->sender()->objectName();
@@ -288,7 +288,7 @@ void cAutomatedWidgets::slotSpinBoxD4Changed(double value)
 	QDial *dial = this->sender()->parent()->findChild<QDial *>(dialName);
 	if (dial)
 	{
-		dial->setValue(value * 100.0);
+		dial->setValue(int(value * 100.0));
 	}
 	else
 	{
@@ -296,7 +296,7 @@ void cAutomatedWidgets::slotSpinBoxD4Changed(double value)
 	}
 }
 
-void cAutomatedWidgets::slotDialMoved(int value)
+void cAutomatedWidgets::slotDialMoved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -315,7 +315,7 @@ void cAutomatedWidgets::slotDialMoved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotSpinBoxDChanged(double value)
+void cAutomatedWidgets::slotSpinBoxDChanged(double value) const
 {
 	using namespace std;
 	QString spinBoxName = this->sender()->objectName();
@@ -326,7 +326,7 @@ void cAutomatedWidgets::slotSpinBoxDChanged(double value)
 	QDial *dial = this->sender()->parent()->findChild<QDial *>(dialName);
 	if (dial)
 	{
-		dial->setValue(value * 100.0);
+		dial->setValue(int(value * 100.0));
 	}
 	else
 	{
@@ -334,7 +334,7 @@ void cAutomatedWidgets::slotSpinBoxDChanged(double value)
 	}
 }
 
-void cAutomatedWidgets::slotLogSliderMoved(int value)
+void cAutomatedWidgets::slotLogSliderMoved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -356,7 +356,7 @@ void cAutomatedWidgets::slotLogSliderMoved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotLogSliderVect3Moved(int value)
+void cAutomatedWidgets::slotLogSliderVect3Moved(int value) const
 {
 	using namespace std;
 	QString sliderName = this->sender()->objectName();
@@ -378,7 +378,7 @@ void cAutomatedWidgets::slotLogSliderVect3Moved(int value)
 	}
 }
 
-void cAutomatedWidgets::slotLogLineEditChanged(const QString &text)
+void cAutomatedWidgets::slotLogLineEditChanged(const QString &text) const
 {
 	using namespace std;
 	QString lineEditName = this->sender()->objectName();
@@ -392,7 +392,7 @@ void cAutomatedWidgets::slotLogLineEditChanged(const QString &text)
 		double value = systemData.locale.toDouble(text);
 		if (value > 0.0)
 		{
-			int sliderPosition = log10(systemData.locale.toDouble(text)) * 100.0;
+			int sliderPosition = int(log10(systemData.locale.toDouble(text)) * 100.0);
 			slider->setValue(sliderPosition);
 		}
 		else
@@ -408,7 +408,7 @@ void cAutomatedWidgets::slotLogLineEditChanged(const QString &text)
 	}
 }
 
-void cAutomatedWidgets::slotLogVect3Changed(const QString &text)
+void cAutomatedWidgets::slotLogVect3Changed(const QString &text) const
 {
 	using namespace std;
 	QString lineEditName = this->sender()->objectName();
@@ -422,7 +422,7 @@ void cAutomatedWidgets::slotLogVect3Changed(const QString &text)
 		double value = systemData.locale.toDouble(text);
 		if (value > 0.0)
 		{
-			int sliderPosition = log10(systemData.locale.toDouble(text)) * 100.0;
+			int sliderPosition = int(log10(systemData.locale.toDouble(text)) * 100.0);
 			slider->setValue(sliderPosition);
 		}
 		else
@@ -441,7 +441,7 @@ void cAutomatedWidgets::slotLogVect3Changed(const QString &text)
 // caused problems with editing values in edit fields and spinboxes.
 
 // automatic setting of event slots for all sliders
-void cAutomatedWidgets::ConnectSignalsForSlidersInWindow(QWidget *window)
+void cAutomatedWidgets::ConnectSignalsForSlidersInWindow(QWidget *window) const
 {
 	QList<QSlider *> widgetList = window->findChildren<QSlider *>();
 	QList<QSlider *>::iterator it;
